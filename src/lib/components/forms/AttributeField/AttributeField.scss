@@ -1,0 +1,36 @@
+.msc-AttributeField {
+  .chakra-form-control {
+    // margin-left: 32px;
+  }
+
+  .msc-AttributeField__value {
+    display: flex;
+
+    input {
+      text-align: center;
+      width: 5rem;
+    }
+
+    label {
+      align-self: center;
+      font-size: 24px;
+      margin: 0 0 0 12px;
+    }
+  }
+
+  .msc-AttributeField__xp {
+    display: flex;
+
+    input {
+      text-align: center;
+      width: 5rem;
+      padding-left: 16px;
+    }
+
+    label {
+      align-self: center;
+      font-size: 12px;
+      margin: 0 0 0 12px;
+    }
+  }
+}

@@ -1,0 +1,21 @@
+@import "lib/components/forms/AspectField/AspectField.scss";
+@import "lib/components/forms/AttributeField/AttributeField.scss";
+
+@import "webapp/modules/MythicSpaceCharacters/MythicSpaceCharacters.scss";
+@import "webapp/modules/MythicSpaceCharacters/CharacterSheet/CharacterSheet.scss";
+@import "webapp/modules/MythicSpaceCharacters/CharacterSheet/PersonalDetails/PersonalDetails.scss";
+@import "webapp/modules/MythicSpaceCharacters/CharacterSheet/Status/Status.scss";
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
