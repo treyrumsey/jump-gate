@@ -1,0 +1,24 @@
+.msc-Attributes {
+  grid-area: attributes;
+
+  // display: grid;
+  // grid-template-columns: repeat(5, 1fr);
+  // grid-template-rows: 1fr 1fr;
+  // grid-template-areas:
+  //   "physique physique physique reflex reflex"
+  //   "discipline discipline discipline wits wits";
+  // row-gap: 16px;
+
+  // .msc-AttributeField-physique {
+  //   grid-area: physique;
+  // }
+  // .msc-AttributeField-reflex {
+  //   grid-area: reflex;
+  // }
+  // .msc-AttributeField-discipline {
+  //   grid-area: discipline;
+  // }
+  // .msc-AttributeField-wits {
+  //   grid-area: wits;
+  // }
+}

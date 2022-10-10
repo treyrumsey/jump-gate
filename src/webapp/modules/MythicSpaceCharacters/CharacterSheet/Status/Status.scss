@@ -1,5 +1,10 @@
 .msc-Status {
+  grid-area: status;
+
   .msc-Status__shields {
+    display: flex;
+  }
+  .msc-Status__armor {
     display: flex;
   }
 }

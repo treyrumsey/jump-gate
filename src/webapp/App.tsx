@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { ChakraProvider, extendTheme } from "@chakra-ui/react";
+import { ChakraProvider, extendTheme, useColorMode } from "@chakra-ui/react";
 
 import "firebase/firestore";
 import "firebase/auth";
@@ -11,6 +11,8 @@ import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import MythicSpaceCharacters from "webapp/modules/MythicSpaceCharacters/MythicSpaceCharacters";
 import SignIn from "webapp/modules/SignIn/SignIn";
+import { theme } from "theme";
+import { useEffect } from "react";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCy_9N-vn08k2ZmYolMdgmF_xwDPd1dqkU",
@@ -25,51 +27,27 @@ const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const firestore = getFirestore(app);
 
-const activeLabelStyles = {
-  transform: "scale(0.85) translateY(-24px)",
-};
-export const theme = extendTheme({
-  components: {
-    Form: {
-      variants: {
-        floating: {
-          container: {
-            _focusWithin: {
-              label: {
-                ...activeLabelStyles,
-              },
-            },
-            "input:not(:placeholder-shown) + label, .chakra-select__wrapper + label, textarea:not(:placeholder-shown) ~ label":
-              {
-                ...activeLabelStyles,
-              },
-            label: {
-              top: 0,
-              left: 0,
-              zIndex: 2,
-              position: "absolute",
-              backgroundColor: "white",
-              pointerEvents: "none",
-              mx: 3,
-              px: 1,
-              my: 2,
-              transformOrigin: "left top",
-            },
-          },
-        },
-      },
-    },
-  },
-});
-
 function App() {
   const [user] = useAuthState(auth);
 
   return (
-    <ChakraProvider theme={theme}>
-      <section>{user ? <MythicSpaceCharacters /> : <SignIn />}</section>
+    <ChakraProvider data-theme="dark" theme={theme}>
+      <ForceDarkMode>
+        <section>{user ? <MythicSpaceCharacters /> : <SignIn />}</section>
+      </ForceDarkMode>
     </ChakraProvider>
   );
+}
+
+function ForceDarkMode(props: { children: JSX.Element }) {
+  const { colorMode, toggleColorMode } = useColorMode();
+
+  useEffect(() => {
+    if (colorMode === "dark") return;
+    toggleColorMode();
+  }, [colorMode]);
+
+  return props.children;
 }
 
 export default App;

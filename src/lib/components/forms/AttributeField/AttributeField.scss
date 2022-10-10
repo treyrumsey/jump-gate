@@ -2,35 +2,47 @@
   .chakra-form-control {
     // margin-left: 32px;
   }
+  // background-color: black;
+  // color: white;
 
   .msc-AttributeField__value {
     display: flex;
+    justify-content: space-between;
 
     input {
       text-align: center;
-      width: 5rem;
+      width: 11rem;
     }
 
     label {
       align-self: center;
+      // background-color: black;
+      // color: white;
       font-size: 24px;
       margin: 0 0 0 12px;
+      width: 130px;
+      font-weight: 700;
     }
   }
 
   .msc-AttributeField__xp {
     display: flex;
+    justify-content: space-between;
 
     input {
       text-align: center;
-      width: 5rem;
+      width: 11rem;
       padding-left: 16px;
     }
 
     label {
       align-self: center;
+      // background-color: black;
+      // color: white;
       font-size: 12px;
-      margin: 0 0 0 12px;
+      margin: 0 12px 0 12px;
+      text-align: end;
+      width: 110px;
     }
   }
 }

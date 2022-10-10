@@ -1,15 +1,17 @@
+import { Upgrade } from "models/Upgrade.model";
+
 export interface Aspect {
-  name: string;
-  ability: AspectAbility;
+  aspect: string;
+  ability: string;
+  description: string;
+  upgrades: Upgrade[];
 }
 
-export interface AspectAbility {
-  name: string;
-  description: string;
-  upgrades: AspectAbilityUpgrade[];
-}
-
-export interface AspectAbilityUpgrade {
-  name: string;
-  description: string;
-}
+export const buildAspect = (): Aspect => {
+  return {
+    aspect: "",
+    ability: "",
+    description: "",
+    upgrades: [],
+  };
+};

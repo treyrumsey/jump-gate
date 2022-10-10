@@ -2,12 +2,6 @@ import { Box, FormControl, FormLabel, Input } from "@chakra-ui/react";
 import React from "react";
 import { useFormContext } from "react-hook-form";
 
-interface PersonalDetailsProps {
-  characterName: string;
-  species: string;
-  ship: string;
-}
-
 export const PersonalDetails = () => {
   const { register } = useFormContext();
 

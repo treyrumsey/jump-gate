@@ -12,8 +12,9 @@ export const AttributeField = ({ name }: AttributeFieldProps) => {
 
   const labelText = name.charAt(0).toUpperCase() + name.substring(1);
   return (
-    <Box py={1} className="msc-AttributeField">
+    <Box py={1} className={`msc-AttributeField msc-AttributeField-${name}`}>
       <FormControl className="msc-AttributeField__value">
+        <FormLabel htmlFor={`${name}.value`}>{labelText}</FormLabel>
         <NumberField
           id={`${name}.value`}
           name={`${name}.value`}
@@ -22,9 +23,9 @@ export const AttributeField = ({ name }: AttributeFieldProps) => {
           control={control}
           size="lg"
         />
-        <FormLabel htmlFor={`${name}.value`}>{labelText}</FormLabel>
       </FormControl>
       <FormControl className="msc-AttributeField__xp">
+        <FormLabel htmlFor={`${name}.xp`}>XP</FormLabel>
         <NumberField
           id={`${name}.xp`}
           name={`${name}.xp`}
@@ -33,7 +34,6 @@ export const AttributeField = ({ name }: AttributeFieldProps) => {
           control={control}
           size="xs"
         />
-        <FormLabel htmlFor={`${name}.xp`}>XP</FormLabel>
       </FormControl>
     </Box>
   );

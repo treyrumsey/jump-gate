@@ -10,6 +10,7 @@ import {
 } from "@chakra-ui/react";
 import { buildCharacter } from "models/Character.model";
 import { PersonalDetails } from "webapp/modules/MythicSpaceCharacters/CharacterSheet/PersonalDetails/PersonalDetails";
+import { Aspects } from "webapp/modules/MythicSpaceCharacters/CharacterSheet/Aspects/Aspects";
 import { Attributes } from "webapp/modules/MythicSpaceCharacters/CharacterSheet/Attributes/Attributes";
 import { Status } from "webapp/modules/MythicSpaceCharacters/CharacterSheet/Status/Status";
 
@@ -19,7 +20,11 @@ export const CharacterSheet = () => {
   //   setCharacter({ ...character, name: event.target.value });
   // };
 
-  const useFormMethods = useForm();
+  const character = buildCharacter();
+
+  const useFormMethods = useForm({
+    defaultValues: character,
+  });
   const {
     handleSubmit,
     register,
@@ -27,14 +32,12 @@ export const CharacterSheet = () => {
     control,
   } = useFormMethods;
 
-  const character = buildCharacter();
-
   function onSubmit(values: any) {
     return new Promise<void>((resolve) => {
       setTimeout(() => {
         alert(JSON.stringify(values, null, 2));
         resolve();
-      }, 3000);
+      }, 1000);
     });
   }
 
@@ -43,8 +46,11 @@ export const CharacterSheet = () => {
       <form className="msc-CharacterSheet" onSubmit={handleSubmit(onSubmit)}>
         <PersonalDetails />
         <Attributes />
+        <Aspects key={0} aspect="" />
         <Status />
-        <Button type="submit">Save</Button>
+        <Button className="msc-CharacterSheet__save" type="submit">
+          Save
+        </Button>
       </form>
     </FormProvider>
   );

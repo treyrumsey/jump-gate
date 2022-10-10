@@ -1,0 +1,11 @@
+.msc-Aspects {
+  grid-area: aspects;
+  .chakra-form-control {
+    margin: 14px 0;
+  }
+
+  .msc-Aspects__aspects {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}

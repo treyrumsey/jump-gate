@@ -5,6 +5,7 @@ import {
   NumberInputField,
   NumberInputStepper,
 } from "@chakra-ui/react";
+import React, { useState } from "react";
 import { useController } from "react-hook-form";
 
 interface NumberFieldProps {
@@ -15,6 +16,8 @@ interface NumberFieldProps {
   rules: any;
   defaultValue?: number;
   size?: string;
+  hasSlider?: boolean;
+  children?: React.ReactNode;
 }
 
 export const NumberField = ({
@@ -25,6 +28,8 @@ export const NumberField = ({
   rules,
   defaultValue,
   size,
+  hasSlider = false,
+  children,
   ...props
 }: NumberFieldProps) => {
   const {

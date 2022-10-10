@@ -1,3 +1,4 @@
+import { Aspect, buildAspect } from "models/Aspect.model";
 import { Attribute, initAttribute } from "models/Attribute.model";
 export interface Character {
   name: string;
@@ -8,6 +9,8 @@ export interface Character {
   discipline: Attribute;
   wits: Attribute;
   skills: string[];
+  aspects: Aspect[];
+  shields: { current: number; max: number };
 }
 
 export function buildCharacter(): Character {
@@ -20,5 +23,7 @@ export function buildCharacter(): Character {
     discipline: initAttribute("Discipline"),
     wits: initAttribute("Wits"),
     skills: [],
+    aspects: [buildAspect(), buildAspect()],
+    shields: { current: 8, max: 8 },
   };
 }

@@ -1,0 +1,14 @@
+.msc-CharacterSheet {
+  margin: 0 8px;
+  .msc-CharacterSheet__save {
+    grid-area: save;
+  }
+
+  display: grid;
+  gap: 0px 0px;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-areas:
+    "details details details status status 6 7 8 9 10"
+    "attributes attributes attributes status status 6 7 8 9 10"
+    "aspects aspects aspects aspects aspects aspects 7 8 9 save";
+}
