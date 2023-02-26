@@ -1,10 +1,29 @@
 .msc-Status {
   grid-area: status;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
 
-  .msc-Status__shields {
-    display: flex;
+  .msc-Status__shields,
+  .msc-Status__armor,
+  .msc-Status__stress,
+  .msc-Status__supplies {
+    margin: var(--chakra-space-2) 0;
+    input {
+      text-align: center;
+    }
   }
-  .msc-Status__armor {
+
+  .msc-Status__shaken,
+  .msc-Status__wounded {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: var(--chakra-space-2) 0;
+
+    .chakra-form__label {
+      margin: 0;
+      width: 100%;
+      text-align: center;
+    }
   }
 }

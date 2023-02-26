@@ -1,6 +1,6 @@
 .msc-PersonalDetails {
   grid-area: details;
   .chakra-form-control {
-    margin: 14px 0;
+    margin: var(--chakra-space-2) 0;
   }
 }

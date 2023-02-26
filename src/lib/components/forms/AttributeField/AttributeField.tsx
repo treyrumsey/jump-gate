@@ -18,7 +18,7 @@ export const AttributeField = ({ name }: AttributeFieldProps) => {
         <NumberField
           id={`${name}.value`}
           name={`${name}.value`}
-          rules={{ min: -2, max: 6 }}
+          rules={{ min: -2, max: 8 }}
           defaultValue={0}
           control={control}
           size="lg"

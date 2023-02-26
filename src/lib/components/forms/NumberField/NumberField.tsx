@@ -17,7 +17,6 @@ interface NumberFieldProps {
   defaultValue?: number;
   size?: string;
   hasSlider?: boolean;
-  children?: React.ReactNode;
 }
 
 export const NumberField = ({
@@ -29,7 +28,6 @@ export const NumberField = ({
   defaultValue,
   size,
   hasSlider = false,
-  children,
   ...props
 }: NumberFieldProps) => {
   const {

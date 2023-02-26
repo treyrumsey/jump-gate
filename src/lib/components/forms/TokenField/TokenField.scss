@@ -1,0 +1,22 @@
+.msc-TokenField {
+  display: flex;
+  width: 409px;
+
+  .msc-TokenField__positive-tokens,
+  .msc-TokenField__negative-tokens {
+    display: flex;
+    width: 50%;
+  }
+
+  .msc-TokenField__negative-tokens {
+    justify-content: flex-end;
+  }
+
+  .msc-TokenField__label {
+    align-self: center;
+    margin: 0 var(--chakra-space-2);
+
+    .is-positive {
+    }
+  }
+}

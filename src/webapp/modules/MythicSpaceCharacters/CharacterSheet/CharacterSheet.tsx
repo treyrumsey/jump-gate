@@ -1,18 +1,12 @@
 import React, { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
-import {
-  Button,
-  FormControl,
-  FormHelperText,
-  FormLabel,
-  Input,
-  Select,
-} from "@chakra-ui/react";
+import { Button } from "@chakra-ui/react";
 import { buildCharacter } from "models/Character.model";
 import { PersonalDetails } from "webapp/modules/MythicSpaceCharacters/CharacterSheet/PersonalDetails/PersonalDetails";
 import { Aspects } from "webapp/modules/MythicSpaceCharacters/CharacterSheet/Aspects/Aspects";
 import { Attributes } from "webapp/modules/MythicSpaceCharacters/CharacterSheet/Attributes/Attributes";
 import { Status } from "webapp/modules/MythicSpaceCharacters/CharacterSheet/Status/Status";
+import { Tokens } from "webapp/modules/MythicSpaceCharacters/CharacterSheet/Tokens/Tokens";
 
 export const CharacterSheet = () => {
   // const [character, setCharacter] = useState(buildCharacter());
@@ -48,6 +42,7 @@ export const CharacterSheet = () => {
         <Attributes />
         <Aspects key={0} aspect="" />
         <Status />
+        <Tokens />
         <Button className="msc-CharacterSheet__save" type="submit">
           Save
         </Button>

@@ -9,7 +9,7 @@ const MythicSpaceCharacters = () => {
   return (
     <div className="msc-MythicSpaceCharacters">
       <div className="container">
-        <span>{user?.email}</span>
+        <span className="msc-Email">{user?.email}</span>
         <br />
         <CharacterSheet />
       </div>
