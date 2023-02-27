@@ -1,13 +1,12 @@
-import { AddIcon } from "@chakra-ui/icons";
 import {
   Avatar,
   AvatarGroup,
-  Box,
+  Button,
   FormControl,
-  FormLabel,
-  IconButton,
+  Input,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
+import { useFormContext } from "react-hook-form";
 
 interface TokenFieldProps {
   positiveName: string;
@@ -15,23 +14,46 @@ interface TokenFieldProps {
 }
 
 const TokenField = ({ positiveName, negativeName }: TokenFieldProps) => {
-  const [value, setValue] = useState(0);
+  const tokenName = positiveName + negativeName;
+  const { register, setValue } = useFormContext();
+  const [tokenValue, setTokenValue] = useState(0);
 
   const gainPositiveToken = () => {
-    if (value === 3) return;
+    if (tokenValue === 3) return;
 
-    setValue(value + 1);
+    const value = tokenValue + 1;
+
+    setTokenValue(value);
+    setValue(tokenName, value);
   };
 
   const gainNegativeToken = () => {
-    if (value === -3) return;
+    if (tokenValue === -3) return;
 
-    setValue(value - 1);
+    const value = tokenValue - 1;
+    setTokenValue(value);
+    setValue(tokenName, value);
+  };
+
+  const spendToken = () => {
+    if (tokenValue > 0) {
+      const value = tokenValue - 1;
+
+      setTokenValue(value);
+      setValue(tokenName, value);
+    }
+
+    if (tokenValue < 0) {
+      const value = tokenValue + 1;
+
+      setTokenValue(value);
+      setValue(tokenName, value);
+    }
   };
 
   const renderPositiveTokens = () => {
     const tokenList = [];
-    for (let i = value; i > 0; i--) {
+    for (let i = tokenValue; i > 0; i--) {
       tokenList.push(<Avatar name={positiveName} bg="#183E6F" />);
     }
     return tokenList;
@@ -39,7 +61,7 @@ const TokenField = ({ positiveName, negativeName }: TokenFieldProps) => {
 
   const renderNegativeTokens = () => {
     const tokenList = [];
-    for (let i = value; i < 0; i++) {
+    for (let i = tokenValue; i < 0; i++) {
       tokenList.push(<Avatar name={negativeName} bg="#6E120B" />);
     }
     return tokenList;
@@ -47,36 +69,51 @@ const TokenField = ({ positiveName, negativeName }: TokenFieldProps) => {
 
   return (
     <FormControl className="msc-TokenField">
-      <Box className="msc-TokenField__positive-tokens">
-        <FormLabel className="msc-TokenField__label is-positive">
-          {positiveName}
-        </FormLabel>
-        <IconButton
-          icon={<AddIcon />}
-          title={`Gain ${positiveName} token`}
-          aria-label={`Gain ${positiveName} token`}
+      <Button
+        className="msc-TokenField__button is-positive"
+        title={`Gain ${positiveName} token`}
+        aria-label={`Gain ${positiveName} token`}
+        size="sm"
+        onClick={gainPositiveToken}
+      >
+        {positiveName}
+      </Button>
+      <button
+        className="msc-TokenField__tokens"
+        disabled={tokenValue === 0}
+        type="button"
+        onClick={spendToken}
+      >
+        <AvatarGroup
+          className="msc-TokenField__group is-positive"
+          max={3}
           size="sm"
-          onClick={gainPositiveToken}
-        />
-        <AvatarGroup max={3} size="sm" me={2}>
+        >
           {renderPositiveTokens()}
         </AvatarGroup>
-      </Box>
-      <Box className="msc-TokenField__negative-tokens">
-        <AvatarGroup max={3} size="sm" ms={2}>
+        <AvatarGroup
+          className="msc-TokenField__group is-negative"
+          max={3}
+          size="sm"
+        >
           {renderNegativeTokens()}
         </AvatarGroup>
-        <IconButton
-          icon={<AddIcon />}
-          title={`Gain ${negativeName} token`}
-          aria-label={`Gain ${negativeName} token`}
-          size="sm"
-          onClick={gainNegativeToken}
-        />
-        <FormLabel className="msc-TokenField__label is-negative">
-          {negativeName}
-        </FormLabel>
-      </Box>
+      </button>
+      <Button
+        className="msc-TokenField__button is-negative"
+        title={`Gain ${negativeName} token`}
+        aria-label={`Gain ${negativeName} token`}
+        size="sm"
+        onClick={gainNegativeToken}
+      >
+        {negativeName}
+      </Button>
+      <Input
+        id={tokenName}
+        display="none"
+        {...register(tokenName)}
+        // value={tokenValue}
+      />
     </FormControl>
   );
 };

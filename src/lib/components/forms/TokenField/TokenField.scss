@@ -1,22 +1,56 @@
 .msc-TokenField {
-  display: flex;
+  display: grid;
+  gap: var(--chakra-space-2);
+  grid-template-columns: 112px 72px 112px;
+  grid-template-areas: "positiveButton tokens negativeButton";
   width: 409px;
 
-  .msc-TokenField__positive-tokens,
-  .msc-TokenField__negative-tokens {
-    display: flex;
-    width: 50%;
-  }
+  .msc-TokenField__button {
+    font-weight: bold;
+    &.is-positive {
+      grid-area: positiveButton;
+      background-color: #183e6f;
 
-  .msc-TokenField__negative-tokens {
-    justify-content: flex-end;
-  }
-
-  .msc-TokenField__label {
-    align-self: center;
-    margin: 0 var(--chakra-space-2);
-
-    .is-positive {
+      &:hover {
+        background-color: lighten(#183e6f, 10%);
+      }
     }
+    &.is-negative {
+      grid-area: negativeButton;
+      background-color: #6e120b;
+
+      &:hover {
+        background-color: lighten(#6e120b, 10%);
+      }
+    }
+  }
+
+  .msc-TokenField__group {
+    grid-area: tokens;
+    justify-content: center;
+
+    .chakra-avatar__initials {
+      color: white !important;
+    }
+
+    &:hover {
+      &.is-positive {
+        .chakra-avatar {
+          background-color: lighten(#183e6f, 10%);
+        }
+      }
+      &.is-negative {
+        .chakra-avatar {
+          background-color: lighten(#6e120b, 10%);
+        }
+      }
+    }
+  }
+
+  .msc-TokenField__tokens {
+    &:disabled {
+      cursor: default;
+    }
+    height: 32px;
   }
 }
