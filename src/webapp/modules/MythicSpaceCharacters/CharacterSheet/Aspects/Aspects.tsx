@@ -2,6 +2,7 @@ import { AddIcon } from "@chakra-ui/icons";
 import {
   Box,
   Button,
+  ButtonGroup,
   Collapse,
   FormControl,
   FormLabel,
@@ -34,9 +35,15 @@ export const Aspects = ({ aspect, dynamic }: AspectsProps) => {
 
   return (
     <Box py={1} className="msc-Aspects">
-      <Button className="msc-Aspects__toggle" onClick={onToggle}>
-        Aspects
-      </Button>
+      <ButtonGroup isAttached>
+        <Button className="msc-Aspects__toggle" onClick={onToggle}>
+          Aspects
+        </Button>
+        <Button className="msc-Aspects__edit-toggle" onClick={() => {}}>
+          Edit
+        </Button>
+      </ButtonGroup>
+
       <Collapse className="msc-Aspects__collapse" in={isOpen} animateOpacity>
         <div className="msc-Aspects__aspects">
           {fields.map((field, index) => {
