@@ -1,13 +1,15 @@
 .msc-Status {
   grid-area: status;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 48px 48px 48px;
+  gap: 12px;
 
   .msc-Status__shields,
   .msc-Status__armor,
   .msc-Status__stress,
   .msc-Status__supplies {
-    margin: var(--chakra-space-2) 0;
+    // margin: var(--chakra-space-2) 0;
     input {
       text-align: center;
     }
@@ -18,9 +20,9 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin: var(--chakra-space-2) 0;
 
     .chakra-form__label {
+      line-height: 14px;
       margin: 0;
       width: 100%;
       text-align: center;

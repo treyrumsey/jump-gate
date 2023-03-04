@@ -3,7 +3,8 @@
   gap: var(--chakra-space-2);
   grid-template-columns: 112px 72px 112px;
   grid-template-areas: "positiveButton tokens negativeButton";
-  width: 409px;
+  justify-content: center;
+  align-content: space-between;
 
   .msc-TokenField__button {
     font-weight: bold;

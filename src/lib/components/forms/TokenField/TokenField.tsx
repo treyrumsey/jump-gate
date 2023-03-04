@@ -108,12 +108,7 @@ const TokenField = ({ positiveName, negativeName }: TokenFieldProps) => {
       >
         {negativeName}
       </Button>
-      <Input
-        id={tokenName}
-        display="none"
-        {...register(tokenName)}
-        // value={tokenValue}
-      />
+      <Input id={tokenName} display="none" {...register(tokenName)} />
     </FormControl>
   );
 };
