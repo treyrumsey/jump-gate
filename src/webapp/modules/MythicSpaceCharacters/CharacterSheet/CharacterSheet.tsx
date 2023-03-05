@@ -31,7 +31,7 @@ export const CharacterSheet = () => {
       setTimeout(() => {
         alert(JSON.stringify(values, null, 2));
         resolve();
-      }, 1000);
+      }, 300);
     });
   }
 

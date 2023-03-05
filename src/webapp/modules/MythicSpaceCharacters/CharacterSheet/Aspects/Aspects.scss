@@ -1,15 +1,46 @@
 .msc-Aspects {
   grid-area: aspects;
+  margin-top: 14px;
+
   .chakra-form-control {
-    margin: 14px 0;
+    margin-bottom: 14px;
   }
 
   .msc-Aspects__aspects {
     display: grid;
+    gap: 22px;
     grid-template-columns: 1fr 1fr;
+    margin-top: 14px;
+
+    .msc-Aspects__aspect-group {
+      padding: 14px 14px;
+
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: min-content;
+      gap: 14px;
+
+      .msc-divider {
+        border-top: 1px solid var(--chakra-colors-chakra-border-color);
+        height: 0px;
+        width: 100%;
+      }
+    }
   }
 
-  .msc-Aspects__toggle {
-    width: 100%;
+  .msc-Aspects__toggle-group {
+    display: flex;
+
+    .msc-Aspects__toggle {
+      width: 100%;
+    }
+  }
+
+  .is-positive {
+    background-color: #183e6f;
+
+    &:hover {
+      background-color: lighten(#183e6f, 10%);
+    }
   }
 }

@@ -2,6 +2,7 @@
 
 @import "lib/components/forms/AttributeField/AttributeField.scss";
 @import "lib/components/forms/TokenField/TokenField.scss";
+@import "lib/components/forms/UpgradeField/UpgradeField.scss";
 
 @import "webapp/modules/MythicSpaceCharacters/MythicSpaceCharacters.scss";
 
@@ -29,4 +30,20 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.chakra-card {
+  textarea {
+    border-color: var(--chakra-colors-chakra-border-color);
+
+    &::placeholder {
+      color: var(--chakra-colors-whiteAlpha-600);
+    }
+  }
+
+  .chakra-form-control {
+    .chakra-form__label {
+      background-color: var(--card-bg);
+    }
+  }
 }

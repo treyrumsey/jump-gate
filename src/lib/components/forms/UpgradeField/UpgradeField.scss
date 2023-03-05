@@ -1,0 +1,25 @@
+.msc-UpgradeField {
+  .msc-UpgradeField__add-upgrade {
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .msc-UpgradeField__name-form-control {
+    position: relative;
+
+    .msc-UpgradeField__delete-button {
+      background-color: #6e120b;
+
+      border-radius: 0;
+      position: absolute;
+      height: calc(100% - 2px);
+      right: 1px;
+      top: 1px;
+
+      &:hover {
+        background-color: lighten(#6e120b, 10%);
+      }
+    }
+  }
+}
