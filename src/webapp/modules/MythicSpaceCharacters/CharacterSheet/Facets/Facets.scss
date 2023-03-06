@@ -1,23 +1,23 @@
-.msc-Aspects {
-  grid-area: aspects;
+.msc-Facets {
+  grid-area: facets;
   margin-top: 14px;
 
   .chakra-form-control {
     margin-bottom: 14px;
   }
 
-  .msc-Aspects__aspects {
+  .msc-Facets__facets {
     display: grid;
     gap: 22px;
     grid-template-columns: 1fr 1fr;
     margin-top: 14px;
 
-    .msc-Aspects__aspect-group {
+    .msc-Facets__facet-group {
       padding: 14px 14px;
 
       display: grid;
       grid-template-columns: 1fr;
-      grid-template-rows: min-content;
+      grid-auto-rows: minmax(min-content, max-content);
       gap: 14px;
 
       .msc-divider {
@@ -28,10 +28,10 @@
     }
   }
 
-  .msc-Aspects__toggle-group {
+  .msc-Facets__toggle-group {
     display: flex;
 
-    .msc-Aspects__toggle {
+    .msc-Facets__toggle {
       width: 100%;
     }
   }

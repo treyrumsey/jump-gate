@@ -2,13 +2,13 @@
 
 @import "lib/components/forms/AttributeField/AttributeField.scss";
 @import "lib/components/forms/TokenField/TokenField.scss";
-@import "lib/components/forms/UpgradeField/UpgradeField.scss";
 
 @import "webapp/modules/MythicSpaceCharacters/MythicSpaceCharacters.scss";
 
 @import "webapp/modules/MythicSpaceCharacters/CharacterSheet/CharacterSheet.scss";
 
-@import "webapp/modules/MythicSpaceCharacters/CharacterSheet/Aspects/Aspects.scss";
+@import "webapp/modules/MythicSpaceCharacters/CharacterSheet/Facets/Facets.scss";
+@import "webapp/modules/MythicSpaceCharacters/CharacterSheet/Facets/Upgrades/Upgrades.scss";
 @import "webapp/modules/MythicSpaceCharacters/CharacterSheet/Attributes/Attributes.scss";
 @import "webapp/modules/MythicSpaceCharacters/CharacterSheet/PersonalDetails/PersonalDetails.scss";
 @import "webapp/modules/MythicSpaceCharacters/CharacterSheet/Status/Status.scss";

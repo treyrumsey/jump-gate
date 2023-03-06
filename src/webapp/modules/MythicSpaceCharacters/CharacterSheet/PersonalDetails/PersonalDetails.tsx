@@ -8,7 +8,7 @@ export const PersonalDetails = () => {
   return (
     <Box className="msc-PersonalDetails">
       <FormControl variant="floating">
-        <Input id="name" placeholder="Name" size="lg" {...register("name")} />
+        <Input id="name" placeholder="Name" {...register("name")} />
         <FormLabel htmlFor="name">Name</FormLabel>
       </FormControl>
       <FormControl variant="floating">

@@ -1,15 +1,20 @@
 import { Upgrade } from "models/Upgrade.model";
 
-export interface Aspect {
-  aspect: string;
+export enum FacetType {
+  Aspect = "Aspect",
+  Tactic = "Tactic",
+}
+
+export interface Facet {
+  facet: string;
   ability: string;
   description: string;
   upgrades: Upgrade[];
 }
 
-export const buildAspect = (): Aspect => {
+export const buildFacet = (): Facet => {
   return {
-    aspect: "",
+    facet: "",
     ability: "",
     description: "",
     upgrades: [],

@@ -1,3 +1,4 @@
+import React from "react";
 import { AddIcon, EditIcon } from "@chakra-ui/icons";
 import {
   Box,
@@ -9,29 +10,23 @@ import {
   FormLabel,
   IconButton,
   Input,
-  Stack,
-  StackDivider,
   Textarea,
   useDisclosure,
 } from "@chakra-ui/react";
-import {
-  UpgradeField,
-  UpgradeType,
-} from "lib/components/forms/UpgradeField/UpgradeField";
+import { FacetType } from "models/Facet.model";
 import { useState } from "react";
 import { useFieldArray, useFormContext } from "react-hook-form";
+import { Upgrades } from "webapp/modules/MythicSpaceCharacters/CharacterSheet/Facets/Upgrades/Upgrades";
 
-interface AspectsProps {
-  key: number;
-  aspect: string;
-  dynamic?: boolean;
+interface FacetsProps {
+  type: FacetType;
 }
 
-export const Aspects = ({ aspect, dynamic }: AspectsProps) => {
+export const Facets = ({ type }: FacetsProps) => {
   const { register, control } = useFormContext();
   const { fields, append } = useFieldArray({
     control,
-    name: "aspects",
+    name: "facets",
   });
   const { isOpen, onToggle } = useDisclosure();
 
@@ -44,75 +39,74 @@ export const Aspects = ({ aspect, dynamic }: AspectsProps) => {
     setIsEditing((prev) => !prev);
   };
 
+  const getFieldPath = (index: number, field: string) =>
+    `${type}s[${index}].${field}`;
+
   return (
-    <Box py={1} className="msc-Aspects">
-      <ButtonGroup className="msc-Aspects__toggle-group" isAttached>
-        <Button className="msc-Aspects__toggle" onClick={onToggle}>
-          Aspects
+    <Box py={1} className="msc-Facets">
+      <ButtonGroup className="msc-Facets__toggle-group" isAttached>
+        <Button className="msc-Facets__toggle" onClick={onToggle}>
+          {`${type}s`}
         </Button>
         <IconButton
           icon={<EditIcon />}
-          className="msc-Aspects__edit-toggle is-positive"
+          className="msc-Facets__edit-toggle is-positive"
           onClick={toggleEditMode}
-          aria-label={"Add or Remove Aspects"}
+          aria-label={`Add or Remove ${type}s`}
         />
       </ButtonGroup>
-      <Collapse className="msc-Aspects__collapse" in={isOpen} animateOpacity>
+      <Collapse className="msc-Facets__collapse" in={isOpen} animateOpacity>
         {isEditing && (
           <Box mt="3">
             <Button
-              className="msc-Aspects__add-aspect is-positive"
+              className="msc-Facets__add-facet is-positive"
               leftIcon={<AddIcon />}
               size="sm"
               onClick={() => {
                 append({
-                  aspect: "",
+                  [type]: "",
                   ability: "",
                   description: "",
                   upgrades: [],
                 });
               }}
             >
-              Add New Aspect
+              {`Add New ${type}`}
             </Button>
           </Box>
         )}
-        <div className="msc-Aspects__aspects">
+        <div className="msc-Facets__facets">
           {fields.map((field, index) => {
             return (
-              <Card className="msc-Aspects__aspect-group" key={field.id}>
+              <Card className="msc-Facets__facet-group" key={field.id}>
                 <Box>
                   <FormControl variant="floating">
                     <Input
-                      id={`aspects[${index}].aspect`}
-                      placeholder="Aspect"
-                      {...register(`aspects[${index}].aspect`)}
+                      id={getFieldPath(index, type)}
+                      placeholder={type}
+                      {...register(getFieldPath(index, type))}
                     />
-                    <FormLabel htmlFor={`aspects[${index}].aspect`}>
-                      Aspect
+                    <FormLabel htmlFor={getFieldPath(index, type)}>
+                      {type}
                     </FormLabel>
                   </FormControl>
                   <FormControl variant="floating">
                     <Input
-                      id={`aspects[${index}].ability`}
+                      id={getFieldPath(index, "ability")}
                       placeholder="Ability"
-                      {...register(`aspects[${index}].ability`)}
+                      {...register(getFieldPath(index, "ability"))}
                     />
-                    <FormLabel htmlFor={`aspects[${index}].ability`}>
+                    <FormLabel htmlFor={getFieldPath(index, "ability")}>
                       Ability
                     </FormLabel>
                   </FormControl>
                   <Textarea
-                    id={`aspects[${index}].description`}
+                    id={getFieldPath(index, "description")}
                     placeholder="Ability description"
-                    {...register(`aspects[${index}].description`)}
+                    {...register(getFieldPath(index, "description"))}
                   />
                 </Box>
-                <UpgradeField
-                  nestIndex={index}
-                  type={UpgradeType.Aspects}
-                  isEditing={isEditing}
-                />
+                <Upgrades nestIndex={index} type={type} isEditing={isEditing} />
               </Card>
             );
           })}
