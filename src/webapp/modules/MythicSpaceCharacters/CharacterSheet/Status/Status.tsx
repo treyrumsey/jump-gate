@@ -19,7 +19,7 @@ export const Status = () => {
         />
         <FormLabel htmlFor="shields.current">Shields</FormLabel>
       </FormControl>
-      <FormControl variant="floating" className="msc-Status__armor">
+      {/* <FormControl variant="floating" className="msc-Status__armor">
         <NumberField
           id="armor.current"
           name="armor.current"
@@ -29,7 +29,7 @@ export const Status = () => {
           size="lg"
         />
         <FormLabel htmlFor="armor.current">Armor</FormLabel>
-      </FormControl>
+      </FormControl> */}
       <FormControl variant="floating" className="msc-Status__stress">
         <NumberField
           id="stress.current"

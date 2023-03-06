@@ -1,0 +1,30 @@
+.msc-IconNumberField {
+  .msc-IconNumberField__group {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    & > svg {
+      position: absolute;
+    }
+
+    .chakra-input {
+      text-align: center;
+      border: none;
+      font-size: 24px;
+      font-weight: bold;
+      box-shadow: none;
+    }
+  }
+
+  .chakra-text {
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+
+    &::first-letter {
+      text-transform: capitalize;
+    }
+  }
+}

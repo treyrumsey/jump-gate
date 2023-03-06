@@ -9,6 +9,9 @@ import { Status } from "webapp/modules/MythicSpaceCharacters/CharacterSheet/Stat
 import { Tokens } from "webapp/modules/MythicSpaceCharacters/CharacterSheet/Tokens/Tokens";
 import { FacetType } from "models/Facet.model";
 
+import IconNumberField from "lib/components/forms/IconNumberField/IconNumberField";
+import ArmorIcon from "lib/components/icons/ArmorIcon";
+
 export const CharacterSheet = () => {
   // const [character, setCharacter] = useState(buildCharacter());
   // const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -47,6 +50,12 @@ export const CharacterSheet = () => {
         <Button className="msc-CharacterSheet__save" type="submit">
           Save
         </Button>
+        <IconNumberField
+          icon={<ArmorIcon size={80} />}
+          name="armor"
+          max={8}
+          size={80}
+        />
       </form>
     </FormProvider>
   );
