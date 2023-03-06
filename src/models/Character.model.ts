@@ -1,4 +1,4 @@
-import { Facet, buildFacet } from "models/Facet.model";
+import { Facet, buildFacet, FacetType } from "models/Facet.model";
 import { Attribute, initAttribute } from "models/Attribute.model";
 export interface Character {
   name: string;
@@ -9,7 +9,7 @@ export interface Character {
   discipline: Attribute;
   wits: Attribute;
   skills: string[];
-  facets: Facet[];
+  Aspects: Facet[];
   shields: { current: number; max: number };
 }
 
@@ -23,7 +23,7 @@ export function buildCharacter(): Character {
     discipline: initAttribute("Discipline"),
     wits: initAttribute("Wits"),
     skills: [],
-    facets: [buildFacet(), buildFacet()],
+    Aspects: [buildFacet(FacetType.Aspect), buildFacet(FacetType.Aspect)],
     shields: { current: 8, max: 8 },
   };
 }

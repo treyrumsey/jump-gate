@@ -1,5 +1,8 @@
 import { Box, Flex, FormControl, FormLabel, Switch } from "@chakra-ui/react";
+import IconNumberField from "lib/components/forms/IconNumberField/IconNumberField";
 import { NumberField } from "lib/components/forms/NumberField/NumberField";
+import ArmorIcon from "lib/components/icons/ArmorIcon";
+import ShieldIcon from "lib/components/icons/ShieldIcon";
 import React from "react";
 import { useFormContext } from "react-hook-form";
 
@@ -8,7 +11,7 @@ export const Status = () => {
 
   return (
     <Box className="msc-Status">
-      <FormControl variant="floating" className="msc-Status__shields">
+      {/* <FormControl variant="floating" className="msc-Status__shields">
         <NumberField
           id="shields.current"
           name="shields.current"
@@ -18,7 +21,7 @@ export const Status = () => {
           size="lg"
         />
         <FormLabel htmlFor="shields.current">Shields</FormLabel>
-      </FormControl>
+      </FormControl> */}
       {/* <FormControl variant="floating" className="msc-Status__armor">
         <NumberField
           id="armor.current"
@@ -30,7 +33,19 @@ export const Status = () => {
         />
         <FormLabel htmlFor="armor.current">Armor</FormLabel>
       </FormControl> */}
-      <FormControl variant="floating" className="msc-Status__stress">
+      <IconNumberField
+        icon={<ShieldIcon size={80} />}
+        name="shields"
+        max={8}
+        size={80}
+      />
+      <IconNumberField
+        icon={<ArmorIcon size={80} />}
+        name="armor"
+        max={4}
+        size={80}
+      />
+      {/* <FormControl variant="floating" className="msc-Status__stress">
         <NumberField
           id="stress.current"
           name="stress.current"
@@ -51,18 +66,18 @@ export const Status = () => {
           size="lg"
         />
         <FormLabel htmlFor="supplies.current">Supplies</FormLabel>
-      </FormControl>
+      </FormControl> */}
       <FormControl className="msc-Status__shaken">
+        <Switch id="shaken" {...register(`shaken`)} />
         <FormLabel htmlFor="shaken" mb="0">
           Shaken
         </FormLabel>
-        <Switch id="shaken" {...register(`shaken`)} />
       </FormControl>
       <FormControl className="msc-Status__wounded">
+        <Switch id="wounded" {...register(`wounded`)} />
         <FormLabel htmlFor="wounded" mb="0">
           Wounded
         </FormLabel>
-        <Switch id="wounded" {...register(`wounded`)} />
       </FormControl>
     </Box>
   );

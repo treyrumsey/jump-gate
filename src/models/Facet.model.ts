@@ -6,15 +6,14 @@ export enum FacetType {
 }
 
 export interface Facet {
-  facet: string;
   ability: string;
   description: string;
   upgrades: Upgrade[];
 }
 
-export const buildFacet = (): Facet => {
+export const buildFacet = (type: FacetType): Facet => {
   return {
-    facet: "",
+    [type]: "",
     ability: "",
     description: "",
     upgrades: [],

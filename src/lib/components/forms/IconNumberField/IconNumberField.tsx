@@ -9,24 +9,37 @@ import {
   Text,
 } from "@chakra-ui/react";
 import React from "react";
-import { useFormContext } from "react-hook-form";
+import { useController, useFormContext } from "react-hook-form";
 
 interface IconNumberFieldProps {
   name: string;
   max: number;
   icon: React.ReactNode;
   size: number;
+  defaultValue?: number;
 }
 
-const IconNumberField = ({ name, max, icon, size }: IconNumberFieldProps) => {
-  const { register, control } = useFormContext();
-  const { getInputProps, getIncrementButtonProps, getDecrementButtonProps } =
+const IconNumberField = ({
+  name,
+  max,
+  icon,
+  size,
+  defaultValue = max,
+}: IconNumberFieldProps) => {
+  const { control } = useFormContext();
+  const { field } = useController({
+    name: `${name}.current`,
+    control,
+    defaultValue: defaultValue,
+  });
+  const { getIncrementButtonProps, getDecrementButtonProps, getInputProps } =
     useNumberInput({
       step: 1,
       min: 0,
       max: max,
       precision: 0,
-      defaultValue: max ?? 0,
+      defaultValue: defaultValue ?? 0,
+      onChange: (_, valueAsNumber) => field.onChange(valueAsNumber as any),
     });
 
   const inc = getIncrementButtonProps();
@@ -45,7 +58,8 @@ const IconNumberField = ({ name, max, icon, size }: IconNumberFieldProps) => {
           size="sm"
           {...dec}
         />
-        <Input id={name} {...input} width={sizePx} {...register(name)} />
+        {/* <Input ref={ref} id={name} {...input} width={sizePx} {...inputProps} /> */}
+        <Input {...input} width={sizePx} {...field} />
         <IconButton
           aria-label={`Add 1 to ${name}`}
           icon={<AddIcon />}

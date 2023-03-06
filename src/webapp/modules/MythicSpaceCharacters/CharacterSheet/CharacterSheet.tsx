@@ -11,6 +11,7 @@ import { FacetType } from "models/Facet.model";
 
 import IconNumberField from "lib/components/forms/IconNumberField/IconNumberField";
 import ArmorIcon from "lib/components/icons/ArmorIcon";
+import ShieldIcon from "lib/components/icons/ShieldIcon";
 
 export const CharacterSheet = () => {
   // const [character, setCharacter] = useState(buildCharacter());
@@ -50,12 +51,6 @@ export const CharacterSheet = () => {
         <Button className="msc-CharacterSheet__save" type="submit">
           Save
         </Button>
-        <IconNumberField
-          icon={<ArmorIcon size={80} />}
-          name="armor"
-          max={8}
-          size={80}
-        />
       </form>
     </FormProvider>
   );

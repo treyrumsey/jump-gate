@@ -26,7 +26,7 @@ export const Facets = ({ type }: FacetsProps) => {
   const { register, control } = useFormContext();
   const { fields, append } = useFieldArray({
     control,
-    name: "facets",
+    name: `${type}s`,
   });
   const { isOpen, onToggle } = useDisclosure();
 
