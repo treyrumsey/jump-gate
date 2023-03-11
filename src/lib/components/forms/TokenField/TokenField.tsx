@@ -54,7 +54,9 @@ const TokenField = ({ positiveName, negativeName }: TokenFieldProps) => {
   const renderPositiveTokens = () => {
     const tokenList = [];
     for (let i = tokenValue; i > 0; i--) {
-      tokenList.push(<Avatar name={positiveName} bg="#183E6F" />);
+      tokenList.push(
+        <Avatar name={positiveName} key={`${positiveName}.${i}`} bg="#183E6F" />
+      );
     }
     return tokenList;
   };
@@ -62,7 +64,9 @@ const TokenField = ({ positiveName, negativeName }: TokenFieldProps) => {
   const renderNegativeTokens = () => {
     const tokenList = [];
     for (let i = tokenValue; i < 0; i++) {
-      tokenList.push(<Avatar name={negativeName} bg="#6E120B" />);
+      tokenList.push(
+        <Avatar name={negativeName} key={`${negativeName}.${i}`} bg="#6E120B" />
+      );
     }
     return tokenList;
   };

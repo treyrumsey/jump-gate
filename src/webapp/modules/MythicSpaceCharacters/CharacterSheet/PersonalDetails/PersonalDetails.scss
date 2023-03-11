@@ -3,4 +3,17 @@
   display: grid;
   grid-template-rows: 48px 48px 48px;
   gap: 14px;
+
+  .characterSheetViewToggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .chakra-switch__track {
+      background-color: lighten(#183e6f, 10%) !important;
+      &[data-checked] {
+        background-color: lighten(#6e120b, 10%) !important;
+      }
+    }
+  }
 }

@@ -1,8 +1,7 @@
 import { Box, Flex, FormControl, FormLabel, Switch } from "@chakra-ui/react";
 import IconNumberField from "lib/components/forms/IconNumberField/IconNumberField";
 import { NumberField } from "lib/components/forms/NumberField/NumberField";
-import ArmorIcon from "lib/components/icons/ArmorIcon";
-import ShieldIcon from "lib/components/icons/ShieldIcon";
+import { IconType } from "lib/components/icons/CustomIcon";
 import React from "react";
 import { useFormContext } from "react-hook-form";
 
@@ -11,39 +10,29 @@ export const Status = () => {
 
   return (
     <Box className="msc-Status">
-      {/* <FormControl variant="floating" className="msc-Status__shields">
-        <NumberField
-          id="shields.current"
-          name="shields.current"
-          rules={{ min: 0, max: 8 }}
-          defaultValue={8}
-          control={control}
-          size="lg"
-        />
-        <FormLabel htmlFor="shields.current">Shields</FormLabel>
-      </FormControl> */}
-      {/* <FormControl variant="floating" className="msc-Status__armor">
-        <NumberField
-          id="armor.current"
-          name="armor.current"
-          rules={{ min: 0, max: 4 }}
-          defaultValue={4}
-          control={control}
-          size="lg"
-        />
-        <FormLabel htmlFor="armor.current">Armor</FormLabel>
-      </FormControl> */}
       <IconNumberField
-        icon={<ShieldIcon size={80} />}
+        icon={IconType.Shield}
         name="shields"
         max={8}
-        size={80}
+        size={70}
+      />
+      <IconNumberField icon={IconType.Armor} name="armor" max={4} size={70} />
+      <IconNumberField
+        icon={IconType.Stress}
+        name="stress"
+        defaultValue={0}
+        max={10}
+        size={70}
+        altIcon={IconType.Break}
+        altIconDisplayValue={10}
       />
       <IconNumberField
-        icon={<ArmorIcon size={80} />}
-        name="armor"
+        icon={IconType.BatteryFull}
+        name="MP"
         max={4}
-        size={80}
+        size={70}
+        altIcon={IconType.BatteryEmpty}
+        altIconDisplayValue={0}
       />
       {/* <FormControl variant="floating" className="msc-Status__stress">
         <NumberField

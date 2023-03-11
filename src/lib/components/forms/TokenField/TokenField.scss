@@ -10,18 +10,18 @@
     font-weight: bold;
     &.is-positive {
       grid-area: positiveButton;
-      background-color: #183e6f;
+      background-color: $msc-blue;
 
       &:hover {
-        background-color: lighten(#183e6f, 10%);
+        background-color: lighten($msc-blue, 10%);
       }
     }
     &.is-negative {
       grid-area: negativeButton;
-      background-color: #6e120b;
+      background-color: $msc-red;
 
       &:hover {
-        background-color: lighten(#6e120b, 10%);
+        background-color: lighten($msc-red, 10%);
       }
     }
   }
