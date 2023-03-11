@@ -2,7 +2,8 @@
   grid-area: status;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: 1fr 48px;
+  // grid-template-rows: 1fr 1fr 48px;
+  grid-auto-rows: min-content;
   gap: 24px 14px;
 
   .msc-Status__shields,

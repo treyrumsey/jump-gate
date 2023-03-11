@@ -2,5 +2,6 @@
   grid-area: tokens;
   width: 100%;
   display: grid;
-  grid-auto-rows: auto;
+  grid-auto-rows: min-content;
+  gap: 16px;
 }

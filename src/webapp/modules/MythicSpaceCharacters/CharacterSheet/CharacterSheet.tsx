@@ -35,7 +35,8 @@ export const CharacterSheet = () => {
         <form className="msc-CharacterSheet" onSubmit={handleSubmit(onSubmit)}>
           <PersonalDetails />
           <Attributes />
-          <Facets type={FacetType.Aspect} />
+          <Facets type={FacetType.Aspect} show={!isCombatView} />
+          <Facets type={FacetType.Tactic} show={isCombatView} />
           <Status />
           <Tokens />
           <Button className="msc-CharacterSheet__save" type="submit">

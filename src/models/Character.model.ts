@@ -8,8 +8,9 @@ export interface Character {
   reflex: Attribute;
   discipline: Attribute;
   wits: Attribute;
-  skills: string[];
+  experiences: string[];
   Aspects: Facet[];
+  Tactics: Facet[];
   shields: { current: number; max: number };
 }
 
@@ -22,8 +23,9 @@ export function buildCharacter(): Character {
     reflex: initAttribute("Reflex"),
     discipline: initAttribute("Discipline"),
     wits: initAttribute("Wits"),
-    skills: [],
+    experiences: [],
     Aspects: [buildFacet(FacetType.Aspect), buildFacet(FacetType.Aspect)],
+    Tactics: [buildFacet(FacetType.Tactic), buildFacet(FacetType.Tactic)],
     shields: { current: 8, max: 8 },
   };
 }

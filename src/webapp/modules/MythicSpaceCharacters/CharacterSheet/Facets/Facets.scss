@@ -1,46 +1,48 @@
-.msc-Facets {
+.msc-Facets__wrapper {
   grid-area: facets;
-  margin-top: 14px;
-
-  .chakra-form-control {
-    margin-bottom: 14px;
-  }
-
-  .msc-Facets__facets {
-    display: grid;
-    gap: 22px;
-    grid-template-columns: 1fr 1fr;
+  .msc-Facets {
     margin-top: 14px;
 
-    .msc-Facets__facet-group {
-      padding: 14px 14px;
+    .chakra-form-control {
+      margin-bottom: 14px;
+    }
 
+    .msc-Facets__facets {
       display: grid;
-      grid-template-columns: 1fr;
-      grid-auto-rows: minmax(min-content, max-content);
-      gap: 14px;
+      gap: 22px;
+      grid-template-columns: 1fr 1fr;
+      margin-top: 14px;
 
-      .msc-divider {
-        border-top: 1px solid var(--chakra-colors-chakra-border-color);
-        height: 0px;
+      .msc-Facets__facet-group {
+        padding: 14px 14px;
+
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-auto-rows: minmax(min-content, max-content);
+        gap: 14px;
+
+        .msc-divider {
+          border-top: 1px solid var(--chakra-colors-chakra-border-color);
+          height: 0px;
+          width: 100%;
+        }
+      }
+    }
+
+    .msc-Facets__toggle-group {
+      display: flex;
+
+      .msc-Facets__toggle {
         width: 100%;
       }
     }
-  }
 
-  .msc-Facets__toggle-group {
-    display: flex;
+    .is-positive {
+      background-color: #183e6f;
 
-    .msc-Facets__toggle {
-      width: 100%;
-    }
-  }
-
-  .is-positive {
-    background-color: #183e6f;
-
-    &:hover {
-      background-color: lighten(#183e6f, 10%);
+      &:hover {
+        background-color: lighten(#183e6f, 10%);
+      }
     }
   }
 }

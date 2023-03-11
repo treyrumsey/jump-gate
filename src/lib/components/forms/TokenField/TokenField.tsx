@@ -11,10 +11,15 @@ import { useFormContext } from "react-hook-form";
 interface TokenFieldProps {
   positiveName: string;
   negativeName: string;
+  show?: boolean;
 }
 
-const TokenField = ({ positiveName, negativeName }: TokenFieldProps) => {
-  const tokenName = positiveName + negativeName;
+const TokenField = ({
+  positiveName,
+  negativeName,
+  show = true,
+}: TokenFieldProps) => {
+  const tokenName = `tokens.${positiveName + negativeName}`;
   const { register, setValue } = useFormContext();
   const [tokenValue, setTokenValue] = useState(0);
 
@@ -72,7 +77,7 @@ const TokenField = ({ positiveName, negativeName }: TokenFieldProps) => {
   };
 
   return (
-    <FormControl className="msc-TokenField">
+    <FormControl className="msc-TokenField" display={show ? "grid" : "none"}>
       <Button
         className="msc-TokenField__button is-positive"
         title={`Gain ${positiveName} token`}
