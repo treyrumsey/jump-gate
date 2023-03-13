@@ -1,0 +1,42 @@
+.msc-AmmoField {
+  .chakra-form-control {
+    display: flex;
+    width: 156px;
+
+    .chakra-input {
+      text-align: center;
+    }
+
+    .msc-AmmoField__shoot-button {
+      background-color: $msc-red;
+
+      border-radius: 0;
+      position: absolute;
+      height: calc(100% - 2px);
+      right: 41px;
+      top: 1px;
+
+      &:hover {
+        background-color: lighten($msc-red, 10%);
+
+        &[aria-disabled="true"] {
+          background-color: $msc-red;
+        }
+      }
+    }
+
+    .msc-AmmoField__reload-button {
+      background-color: $msc-blue;
+
+      border-radius: 0;
+      position: absolute;
+      height: calc(100% - 2px);
+      right: 1px;
+      top: 1px;
+
+      &:hover {
+        background-color: lighten($msc-blue, 10%);
+      }
+    }
+  }
+}

@@ -1,10 +1,10 @@
 import { Box } from "@chakra-ui/react";
 import TokenField from "lib/components/forms/TokenField/TokenField";
-import React, { useContext } from "react";
-import { CharacterSheetViewContext } from "webapp/modules/MythicSpaceCharacters/CharacterSheet/CharacterSheetView";
+import React from "react";
+import { useCharacterSheetViewContext } from "webapp/modules/MythicSpaceCharacters/CharacterSheet/CharacterSheetViewContext";
 
 export const Tokens = () => {
-  const { isCombatView } = useContext(CharacterSheetViewContext);
+  const { isCombatView } = useCharacterSheetViewContext();
 
   return (
     <Box className="msc-Tokens">

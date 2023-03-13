@@ -2,17 +2,20 @@
 
 @import "variables.scss";
 
+@import "lib/components/forms/AmmoField/AmmoField.scss";
 @import "lib/components/forms/AttributeField/AttributeField.scss";
 @import "lib/components/forms/IconNumberField/IconNumberField.scss";
 @import "lib/components/forms/TokenField/TokenField.scss";
+@import "lib/components/forms/WeaponFields/WeaponFields.scss";
 
 @import "webapp/modules/MythicSpaceCharacters/MythicSpaceCharacters.scss";
 
 @import "webapp/modules/MythicSpaceCharacters/CharacterSheet/CharacterSheet.scss";
 
+@import "webapp/modules/MythicSpaceCharacters/CharacterSheet/Attributes/Attributes.scss";
 @import "webapp/modules/MythicSpaceCharacters/CharacterSheet/Facets/Facets.scss";
 @import "webapp/modules/MythicSpaceCharacters/CharacterSheet/Facets/Upgrades/Upgrades.scss";
-@import "webapp/modules/MythicSpaceCharacters/CharacterSheet/Attributes/Attributes.scss";
+@import "webapp/modules/MythicSpaceCharacters/CharacterSheet/Loadouts/CasualLoadout/CasualLoadout.scss";
 @import "webapp/modules/MythicSpaceCharacters/CharacterSheet/PersonalDetails/PersonalDetails.scss";
 @import "webapp/modules/MythicSpaceCharacters/CharacterSheet/Status/Status.scss";
 @import "webapp/modules/MythicSpaceCharacters/CharacterSheet/Tokens/Tokens.scss";

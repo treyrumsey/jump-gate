@@ -9,7 +9,8 @@
   gap: 16px 32px;
   grid-template-columns: 308px repeat(7, 1fr);
   grid-template-areas:
-    "details status status status status status 8 9 10"
-    "attributes tokens tokens tokens tokens tokens 8 9 10"
-    "facets facets facets facets facets facets 8 9 save";
+    "details status status status status status 8"
+    "attributes tokens tokens tokens tokens tokens 8"
+    "facets facets facets facets facets facets 8"
+    "loadout loadout loadout loadout 6 7 save";
 }

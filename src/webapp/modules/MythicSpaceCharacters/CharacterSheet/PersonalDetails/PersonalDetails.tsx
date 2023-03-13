@@ -1,11 +1,11 @@
 import { Box, FormControl, FormLabel, Input, Switch } from "@chakra-ui/react";
-import React, { useContext } from "react";
+import React from "react";
 import { useFormContext } from "react-hook-form";
-import { CharacterSheetViewContext } from "webapp/modules/MythicSpaceCharacters/CharacterSheet/CharacterSheetView";
+import { useCharacterSheetViewContext } from "webapp/modules/MythicSpaceCharacters/CharacterSheet/CharacterSheetViewContext";
 
 export const PersonalDetails = () => {
   const { register } = useFormContext();
-  const { setCombatView } = useContext(CharacterSheetViewContext);
+  const { setCombatView } = useCharacterSheetViewContext();
 
   return (
     <Box className="msc-PersonalDetails">

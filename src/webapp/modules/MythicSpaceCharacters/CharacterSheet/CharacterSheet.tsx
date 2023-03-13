@@ -8,7 +8,8 @@ import { Attributes } from "webapp/modules/MythicSpaceCharacters/CharacterSheet/
 import { Status } from "webapp/modules/MythicSpaceCharacters/CharacterSheet/Status/Status";
 import { Tokens } from "webapp/modules/MythicSpaceCharacters/CharacterSheet/Tokens/Tokens";
 import { FacetType } from "models/Facet.model";
-import { CharacterSheetViewContext } from "webapp/modules/MythicSpaceCharacters/CharacterSheet/CharacterSheetView";
+import { CharacterSheetViewContext } from "webapp/modules/MythicSpaceCharacters/CharacterSheet/CharacterSheetViewContext";
+import CasualLoadout from "webapp/modules/MythicSpaceCharacters/CharacterSheet/Loadouts/CasualLoadout/CasualLoadout";
 
 export const CharacterSheet = () => {
   const [isCombatView, setCombatView] = useState(false);
@@ -39,6 +40,7 @@ export const CharacterSheet = () => {
           <Facets type={FacetType.Tactic} show={isCombatView} />
           <Status />
           <Tokens />
+          <CasualLoadout index={0} />
           <Button className="msc-CharacterSheet__save" type="submit">
             Save
           </Button>
