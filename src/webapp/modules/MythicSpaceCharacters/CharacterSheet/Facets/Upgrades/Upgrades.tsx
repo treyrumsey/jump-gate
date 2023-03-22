@@ -11,7 +11,7 @@ import {
 } from "@chakra-ui/react";
 import { FacetType } from "models/Facet.model";
 import React, { Fragment } from "react";
-import { useFieldArray, useFormContext } from "react-hook-form";
+import { useFieldArray, useFormContext, useWatch } from "react-hook-form";
 
 interface UpgradesProps {
   nestIndex: number;
@@ -20,7 +20,12 @@ interface UpgradesProps {
 }
 
 export const Upgrades = ({ nestIndex, type, isEditing }: UpgradesProps) => {
-  const { control, register, watch } = useFormContext();
+  const { control, register } = useFormContext();
+  const facetName = useWatch({
+    control,
+    name: `${type}s[${nestIndex}].${type}`,
+    defaultValue: `${type} ${nestIndex + 1}`,
+  });
 
   const fieldArrayName = `${type}s[${nestIndex}].upgrades`;
 
@@ -32,7 +37,6 @@ export const Upgrades = ({ nestIndex, type, isEditing }: UpgradesProps) => {
   const getFieldPath = (index: number, field: string) =>
     `${fieldArrayName}[${index}].${field}`;
 
-  const facetName = watch(`${type}s[${nestIndex}].${type}`);
   return (
     <>
       {fields.map((field, index) => {
@@ -85,9 +89,10 @@ export const Upgrades = ({ nestIndex, type, isEditing }: UpgradesProps) => {
             append({ upgrade: "", description: "" });
           }}
         >
-          {`Upgrade ${
+          {/* {`Upgrade ${
             facetName?.length > 0 ? facetName : `${type} ${nestIndex + 1}`
-          }`}
+          }`} */}
+          {`Upgrade ${facetName}`}
           {/* Upgrade */}
         </Button>
       )}

@@ -11,7 +11,6 @@ import {
   Input,
   Textarea,
   Text,
-  useDisclosure,
 } from "@chakra-ui/react";
 import { FacetType } from "models/Facet.model";
 import { useState } from "react";
@@ -29,14 +28,9 @@ export const Facets = ({ type, show }: FacetsProps) => {
     control,
     name: `${type}s`,
   });
-  const { isOpen, onToggle } = useDisclosure();
 
   const [isEditing, setIsEditing] = useState<boolean>(false);
   const toggleEditMode = () => {
-    if (!isEditing && !isOpen) {
-      onToggle();
-    }
-
     setIsEditing((prev) => !prev);
   };
 

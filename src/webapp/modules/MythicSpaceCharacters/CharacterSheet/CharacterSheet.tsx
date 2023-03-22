@@ -27,7 +27,8 @@ export const CharacterSheet = () => {
   function onSubmit(values: Character) {
     return new Promise<void>((resolve) => {
       setTimeout(() => {
-        alert(JSON.stringify(values, null, 2));
+        // alert(JSON.stringify(values, null, 2));
+        console.log({ values });
         resolve();
       }, 300);
     });

@@ -8,25 +8,37 @@ import {
   CustomIconType,
 } from "lib/components/icons/CustomIcon";
 import React from "react";
-import { useFormContext } from "react-hook-form";
+import { useFormContext, useWatch } from "react-hook-form";
 
 export const Status = () => {
-  const { getValues, watch, control } = useFormContext();
+  const { getValues, control } = useFormContext();
 
-  const shields = watch("shields.current");
   const maxShields = 8;
+  const shields = useWatch({
+    control,
+    name: "shields.current",
+    defaultValue: 8,
+  });
 
-  const armor = watch("armor.current");
   const maxArmor = 4;
+  const armor = useWatch({
+    control,
+    name: "armor.current",
+    defaultValue: maxArmor,
+  });
 
-  const stress = watch("stress.current");
-  const maxStress = 10;
+  // const stress = useWatch({ control, name: "stress.current", defaultValue: 0 });
+  // const maxStress = 10;
 
-  const mp = watch("MP.current");
   const maxMP = 4;
+  const mp = useWatch({ control, name: "mp.current", defaultValue: maxMP });
 
-  const supplies = watch("supplies.current");
   const maxSupplies = 10;
+  const supplies = useWatch({
+    control,
+    name: "supplies.current",
+    defaultValue: maxSupplies,
+  });
 
   return (
     <Box className="msc-Status">
@@ -67,9 +79,9 @@ export const Status = () => {
           size={IconNumberFieldSizes.Large}
         />
       </Box> */}
-      <Box className="msc-Status__MP">
+      <Box className="msc-Status__mp">
         <IconNumberField
-          name="MP.current"
+          name="mp.current"
           label="MP"
           icon={
             mp === 0 ? CustomIconType.BatteryEmpty : CustomIconType.BatteryFull
