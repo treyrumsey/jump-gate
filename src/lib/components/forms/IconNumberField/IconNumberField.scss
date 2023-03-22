@@ -15,6 +15,8 @@
       font-size: 24px;
       font-weight: bold;
       box-shadow: none;
+      padding: 0;
+      cursor: default;
     }
   }
 
@@ -25,6 +27,16 @@
 
     &::first-letter {
       text-transform: capitalize;
+    }
+  }
+
+  &.is-small {
+    .chakra-input {
+      font-size: 1rem;
+    }
+
+    .chakra-text {
+      font-size: 14px;
     }
   }
 }

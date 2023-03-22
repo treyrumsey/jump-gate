@@ -1,5 +1,6 @@
 import { Facet, buildFacet, FacetType } from "models/Facet.model";
 import { Attribute, initAttribute } from "models/Attribute.model";
+import { buildExperience, Experience } from "models/Experience.model";
 export interface Character {
   name: string;
   species: string;
@@ -8,7 +9,7 @@ export interface Character {
   reflex: Attribute;
   discipline: Attribute;
   wits: Attribute;
-  experiences: string[];
+  experiences: Experience[];
   Aspects: Facet[];
   Tactics: Facet[];
   shields: { current: number; max: number };
@@ -23,7 +24,11 @@ export function buildCharacter(): Character {
     reflex: initAttribute("Reflex"),
     discipline: initAttribute("Discipline"),
     wits: initAttribute("Wits"),
-    experiences: [],
+    experiences: [
+      buildExperience(""),
+      buildExperience(""),
+      buildExperience(""),
+    ],
     Aspects: [buildFacet(FacetType.Aspect), buildFacet(FacetType.Aspect)],
     Tactics: [buildFacet(FacetType.Tactic), buildFacet(FacetType.Tactic)],
     shields: { current: 8, max: 8 },

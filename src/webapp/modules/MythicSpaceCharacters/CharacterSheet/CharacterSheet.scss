@@ -1,16 +1,28 @@
 .msc-CharacterSheet {
-  margin: 0 8px;
-  max-width: 1024px;
-  .msc-CharacterSheet__save {
-    grid-area: save;
+  @include desktopOrGreater {
+    grid-template-areas:
+      "details details details details details details details details details"
+      "attributes status status status status status status status status"
+      "attributes c c c c c c c c"
+      "attributes d d d d d d d d"
+      "tokens facets facets facets facets facets facets facets facets"
+      "tokens facets facets facets facets facets facets facets facets"
+      "tokens facets facets facets facets facets facets facets facets";
+    grid-template-columns: repeat(9, 1fr);
   }
-
   display: grid;
   gap: 16px 32px;
-  grid-template-columns: 308px repeat(7, 1fr);
+
   grid-template-areas:
-    "details status status status status status 8"
-    "attributes tokens tokens tokens tokens tokens 8"
-    "facets facets facets facets facets facets 8"
-    "loadout loadout loadout loadout 6 7 save";
+    "details details loadout loadout loadout loadout loadout loadout loadout"
+    "attributes status tokens tokens tokens tokens facets facets facets"
+    "1 2 3 4 5 6 facets facets facets"
+    "save 2 3 4 5 6 facets facets facets";
+
+  grid-template-columns: 268px 108px repeat(6, 1fr);
+  height: 100vh;
+
+  padding: 14px 8px;
+  // max-width: 1024px;
+  width: 1024px;
 }

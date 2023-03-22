@@ -34,7 +34,7 @@ const AmmoField = ({ fieldPath, max }: AmmoFieldProps) => {
     setValue(fieldName, max);
   };
 
-  const handleAmmoChange = (event: React.FocusEvent<HTMLInputElement>) => {
+  const handleAmmoBlur = (event: React.FocusEvent<HTMLInputElement>) => {
     const value = parseInt(event.target.value);
     if (isNaN(value)) {
       setValue(fieldName, ammoValue);
@@ -59,7 +59,7 @@ const AmmoField = ({ fieldPath, max }: AmmoFieldProps) => {
             // pattern="[0-9]*(.[0-9]+)?"
             max={max}
             min={0}
-            onBlur={handleAmmoChange}
+            onBlur={handleAmmoBlur}
             paddingEnd="96px"
           />
           <FormLabel htmlFor={fieldName}>Ammo</FormLabel>

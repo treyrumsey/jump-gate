@@ -1,24 +1,25 @@
 .msc-TokenField {
+  align-content: space-between;
   display: grid;
   gap: var(--chakra-space-2);
-  grid-template-columns: 112px 72px 112px;
   grid-template-areas: "positiveButton tokens negativeButton";
+  grid-template-columns: 90px 72px 90px;
   justify-content: center;
-  align-content: space-between;
 
   .msc-TokenField__button {
     font-weight: bold;
+    padding: 0 0.25rem;
     &.is-positive {
-      grid-area: positiveButton;
       background-color: $msc-blue;
+      grid-area: positiveButton;
 
       &:hover {
         background-color: lighten($msc-blue, 10%);
       }
     }
     &.is-negative {
-      grid-area: negativeButton;
       background-color: $msc-red;
+      grid-area: negativeButton;
 
       &:hover {
         background-color: lighten($msc-red, 10%);
@@ -49,9 +50,9 @@
   }
 
   .msc-TokenField__tokens {
+    height: 32px;
     &:disabled {
       cursor: default;
     }
-    height: 32px;
   }
 }

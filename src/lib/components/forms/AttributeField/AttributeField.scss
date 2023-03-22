@@ -1,4 +1,6 @@
 .msc-AttributeField {
+  width: 268px;
+
   .chakra-form-control {
     // margin-left: 32px;
   }
@@ -10,8 +12,9 @@
     justify-content: space-between;
 
     input {
+      padding-left: 0.5rem;
       text-align: center;
-      width: 11rem;
+      width: 9rem;
     }
 
     label {
@@ -19,9 +22,11 @@
       // background-color: black;
       // color: white;
       font-size: 24px;
-      margin: 0 0 0 12px;
-      width: 130px;
       font-weight: 700;
+      // margin: 0 0 0 12px;
+      margin: 0;
+      // width: 130px;
+      width: 112px;
     }
   }
 
@@ -30,9 +35,9 @@
     justify-content: space-between;
 
     input {
+      padding-left: 0.5rem;
       text-align: center;
-      width: 11rem;
-      padding-left: 16px;
+      width: 9rem;
     }
 
     label {
@@ -40,9 +45,10 @@
       // background-color: black;
       // color: white;
       font-size: 12px;
-      margin: 0 12px 0 12px;
+      // margin: 0 12px 0 12px;
+      margin: 0;
       text-align: end;
-      width: 110px;
+      width: 112px;
     }
   }
 }

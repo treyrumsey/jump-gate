@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { ChakraProvider, extendTheme, useColorMode } from "@chakra-ui/react";
+import { ChakraProvider, useColorMode } from "@chakra-ui/react";
 
 import "firebase/firestore";
 import "firebase/auth";
@@ -29,11 +29,13 @@ export const firestore = getFirestore(app);
 
 function App() {
   const [user] = useAuthState(auth);
+  console.log(user?.uid ?? "no user found");
 
   return (
     <ChakraProvider data-theme="dark" theme={theme}>
       <ForceDarkMode>
-        <section>{user ? <MythicSpaceCharacters /> : <SignIn />}</section>
+        {/* <section>{user ? <MythicSpaceCharacters /> : <SignIn />}</section> */}
+        <MythicSpaceCharacters />
       </ForceDarkMode>
     </ChakraProvider>
   );

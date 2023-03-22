@@ -1,2 +1,17 @@
 $msc-blue: #183e6f;
 $msc-red: #6e120b;
+
+/* Media Queries */
+$desktop: 1024px;
+
+@mixin narrowerThanDesktop {
+  @media screen and (max-width: ($desktop - 1px)) {
+    @content;
+  }
+}
+
+@mixin desktopOrGreater {
+  @media screen and (min-width: $desktop) {
+    @content;
+  }
+}

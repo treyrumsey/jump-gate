@@ -20,7 +20,7 @@ export enum WeaponType {
 
 export enum WeaponTrait {
   FullAuto = "Full Auto",
-  Sidearm = "sidearm",
+  Sidearm = "Sidearm",
 }
 
 export enum WeaponModType {

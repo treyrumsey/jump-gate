@@ -1,31 +1,40 @@
 import { AddIcon, MinusIcon } from "@chakra-ui/icons";
 import { Box, IconButton, Input, useNumberInput, Text } from "@chakra-ui/react";
-import CustomIcon, { IconType } from "lib/components/icons/CustomIcon";
+import CustomIcon, {
+  CustomIconColor,
+  CustomIconType,
+} from "lib/components/icons/CustomIcon";
 import React from "react";
 import { useController, useFormContext } from "react-hook-form";
 
+export enum IconNumberFieldSizes {
+  Small = "is-small",
+  Large = "is-large",
+}
 interface IconNumberFieldProps {
   name: string;
+  label: string;
+  icon: CustomIconType;
+  iconColor?: CustomIconColor;
+  size: IconNumberFieldSizes;
   max: number;
-  icon: IconType;
-  size: number;
   defaultValue?: number;
-  altIcon?: IconType;
+  altIcon?: CustomIconType;
   altIconDisplayValue?: number;
 }
 
 const IconNumberField = ({
   name,
-  max,
+  label,
   icon,
+  iconColor = CustomIconColor.Default,
   size,
+  max,
   defaultValue = max,
-  altIcon,
-  altIconDisplayValue = 0,
 }: IconNumberFieldProps) => {
   const { control } = useFormContext();
   const { field } = useController({
-    name: `${name}.current`,
+    name,
     control,
     defaultValue: defaultValue,
   });
@@ -44,30 +53,38 @@ const IconNumberField = ({
   const dec = getDecrementButtonProps();
   const input = getInputProps();
 
-  const sizePx = `${size}px`;
-
-  const displayIcon =
-    altIcon && altIconDisplayValue === field.value ? altIcon : icon;
+  const sizeValue = size === IconNumberFieldSizes.Large ? 60 : 40;
+  const sizePx = `${sizeValue}px`;
 
   return (
-    <div className="msc-IconNumberField">
+    <div className={`msc-IconNumberField ${size}`}>
       <Box className="msc-IconNumberField__group" height={sizePx}>
-        <CustomIcon icon={displayIcon} size={size} />
+        <CustomIcon icon={icon} size={sizeValue} fill={iconColor} />
         <IconButton
           aria-label={`Subtract 1 from ${name}`}
           icon={<MinusIcon />}
-          size="sm"
+          size={size === IconNumberFieldSizes.Large ? "xs" : "xs"}
           {...dec}
+          tabIndex={field.value === 0 ? -1 : 0}
         />
-        <Input {...input} width={sizePx} {...field} />
+        <Input
+          {...input}
+          width={sizePx}
+          {...field}
+          onKeyDown={(event) => event.preventDefault()}
+          type="number"
+          tabIndex={-1}
+          onMouseDown={(event) => event.preventDefault()}
+        />
         <IconButton
           aria-label={`Add 1 to ${name}`}
           icon={<AddIcon />}
-          size="sm"
+          size={size === IconNumberFieldSizes.Large ? "xs" : "xs"}
           {...inc}
+          tabIndex={field.value === max ? -1 : 0}
         />
       </Box>
-      <Text>{name}</Text>
+      <Text>{label}</Text>
     </div>
   );
 };

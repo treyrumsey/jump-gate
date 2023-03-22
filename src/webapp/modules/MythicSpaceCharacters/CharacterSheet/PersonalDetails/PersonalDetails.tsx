@@ -1,38 +1,54 @@
-import { Box, FormControl, FormLabel, Input, Switch } from "@chakra-ui/react";
+import { Box, Button, FormControl, FormLabel, Input } from "@chakra-ui/react";
 import React from "react";
 import { useFormContext } from "react-hook-form";
-import { useCharacterSheetViewContext } from "webapp/modules/MythicSpaceCharacters/CharacterSheet/CharacterSheetViewContext";
+import ViewToggle from "webapp/modules/MythicSpaceCharacters/CharacterSheet/ViewToggle/ViewToggle";
 
 export const PersonalDetails = () => {
   const { register } = useFormContext();
-  const { setCombatView } = useCharacterSheetViewContext();
 
+  const size = "md";
+  const fontSize = "1rem";
+  // const fontSize = "1.2rem";
   return (
     <Box className="msc-PersonalDetails">
-      <FormControl className="characterSheetViewToggle">
-        <FormLabel htmlFor="characterSheetViewToggle" mb="2px">
-          Narrative
+      <FormControl variant="floating">
+        <Input id="name" placeholder="Name" {...register("name")} size={size} />
+        <FormLabel htmlFor="name" fontSize={fontSize}>
+          Name
         </FormLabel>
-        <Switch
-          id="characterSheetViewToggle"
-          onChange={() => setCombatView((prev) => !prev)}
+      </FormControl>
+      <FormControl variant="floating">
+        <Input
+          id="species"
+          placeholder="Species"
+          {...register("species")}
+          size={size}
         />
-        <FormLabel htmlFor="characterSheetViewToggle" ms="3" me="0" mb="2px">
-          Combat
+        <FormLabel htmlFor="species" fontSize={fontSize}>
+          Species
         </FormLabel>
       </FormControl>
       <FormControl variant="floating">
-        <Input id="name" placeholder="Name" {...register("name")} />
-        <FormLabel htmlFor="name">Name</FormLabel>
+        <Input id="ship" placeholder="Ship" {...register("ship")} size={size} />
+        <FormLabel htmlFor="ship" fontSize={fontSize}>
+          Ship
+        </FormLabel>
       </FormControl>
-      <FormControl variant="floating">
-        <Input id="species" placeholder="Species" {...register("species")} />
-        <FormLabel htmlFor="species">Species</FormLabel>
-      </FormControl>
-      <FormControl variant="floating">
-        <Input id="ship" placeholder="Ship" {...register("ship")} />
-        <FormLabel htmlFor="ship">Ship</FormLabel>
-      </FormControl>
+      <ViewToggle />
+      <Button
+        className="msc-CharacterSheet__save"
+        type="submit"
+        form="character-sheet-form"
+        size="xs"
+      >
+        Save
+      </Button>
+      {/* <IconButton
+        aria-label="refresh page"
+        icon={<SpinnerIcon />}
+        onClick={() => window.location.reload()}
+        size="xs"
+      /> */}
     </Box>
   );
 };

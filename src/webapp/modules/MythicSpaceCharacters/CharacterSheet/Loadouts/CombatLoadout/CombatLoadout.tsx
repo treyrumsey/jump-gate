@@ -4,21 +4,26 @@ import { LoadoutType } from "models/Loadout.model";
 import React from "react";
 import { useCharacterSheetViewContext } from "webapp/modules/MythicSpaceCharacters/CharacterSheet/CharacterSheetViewContext";
 
-const CasualLoadout = () => {
+const CombatLoadout = () => {
   const { isCombatView } = useCharacterSheetViewContext();
 
   return (
     <Box
-      className="msc-CasualLoadout"
-      display={isCombatView ? "none" : "initial"}
+      className="msc-CombatLoadout"
+      display={isCombatView ? "initial" : "none"}
     >
       <WeaponFields
-        loadoutType={LoadoutType.Casual}
-        loadoutIndex={0}
+        loadoutType={LoadoutType.Combat}
+        loadoutIndex={1}
         weaponIndex={0}
+      />
+      <WeaponFields
+        loadoutType={LoadoutType.Combat}
+        loadoutIndex={1}
+        weaponIndex={1}
       />
     </Box>
   );
 };
 
-export default CasualLoadout;
+export default CombatLoadout;
