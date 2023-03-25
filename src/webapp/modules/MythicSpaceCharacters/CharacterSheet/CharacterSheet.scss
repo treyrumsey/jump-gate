@@ -13,9 +13,9 @@
     .msc-CharacterSheet__dingus {
       display: flex;
       flex-direction: column;
-      flex-wrap: wrap;
       gap: 2rem;
       grid-area: dingus;
+      overflow: hidden;
     }
 
     .msc-CharacterSheet__grombles {

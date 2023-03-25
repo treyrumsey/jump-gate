@@ -1,6 +1,11 @@
 $msc-blue: #183e6f;
 $msc-red: #6e120b;
 
+:root {
+  --msc-light-blue: #{lighten($msc-blue, 15%)};
+  --msc-light-red: #{lighten($msc-red, 15%)};
+}
+
 /* Media Queries */
 $desktop: 1024px;
 

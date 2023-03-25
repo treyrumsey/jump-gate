@@ -1,8 +1,8 @@
 .msc-UpgradeField {
   .msc-UpgradeField__add-upgrade {
-    width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
+    width: 100%;
   }
 
   .msc-UpgradeField__name-form-control {
@@ -12,8 +12,8 @@
       background-color: #6e120b;
 
       border-radius: 0;
-      position: absolute;
       height: calc(100% - 2px);
+      position: absolute;
       right: 1px;
       top: 1px;
 

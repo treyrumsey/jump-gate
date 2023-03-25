@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
-import { buildCharacter, Character } from "models/Character.model";
+import { Character, mockCharacter } from "models/Character.model";
 import { PersonalDetails } from "webapp/modules/MythicSpaceCharacters/CharacterSheet/PersonalDetails/PersonalDetails";
 import { Facets } from "webapp/modules/MythicSpaceCharacters/CharacterSheet/Facets/Facets";
 import { Attributes } from "webapp/modules/MythicSpaceCharacters/CharacterSheet/Attributes/Attributes";
@@ -15,7 +15,7 @@ import Experiences from "webapp/modules/MythicSpaceCharacters/CharacterSheet/Exp
 export const CharacterSheet = () => {
   const [isCombatView, setCombatView] = useState(false);
 
-  const character = buildCharacter();
+  const character = mockCharacter();
 
   const useFormMethods = useForm({
     defaultValues: character,

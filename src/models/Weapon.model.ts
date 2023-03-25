@@ -38,6 +38,11 @@ export interface WeaponMod {
   description: string;
 }
 
+export interface Ammo {
+  current: number;
+  max: number;
+}
+
 export interface Weapon {
   name: string;
   type: WeaponType | undefined;
