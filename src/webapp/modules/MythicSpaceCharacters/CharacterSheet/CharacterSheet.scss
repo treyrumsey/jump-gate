@@ -2,13 +2,29 @@
   @include desktopOrGreater {
     grid-template-areas:
       "details details details details details details details details details"
-      "attributes status status status status status status status status"
-      "attributes c c c c c c c c"
-      "attributes d d d d d d d d"
-      "tokens facets facets facets facets facets facets facets facets"
-      "tokens facets facets facets facets facets facets facets facets"
-      "tokens facets facets facets facets facets facets facets facets";
+      "attributes dingus dingus dingus dingus dingus dingus dingus dingus"
+      "attributes dingus dingus dingus dingus dingus dingus dingus dingus"
+      "attributes dingus dingus dingus dingus dingus dingus dingus dingus"
+      "grombles dingus dingus dingus dingus dingus dingus dingus dingus"
+      "grombles dingus dingus dingus dingus dingus dingus dingus dingus"
+      "grombles dingus dingus dingus dingus dingus dingus dingus dingus";
     grid-template-columns: repeat(9, 1fr);
+
+    .msc-CharacterSheet__dingus {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      gap: 2rem;
+      grid-area: dingus;
+    }
+
+    .msc-CharacterSheet__grombles {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      grid-area: grombles;
+      height: 320px;
+    }
   }
   display: grid;
   gap: 16px 32px;

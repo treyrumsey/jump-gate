@@ -4,7 +4,7 @@ export enum GearType {
 }
 
 export interface Gear {
-  type: GearType | undefined;
+  type?: GearType;
   name: string;
   description: string;
 }
@@ -16,7 +16,6 @@ export const initUtilityItem = (): Gear => ({
 });
 
 export const initGear = (): Gear => ({
-  type: undefined,
   name: "",
   description: "",
 });

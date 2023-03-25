@@ -1,7 +1,7 @@
 .msc-AmmoField {
   .chakra-form-control {
     display: flex;
-    width: 156px;
+    width: 140px;
 
     .chakra-input {
       text-align: center;
@@ -11,9 +11,9 @@
       background-color: $msc-red;
 
       border-radius: 0;
-      position: absolute;
       height: calc(100% - 2px);
-      right: 41px;
+      position: absolute;
+      right: 33px;
       top: 1px;
 
       &:hover {
@@ -29,8 +29,8 @@
       background-color: $msc-blue;
 
       border-radius: 0;
-      position: absolute;
       height: calc(100% - 2px);
+      position: absolute;
       right: 1px;
       top: 1px;
 

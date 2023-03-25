@@ -1,0 +1,17 @@
+.msc-WeaponFieldGroup {
+  @include floating-labels-sm;
+
+  display: flex;
+
+  .msc-WeaponFieldGroup__type {
+    max-width: 120px;
+  }
+
+  .msc-WeaponFieldGroup__range {
+    max-width: 120px;
+  }
+
+  .msc-WeaponFieldGroup__damage {
+    max-width: 90px;
+  }
+}

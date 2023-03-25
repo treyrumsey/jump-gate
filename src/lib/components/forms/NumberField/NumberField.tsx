@@ -5,15 +5,19 @@ import {
   NumberInputField,
   NumberInputStepper,
 } from "@chakra-ui/react";
-import React, { useState } from "react";
-import { useController } from "react-hook-form";
+import React from "react";
+import { Control, useController } from "react-hook-form";
 
+interface NumberFieldRules {
+  min?: number;
+  max?: number;
+}
 interface NumberFieldProps {
   id: string;
   name: string;
   placeholder?: string;
-  control: any;
-  rules: any;
+  control: Control;
+  rules: NumberFieldRules;
   defaultValue?: number;
   size?: string;
   hasSlider?: boolean;
@@ -35,8 +39,8 @@ export const NumberField = ({
   } = useController({
     name: name || id,
     control,
-    rules: rules,
-    defaultValue: defaultValue !== undefined ? defaultValue : 0,
+    rules,
+    defaultValue: defaultValue ?? 0,
   });
 
   return (

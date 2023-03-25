@@ -45,7 +45,7 @@ export const Facets = ({ type, show }: FacetsProps) => {
           icon={<EditIcon />}
           className="msc-Facets__edit-toggle is-positive"
           onClick={toggleEditMode}
-          aria-label={`Add or Remove ${type}s`}
+          aria-label={`Edit ${type}s`}
           size="sm"
         />
       </ButtonGroup>
@@ -54,7 +54,7 @@ export const Facets = ({ type, show }: FacetsProps) => {
         {fields.map((field, index) => {
           return (
             <Card className="msc-Facets__facet-group" key={field.id}>
-              <Box className="msc-Facets__facet">
+              <div className="msc-Facets__facet">
                 <FormControl variant="floating">
                   <Input
                     id={getFieldPath(index, type)}
@@ -80,7 +80,7 @@ export const Facets = ({ type, show }: FacetsProps) => {
                   placeholder="Ability description"
                   {...register(getFieldPath(index, "description"))}
                 />
-              </Box>
+              </div>
               <Upgrades nestIndex={index} type={type} isEditing={isEditing} />
             </Card>
           );
@@ -88,23 +88,21 @@ export const Facets = ({ type, show }: FacetsProps) => {
       </div>
 
       {isEditing && (
-        <Box mt="3">
-          <Button
-            className="msc-Facets__add-facet is-positive"
-            leftIcon={<AddIcon />}
-            size="sm"
-            onClick={() => {
-              append({
-                [type]: "",
-                ability: "",
-                description: "",
-                upgrades: [],
-              });
-            }}
-          >
-            {`Add New ${type}`}
-          </Button>
-        </Box>
+        <Button
+          className="msc-Facets__add-facet is-positive"
+          leftIcon={<AddIcon />}
+          size="sm"
+          onClick={() => {
+            append({
+              [type]: "",
+              ability: "",
+              description: "",
+              upgrades: [],
+            });
+          }}
+        >
+          {`Add New ${type}`}
+        </Button>
       )}
     </Box>
   );

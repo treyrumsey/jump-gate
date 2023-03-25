@@ -1,5 +1,4 @@
-import { Button, FormControl, Input } from "@chakra-ui/react";
-import classNames from "classnames";
+import { Box, FormControl, Input } from "@chakra-ui/react";
 import React from "react";
 import { useFieldArray, useFormContext } from "react-hook-form";
 import { useCharacterSheetViewContext } from "webapp/modules/MythicSpaceCharacters/CharacterSheet/CharacterSheetViewContext";
@@ -14,12 +13,11 @@ const Experiences = () => {
     name: "experiences",
   });
 
-  const classes = classNames("msc-Experiences", {
-    "msc-is-hidden": isCombatView,
-  });
-
   return (
-    <div className={classes}>
+    <Box
+      className="msc-Experiences"
+      display={isCombatView ? "none" : undefined}
+    >
       {fields.map((field, index) => (
         <FormControl key={field.id}>
           <Input
@@ -29,7 +27,7 @@ const Experiences = () => {
           />
         </FormControl>
       ))}
-    </div>
+    </Box>
   );
 };
 

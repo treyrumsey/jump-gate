@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
-import { Box, Button } from "@chakra-ui/react";
 import { buildCharacter, Character } from "models/Character.model";
 import { PersonalDetails } from "webapp/modules/MythicSpaceCharacters/CharacterSheet/PersonalDetails/PersonalDetails";
 import { Facets } from "webapp/modules/MythicSpaceCharacters/CharacterSheet/Facets/Facets";
@@ -10,7 +9,6 @@ import { Tokens } from "webapp/modules/MythicSpaceCharacters/CharacterSheet/Toke
 import { FacetType } from "models/Facet.model";
 import { CharacterSheetViewContext } from "webapp/modules/MythicSpaceCharacters/CharacterSheet/CharacterSheetViewContext";
 import CasualLoadout from "webapp/modules/MythicSpaceCharacters/CharacterSheet/Loadouts/CasualLoadout/CasualLoadout";
-import ViewToggle from "webapp/modules/MythicSpaceCharacters/CharacterSheet/ViewToggle/ViewToggle";
 import CombatLoadout from "webapp/modules/MythicSpaceCharacters/CharacterSheet/Loadouts/CombatLoadout/CombatLoadout";
 import Experiences from "webapp/modules/MythicSpaceCharacters/CharacterSheet/Experiences/Experiences";
 
@@ -28,7 +26,7 @@ export const CharacterSheet = () => {
     return new Promise<void>((resolve) => {
       setTimeout(() => {
         // alert(JSON.stringify(values, null, 2));
-        console.log({ values });
+        console.log({ ...values });
         resolve();
       }, 300);
     });
@@ -44,13 +42,17 @@ export const CharacterSheet = () => {
         >
           <PersonalDetails />
           <Attributes />
-          <Status />
-          <Tokens />
-          <Facets type={FacetType.Aspect} show={!isCombatView} />
-          <Facets type={FacetType.Tactic} show={isCombatView} />
-          {/* <Experiences /> */}
-          {/* <CasualLoadout /> */}
-          {/* <CombatLoadout /> */}
+          <div className="msc-CharacterSheet__grombles">
+            <Tokens />
+            <Experiences />
+          </div>
+          <div className="msc-CharacterSheet__dingus">
+            <Status />
+            <CasualLoadout />
+            <CombatLoadout />
+            <Facets type={FacetType.Aspect} show={!isCombatView} />
+            <Facets type={FacetType.Tactic} show={isCombatView} />
+          </div>
         </form>
       </FormProvider>
     </CharacterSheetViewContext.Provider>

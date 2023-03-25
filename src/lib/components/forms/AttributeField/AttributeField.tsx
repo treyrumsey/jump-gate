@@ -8,7 +8,7 @@ interface AttributeFieldProps {
 }
 
 export const AttributeField = ({ name }: AttributeFieldProps) => {
-  const { register, control } = useFormContext();
+  const { control } = useFormContext();
 
   const labelText = name.charAt(0).toUpperCase() + name.substring(1);
   return (

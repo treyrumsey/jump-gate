@@ -7,21 +7,21 @@ import React from "react";
 import { useFormContext } from "react-hook-form";
 import { useCharacterSheetViewContext } from "webapp/modules/MythicSpaceCharacters/CharacterSheet/CharacterSheetViewContext";
 
-interface WeaponFieldsProps {
+interface WeaponFieldGroupProps {
+  index: number;
+  label: string;
   loadoutType: LoadoutType;
-  loadoutIndex: number;
-  weaponIndex: number;
 }
 
-const WeaponFields = ({
+const WeaponFieldGroup = ({
+  index,
+  label,
   loadoutType,
-  loadoutIndex,
-  weaponIndex,
-}: WeaponFieldsProps) => {
+}: WeaponFieldGroupProps) => {
   const { register } = useFormContext();
   const { isCombatView } = useCharacterSheetViewContext();
 
-  const fieldName = `${loadoutType}[${loadoutIndex}].weapons[${weaponIndex}]`;
+  const fieldName = `loadouts.${loadoutType}.weapons[${index}]`;
 
   const typeOptions = Object.keys(WeaponType).map((value) => (
     <option key={value} value={value}>
@@ -44,48 +44,60 @@ const WeaponFields = ({
     ));
 
   return (
-    <Box className="msc-WeaponFields">
-      <FormControl variant="floating" className="msc-WeaponFields__name">
+    <Box className="msc-WeaponFieldGroup">
+      <FormControl variant="floating" className="msc-WeaponFieldGroup__name">
         <Input
           id={`${fieldName}.name`}
-          placeholder={"Weapon"}
+          placeholder={label}
+          size="sm"
           {...register(`${fieldName}.name`)}
         />
-        <FormLabel htmlFor={`${fieldName}.name`}>Weapon</FormLabel>
+        <FormLabel htmlFor={`${fieldName}.name`} size="sm">
+          {label}
+        </FormLabel>
       </FormControl>
-      <FormControl variant="floating" className="msc-WeaponFields__type">
+      <FormControl variant="floating" className="msc-WeaponFieldGroup__type">
         <Select
           id={`${fieldName}.type`}
           placeholder=" "
+          size="sm"
           {...register(`${fieldName}.type`)}
         >
           {typeOptions}
         </Select>
-        <FormLabel htmlFor={`${fieldName}.type`}>Type</FormLabel>
+        <FormLabel htmlFor={`${fieldName}.type`} size="sm">
+          Type
+        </FormLabel>
       </FormControl>
-      <FormControl variant="floating" className="msc-WeaponFields__range">
+      <FormControl variant="floating" className="msc-WeaponFieldGroup__range">
         <Select
           id={`${fieldName}.range`}
           placeholder=" "
+          size="sm"
           {...register(`${fieldName}.range`)}
         >
           {rangeOptions}
         </Select>
-        <FormLabel htmlFor={`${fieldName}.range`}>Range</FormLabel>
+        <FormLabel htmlFor={`${fieldName}.range`} size="sm">
+          Range
+        </FormLabel>
       </FormControl>
-      <FormControl variant="floating" className="msc-WeaponFields__damage">
+      <FormControl variant="floating" className="msc-WeaponFieldGroup__damage">
         <Select
           id={`${fieldName}.damage`}
           placeholder=" "
+          size="sm"
           {...register(`${fieldName}.damage`)}
         >
           {damageOptions}
         </Select>
-        <FormLabel htmlFor={`${fieldName}.damage`}>Damage</FormLabel>
+        <FormLabel htmlFor={`${fieldName}.damage`} size="sm">
+          Damage
+        </FormLabel>
       </FormControl>
       <AmmoField fieldPath={`${fieldName}`} max={4} />
     </Box>
   );
 };
 
-export default WeaponFields;
+export default WeaponFieldGroup;

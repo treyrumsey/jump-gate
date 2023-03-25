@@ -1,4 +1,4 @@
-import { Box, Button, FormControl, FormLabel, Input } from "@chakra-ui/react";
+import { Button, FormControl, FormLabel, Input } from "@chakra-ui/react";
 import React from "react";
 import { useFormContext } from "react-hook-form";
 import ViewToggle from "webapp/modules/MythicSpaceCharacters/CharacterSheet/ViewToggle/ViewToggle";
@@ -10,7 +10,7 @@ export const PersonalDetails = () => {
   const fontSize = "1rem";
   // const fontSize = "1.2rem";
   return (
-    <Box className="msc-PersonalDetails">
+    <div className="msc-PersonalDetails">
       <FormControl variant="floating">
         <Input id="name" placeholder="Name" {...register("name")} size={size} />
         <FormLabel htmlFor="name" fontSize={fontSize}>
@@ -49,6 +49,6 @@ export const PersonalDetails = () => {
         onClick={() => window.location.reload()}
         size="xs"
       /> */}
-    </Box>
+    </div>
   );
 };

@@ -1,4 +1,3 @@
-import { Box } from "@chakra-ui/react";
 import TokenField from "lib/components/forms/TokenField/TokenField";
 import React from "react";
 import { useCharacterSheetViewContext } from "webapp/modules/MythicSpaceCharacters/CharacterSheet/CharacterSheetViewContext";
@@ -7,7 +6,7 @@ export const Tokens = () => {
   const { isCombatView } = useCharacterSheetViewContext();
 
   return (
-    <Box className="msc-Tokens">
+    <div className="msc-Tokens">
       <TokenField positiveName="Accurate" negativeName="Misfire" />
       <TokenField
         positiveName="Dodge"
@@ -31,6 +30,6 @@ export const Tokens = () => {
         negativeName="Burn"
         show={isCombatView}
       />
-    </Box>
+    </div>
   );
 };

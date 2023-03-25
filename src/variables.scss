@@ -15,3 +15,22 @@ $desktop: 1024px;
     @content;
   }
 }
+
+@mixin floating-labels-sm {
+  input:not(:placeholder-shown) + label,
+  .chakra-select__wrapper + label,
+  :focus-within label {
+    transform: scale(0.85) translateY(-20px) !important;
+  }
+
+  .chakra-form__label {
+    font-size: var(--chakra-fontSizes-sm);
+    margin: var(--chakra-space-1-5);
+  }
+
+  .chakra-select {
+    border-radius: 0;
+    padding-inline-start: var(--chakra-space-1-5);
+    text-align: center;
+  }
+}

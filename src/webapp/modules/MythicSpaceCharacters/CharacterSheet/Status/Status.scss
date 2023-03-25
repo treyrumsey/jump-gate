@@ -1,4 +1,9 @@
 .msc-Status {
+  @include desktopOrGreater {
+    display: flex;
+    flex-direction: row;
+    height: min-content;
+  }
   // grid-template-columns: 134px 84px;
   // grid-template-rows: repeat(6, 1fr);
   // grid-auto-rows: min-content;
@@ -100,10 +105,5 @@
       text-align: center;
       width: 100%;
     }
-  }
-
-  @media (min-width: 1024px) {
-    display: flex;
-    flex-direction: row;
   }
 }

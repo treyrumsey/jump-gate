@@ -1,8 +1,6 @@
-import { Box, FormControl, FormLabel, Switch } from "@chakra-ui/react";
 import IconNumberField, {
   IconNumberFieldSizes,
 } from "lib/components/forms/IconNumberField/IconNumberField";
-import { NumberField } from "lib/components/forms/NumberField/NumberField";
 import {
   CustomIconColor,
   CustomIconType,
@@ -11,7 +9,7 @@ import React from "react";
 import { useFormContext, useWatch } from "react-hook-form";
 
 export const Status = () => {
-  const { getValues, control } = useFormContext();
+  const { control } = useFormContext();
 
   const maxShields = 8;
   const shields = useWatch({
@@ -41,8 +39,8 @@ export const Status = () => {
   });
 
   return (
-    <Box className="msc-Status">
-      <Box className="msc-Status__shields">
+    <div className="msc-Status">
+      <div className="msc-Status__shields">
         <IconNumberField
           name="shields.current"
           label="Shields"
@@ -53,8 +51,8 @@ export const Status = () => {
           max={maxShields}
           size={IconNumberFieldSizes.Large}
         />
-      </Box>
-      <Box className="msc-Status__armor">
+      </div>
+      <div className="msc-Status__armor">
         <IconNumberField
           name="armor.current"
           label="Armor"
@@ -65,8 +63,8 @@ export const Status = () => {
           max={maxArmor}
           size={IconNumberFieldSizes.Large}
         />
-      </Box>
-      {/* <Box className="msc-Status__stress">
+      </div>
+      {/* <div className="msc-Status__stress">
         <IconNumberField
           name="stress.current"
           label="Stress"
@@ -78,8 +76,8 @@ export const Status = () => {
           max={maxStress}
           size={IconNumberFieldSizes.Large}
         />
-      </Box> */}
-      <Box className="msc-Status__mp">
+      </div> */}
+      <div className="msc-Status__mp">
         <IconNumberField
           name="mp.current"
           label="MP"
@@ -92,8 +90,8 @@ export const Status = () => {
           max={maxMP}
           size={IconNumberFieldSizes.Large}
         />
-      </Box>
-      <Box className="msc-Status__supplies">
+      </div>
+      <div className="msc-Status__supplies">
         <IconNumberField
           name="supplies.current"
           label="Supplies"
@@ -104,48 +102,7 @@ export const Status = () => {
           max={maxSupplies}
           size={IconNumberFieldSizes.Large}
         />
-      </Box>
-
-      {/* <FormControl variant="floating" className="msc-Status__stress">
-        <NumberField
-          id="stress"
-          name="stress"
-          rules={{ min: 0, max: 10 }}
-          defaultValue={0}
-          control={control}
-          size="lg"
-        />
-        <FormLabel htmlFor="stress">Stress</FormLabel>
-      </FormControl>
-      <FormControl variant="floating" className="msc-Status__MP">
-        <NumberField
-          id="MP"
-          name="MP"
-          rules={{ min: 0, max: 4 }}
-          defaultValue={4}
-          control={control}
-          size="lg"
-        />
-        <FormLabel htmlFor="MP">MP</FormLabel>
-      </FormControl> */}
-
-      {/* <Box className="msc-Status__shaken">
-        <FormControl>
-          <Switch id="shaken" {...register(`shaken`)} />
-          <FormLabel htmlFor="shaken" mb="0">
-            Shaken
-          </FormLabel>
-        </FormControl>
-      </Box>
-
-      <Box className="msc-Status__wounded">
-        <FormControl>
-          <Switch id="wounded" {...register(`wounded`)} />
-          <FormLabel htmlFor="wounded" mb="0">
-            Wounded
-          </FormLabel>
-        </FormControl>
-      </Box> */}
-    </Box>
+      </div>
+    </div>
   );
 };

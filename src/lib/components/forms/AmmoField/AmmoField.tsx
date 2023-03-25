@@ -50,7 +50,7 @@ const AmmoField = ({ fieldPath, max }: AmmoFieldProps) => {
   return (
     <div className="msc-AmmoField">
       <FormControl variant="floating">
-        <InputGroup>
+        <InputGroup size="sm">
           <Input
             id={fieldName}
             {...register(fieldName)}
@@ -60,22 +60,25 @@ const AmmoField = ({ fieldPath, max }: AmmoFieldProps) => {
             max={max}
             min={0}
             onBlur={handleAmmoBlur}
-            paddingEnd="96px"
+            paddingEnd="80px"
+            size="sm"
           />
           <FormLabel htmlFor={fieldName}>Ammo</FormLabel>
-          <InputRightElement width="80px">
+          <InputRightElement width="65px">
             <IconButton
               className="msc-AmmoField__shoot-button"
               aria-label="Shoot"
               icon={<MinusIcon />}
               onClick={spendAmmo}
               aria-disabled={ammoValue === 0}
+              size="sm"
             />
             <IconButton
               className="msc-AmmoField__reload-button"
               aria-label="Reload"
               icon={<RepeatIcon />}
               onClick={reload}
+              size="sm"
             />
           </InputRightElement>
         </InputGroup>

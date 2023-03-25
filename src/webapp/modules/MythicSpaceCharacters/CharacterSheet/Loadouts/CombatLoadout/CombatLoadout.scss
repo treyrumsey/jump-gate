@@ -1,3 +1,16 @@
 .msc-CombatLoadout {
-  grid-area: loadout;
+  .chakra-card {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: 1fr 1fr;
+    padding: 1rem;
+
+    .msc-WeaponFieldGroup {
+      grid-column: span 2;
+    }
+
+    .msc-GearFieldGroup {
+      grid-column: span 1;
+    }
+  }
 }

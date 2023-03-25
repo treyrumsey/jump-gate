@@ -5,12 +5,10 @@ import { ChakraProvider, useColorMode } from "@chakra-ui/react";
 import "firebase/firestore";
 import "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { useCollectionData } from "react-firebase-hooks/firestore";
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import MythicSpaceCharacters from "webapp/modules/MythicSpaceCharacters/MythicSpaceCharacters";
-import SignIn from "webapp/modules/SignIn/SignIn";
 import { theme } from "theme";
 import { useEffect } from "react";
 
@@ -47,7 +45,7 @@ function ForceDarkMode(props: { children: JSX.Element }) {
   useEffect(() => {
     if (colorMode === "dark") return;
     toggleColorMode();
-  }, [colorMode]);
+  }, [colorMode, toggleColorMode]);
 
   return props.children;
 }

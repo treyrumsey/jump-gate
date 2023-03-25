@@ -1,7 +1,6 @@
 .msc-Experiences {
-  grid-area: tokens;
-
-  .chakra-form-control {
-    margin-bottom: 14px;
-  }
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: space-between;
 }
