@@ -2,7 +2,7 @@ $msc-blue: #183e6f;
 $msc-red: #6e120b;
 
 :root {
-  --msc-light-blue: #{lighten($msc-blue, 15%)};
+  --msc-light-blue: #{lighten($msc-blue, 30%)};
   --msc-light-red: #{lighten($msc-red, 15%)};
 }
 
@@ -37,5 +37,15 @@ $desktop: 1024px;
     border-radius: 0;
     padding-inline-start: var(--chakra-space-1-5);
     text-align: center;
+  }
+}
+
+@mixin is-positive-button {
+  .is-positive {
+    background-color: #183e6f;
+
+    &:hover {
+      background-color: lighten(#183e6f, 10%);
+    }
   }
 }

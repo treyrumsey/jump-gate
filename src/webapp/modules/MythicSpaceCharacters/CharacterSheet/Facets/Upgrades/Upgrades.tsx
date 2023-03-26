@@ -1,97 +1,11 @@
-import { AddIcon, DeleteIcon } from "@chakra-ui/icons";
-import {
-  Box,
-  Button,
-  FormControl,
-  FormLabel,
-  Heading,
-  IconButton,
-  Input,
-  InputGroup,
-  InputRightElement,
-  Textarea,
-} from "@chakra-ui/react";
-import { Blue, Red } from "lib/components/typography/MarkdownColorOverrides";
-import Markdown from "markdown-to-jsx";
+import { AddIcon } from "@chakra-ui/icons";
+import { Button } from "@chakra-ui/react";
 import { FacetType } from "models/Facet.model";
 import React, { Fragment } from "react";
 import { useFieldArray, useFormContext, useWatch } from "react-hook-form";
+import UpgradeEditor from "webapp/modules/MythicSpaceCharacters/CharacterSheet/Facets/Upgrades/UpgradeEditor/UpgradeEditor";
+import UpgradeViewer from "webapp/modules/MythicSpaceCharacters/CharacterSheet/Facets/Upgrades/UpgradeViewer/UpgradeViewer";
 
-interface UpgradeProps {
-  buildFieldId: (fieldName: string) => string;
-  isEditing: boolean;
-  onDelete: () => void;
-}
-
-const Upgrade = ({ buildFieldId, isEditing, onDelete }: UpgradeProps) => {
-  const { getValues, register } = useFormContext();
-
-  const upgradeId = buildFieldId("upgrade");
-  const descriptionId = buildFieldId("description");
-
-  const upgrade = getValues(upgradeId);
-  const description = getValues(descriptionId);
-
-  return (
-    <>
-      <Box
-        className="msc-UpgradeField"
-        display={isEditing ? undefined : "none"}
-      >
-        <FormControl
-          variant="floating"
-          className="msc-UpgradeField__name-form-control"
-        >
-          <InputGroup>
-            <Input
-              id={upgradeId}
-              placeholder="Upgrade"
-              {...register(upgradeId)}
-            />
-            <FormLabel htmlFor={upgradeId}>Upgrade</FormLabel>
-            {isEditing && (
-              <InputRightElement>
-                <IconButton
-                  className="msc-UpgradeField__delete-button"
-                  icon={<DeleteIcon />}
-                  title={"Delete upgrade"}
-                  aria-label={"Delete upgrade"}
-                  onClick={onDelete}
-                />
-              </InputRightElement>
-            )}
-          </InputGroup>
-        </FormControl>
-        <Textarea
-          id={descriptionId}
-          placeholder="Description"
-          {...register(descriptionId)}
-        />
-      </Box>
-      {!isEditing && (
-        <div className="msc-UpgradeField">
-          <Heading size="sm">{upgrade}</Heading>
-          <Markdown
-            options={{
-              wrapper: "section",
-              forceWrapper: true,
-              overrides: {
-                Red: {
-                  component: Red,
-                },
-                Blue: {
-                  component: Blue,
-                },
-              },
-            }}
-          >
-            {description}
-          </Markdown>
-        </div>
-      )}
-    </>
-  );
-};
 interface UpgradesProps {
   facetIndex: number;
   isEditing: boolean;
@@ -102,7 +16,7 @@ export const Upgrades = ({ facetIndex, type, isEditing }: UpgradesProps) => {
   const { control } = useFormContext();
   const facetName = useWatch({
     control,
-    name: `${type}s[${facetIndex}].${type}`,
+    name: `${type}s[${facetIndex}].name`,
     defaultValue: `${type} ${facetIndex + 1}`,
   });
 
@@ -119,16 +33,23 @@ export const Upgrades = ({ facetIndex, type, isEditing }: UpgradesProps) => {
   return (
     <>
       {fields.map((field, index) => {
+        const upgradeNameId = buildFieldId(index, "upgrade");
+        const descriptionId = buildFieldId(index, "description");
         return (
           <Fragment key={`${buildFieldId(index, field.id)}`}>
             <div className="msc-divider" />
-            <Upgrade
-              buildFieldId={(fieldName: string) =>
-                buildFieldId(index, fieldName)
-              }
+            <UpgradeEditor
+              upgradeNameId={upgradeNameId}
+              descriptionId={descriptionId}
               isEditing={isEditing}
               onDelete={() => remove(index)}
             />
+            {!isEditing && (
+              <UpgradeViewer
+                upgradeNameId={upgradeNameId}
+                descriptionId={descriptionId}
+              />
+            )}
           </Fragment>
         );
       })}
@@ -142,11 +63,7 @@ export const Upgrades = ({ facetIndex, type, isEditing }: UpgradesProps) => {
             append({ upgrade: "", description: "" });
           }}
         >
-          {/* {`Upgrade ${
-            facetName?.length > 0 ? facetName : `${type} ${nestIndex + 1}`
-          }`} */}
           {`Upgrade ${facetName}`}
-          {/* Upgrade */}
         </Button>
       )}
     </>

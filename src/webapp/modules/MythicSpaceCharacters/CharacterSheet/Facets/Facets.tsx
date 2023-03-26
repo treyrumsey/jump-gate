@@ -1,163 +1,165 @@
-import React from "react";
-import { AddIcon, EditIcon } from "@chakra-ui/icons";
+import { AddIcon, EditIcon, InfoIcon, ViewIcon } from "@chakra-ui/icons";
 import {
   Box,
   Button,
   ButtonGroup,
   Card,
-  FormControl,
-  FormLabel,
   IconButton,
-  Input,
-  Textarea,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalHeader,
+  ModalOverlay,
+  Skeleton,
   Text,
-  Heading,
+  useDisclosure,
 } from "@chakra-ui/react";
 import { FacetType } from "models/Facet.model";
-import { useState } from "react";
+import React, { useState } from "react";
 import { useFieldArray, useFormContext } from "react-hook-form";
+import FacetEditor from "webapp/modules/MythicSpaceCharacters/CharacterSheet/Facets/FacetEditor/FacetEditor";
+import FacetViewer from "webapp/modules/MythicSpaceCharacters/CharacterSheet/Facets/FacetViewer/FacetViewer";
 import { Upgrades } from "webapp/modules/MythicSpaceCharacters/CharacterSheet/Facets/Upgrades/Upgrades";
-import Markdown from "markdown-to-jsx";
-import { Blue, Red } from "lib/components/typography/MarkdownColorOverrides";
 
-interface FacetProps {
-  buildId: (fieldName: string) => string;
-  isEditing: boolean;
-  type: FacetType;
-}
-
-const Facet = ({ buildId, isEditing, type }: FacetProps) => {
-  const { register, getValues } = useFormContext();
-
-  const facetNameId = buildId("name");
-  const abilityId = buildId("ability");
-  const descriptionId = buildId("description");
-
-  const facetName = getValues(facetNameId);
-  const ability = getValues(abilityId);
-  const description = getValues(descriptionId);
-
-  return (
-    <>
-      <Box
-        className="msc-Facets__facet is-editing"
-        display={isEditing ? "flex" : "none"}
-      >
-        <FormControl variant="floating">
-          <Input
-            id={facetNameId}
-            placeholder={type}
-            {...register(facetNameId)}
-          />
-          <FormLabel htmlFor={facetNameId}>{type}</FormLabel>
-        </FormControl>
-        <FormControl variant="floating">
-          <Input
-            id={abilityId}
-            placeholder="Ability"
-            {...register(abilityId)}
-          />
-          <FormLabel htmlFor={abilityId}>Ability</FormLabel>
-        </FormControl>
-        <Textarea
-          id={descriptionId}
-          placeholder="Ability description"
-          {...register(descriptionId)}
-        />
-      </Box>
-      {!isEditing && (
-        <div className="msc-Facets__facet">
-          <Heading className="msc-Facets__facet--name" size="md" mb={2}>
-            {facetName}
-          </Heading>
-          <Heading size="sm" mb={1}>
-            {ability}
-          </Heading>
-
-          <Markdown
-            options={{
-              wrapper: "section",
-              forceWrapper: true,
-              overrides: {
-                Red: {
-                  component: Red,
-                },
-                Blue: {
-                  component: Blue,
-                },
-              },
-            }}
-          >
-            {description}
-          </Markdown>
-        </div>
-      )}
-    </>
-  );
-};
 interface FacetsProps {
   show: boolean;
   type: FacetType;
 }
 
-export const Facets = ({ show, type }: FacetsProps) => {
+const Facets = ({ show, type }: FacetsProps) => {
   const { control } = useFormContext();
   const { fields, append } = useFieldArray({
     control,
     name: `${type}s`,
   });
 
-  const [isEditing, setIsEditing] = useState<boolean>(false);
-  const toggleEditMode = () => {
-    setIsEditing((prev) => !prev);
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const [isEditing, setIsEditing] = useState(false);
+  const openEditMode = () => {
+    setIsEditing(true);
+    onOpen();
+  };
+  const closeEditMode = () => {
+    setIsEditing(false);
+    onClose();
   };
 
-  const getFieldPath = (index: number, field: string) =>
+  const buildFieldId = (index: number, field: string) =>
     `${type}s[${index}].${field}`;
 
   return (
     <Box className="msc-Facets" display={show ? undefined : "none"}>
-      <ButtonGroup className="msc-Facets__edit-toggle-group" isAttached>
+      <ButtonGroup
+        className="msc-Facets__edit-toggle-group"
+        isAttached
+        paddingInlineStart="64px"
+      >
         <Text className="msc-Facets__title" fontSize="lg">{`${type}s`}</Text>
+        <IconButton
+          aria-label={`View ${type}s`}
+          icon={<InfoIcon />}
+          size="sm"
+          onClick={onOpen}
+        />
         <IconButton
           icon={<EditIcon />}
           className="msc-Facets__edit-toggle is-positive"
-          onClick={toggleEditMode}
+          onClick={openEditMode}
           aria-label={`Edit ${type}s`}
           size="sm"
         />
       </ButtonGroup>
 
       <div className="msc-Facets__facets">
-        {fields.map((field, index) => {
-          const buildId = (field: string) => getFieldPath(index, field);
+        {isOpen ? (
+          <>
+            <Skeleton />
+            <Skeleton />
+            <Skeleton />
+            <Skeleton />
+          </>
+        ) : (
+          fields.map((field, index) => {
+            const buildId = (field: string) => buildFieldId(index, field);
 
-          return (
-            <Card className="msc-Facets__facet-group" key={field.id}>
-              <Facet buildId={buildId} isEditing={isEditing} type={type} />
-              <Upgrades facetIndex={index} type={type} isEditing={isEditing} />
-            </Card>
-          );
-        })}
+            return (
+              <Card className="msc-Facets__facet-group" key={field.id}>
+                <FacetViewer buildId={buildId} />
+                <Upgrades
+                  facetIndex={index}
+                  type={type}
+                  isEditing={isEditing}
+                />
+              </Card>
+            );
+          })
+        )}
       </div>
 
-      {isEditing && (
-        <Button
-          className="msc-Facets__add-facet is-positive"
-          leftIcon={<AddIcon />}
-          size="sm"
-          onClick={() => {
-            append({
-              [type]: "",
-              ability: "",
-              description: "",
-              upgrades: [],
-            });
-          }}
-        >
-          {`Add New ${type}`}
-        </Button>
-      )}
+      <Modal isOpen={isOpen} onClose={closeEditMode}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader textAlign="center" position="relative" paddingBottom="0">
+            <ButtonGroup position="absolute" top=".82rem" left="1rem">
+              <Button
+                leftIcon={isEditing ? <ViewIcon /> : <EditIcon />}
+                className={isEditing ? undefined : "is-positive"}
+                onClick={() => setIsEditing((prev) => !prev)}
+                size="sm"
+              >
+                {isEditing ? "View" : "Edit"}
+              </Button>
+              {isEditing && (
+                <Button
+                  className="msc-Facets__add-facet is-positive"
+                  leftIcon={<AddIcon />}
+                  size="sm"
+                  onClick={() => {
+                    append({
+                      [type]: "",
+                      ability: "",
+                      description: "",
+                      upgrades: [],
+                    });
+                  }}
+                >
+                  {`Add New ${type}`}
+                </Button>
+              )}
+            </ButtonGroup>
+
+            {`${type}s`}
+          </ModalHeader>
+          <ModalCloseButton />
+          <ModalBody className="msc-Facets">
+            <div className="msc-Facets__facets">
+              {fields.map((field, index) => {
+                const buildId = (field: string) => buildFieldId(index, field);
+
+                return (
+                  <Card className="msc-Facets__facet-group" key={field.id}>
+                    <FacetEditor
+                      buildId={buildId}
+                      isEditing={isEditing}
+                      type={type}
+                    />
+                    {!isEditing && <FacetViewer buildId={buildId} />}
+                    <Upgrades
+                      facetIndex={index}
+                      type={type}
+                      isEditing={isEditing}
+                    />
+                  </Card>
+                );
+              })}
+            </div>
+          </ModalBody>
+        </ModalContent>
+      </Modal>
     </Box>
   );
 };
+
+export default Facets;

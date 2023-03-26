@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { Character, mockCharacter } from "models/Character.model";
 import { PersonalDetails } from "webapp/modules/MythicSpaceCharacters/CharacterSheet/PersonalDetails/PersonalDetails";
-import { Facets } from "webapp/modules/MythicSpaceCharacters/CharacterSheet/Facets/Facets";
+import Facets from "webapp/modules/MythicSpaceCharacters/CharacterSheet/Facets/Facets";
 import { Attributes } from "webapp/modules/MythicSpaceCharacters/CharacterSheet/Attributes/Attributes";
 import { Status } from "webapp/modules/MythicSpaceCharacters/CharacterSheet/Status/Status";
 import { Tokens } from "webapp/modules/MythicSpaceCharacters/CharacterSheet/Tokens/Tokens";
@@ -39,6 +39,7 @@ export const CharacterSheet = () => {
           className="msc-CharacterSheet"
           onSubmit={handleSubmit(onSubmit)}
           id="character-sheet-form"
+          autoComplete="off"
         >
           <PersonalDetails />
           <Attributes />

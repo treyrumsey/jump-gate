@@ -61,3 +61,14 @@ code {
     }
   }
 }
+
+.chakra-modal__content {
+  @include desktopOrGreater {
+    margin: 2rem 0 !important;
+    max-width: var(--chakra-sizes-4xl) !important;
+  }
+
+  @include is-positive-button;
+
+  background-color: var(--chakra-colors-chakra-body-bg) !important;
+}
