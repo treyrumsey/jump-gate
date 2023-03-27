@@ -11,12 +11,12 @@ import React, { useState } from "react";
 import { useFormContext } from "react-hook-form";
 
 interface AmmoFieldProps {
-  fieldPath: string;
+  weaponId: string;
   max: number;
 }
 
-const AmmoField = ({ fieldPath, max }: AmmoFieldProps) => {
-  const fieldName = `${fieldPath}.ammo.current`;
+const AmmoField = ({ weaponId, max }: AmmoFieldProps) => {
+  const fieldName = `${weaponId}.ammo.current`;
   const { register, setValue } = useFormContext();
   const [ammoValue, setAmmoValue] = useState(max);
 

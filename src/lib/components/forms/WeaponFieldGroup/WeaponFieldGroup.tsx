@@ -1,6 +1,7 @@
 import { Box, FormControl, FormLabel, Input, Select } from "@chakra-ui/react";
 import AmmoField from "lib/components/forms/AmmoField/AmmoField";
 import ModList from "lib/components/forms/WeaponFieldGroup/ModList/ModList";
+import { getWeaponLabel, WeaponLabel } from "lib/utilities/WeaponUtilities";
 import { Dice } from "models/Dice.model";
 import { LoadoutType } from "models/Loadout.model";
 import { WeaponRange, WeaponType } from "models/Weapon.model";
@@ -9,20 +10,19 @@ import { useFormContext } from "react-hook-form";
 
 interface WeaponFieldGroupProps {
   index: number;
-  label: string;
   loadoutType: LoadoutType;
-  isEditingMods?: boolean;
+  isEditingLoadout?: boolean;
 }
 
 const WeaponFieldGroup = ({
   index,
-  label,
   loadoutType,
-  isEditingMods,
+  isEditingLoadout,
 }: WeaponFieldGroupProps) => {
   const { register } = useFormContext();
+  const weaponId = `loadouts.${loadoutType}.weapons[${index}]`;
 
-  const fieldName = `loadouts.${loadoutType}.weapons[${index}]`;
+  const weaponLabel = getWeaponLabel(index, loadoutType);
 
   const typeOptions = Object.keys(WeaponType).map((value) => (
     <option key={value} value={value}>
@@ -44,45 +44,47 @@ const WeaponFieldGroup = ({
       </option>
     ));
 
+  const hasModSlots = weaponLabel === WeaponLabel.Primary;
+
   return (
     <Box className="msc-WeaponFieldGroup">
       <div className="msc-WeaponFieldGroup__inputs">
         <FormControl variant="floating" className="msc-WeaponFieldGroup__name">
           <Input
-            id={`${fieldName}.name`}
-            placeholder={label}
+            id={`${weaponId}.name`}
+            placeholder={weaponLabel}
             size="sm"
-            {...register(`${fieldName}.name`)}
+            {...register(`${weaponId}.name`)}
           />
-          <FormLabel htmlFor={`${fieldName}.name`} size="sm">
-            {label}
+          <FormLabel htmlFor={`${weaponId}.name`} size="sm">
+            {weaponLabel}
           </FormLabel>
         </FormControl>
 
         <FormControl variant="floating" className="msc-WeaponFieldGroup__type">
           <Select
-            id={`${fieldName}.type`}
+            id={`${weaponId}.type`}
             placeholder=" "
             size="sm"
-            {...register(`${fieldName}.type`)}
+            {...register(`${weaponId}.type`)}
           >
             {typeOptions}
           </Select>
-          <FormLabel htmlFor={`${fieldName}.type`} size="sm">
+          <FormLabel htmlFor={`${weaponId}.type`} size="sm">
             Type
           </FormLabel>
         </FormControl>
 
         <FormControl variant="floating" className="msc-WeaponFieldGroup__range">
           <Select
-            id={`${fieldName}.range`}
+            id={`${weaponId}.range`}
             placeholder=" "
             size="sm"
-            {...register(`${fieldName}.range`)}
+            {...register(`${weaponId}.range`)}
           >
             {rangeOptions}
           </Select>
-          <FormLabel htmlFor={`${fieldName}.range`} size="sm">
+          <FormLabel htmlFor={`${weaponId}.range`} size="sm">
             Range
           </FormLabel>
         </FormControl>
@@ -92,22 +94,24 @@ const WeaponFieldGroup = ({
           className="msc-WeaponFieldGroup__damage"
         >
           <Select
-            id={`${fieldName}.damage`}
+            id={`${weaponId}.damage`}
             placeholder=" "
             size="sm"
-            {...register(`${fieldName}.damage`)}
+            {...register(`${weaponId}.damage`)}
           >
             {damageOptions}
           </Select>
-          <FormLabel htmlFor={`${fieldName}.damage`} size="sm">
+          <FormLabel htmlFor={`${weaponId}.damage`} size="sm">
             Damage
           </FormLabel>
         </FormControl>
 
-        <AmmoField fieldPath={fieldName} max={4} />
+        <AmmoField weaponId={weaponId} max={4} />
       </div>
 
-      <ModList modsId={`${fieldName}.mods`} />
+      {hasModSlots && (
+        <ModList modsId={`${weaponId}.mods`} isEditing={isEditingLoadout} />
+      )}
     </Box>
   );
 };

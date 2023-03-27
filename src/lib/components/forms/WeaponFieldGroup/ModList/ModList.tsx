@@ -47,14 +47,11 @@ const ModButton = ({ name, type, description }: WeaponMod) => {
 
 interface ModListProps {
   modsId: string;
-  isEditing: boolean;
+  isEditing?: boolean;
 }
 
 const ModList = ({ modsId, isEditing }: ModListProps) => {
   const { getValues } = useFormContext();
-  // const { fields } = useFieldArray({ control, name: modsId });
-
-  // const watchMods: WeaponMod[] = useWatch({ control, name: modsId });
   const mods: WeaponMod[] = getValues(modsId);
 
   return (

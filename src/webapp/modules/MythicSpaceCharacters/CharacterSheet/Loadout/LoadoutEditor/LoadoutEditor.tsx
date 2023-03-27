@@ -10,7 +10,7 @@ import {
   ModalOverlay,
 } from "@chakra-ui/react";
 import { useFieldArray, useFormContext } from "react-hook-form";
-import WeaponEditor from "webapp/modules/MythicSpaceCharacters/CharacterSheet/Loadouts/LoadoutEditor/WeaponEditor/WeaponEditor";
+import WeaponEditor from "webapp/modules/MythicSpaceCharacters/CharacterSheet/Loadout/LoadoutEditor/WeaponEditor/WeaponEditor";
 
 interface LoadoutEditorProps {
   type: LoadoutType;

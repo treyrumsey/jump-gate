@@ -8,9 +8,10 @@ import { Status } from "webapp/modules/MythicSpaceCharacters/CharacterSheet/Stat
 import { Tokens } from "webapp/modules/MythicSpaceCharacters/CharacterSheet/Tokens/Tokens";
 import { FacetType } from "models/Facet.model";
 import { CharacterSheetViewContext } from "webapp/modules/MythicSpaceCharacters/CharacterSheet/CharacterSheetViewContext";
-import CasualLoadout from "webapp/modules/MythicSpaceCharacters/CharacterSheet/Loadouts/CasualLoadout/CasualLoadout";
-import CombatLoadout from "webapp/modules/MythicSpaceCharacters/CharacterSheet/Loadouts/CombatLoadout/CombatLoadout";
+import CasualLoadout from "webapp/modules/MythicSpaceCharacters/CharacterSheet/Loadout/CasualLoadout/CasualLoadout";
+import Loadout from "webapp/modules/MythicSpaceCharacters/CharacterSheet/Loadout/Loadout";
 import Experiences from "webapp/modules/MythicSpaceCharacters/CharacterSheet/Experiences/Experiences";
+import { LoadoutType } from "models/Loadout.model";
 
 export const CharacterSheet = () => {
   const [isCombatView, setCombatView] = useState(false);
@@ -49,8 +50,8 @@ export const CharacterSheet = () => {
           </div>
           <div className="msc-CharacterSheet__dingus">
             <Status />
-            <CasualLoadout />
-            <CombatLoadout />
+            <Loadout type={LoadoutType.Casual} show={!isCombatView} />
+            <Loadout type={LoadoutType.Combat} show={isCombatView} />
             <Facets type={FacetType.Aspect} show={!isCombatView} />
             <Facets type={FacetType.Tactic} show={isCombatView} />
           </div>

@@ -9,23 +9,32 @@ import {
   Text,
   useDisclosure,
 } from "@chakra-ui/react";
-import GearFieldGroup from "lib/components/forms/GearFieldGroup/GearFieldGroup";
 import WeaponFieldGroup from "lib/components/forms/WeaponFieldGroup/WeaponFieldGroup";
+import { getWeaponLabel } from "lib/utilities/WeaponUtilities";
 import { LoadoutType } from "models/Loadout.model";
 import React from "react";
-import { useCharacterSheetViewContext } from "webapp/modules/MythicSpaceCharacters/CharacterSheet/CharacterSheetViewContext";
-import LoadoutEditor from "webapp/modules/MythicSpaceCharacters/CharacterSheet/Loadouts/LoadoutEditor/LoadoutEditor";
+import { useFieldArray, useFormContext } from "react-hook-form";
+import LoadoutEditor from "webapp/modules/MythicSpaceCharacters/CharacterSheet/Loadout/LoadoutEditor/LoadoutEditor";
 
-const CombatLoadout = () => {
-  const { isCombatView } = useCharacterSheetViewContext();
+interface LoadoutProps {
+  type: LoadoutType;
+  show?: boolean;
+}
+
+const Loadout = ({ type, show }: LoadoutProps) => {
+  const { control } = useFormContext();
+  const { fields: weaponFields } = useFieldArray({
+    control,
+    name: `loadouts.${type}.weapons`,
+  });
+
   const { isOpen, onOpen, onClose } = useDisclosure();
 
+  console.table(weaponFields);
+
   return (
-    <Box
-      className={"msc-CombatLoadout"}
-      display={isCombatView ? undefined : "none"}
-    >
-      <Card className="msc-CombatLoadout__card">
+    <Box className={"msc-Loadout"} display={show ? undefined : "none"}>
+      <Card className="msc-Loadout__card">
         <CardHeader>
           <ButtonGroup
             className="msc-Loadout__edit-toggle-group"
@@ -44,8 +53,11 @@ const CombatLoadout = () => {
             />
           </ButtonGroup>
         </CardHeader>
-        <CardBody>
-          <WeaponFieldGroup
+        <CardBody padding="0">
+          {weaponFields.map((field, index) => (
+            <WeaponFieldGroup key={field.id} index={index} loadoutType={type} />
+          ))}
+          {/* <WeaponFieldGroup
             label="Primary Weapon"
             index={0}
             loadoutType={LoadoutType.Combat}
@@ -54,7 +66,7 @@ const CombatLoadout = () => {
             label="Secondary Weapon"
             index={1}
             loadoutType={LoadoutType.Combat}
-          />
+          /> */}
           {/* <GearFieldGroup
             index={0}
             label="Gear Slot 1"
@@ -76,4 +88,4 @@ const CombatLoadout = () => {
   );
 };
 
-export default CombatLoadout;
+export default Loadout;
