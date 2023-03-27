@@ -6,33 +6,26 @@ import ViewToggle from "webapp/modules/MythicSpaceCharacters/CharacterSheet/View
 export const PersonalDetails = () => {
   const { register } = useFormContext();
 
-  const size = "md";
-  const fontSize = "1rem";
+  const size = "sm";
   // const fontSize = "1.2rem";
   return (
     <div className="msc-PersonalDetails">
-      <FormControl variant="floating">
+      <FormControl variant="floating" className="msc-PersonalDetails__name">
         <Input id="name" placeholder="Name" {...register("name")} size={size} />
-        <FormLabel htmlFor="name" fontSize={fontSize}>
-          Name
-        </FormLabel>
+        <FormLabel htmlFor="name">Name</FormLabel>
       </FormControl>
-      <FormControl variant="floating">
+      <FormControl variant="floating" className="msc-PersonalDetails__species">
         <Input
           id="species"
           placeholder="Species"
           {...register("species")}
           size={size}
         />
-        <FormLabel htmlFor="species" fontSize={fontSize}>
-          Species
-        </FormLabel>
+        <FormLabel htmlFor="species">Species</FormLabel>
       </FormControl>
-      <FormControl variant="floating">
+      <FormControl variant="floating" className="msc-PersonalDetails__ship">
         <Input id="ship" placeholder="Ship" {...register("ship")} size={size} />
-        <FormLabel htmlFor="ship" fontSize={fontSize}>
-          Ship
-        </FormLabel>
+        <FormLabel htmlFor="ship">Ship</FormLabel>
       </FormControl>
       <ViewToggle />
       <Button

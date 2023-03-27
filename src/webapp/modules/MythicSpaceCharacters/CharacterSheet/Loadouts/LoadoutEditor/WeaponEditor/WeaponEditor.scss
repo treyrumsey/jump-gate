@@ -1,0 +1,25 @@
+.msc-WeaponEditor__mods {
+}
+
+.msc-WeaponEditor__mod {
+  @include floating-labels-sm;
+  padding: 1rem 0;
+}
+
+.msc-WeaponEditor__name-form-control {
+  position: relative;
+
+  .msc-WeaponEditor__delete-button {
+    background-color: #6e120b;
+
+    border-radius: 0;
+    height: calc(100% - 2px);
+    position: absolute;
+    right: 1px;
+    top: 1px;
+
+    &:hover {
+      background-color: lighten(#6e120b, 10%);
+    }
+  }
+}

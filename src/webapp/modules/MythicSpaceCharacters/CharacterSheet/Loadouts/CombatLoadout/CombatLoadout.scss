@@ -1,5 +1,33 @@
 .msc-CombatLoadout {
+  @include is-positive-button;
+
   .chakra-card {
+    border: 1px solid var(--chakra-colors-chakra-border-color);
+  }
+
+  .chakra-card__header {
+    padding: 0;
+
+    .msc-Loadout__edit-toggle-group {
+      border-bottom: 1px solid var(--chakra-colors-chakra-border-color);
+      display: flex;
+
+      .msc-Loadout__title {
+        align-items: center;
+        display: flex;
+        flex-grow: 1;
+        justify-content: center;
+      }
+
+      .msc-Loadout__edit-toggle {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        border-top-left-radius: 0;
+      }
+    }
+  }
+
+  .chakra-card__body {
     display: grid;
     gap: 1.5rem;
     grid-template-columns: 1fr 1fr;

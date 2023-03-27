@@ -1,6 +1,6 @@
 import { Heading } from "@chakra-ui/react";
-import { Red, Blue } from "lib/components/typography/MarkdownColorOverrides";
-import Markdown from "markdown-to-jsx";
+import MarkdownView from "lib/components/typography/MarkdownView/MarkdownView";
+
 import React from "react";
 import { useFormContext } from "react-hook-form";
 
@@ -28,22 +28,7 @@ const FacetViewer = ({ buildId }: FacetViewerProps) => {
         {ability}
       </Heading>
 
-      <Markdown
-        options={{
-          wrapper: "section",
-          forceWrapper: true,
-          overrides: {
-            Red: {
-              component: Red,
-            },
-            Blue: {
-              component: Blue,
-            },
-          },
-        }}
-      >
-        {description}
-      </Markdown>
+      <MarkdownView>{description}</MarkdownView>
     </div>
   );
 };

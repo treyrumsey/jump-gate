@@ -13,7 +13,7 @@
     .msc-CharacterSheet__dingus {
       display: flex;
       flex-direction: column;
-      gap: 2rem;
+      gap: 1rem;
       grid-area: dingus;
       overflow: hidden;
     }
@@ -27,7 +27,7 @@
     }
   }
   display: grid;
-  gap: 16px 32px;
+  gap: 16px 16px;
 
   grid-template-areas:
     "details details loadout loadout loadout loadout loadout loadout loadout"

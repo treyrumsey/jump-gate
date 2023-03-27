@@ -1,0 +1,17 @@
+.msc-WeaponFieldGroup__mods {
+  .chakra-button {
+    border-radius: var(--chakra-radii-sm);
+    height: var(--chakra-sizes-4);
+  }
+
+  .msc-WeaponFieldGroup__mod-button {
+    background-color: lighten($msc-blue, 10%);
+    &:hover {
+      background-color: lighten($msc-blue, 20%);
+    }
+  }
+}
+
+// .msc-WeaponFieldGroup__mod-popover-content {
+//   box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.15), 0px 3px 9px rgba(0, 0, 0, 0.35) !important;
+// }

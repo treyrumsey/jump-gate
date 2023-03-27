@@ -10,4 +10,10 @@
   display: grid;
   gap: 14px;
   grid-area: details;
+
+  .msc-PersonalDetails__name,
+  .msc-PersonalDetails__species,
+  .msc-PersonalDetails__ship {
+    @include floating-labels-sm;
+  }
 }
