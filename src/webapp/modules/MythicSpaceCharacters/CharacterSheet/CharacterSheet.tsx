@@ -8,7 +8,6 @@ import { Status } from "webapp/modules/MythicSpaceCharacters/CharacterSheet/Stat
 import { Tokens } from "webapp/modules/MythicSpaceCharacters/CharacterSheet/Tokens/Tokens";
 import { FacetType } from "models/Facet.model";
 import { CharacterSheetViewContext } from "webapp/modules/MythicSpaceCharacters/CharacterSheet/CharacterSheetViewContext";
-import CasualLoadout from "webapp/modules/MythicSpaceCharacters/CharacterSheet/Loadout/CasualLoadout/CasualLoadout";
 import Loadout from "webapp/modules/MythicSpaceCharacters/CharacterSheet/Loadout/Loadout";
 import Experiences from "webapp/modules/MythicSpaceCharacters/CharacterSheet/Experiences/Experiences";
 import { LoadoutType } from "models/Loadout.model";
