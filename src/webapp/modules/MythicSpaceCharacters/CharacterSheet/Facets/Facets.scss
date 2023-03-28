@@ -76,6 +76,7 @@
   }
 }
 
-.chakra-modal__content.msc-FacetEditor {
+.chakra-modal__content.msc-FacetEditor,
+.chakra-modal__body.msc-Facets {
   max-width: var(--chakra-sizes-4xl);
 }

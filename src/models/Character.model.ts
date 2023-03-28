@@ -100,11 +100,7 @@ export function mockCharacter(): Character {
             ammo: 4,
             damage: Dice.d6,
             mods: [],
-            trait: {
-              name: "Sidearm",
-              description:
-                "You may carry this weapon in your secondary weapon slot and use it in your casual loadout.",
-            },
+            trait: undefined,
           },
         ],
         gear: [
@@ -151,25 +147,8 @@ export function mockCharacter(): Character {
             range: WeaponRange.Medium,
             ammo: 4,
             damage: Dice.d6,
-            mods: [
-              {
-                name: "Armor-Piercing Rounds",
-                type: WeaponModType.Ammo,
-                description:
-                  "Targets can't spend fortified tokens to reduce damage from this weapon.",
-              },
-              {
-                name: "Silencer",
-                type: WeaponModType.Special,
-                description:
-                  "This can only be installed on a pistol. You do not stop being hidden when you attack with this weapon.",
-              },
-            ],
-            trait: {
-              name: "Sidearm",
-              description:
-                "You may carry this weapon in your secondary weapon slot and use it in your casual loadout.",
-            },
+            mods: [],
+            trait: undefined,
           },
         ],
         gear: [

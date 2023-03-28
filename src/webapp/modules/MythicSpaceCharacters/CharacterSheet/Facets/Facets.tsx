@@ -59,10 +59,10 @@ const Facets = ({ show, type }: FacetsProps) => {
         <Text className="msc-Facets__title" fontSize="lg">{`${type}s`}</Text>
         <IconButton
           aria-label={`View ${type}s`}
+          borderRadius="0"
           icon={<InfoIcon />}
           size="sm"
           onClick={onOpen}
-          borderRadius="0"
         />
         <IconButton
           icon={<EditIcon />}
