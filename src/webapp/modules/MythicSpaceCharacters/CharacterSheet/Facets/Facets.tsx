@@ -62,6 +62,7 @@ const Facets = ({ show, type }: FacetsProps) => {
           icon={<InfoIcon />}
           size="sm"
           onClick={onOpen}
+          borderRadius="0"
         />
         <IconButton
           icon={<EditIcon />}
@@ -100,7 +101,7 @@ const Facets = ({ show, type }: FacetsProps) => {
 
       <Modal isOpen={isOpen} onClose={closeEditMode}>
         <ModalOverlay />
-        <ModalContent>
+        <ModalContent className="msc-FacetEditor">
           <ModalHeader textAlign="center" position="relative" paddingBottom="0">
             <ButtonGroup position="absolute" top=".82rem" left="1rem">
               <Button

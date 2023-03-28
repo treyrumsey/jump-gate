@@ -75,3 +75,7 @@
     width: 100%;
   }
 }
+
+.chakra-modal__content.msc-FacetEditor {
+  max-width: var(--chakra-sizes-4xl);
+}

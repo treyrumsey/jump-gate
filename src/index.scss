@@ -72,4 +72,6 @@ code {
   @include is-positive-button;
 
   background-color: var(--chakra-colors-chakra-body-bg) !important;
+
+  min-width: fit-content;
 }
