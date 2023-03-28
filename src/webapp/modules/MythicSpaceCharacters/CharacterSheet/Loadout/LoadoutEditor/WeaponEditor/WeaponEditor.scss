@@ -3,6 +3,10 @@
   padding: 1rem 0;
 }
 
+.msc-WeaponEditor__trait {
+  @include floating-labels-sm;
+}
+
 .msc-WeaponEditor__name-form-control {
   position: relative;
 
@@ -18,5 +22,13 @@
     &:hover {
       background-color: lighten(#6e120b, 10%);
     }
+  }
+}
+
+.msc-WeaponEditor__max-ammo {
+  max-width: 8rem;
+
+  input {
+    text-align: center;
   }
 }

@@ -8,12 +8,7 @@ import {
   LoadoutType,
 } from "models/Loadout.model";
 import { GearType } from "models/Gear.model";
-import {
-  WeaponModType,
-  WeaponRange,
-  WeaponTrait,
-  WeaponType,
-} from "models/Weapon.model";
+import { WeaponModType, WeaponRange, WeaponType } from "models/Weapon.model";
 import { Dice } from "models/Dice.model";
 
 interface CharacterLoadouts {
@@ -105,7 +100,11 @@ export function mockCharacter(): Character {
             ammo: 4,
             damage: Dice.d6,
             mods: [],
-            trait: undefined,
+            trait: {
+              name: "Sidearm",
+              description:
+                "You may carry this weapon in your secondary weapon slot and use it in your casual loadout.",
+            },
           },
         ],
         gear: [
@@ -140,7 +139,11 @@ export function mockCharacter(): Character {
                   "When you miss an attack with this weapon, you may have the attack hit another enemy in the same zone. If you do, the attack deals half damage.",
               },
             ],
-            trait: undefined,
+            trait: {
+              name: "High Crit",
+              description:
+                "This weapon deals 2 additional damage dice on a crit instead of 1.",
+            },
           },
           {
             name: "Handgun",
@@ -162,7 +165,11 @@ export function mockCharacter(): Character {
                   "This can only be installed on a pistol. You do not stop being hidden when you attack with this weapon.",
               },
             ],
-            trait: WeaponTrait.Sidearm,
+            trait: {
+              name: "Sidearm",
+              description:
+                "You may carry this weapon in your secondary weapon slot and use it in your casual loadout.",
+            },
           },
         ],
         gear: [

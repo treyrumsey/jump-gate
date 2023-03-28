@@ -3,7 +3,7 @@ import { GearType } from "models/Gear.model";
 import { LoadoutType } from "models/Loadout.model";
 import React from "react";
 import { useFormContext } from "react-hook-form";
-import { useCharacterSheetViewContext } from "webapp/modules/MythicSpaceCharacters/CharacterSheet/CharacterSheetViewContext";
+import { usePlayModeContext } from "webapp/modules/MythicSpaceCharacters/CharacterSheet/PlayModeProvider";
 
 interface GearFieldGroupProps {
   index: number;
@@ -13,7 +13,7 @@ interface GearFieldGroupProps {
 
 const GearFieldGroup = ({ index, label, loadoutType }: GearFieldGroupProps) => {
   const { register } = useFormContext();
-  const { isCombatView } = useCharacterSheetViewContext();
+  const { isCombatMode } = usePlayModeContext();
 
   const fieldName = `loadouts.${loadoutType}.gear[${index}]`;
 
@@ -37,7 +37,7 @@ const GearFieldGroup = ({ index, label, loadoutType }: GearFieldGroupProps) => {
       <FormControl
         variant="floating"
         className="msc-WeaponFieldGroup__type"
-        display={isCombatView ? undefined : "none"}
+        display={isCombatMode ? undefined : "none"}
       >
         <Select
           id={`${fieldName}.type`}

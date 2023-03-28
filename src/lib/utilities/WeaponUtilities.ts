@@ -18,3 +18,6 @@ const LoadoutWeaponLabels: Readonly<LoadoutWeaponLabelsType> = {
 export const getWeaponLabel = (index: number, loadoutType: LoadoutType) => {
   return LoadoutWeaponLabels[loadoutType][index] ?? "Weapon";
 };
+
+export const hasModSlots = (index: number, type: LoadoutType) =>
+  getWeaponLabel(index, type) === WeaponLabel.Primary;

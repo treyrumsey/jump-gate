@@ -11,6 +11,7 @@ import {
 } from "@chakra-ui/react";
 import { useFieldArray, useFormContext } from "react-hook-form";
 import WeaponEditor from "webapp/modules/MythicSpaceCharacters/CharacterSheet/Loadout/LoadoutEditor/WeaponEditor/WeaponEditor";
+import WeaponEditorProvider from "webapp/modules/MythicSpaceCharacters/CharacterSheet/Loadout/LoadoutEditor/WeaponEditor/WeaponEditorProvider";
 
 interface LoadoutEditorProps {
   type: LoadoutType;
@@ -19,24 +20,26 @@ interface LoadoutEditorProps {
 }
 
 const LoadoutEditor = ({ type, isOpen, onClose }: LoadoutEditorProps) => {
-  const fieldRoot = `loadouts.${type}.weapons`;
-
-  const { control } = useFormContext();
-  const { fields } = useFieldArray({ control, name: fieldRoot });
-
-  const buildWeaponId = (index: number) => `${fieldRoot}[${index}]`;
+  const { fields } = useFieldArray({ name: `loadouts.${type}.weapons` });
 
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
-      <ModalContent>
+      <ModalContent className="msc-LoadoutEditor">
         <ModalHeader textAlign="center" position="relative" paddingBottom="0">
           Loadout
         </ModalHeader>
         <ModalCloseButton />
-        <ModalBody className="msc-LoadoutEditor">
+        <ModalBody className="msc-LoadoutEditor__body">
           {fields.map((field, index) => (
-            <WeaponEditor key={field.id} weaponId={buildWeaponId(index)} />
+            <WeaponEditorProvider
+              key={field.id}
+              index={index}
+              isEditing={isOpen}
+              loadoutType={type}
+            >
+              <WeaponEditor />
+            </WeaponEditorProvider>
           ))}
         </ModalBody>
       </ModalContent>

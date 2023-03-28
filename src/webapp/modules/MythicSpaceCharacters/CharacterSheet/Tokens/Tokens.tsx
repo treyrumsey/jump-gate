@@ -1,9 +1,9 @@
 import TokenField from "lib/components/forms/TokenField/TokenField";
 import React from "react";
-import { useCharacterSheetViewContext } from "webapp/modules/MythicSpaceCharacters/CharacterSheet/CharacterSheetViewContext";
+import { usePlayModeContext } from "webapp/modules/MythicSpaceCharacters/CharacterSheet/PlayModeProvider";
 
 export const Tokens = () => {
-  const { isCombatView } = useCharacterSheetViewContext();
+  const { isCombatMode: isCombatMode } = usePlayModeContext();
 
   return (
     <div className="msc-Tokens">
@@ -11,24 +11,24 @@ export const Tokens = () => {
       <TokenField
         positiveName="Dodge"
         negativeName="Off-Guard"
-        show={isCombatView}
+        show={isCombatMode}
       />
       <TokenField positiveName="Empowered" negativeName="Weakened" />
       <TokenField
         positiveName="Fleet"
         negativeName="Immobilized"
-        show={isCombatView}
+        show={isCombatMode}
       />
       <TokenField positiveName="Fortified" negativeName="Vulnerable" />
       <TokenField
         positiveName="Overwatch"
         negativeName="Jammed"
-        show={isCombatView}
+        show={isCombatMode}
       />
       <TokenField
         positiveName="Regen"
         negativeName="Burn"
-        show={isCombatView}
+        show={isCombatMode}
       />
     </div>
   );

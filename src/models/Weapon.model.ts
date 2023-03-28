@@ -18,11 +18,6 @@ export enum WeaponType {
   Shotgun = "Shotgun",
 }
 
-export enum WeaponTrait {
-  FullAuto = "Full Auto",
-  Sidearm = "Sidearm",
-}
-
 export enum WeaponModType {
   Ammo = "Ammo",
   Frame = "Frame",
@@ -34,10 +29,14 @@ export enum WeaponModType {
 
 export interface WeaponMod {
   name: string;
-  type: WeaponModType | undefined;
+  type?: WeaponModType;
   description: string;
 }
 
+export interface WeaponTrait {
+  name: string;
+  description: string;
+}
 export interface Ammo {
   current: number;
   max: number;
@@ -45,11 +44,11 @@ export interface Ammo {
 
 export interface Weapon {
   name: string;
-  type: WeaponType | undefined;
-  range: WeaponRange | undefined;
-  ammo: number | undefined;
-  damage: Dice | undefined;
-  trait: WeaponTrait | undefined;
+  type?: WeaponType;
+  range?: WeaponRange;
+  ammo?: number;
+  damage?: Dice;
+  trait?: WeaponTrait;
   mods: WeaponMod[];
 }
 

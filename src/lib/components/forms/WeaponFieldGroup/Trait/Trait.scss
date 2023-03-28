@@ -1,10 +1,10 @@
-.msc-WeaponFieldGroup__mods {
+.msc-WeaponFieldGroup__trait {
   .chakra-button {
     border-radius: var(--chakra-radii-sm);
     height: var(--chakra-sizes-4);
   }
 
-  .msc-WeaponFieldGroup__mod-button {
+  .msc-WeaponFieldGroup__trait-button {
     background-color: lighten($msc-blue, 10%);
     &:hover {
       background-color: lighten($msc-blue, 20%);

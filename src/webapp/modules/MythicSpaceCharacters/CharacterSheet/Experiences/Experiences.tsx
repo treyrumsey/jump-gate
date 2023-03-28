@@ -1,12 +1,12 @@
 import { Box, FormControl, Input } from "@chakra-ui/react";
 import React from "react";
 import { useFieldArray, useFormContext } from "react-hook-form";
-import { useCharacterSheetViewContext } from "webapp/modules/MythicSpaceCharacters/CharacterSheet/CharacterSheetViewContext";
+import { usePlayModeContext } from "webapp/modules/MythicSpaceCharacters/CharacterSheet/PlayModeProvider";
 
 const getFieldPath = (index: number) => `experiences[${index}].experience`;
 
 const Experiences = () => {
-  const { isCombatView } = useCharacterSheetViewContext();
+  const { isCombatMode: isCombatMode } = usePlayModeContext();
   const { control, register } = useFormContext();
   const { fields } = useFieldArray({
     control,
@@ -16,7 +16,7 @@ const Experiences = () => {
   return (
     <Box
       className="msc-Experiences"
-      display={isCombatView ? "none" : undefined}
+      display={isCombatMode ? "none" : undefined}
     >
       {fields.map((field, index) => (
         <FormControl key={field.id}>

@@ -7,13 +7,13 @@ import { Attributes } from "webapp/modules/MythicSpaceCharacters/CharacterSheet/
 import { Status } from "webapp/modules/MythicSpaceCharacters/CharacterSheet/Status/Status";
 import { Tokens } from "webapp/modules/MythicSpaceCharacters/CharacterSheet/Tokens/Tokens";
 import { FacetType } from "models/Facet.model";
-import { CharacterSheetViewContext } from "webapp/modules/MythicSpaceCharacters/CharacterSheet/CharacterSheetViewContext";
+import PlayModeProvider from "webapp/modules/MythicSpaceCharacters/CharacterSheet/PlayModeProvider";
 import Loadout from "webapp/modules/MythicSpaceCharacters/CharacterSheet/Loadout/Loadout";
 import Experiences from "webapp/modules/MythicSpaceCharacters/CharacterSheet/Experiences/Experiences";
 import { LoadoutType } from "models/Loadout.model";
 
 export const CharacterSheet = () => {
-  const [isCombatView, setCombatView] = useState(false);
+  const [isCombatMode, setCombatMode] = useState(false);
 
   const character = mockCharacter();
 
@@ -33,7 +33,7 @@ export const CharacterSheet = () => {
   }
 
   return (
-    <CharacterSheetViewContext.Provider value={{ isCombatView, setCombatView }}>
+    <PlayModeProvider isCombatMode={isCombatMode} setCombatMode={setCombatMode}>
       <FormProvider {...useFormMethods}>
         <form
           className="msc-CharacterSheet"
@@ -49,13 +49,13 @@ export const CharacterSheet = () => {
           </div>
           <div className="msc-CharacterSheet__dingus">
             <Status />
-            <Loadout type={LoadoutType.Casual} show={!isCombatView} />
-            <Loadout type={LoadoutType.Combat} show={isCombatView} />
-            <Facets type={FacetType.Aspect} show={!isCombatView} />
-            <Facets type={FacetType.Tactic} show={isCombatView} />
+            <Loadout type={LoadoutType.Casual} show={!isCombatMode} />
+            <Loadout type={LoadoutType.Combat} show={isCombatMode} />
+            <Facets type={FacetType.Aspect} show={!isCombatMode} />
+            <Facets type={FacetType.Tactic} show={isCombatMode} />
           </div>
         </form>
       </FormProvider>
-    </CharacterSheetViewContext.Provider>
+    </PlayModeProvider>
   );
 };

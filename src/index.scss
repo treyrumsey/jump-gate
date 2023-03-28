@@ -9,6 +9,7 @@
 @import "lib/components/forms/IconNumberField/IconNumberField.scss";
 @import "lib/components/forms/TokenField/TokenField.scss";
 @import "lib/components/forms/WeaponFieldGroup/ModList/ModList.scss";
+@import "lib/components/forms/WeaponFieldGroup/Trait/Trait.scss";
 @import "lib/components/forms/WeaponFieldGroup/WeaponFieldGroup.scss";
 
 @import "lib/components/typography/MarkdownView/MarkdownView.scss";
@@ -65,7 +66,7 @@ code {
 .chakra-modal__content {
   @include desktopOrGreater {
     margin: 2rem 0 !important;
-    max-width: var(--chakra-sizes-4xl) !important;
+    max-width: var(--chakra-sizes-4xl);
   }
 
   @include is-positive-button;

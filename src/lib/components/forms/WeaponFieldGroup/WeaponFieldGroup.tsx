@@ -1,10 +1,18 @@
-import { Box, FormControl, FormLabel, Input, Select } from "@chakra-ui/react";
+import {
+  Box,
+  FormControl,
+  FormLabel,
+  Input,
+  Select,
+  Stack,
+} from "@chakra-ui/react";
 import AmmoField from "lib/components/forms/AmmoField/AmmoField";
 import ModList from "lib/components/forms/WeaponFieldGroup/ModList/ModList";
-import { getWeaponLabel, WeaponLabel } from "lib/utilities/WeaponUtilities";
+import Trait from "lib/components/forms/WeaponFieldGroup/Trait/Trait";
+import { getWeaponLabel } from "lib/utilities/WeaponUtilities";
 import { Dice } from "models/Dice.model";
 import { LoadoutType } from "models/Loadout.model";
-import { WeaponRange, WeaponType } from "models/Weapon.model";
+import { WeaponRange, WeaponTrait, WeaponType } from "models/Weapon.model";
 import React from "react";
 import { useFormContext } from "react-hook-form";
 
@@ -19,7 +27,7 @@ const WeaponFieldGroup = ({
   loadoutType,
   isEditingLoadout,
 }: WeaponFieldGroupProps) => {
-  const { register } = useFormContext();
+  const { register, getValues } = useFormContext();
   const weaponId = `loadouts.${loadoutType}.weapons[${index}]`;
 
   const weaponLabel = getWeaponLabel(index, loadoutType);
@@ -44,7 +52,9 @@ const WeaponFieldGroup = ({
       </option>
     ));
 
-  const hasModSlots = weaponLabel === WeaponLabel.Primary;
+  const hasMods = getValues(`${weaponId}.mods`).length > 0;
+  const weaponTrait: WeaponTrait = getValues(`${weaponId}.trait`);
+  const hasTrait = weaponTrait && weaponTrait.name && weaponTrait.description;
 
   return (
     <Box className="msc-WeaponFieldGroup">
@@ -109,9 +119,15 @@ const WeaponFieldGroup = ({
         <AmmoField weaponId={weaponId} max={4} />
       </div>
 
-      {hasModSlots && (
-        <ModList modsId={`${weaponId}.mods`} isEditing={isEditingLoadout} />
-      )}
+      <Stack spacing="2" direction="row">
+        {hasMods && (
+          <ModList isEditing={isEditingLoadout} modsId={`${weaponId}.mods`} />
+        )}
+
+        {hasTrait && (
+          <Trait isEditing={isEditingLoadout} traitId={`${weaponId}.trait`} />
+        )}
+      </Stack>
     </Box>
   );
 };
