@@ -26,11 +26,11 @@ const ModButton = ({ name, type, description }: WeaponMod) => {
       </PopoverTrigger>
       <PopoverContent
         className="msc-WeaponFieldGroup__mod-popover-content"
-        backdropFilter="blur(10px)"
+        backdropFilter="blur(4px)"
         bg="rgba(30, 30, 30, 0.8)"
         boxShadow="dark-lg"
       >
-        <PopoverArrow backdropFilter="blur(10px)" bg="rgba(30, 30, 30, 0.8)" />
+        <PopoverArrow backdropFilter="blur(4px)" bg="rgba(30, 30, 30, 0.8)" />
         <PopoverCloseButton />
         <PopoverHeader fontWeight="bold" fontSize="md" fontFamily="Oxanium">
           {name}

@@ -8,6 +8,7 @@ import {
 } from "@chakra-ui/react";
 import AmmoField from "lib/components/forms/AmmoField/AmmoField";
 import ModList from "lib/components/forms/WeaponFieldGroup/ModList/ModList";
+import ToHit from "lib/components/forms/WeaponFieldGroup/ToHit/ToHit";
 import Trait from "lib/components/forms/WeaponFieldGroup/Trait/Trait";
 import { getWeaponLabel } from "lib/utilities/WeaponUtilities";
 import { Dice } from "models/Dice.model";
@@ -98,7 +99,7 @@ const WeaponFieldGroup = ({
             Range
           </FormLabel>
         </FormControl>
-
+        <ToHit weaponId={weaponId} />
         <FormControl
           variant="floating"
           className="msc-WeaponFieldGroup__damage"

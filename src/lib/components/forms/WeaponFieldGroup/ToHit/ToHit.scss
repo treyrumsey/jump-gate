@@ -1,0 +1,21 @@
+.msc-WeaponFieldGroup__to-hit {
+  border: 1px solid var(--chakra-colors-chakra-border-color);
+  display: flex;
+  height: var(--chakra-sizes-8);
+  min-width: 3.5rem;
+
+  .msc-WeaponFieldGroup__to-hit-value {
+    align-self: center;
+    font-size: 14px;
+    margin: 0 auto;
+  }
+
+  .chakra-form__label {
+    background-color: var(--card-bg);
+    padding: 0 var(--chakra-space-1);
+    position: absolute;
+    transform: scale(0.85) translateY(-20px) !important;
+    transform-origin: left top;
+    width: fit-content;
+  }
+}

@@ -1,5 +1,5 @@
 import { Facet } from "models/Facet.model";
-import { Attribute, initAttribute } from "models/Attribute.model";
+import { Attribute, AttributeName } from "models/Attribute.model";
 import { buildExperience, Experience } from "models/Experience.model";
 import {
   initCasualLoadout,
@@ -15,14 +15,15 @@ interface CharacterLoadouts {
   Casual: Loadout;
   Combat: Loadout;
 }
+
+type Attributes = {
+  [key in AttributeName]: Attribute;
+};
 export interface Character {
   name: string;
   species: string;
   ship: string;
-  physique: Attribute;
-  reflex: Attribute;
-  discipline: Attribute;
-  wits: Attribute;
+  attributes: Attributes;
   experiences: Experience[];
   loadouts: CharacterLoadouts;
   Aspects: Facet[];
@@ -36,10 +37,12 @@ export function buildCharacter(): Character {
     name: "",
     species: "",
     ship: "",
-    physique: initAttribute("Physique"),
-    reflex: initAttribute("Reflex"),
-    discipline: initAttribute("Discipline"),
-    wits: initAttribute("Wits"),
+    attributes: {
+      [AttributeName.Physique]: { value: 0, xp: 0 },
+      [AttributeName.Reflex]: { value: 0, xp: 0 },
+      [AttributeName.Discipline]: { value: 0, xp: 0 },
+      [AttributeName.Wits]: { value: 0, xp: 0 },
+    },
     experiences: [
       buildExperience(""),
       buildExperience(""),
@@ -58,25 +61,11 @@ export function mockCharacter(): Character {
     name: "Drodger Cardbourde",
     species: "Human",
     ship: "Scrap on the Rocks",
-    physique: {
-      name: "Physique",
-      value: 0,
-      xp: 0,
-    },
-    reflex: {
-      name: "Reflex",
-      value: 0,
-      xp: 0,
-    },
-    discipline: {
-      name: "Discipline",
-      value: 0,
-      xp: 0,
-    },
-    wits: {
-      name: "Wits",
-      value: 0,
-      xp: 0,
+    attributes: {
+      [AttributeName.Physique]: { value: 2, xp: 4 },
+      [AttributeName.Reflex]: { value: 4, xp: 1 },
+      [AttributeName.Discipline]: { value: 3, xp: 0 },
+      [AttributeName.Wits]: { value: 0, xp: 8 },
     },
     experiences: [
       {
