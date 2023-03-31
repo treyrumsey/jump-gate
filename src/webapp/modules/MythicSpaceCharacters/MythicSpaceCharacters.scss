@@ -1,10 +1,12 @@
 .msc-MythicSpaceCharacters {
   display: flex;
   justify-content: center;
+  min-height: 100svh;
+  min-height: 100dvh;
 
   .container {
+    align-items: center;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     width: 100%;
   }

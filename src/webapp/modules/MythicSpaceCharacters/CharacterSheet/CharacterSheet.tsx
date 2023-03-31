@@ -11,6 +11,7 @@ import PlayModeProvider from "webapp/modules/MythicSpaceCharacters/CharacterShee
 import Loadout from "webapp/modules/MythicSpaceCharacters/CharacterSheet/Loadout/Loadout";
 import Experiences from "webapp/modules/MythicSpaceCharacters/CharacterSheet/Experiences/Experiences";
 import { LoadoutType } from "models/Loadout.model";
+import { Flex } from "@chakra-ui/react";
 
 export const CharacterSheet = () => {
   const [isCombatMode, setCombatMode] = useState(false);
@@ -42,18 +43,20 @@ export const CharacterSheet = () => {
           autoComplete="off"
         >
           <PersonalDetails />
-          <Attributes />
-          <div className="msc-CharacterSheet__grombles">
+          {/* <Flex direction="row"> */}
+          <div className="msc-CharacterSheet__area2">
+            <Attributes />
             <Tokens />
             <Experiences />
           </div>
-          <div className="msc-CharacterSheet__dingus">
+          <div className="msc-CharacterSheet__area3">
             <Status />
             <Loadout type={LoadoutType.Casual} show={!isCombatMode} />
             <Loadout type={LoadoutType.Combat} show={isCombatMode} />
             <Facets type={FacetType.Aspect} show={!isCombatMode} />
             <Facets type={FacetType.Tactic} show={isCombatMode} />
           </div>
+          {/* </Flex> */}
         </form>
       </FormProvider>
     </PlayModeProvider>

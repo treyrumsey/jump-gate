@@ -120,15 +120,17 @@ const WeaponFieldGroup = ({
         <AmmoField weaponId={weaponId} max={4} />
       </div>
 
-      <Stack spacing="2" direction="row">
-        {hasMods && (
-          <ModList isEditing={isEditingLoadout} modsId={`${weaponId}.mods`} />
-        )}
+      {(hasMods || hasTrait) && (
+        <Stack spacing="2" direction="row" marginTop="1.5">
+          {hasMods && (
+            <ModList isEditing={isEditingLoadout} modsId={`${weaponId}.mods`} />
+          )}
 
-        {hasTrait && (
-          <Trait isEditing={isEditingLoadout} traitId={`${weaponId}.trait`} />
-        )}
-      </Stack>
+          {hasTrait && (
+            <Trait isEditing={isEditingLoadout} traitId={`${weaponId}.trait`} />
+          )}
+        </Stack>
+      )}
     </Box>
   );
 };

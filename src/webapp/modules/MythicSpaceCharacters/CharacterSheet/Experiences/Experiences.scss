@@ -1,6 +1,7 @@
 .msc-Experiences {
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
-  justify-content: space-between;
+  // flex-grow: 1;
+  gap: 1rem;
+  margin-top: auto;
 }

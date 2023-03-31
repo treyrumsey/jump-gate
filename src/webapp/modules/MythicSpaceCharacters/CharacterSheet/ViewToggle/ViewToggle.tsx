@@ -3,12 +3,12 @@ import React from "react";
 import { usePlayModeContext } from "webapp/modules/MythicSpaceCharacters/CharacterSheet/PlayModeProvider";
 
 const ViewToggle = () => {
-  const { setCombatMode: setCombatMode } = usePlayModeContext();
+  const { setCombatMode } = usePlayModeContext();
 
   return (
     <FormControl className="msc-ViewToggle">
       <FormLabel htmlFor="ViewToggle" mb="2px">
-        Narrative
+        Casual
       </FormLabel>
       <Switch id="ViewToggle" onChange={() => setCombatMode((prev) => !prev)} />
       <FormLabel htmlFor="ViewToggle" ms="3" me="0" mb="2px">
