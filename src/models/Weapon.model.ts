@@ -42,7 +42,7 @@ export interface Weapon {
   range?: WeaponRange;
   ammo?: number;
   damage?: Dice;
-  trait?: Tag;
+  trait: Tag[];
   mods: WeaponMod[];
 }
 
@@ -52,6 +52,6 @@ export const initWeapon = (): Weapon => ({
   range: undefined,
   ammo: undefined,
   damage: undefined,
-  trait: undefined,
+  trait: [],
   mods: [],
 });

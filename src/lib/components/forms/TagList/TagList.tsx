@@ -66,13 +66,7 @@ const TagList = <T extends Tag>({
   const tags = Array.isArray(tagValues) ? tagValues : [tagValues];
 
   return (
-    <Stack
-      className="msc-TagList"
-      width="100%"
-      spacing={3}
-      direction="row"
-      align="center"
-    >
+    <Stack className="msc-TagList" spacing={3} direction="row" align="center">
       <>
         <Text
           fontFamily="Oxanium"

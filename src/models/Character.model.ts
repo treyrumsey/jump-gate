@@ -10,6 +10,7 @@ import {
 import { GearType } from "models/Gear.model";
 import { WeaponModType, WeaponRange, WeaponType } from "models/Weapon.model";
 import { Dice } from "models/Dice.model";
+import { ArmorModType } from "models/ArmorMod.model";
 
 interface CharacterLoadouts {
   Casual: Loadout;
@@ -102,7 +103,7 @@ export function mockCharacter(): Character {
             ammo: 4,
             damage: Dice.d6,
             mods: [],
-            trait: undefined,
+            trait: [],
           },
         ],
         gear: [
@@ -113,6 +114,7 @@ export function mockCharacter(): Character {
               "Cras ac tempus augue. Pellentesque in gravida justo. Duis ut libero tincidunt, placerat dolor quis, cursus tortor.",
           },
         ],
+        armorMods: [],
       },
       Combat: {
         type: LoadoutType.Combat,
@@ -137,11 +139,13 @@ export function mockCharacter(): Character {
                   "When you miss an attack with this weapon, you may have the attack hit another enemy in the same zone. If you do, the attack deals half damage.",
               },
             ],
-            trait: {
-              name: "High Crit",
-              description:
-                "This weapon deals 2 additional damage dice on a crit instead of 1.",
-            },
+            trait: [
+              {
+                name: "High Crit",
+                description:
+                  "This weapon deals 2 additional damage dice on a crit instead of 1.",
+              },
+            ],
           },
           {
             name: "Handgun",
@@ -150,7 +154,7 @@ export function mockCharacter(): Character {
             ammo: 4,
             damage: Dice.d6,
             mods: [],
-            trait: undefined,
+            trait: [],
           },
         ],
         gear: [
@@ -164,6 +168,14 @@ export function mockCharacter(): Character {
             description:
               "vulputate sit amet enim eget, ultrices hendrerit leo.",
             type: GearType.UtilityItem,
+          },
+        ],
+        armorMods: [
+          {
+            name: "Hardened Shields",
+            type: ArmorModType.Shields,
+            description:
+              "As long as your shields are up, you cannot gain <Red>vulnerable tokens</Red>.",
           },
         ],
       },

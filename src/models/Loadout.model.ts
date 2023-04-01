@@ -1,3 +1,4 @@
+import { ArmorMod } from "models/ArmorMod.model";
 import { Gear, initGear, initUtilityItem } from "models/Gear.model";
 import { initWeapon, Weapon } from "models/Weapon.model";
 
@@ -10,16 +11,19 @@ export interface Loadout {
   type: LoadoutType;
   weapons: Weapon[];
   gear: Gear[];
+  armorMods: ArmorMod[];
 }
 
 export const initCasualLoadout = (): Loadout => ({
   type: LoadoutType.Casual,
   weapons: [initWeapon()],
   gear: [initUtilityItem()],
+  armorMods: [],
 });
 
 export const initCombatLoadout = (): Loadout => ({
   type: LoadoutType.Combat,
   weapons: [initWeapon(), initWeapon()],
   gear: [initGear(), initGear()],
+  armorMods: [],
 });

@@ -3,7 +3,7 @@ import React from "react";
 import { usePlayModeContext } from "webapp/modules/MythicSpaceCharacters/CharacterSheet/PlayModeProvider";
 
 export const Tokens = () => {
-  const { isCombatMode: isCombatMode } = usePlayModeContext();
+  const { isCombatMode } = usePlayModeContext();
 
   return (
     <div className="msc-Tokens">

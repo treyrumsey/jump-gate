@@ -54,8 +54,7 @@ const WeaponFieldGroup = ({
     ));
 
   const hasMods = getValues(`${weaponId}.mods`).length > 0;
-  const weaponTrait: Tag = getValues(`${weaponId}.trait`);
-  const hasTrait = weaponTrait && weaponTrait.name && weaponTrait.description;
+  const hasTrait = getValues(`${weaponId}.trait`).length > 0;
 
   return (
     <Box className="msc-WeaponFieldGroup">

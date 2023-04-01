@@ -1,0 +1,20 @@
+.msc-TagEditor__tag {
+  @include floating-labels-sm;
+  display: flex;
+  padding: 1rem 0;
+
+  .chakra-form-control {
+    flex-grow: 1;
+    width: auto;
+  }
+
+  .msc-TagEditor__delete-button {
+    background-color: #6e120b;
+    border: 1px solid var(--chakra-colors-chakra-border-color);
+    border-radius: 0;
+
+    &:hover {
+      background-color: lighten(#6e120b, 10%);
+    }
+  }
+}

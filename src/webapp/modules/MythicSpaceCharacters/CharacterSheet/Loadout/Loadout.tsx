@@ -29,7 +29,10 @@ const Loadout = ({ type, show }: LoadoutProps) => {
   const { getValues } = useFormContext();
 
   const gearId = `loadouts.${type}.gear`;
-  const hasGear = getValues(gearId).length > 0;
+  const hasGear = getValues(gearId)?.length > 0;
+
+  const armorModsId = `loadouts.${type}.armorMods`;
+  const hasArmorMods = getValues(armorModsId)?.length > 0;
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -65,8 +68,20 @@ const Loadout = ({ type, show }: LoadoutProps) => {
             ))}
           </Stack>
 
-          {hasGear && (
-            <TagList isEditing={isOpen} listId={gearId} listName="Gear" />
+          {(hasGear || hasArmorMods) && (
+            <Stack spacing="2" direction="row">
+              {hasArmorMods && (
+                <TagList
+                  isEditing={isOpen}
+                  listId={armorModsId}
+                  listName="Armor Mods"
+                />
+              )}
+
+              {hasGear && (
+                <TagList isEditing={isOpen} listId={gearId} listName="Gear" />
+              )}
+            </Stack>
           )}
         </CardBody>
       </Card>

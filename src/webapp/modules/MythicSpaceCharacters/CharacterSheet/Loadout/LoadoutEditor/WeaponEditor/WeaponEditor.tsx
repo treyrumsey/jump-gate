@@ -8,10 +8,10 @@ import {
   Heading,
 } from "@chakra-ui/react";
 import { NumberField } from "lib/components/forms/NumberField/NumberField";
+import TagEditor from "lib/components/forms/TagEditor/TagEditor";
+import { WeaponModType } from "models/Weapon.model";
 import React from "react";
 import { useFieldArray, useFormContext } from "react-hook-form";
-import ModEditor from "webapp/modules/MythicSpaceCharacters/CharacterSheet/Loadout/LoadoutEditor/WeaponEditor/ModEditor";
-import TraitEditor from "webapp/modules/MythicSpaceCharacters/CharacterSheet/Loadout/LoadoutEditor/WeaponEditor/TraitEditor";
 import { useWeaponEditorContext } from "webapp/modules/MythicSpaceCharacters/CharacterSheet/Loadout/LoadoutEditor/WeaponEditor/WeaponEditorProvider";
 
 const WeaponEditor = () => {
@@ -25,6 +25,15 @@ const WeaponEditor = () => {
     remove: removeMod,
   } = useFieldArray({
     name: modsFieldArrayId,
+  });
+
+  const traitFieldArrayId = `${weaponId}.trait`;
+  const {
+    fields: traitFields,
+    append: appendTrait,
+    remove: removeTrait,
+  } = useFieldArray({
+    name: traitFieldArrayId,
   });
 
   const weaponName = getValues(`${weaponId}.name`);
@@ -58,9 +67,11 @@ const WeaponEditor = () => {
             Mods
           </Heading>
           {modFields.map((modField, modIndex) => (
-            <ModEditor
+            <TagEditor
               key={modField.id}
-              modId={`${modsFieldArrayId}[${modIndex}]`}
+              tagId={`${modsFieldArrayId}[${modIndex}]`}
+              tagName={"Mod"}
+              tagTypeOptions={Object.values(WeaponModType)}
               onDelete={() => removeMod(modIndex)}
             />
           ))}
@@ -78,7 +89,32 @@ const WeaponEditor = () => {
           </Button>
         </div>
       )}
-      <TraitEditor />
+      <div className="msc-WeaponEditor__trait">
+        {traitFields.length > 0 && (
+          <Heading size="sm" fontFamily="Oxanium" marginRight="auto">
+            Trait
+          </Heading>
+        )}
+
+        {traitFields.map((traitField, traitIndex) => (
+          <TagEditor
+            key={traitField.id}
+            tagId={`${traitFieldArrayId}[${traitIndex}]`}
+            tagName={"Trait"}
+            onDelete={() => removeTrait(traitIndex)}
+          />
+        ))}
+
+        <Button
+          className="is-positive"
+          leftIcon={<AddIcon />}
+          size="xs"
+          width="100%"
+          onClick={() => appendTrait({ name: "", description: "" })}
+        >
+          Add Trait
+        </Button>
+      </div>
     </Card>
   );
 };
