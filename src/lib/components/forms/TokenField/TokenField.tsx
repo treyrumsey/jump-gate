@@ -20,8 +20,10 @@ const TokenField = ({
   show = true,
 }: TokenFieldProps) => {
   const tokenName = `tokens.${positiveName + negativeName}`;
-  const { register, setValue } = useFormContext();
-  const [tokenValue, setTokenValue] = useState(0);
+  const { register, setValue, getValues } = useFormContext();
+  const [tokenValue, setTokenValue] = useState<number>(
+    getValues(tokenName) ?? 0
+  );
 
   const gainPositiveToken = () => {
     if (tokenValue === 3) return;

@@ -21,6 +21,21 @@ type Attributes = {
   [key in AttributeName]: Attribute;
 };
 
+enum TokenPair {
+  Accurate_Misfire = "AccurateMisfire",
+  Dodge_OffGuard = "DodgeOff-Guard",
+  Empowered_Weakened = "EmpoweredWeakened",
+  Fleet_Immobilized = "FleetImmobilized",
+  Fortified_Vulnerable = "FortifiedVulnerable",
+  Overwatch_Jammed = "OverwatchJammed",
+  Regen_Burn = "RegenBurn",
+}
+
+type TokenPairs = {
+  [value in TokenPair]: number;
+};
+
+type Tokens = TokenPairs & { stunned: number };
 interface StatusValue {
   current: number;
   max: number;
@@ -44,6 +59,7 @@ export interface Character {
   Aspects: Facet[];
   Tactics: Facet[];
   status: Status;
+  tokens: Tokens;
 }
 
 export function buildCharacter(): Character {
@@ -69,6 +85,16 @@ export function buildCharacter(): Character {
       supplies: { current: 10, max: 10 },
       shaken: false,
       wounded: false,
+    },
+    tokens: {
+      [TokenPair.Accurate_Misfire]: 0,
+      [TokenPair.Dodge_OffGuard]: 0,
+      [TokenPair.Empowered_Weakened]: 0,
+      [TokenPair.Fleet_Immobilized]: 0,
+      [TokenPair.Fortified_Vulnerable]: 0,
+      [TokenPair.Overwatch_Jammed]: 0,
+      [TokenPair.Regen_Burn]: 0,
+      stunned: 0,
     },
   };
 }
@@ -245,14 +271,15 @@ export function mockCharacter(): Character {
       shaken: false,
       wounded: false,
     },
-    // tokens: {
-    //   AccurateMisfire: "",
-    //   "DodgeOff-Guard": "",
-    //   EmpoweredWeakened: "",
-    //   FleetImmobilized: "",
-    //   FortifiedVulnerable: "",
-    //   OverwatchJammed: "",
-    //   RegenBurn: "",
-    // },
+    tokens: {
+      [TokenPair.Accurate_Misfire]: 1,
+      [TokenPair.Dodge_OffGuard]: -3,
+      [TokenPair.Empowered_Weakened]: 2,
+      [TokenPair.Fleet_Immobilized]: 0,
+      [TokenPair.Fortified_Vulnerable]: -2,
+      [TokenPair.Overwatch_Jammed]: 3,
+      [TokenPair.Regen_Burn]: -1,
+      stunned: 3,
+    },
   };
 }

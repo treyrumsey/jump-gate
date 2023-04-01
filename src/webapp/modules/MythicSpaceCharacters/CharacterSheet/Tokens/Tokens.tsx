@@ -1,4 +1,8 @@
+import { Divider } from "@chakra-ui/react";
 import TokenField from "lib/components/forms/TokenField/TokenField";
+import UniqueTokenField, {
+  TokenType,
+} from "lib/components/forms/TokenField/UniqueTokenField/UniqueTokenField";
 import React from "react";
 import { usePlayModeContext } from "webapp/modules/MythicSpaceCharacters/CharacterSheet/PlayModeProvider";
 
@@ -29,6 +33,14 @@ export const Tokens = () => {
         positiveName="Regen"
         negativeName="Burn"
         show={isCombatMode}
+      />
+      <Divider />
+      <UniqueTokenField
+        max={3}
+        name={"Stunned"}
+        show={isCombatMode}
+        tokenId={"tokens.stunned"}
+        type={TokenType.Negative}
       />
     </div>
   );

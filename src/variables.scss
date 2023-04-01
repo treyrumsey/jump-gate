@@ -54,3 +54,23 @@ $desktop: 1024px;
     }
   }
 }
+
+@mixin is-positive-button {
+  .is-positive {
+    background-color: $msc-blue;
+
+    &:hover {
+      background-color: lighten($msc-blue, 10%);
+    }
+  }
+}
+
+@mixin is-negative-button {
+  .is-negative {
+    background-color: $msc-red;
+
+    &:hover {
+      background-color: lighten($msc-red, 10%);
+    }
+  }
+}
