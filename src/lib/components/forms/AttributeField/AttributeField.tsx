@@ -23,7 +23,7 @@ export const AttributeField = ({ name }: AttributeFieldProps) => {
           rules={{ min: -2, max: 8 }}
           defaultValue={0}
           control={control}
-          size="lg"
+          size="md"
         />
       </FormControl>
       <FormControl className="msc-AttributeField__xp">

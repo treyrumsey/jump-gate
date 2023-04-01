@@ -54,8 +54,6 @@ const Trait = ({ isEditing, traitId }: TraitProps) => {
   const name = getValues(`${traitId}.name`);
   const description = getValues(`${traitId}.description`);
 
-  console.table({ name, description });
-
   return (
     <Stack
       className="msc-WeaponFieldGroup__trait"

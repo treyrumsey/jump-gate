@@ -1,4 +1,4 @@
-import { Box, FormControl, FormLabel, Input } from "@chakra-ui/react";
+import { Box, FormLabel } from "@chakra-ui/react";
 import { AttributeName } from "models/Attribute.model";
 import { WeaponType } from "models/Weapon.model";
 import React from "react";
@@ -29,8 +29,6 @@ const ToHit = ({ weaponId }: ToHitProps) => {
   const attribute = useWatch({
     name: `attributes.${attributeName}.value`,
   });
-
-  console.log(attributeName);
 
   let attributePrefix = "";
   if (attribute > 0) attributePrefix = "+";

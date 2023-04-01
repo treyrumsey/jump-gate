@@ -53,7 +53,7 @@ const IconNumberField = ({
   const dec = getDecrementButtonProps();
   const input = getInputProps();
 
-  const sizeValue = size === IconNumberFieldSizes.Large ? 60 : 40;
+  const sizeValue = size === IconNumberFieldSizes.Large ? 50 : 40;
   const sizePx = `${sizeValue}px`;
 
   return (

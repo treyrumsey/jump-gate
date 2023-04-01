@@ -11,7 +11,8 @@
       "area2 area3 area3 area3 area3 area3 area3 area3 area3";
     grid-template-columns: repeat(9, 1fr);
     grid-template-rows: min-content auto;
-    height: 768px;
+    height: min(768px, 100svh);
+    height: min(768px, 100dvh);
     max-width: calc(100vw - 2rem);
     min-width: 1024px;
 

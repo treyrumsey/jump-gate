@@ -1,3 +1,4 @@
+import { Checkbox } from "@chakra-ui/react";
 import IconNumberField, {
   IconNumberFieldSizes,
 } from "lib/components/forms/IconNumberField/IconNumberField";
@@ -9,32 +10,35 @@ import React from "react";
 import { useFormContext, useWatch } from "react-hook-form";
 
 export const Status = () => {
-  const { control } = useFormContext();
+  const { register } = useFormContext();
 
   const maxShields = 8;
   const shields = useWatch({
-    control,
-    name: "shields.current",
+    name: "status.shields.current",
     defaultValue: 8,
   });
 
   const maxArmor = 4;
   const armor = useWatch({
-    control,
-    name: "armor.current",
+    name: "status.armor.current",
     defaultValue: maxArmor,
   });
 
-  // const stress = useWatch({ control, name: "stress.current", defaultValue: 0 });
-  // const maxStress = 10;
+  const stress = useWatch({
+    name: "status.stress.current",
+    defaultValue: 0,
+  });
+  const maxStress = 10;
 
   const maxMP = 4;
-  const mp = useWatch({ control, name: "mp.current", defaultValue: maxMP });
+  const mp = useWatch({
+    name: "status.mp.current",
+    defaultValue: maxMP,
+  });
 
-  const maxSupplies = 10;
+  const maxSupplies = useWatch({ name: "status.supplies.max" });
   const supplies = useWatch({
-    control,
-    name: "supplies.current",
+    name: "status.supplies.current",
     defaultValue: maxSupplies,
   });
 
@@ -42,7 +46,7 @@ export const Status = () => {
     <div className="msc-Status">
       <div className="msc-Status__shields">
         <IconNumberField
-          name="shields.current"
+          name="status.shields.current"
           label="Shields"
           icon={CustomIconType.Shield}
           iconColor={
@@ -54,7 +58,7 @@ export const Status = () => {
       </div>
       <div className="msc-Status__armor">
         <IconNumberField
-          name="armor.current"
+          name="status.armor.current"
           label="Armor"
           icon={CustomIconType.Armor}
           iconColor={
@@ -64,9 +68,9 @@ export const Status = () => {
           size={IconNumberFieldSizes.Large}
         />
       </div>
-      {/* <div className="msc-Status__stress">
+      <div className="msc-Status__stress">
         <IconNumberField
-          name="stress.current"
+          name="status.stress.current"
           label="Stress"
           icon={stress === 10 ? CustomIconType.Break : CustomIconType.Stress}
           iconColor={
@@ -76,10 +80,10 @@ export const Status = () => {
           max={maxStress}
           size={IconNumberFieldSizes.Large}
         />
-      </div> */}
+      </div>
       <div className="msc-Status__mp">
         <IconNumberField
-          name="mp.current"
+          name="status.mp.current"
           label="MP"
           icon={
             mp === 0 ? CustomIconType.BatteryEmpty : CustomIconType.BatteryFull
@@ -93,7 +97,7 @@ export const Status = () => {
       </div>
       <div className="msc-Status__supplies">
         <IconNumberField
-          name="supplies.current"
+          name="status.supplies.current"
           label="Supplies"
           icon={CustomIconType.CardboardBox}
           iconColor={
@@ -102,6 +106,14 @@ export const Status = () => {
           max={maxSupplies}
           size={IconNumberFieldSizes.Large}
         />
+      </div>
+      <div className="msc-Status__checkboxes">
+        <Checkbox size="lg" colorScheme="red" {...register(`status.shaken`)}>
+          Shaken
+        </Checkbox>
+        <Checkbox size="lg" {...register(`status.wounded`)}>
+          Wounded
+        </Checkbox>
       </div>
     </div>
   );

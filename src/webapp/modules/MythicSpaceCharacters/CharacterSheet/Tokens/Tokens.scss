@@ -1,6 +1,7 @@
 .msc-Tokens {
   display: grid;
-  gap: 16px;
+  gap: 8px;
   grid-auto-rows: min-content;
+  user-select: none;
   width: 100%;
 }

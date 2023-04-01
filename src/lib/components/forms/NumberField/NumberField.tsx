@@ -45,7 +45,12 @@ export const NumberField = ({
 
   return (
     <NumberInput id={id} {...inputProps} {...rules} {...props} size={size}>
-      <NumberInputField ref={ref} placeholder={placeholder} />
+      <NumberInputField
+        ref={ref}
+        placeholder={placeholder}
+        inputMode="numeric"
+        type="number"
+      />
       <NumberInputStepper>
         <NumberIncrementStepper />
         <NumberDecrementStepper />

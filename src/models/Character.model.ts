@@ -19,6 +19,20 @@ interface CharacterLoadouts {
 type Attributes = {
   [key in AttributeName]: Attribute;
 };
+
+interface StatusValue {
+  current: number;
+  max: number;
+}
+interface Status {
+  shields: StatusValue;
+  armor: StatusValue;
+  stress: StatusValue;
+  mp: StatusValue;
+  supplies: StatusValue;
+  shaken: boolean;
+  wounded: boolean;
+}
 export interface Character {
   name: string;
   species: string;
@@ -28,8 +42,7 @@ export interface Character {
   loadouts: CharacterLoadouts;
   Aspects: Facet[];
   Tactics: Facet[];
-  shields: { current: number; max: number };
-  armor: { current: number; max: number };
+  status: Status;
 }
 
 export function buildCharacter(): Character {
@@ -43,16 +56,19 @@ export function buildCharacter(): Character {
       [AttributeName.Discipline]: { value: 0, xp: 0 },
       [AttributeName.Wits]: { value: 0, xp: 0 },
     },
-    experiences: [
-      buildExperience(""),
-      buildExperience(""),
-      buildExperience(""),
-    ],
+    experiences: [buildExperience(""), buildExperience("")],
     loadouts: { Casual: initCasualLoadout(), Combat: initCombatLoadout() },
     Aspects: [],
     Tactics: [],
-    shields: { current: 8, max: 8 },
-    armor: { current: 4, max: 4 },
+    status: {
+      shields: { current: 8, max: 8 },
+      armor: { current: 4, max: 4 },
+      stress: { current: 0, max: 10 },
+      mp: { current: 4, max: 4 },
+      supplies: { current: 10, max: 10 },
+      shaken: false,
+      wounded: false,
+    },
   };
 }
 
@@ -73,9 +89,6 @@ export function mockCharacter(): Character {
       },
       {
         experience: "Cras ac tempus augue",
-      },
-      {
-        experience: "Donec felis nun",
       },
     ],
     loadouts: {
@@ -211,13 +224,14 @@ export function mockCharacter(): Character {
         ],
       },
     ],
-    shields: {
-      current: 8,
-      max: 8,
-    },
-    armor: {
-      current: 4,
-      max: 4,
+    status: {
+      shields: { current: 8, max: 8 },
+      armor: { current: 4, max: 4 },
+      stress: { current: 0, max: 10 },
+      mp: { current: 4, max: 4 },
+      supplies: { current: 10, max: 10 },
+      shaken: false,
+      wounded: false,
     },
     // tokens: {
     //   AccurateMisfire: "",
@@ -227,15 +241,6 @@ export function mockCharacter(): Character {
     //   FortifiedVulnerable: "",
     //   OverwatchJammed: "",
     //   RegenBurn: "",
-    // },
-    // armor: {
-    //   current: 4,
-    // },
-    // mp: {
-    //   current: 4,
-    // },
-    // supplies: {
-    //   current: 10,
     // },
   };
 }

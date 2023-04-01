@@ -11,7 +11,6 @@ import PlayModeProvider from "webapp/modules/MythicSpaceCharacters/CharacterShee
 import Loadout from "webapp/modules/MythicSpaceCharacters/CharacterSheet/Loadout/Loadout";
 import Experiences from "webapp/modules/MythicSpaceCharacters/CharacterSheet/Experiences/Experiences";
 import { LoadoutType } from "models/Loadout.model";
-import { Flex } from "@chakra-ui/react";
 
 export const CharacterSheet = () => {
   const [isCombatMode, setCombatMode] = useState(false);

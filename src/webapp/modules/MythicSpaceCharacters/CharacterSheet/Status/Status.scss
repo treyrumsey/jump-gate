@@ -3,6 +3,7 @@
     display: flex;
     flex-direction: row;
     height: min-content;
+    justify-content: space-between;
   }
   // grid-template-columns: 134px 84px;
   // grid-template-rows: repeat(6, 1fr);
@@ -12,7 +13,6 @@
   flex-direction: column;
   gap: 0 14px;
   grid-area: status;
-  justify-content: center;
   // display: grid;
 
   position: relative;
@@ -104,6 +104,20 @@
       margin: 0.5rem 0 0 0;
       text-align: center;
       width: 100%;
+    }
+  }
+
+  .msc-Status__checkboxes {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-evenly;
+    width: min-content;
+
+    .chakra-checkbox__control[data-checked] {
+      background: var(--msc-red);
+      border-color: var(--msc-red);
+      color: white;
     }
   }
 }

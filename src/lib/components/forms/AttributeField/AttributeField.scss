@@ -1,20 +1,17 @@
 .msc-AttributeField {
   width: 268px;
 
-  .chakra-form-control {
-    // margin-left: 32px;
-  }
-  // background-color: black;
-  // color: white;
-
   .msc-AttributeField__value {
     display: flex;
+
+    font-family: "Oxanium";
     justify-content: space-between;
 
     input {
+      font-size: var(--chakra-fontSizes-2xl);
       padding-left: 0.5rem;
       text-align: center;
-      width: 9rem;
+      width: 8.5rem;
     }
 
     label {
@@ -37,7 +34,7 @@
     input {
       padding-left: 0.5rem;
       text-align: center;
-      width: 9rem;
+      width: 8.5rem;
     }
 
     label {

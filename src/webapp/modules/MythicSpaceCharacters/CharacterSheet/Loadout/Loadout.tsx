@@ -41,7 +41,7 @@ const Loadout = ({ type, show }: LoadoutProps) => {
             </Text>
             <IconButton
               icon={<EditIcon />}
-              className="msc-Loadout__edit-toggl is-positive"
+              className="msc-Loadout__edit-toggle is-positive"
               onClick={onOpen}
               aria-label={`Edit Combat Loadout`}
               size="sm"

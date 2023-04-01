@@ -6,7 +6,7 @@ import { usePlayModeContext } from "webapp/modules/MythicSpaceCharacters/Charact
 const getFieldPath = (index: number) => `experiences[${index}].experience`;
 
 const Experiences = () => {
-  const { isCombatMode: isCombatMode } = usePlayModeContext();
+  const { isCombatMode } = usePlayModeContext();
   const { control, register } = useFormContext();
   const { fields } = useFieldArray({
     control,
@@ -24,6 +24,7 @@ const Experiences = () => {
             id={getFieldPath(index)}
             placeholder={`Experience ${index + 1}`}
             {...register(getFieldPath(index))}
+            size="sm"
           />
         </FormControl>
       ))}
