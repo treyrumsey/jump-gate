@@ -108,7 +108,7 @@ export const Status = () => {
         />
       </div>
       <div className="msc-Status__checkboxes">
-        <Checkbox size="lg" colorScheme="red" {...register(`status.shaken`)}>
+        <Checkbox size="lg" {...register(`status.shaken`)}>
           Shaken
         </Checkbox>
         <Checkbox size="lg" {...register(`status.wounded`)}>
