@@ -34,7 +34,7 @@ export const Tokens = () => {
         negativeName="Burn"
         show={isCombatMode}
       />
-      <Divider />
+      {isCombatMode && <Divider />}
       <UniqueTokenField
         max={3}
         name={"Stunned"}

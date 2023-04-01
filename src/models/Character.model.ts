@@ -73,7 +73,11 @@ export function buildCharacter(): Character {
       [AttributeName.Discipline]: { value: 0, xp: 0 },
       [AttributeName.Wits]: { value: 0, xp: 0 },
     },
-    experiences: [buildExperience(""), buildExperience("")],
+    experiences: [
+      buildExperience(""),
+      buildExperience(""),
+      buildExperience(""),
+    ],
     loadouts: { Casual: initCasualLoadout(), Combat: initCombatLoadout() },
     Aspects: [],
     Tactics: [],
@@ -111,12 +115,10 @@ export function mockCharacter(): Character {
       [AttributeName.Wits]: { value: 0, xp: 8 },
     },
     experiences: [
-      {
-        experience: "vulputate sit amet enim eget, ultrices hendrerit leo.",
-      },
-      {
-        experience: "Cras ac tempus augue",
-      },
+      { experience: "Street Kid" },
+      { experience: "Bartender" },
+      { experience: "Asteroid Miner" },
+      { experience: "Ex-Jump Gate 273 Patrol Officer" },
     ],
     loadouts: {
       Casual: {
@@ -135,9 +137,9 @@ export function mockCharacter(): Character {
         gear: [
           {
             type: GearType.UtilityItem,
-            name: "Lorem Ipsum",
+            name: "Active Camouflage",
             description:
-              "Cras ac tempus augue. Pellentesque in gravida justo. Duis ut libero tincidunt, placerat dolor quis, cursus tortor.",
+              "You become **invisible** until the end of the combat or until you take damage.",
           },
         ],
         armorMods: [],
@@ -185,15 +187,16 @@ export function mockCharacter(): Character {
         ],
         gear: [
           {
-            name: "Flora Gypsum",
-            description: "dolor sit amet, consectetur adipiscing elit.",
+            name: "Frag Grenade - Incendiary",
+            description:
+              "\n  \n  **Frag Grenade**\n  All characters in the target zone take d6/d8/d10 area damage.\n  \n  \n  **Incendiary Grenade**\n  Characters damaged by your frag grenade gain 2/3/4 <Red>burn tokens</Red>.",
             type: GearType.Grenade,
           },
           {
-            name: "Cras purus enim",
-            description:
-              "vulputate sit amet enim eget, ultrices hendrerit leo.",
             type: GearType.UtilityItem,
+            name: "Active Camouflage",
+            description:
+              "You become **invisible** until the end of the combat or until you take damage.",
           },
         ],
         armorMods: [
@@ -208,15 +211,15 @@ export function mockCharacter(): Character {
     },
     Aspects: [
       {
-        name: "Mechanic",
-        ability: "Duct Tape",
+        name: "Spacer",
+        ability: "Rockhopper",
         description:
-          "You can attempt to repair a damaged machine or vehicle. Spend 1 supply and roll WITS.\n  \n  \n**Full Success:** The machine is no longer damaged.\n  \n  \n**Partial Success:** The machine may act as if it were not damaged until the end of the mission, but someone still needs to use the Recover downtime action to repair it fully.\n  \n  \n**Failure:** There isn’t anything that can be done for this damage.",
+          "You can operate in zero G as easily as others can in a gravity well. You ignore any difficulty increase for working in unusual gravity. You gain an <Blue>accurate token</Blue> or a <Blue>fleet token</Blue> whenever you make an action roll to maneuver or work in space.",
         upgrades: [
           {
-            upgrade: "Grounded",
+            upgrade: "Bounce Back",
             description:
-              "Whenever you fix something or interface with potentially dangerous technology, you gain a <Blue>protection token</Blue>.",
+              "You are used to taking hits and keeping on trucking. You have an extra downtime action which must be used to destress or recover. You can bring a companion with you as usual.",
           },
         ],
       },
@@ -236,28 +239,28 @@ export function mockCharacter(): Character {
     ],
     Tactics: [
       {
-        name: "Mechanic",
-        ability: "Duct Tape",
+        name: "Commando",
+        ability: "Active Camouflage",
         description:
-          "You can attempt to repair a damaged machine or vehicle. Spend 1 supply and roll WITS.\n  \n  \n**Full Success:** The machine is no longer damaged.\n  \n  \n**Partial Success:** The machine may act as if it were not damaged until the end of the mission, but someone still needs to use the Recover downtime action to repair it fully.\n  \n  \n**Failure:** There isn’t anything that can be done for this damage.",
+          "You become invisible until the end of the combat or until you take damage.",
         upgrades: [
           {
-            upgrade: "Grounded",
+            upgrade: "Elusive Shadow",
             description:
-              "Whenever you fix something or interface with potentially dangerous technology, you gain a <Blue>protection token</Blue>.",
+              "When you stop being hidden for any reason. you gain a <Blue>dodge token</Blue>.",
           },
         ],
       },
       {
-        name: "Mechanic",
-        ability: "Duct Tape",
+        name: "Grenadier",
+        ability: "Frag Grenade",
         description:
-          "You can attempt to repair a damaged machine or vehicle. Spend 1 supply and roll WITS.\n  \n  \n**Full Success:** The machine is no longer damaged.\n  \n  \n**Partial Success:** The machine may act as if it were not damaged until the end of the mission, but someone still needs to use the Recover downtime action to repair it fully.\n  \n  \n**Failure:** There isn’t anything that can be done for this damage.",
+          "All characters in the target zone take **d6/d8/d10** area damage.",
         upgrades: [
           {
-            upgrade: "Grounded",
+            upgrade: "Incendiary Grenade",
             description:
-              "Whenever you fix something or interface with potentially dangerous technology, you gain a <Blue>protection token</Blue>.",
+              "Characters damaged by your frag grenade gain 2/3/4 <Red>burn tokens</Red>.",
           },
         ],
       },

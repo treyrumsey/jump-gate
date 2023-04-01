@@ -24,7 +24,6 @@ const Experiences = () => {
             id={getFieldPath(index)}
             placeholder={`Experience ${index + 1}`}
             {...register(getFieldPath(index))}
-            size="sm"
           />
         </FormControl>
       ))}
