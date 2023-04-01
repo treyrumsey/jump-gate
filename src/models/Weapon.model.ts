@@ -1,4 +1,5 @@
 import { Dice } from "models/Dice.model";
+import { Tag } from "models/Tag";
 
 export enum WeaponRange {
   Engaged = "Engaged",
@@ -27,15 +28,8 @@ export enum WeaponModType {
   Special = "Special",
 }
 
-export interface WeaponMod {
-  name: string;
-  type?: WeaponModType;
-  description: string;
-}
-
-export interface WeaponTrait {
-  name: string;
-  description: string;
+export interface WeaponMod extends Tag {
+  type: WeaponModType;
 }
 export interface Ammo {
   current: number;
@@ -48,7 +42,7 @@ export interface Weapon {
   range?: WeaponRange;
   ammo?: number;
   damage?: Dice;
-  trait?: WeaponTrait;
+  trait?: Tag;
   mods: WeaponMod[];
 }
 

@@ -108,7 +108,7 @@ export function mockCharacter(): Character {
         gear: [
           {
             type: GearType.UtilityItem,
-            name: "Dingus Dangus Dongus",
+            name: "Lorem Ipsum",
             description:
               "Cras ac tempus augue. Pellentesque in gravida justo. Duis ut libero tincidunt, placerat dolor quis, cursus tortor.",
           },
@@ -155,12 +155,12 @@ export function mockCharacter(): Character {
         ],
         gear: [
           {
-            name: "Lorem ipsum",
+            name: "Flora Gypsum",
             description: "dolor sit amet, consectetur adipiscing elit.",
             type: GearType.Grenade,
           },
           {
-            name: " Cras purus enim",
+            name: "Cras purus enim",
             description:
               "vulputate sit amet enim eget, ultrices hendrerit leo.",
             type: GearType.UtilityItem,

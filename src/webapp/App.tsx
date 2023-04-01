@@ -11,6 +11,7 @@ import { getFirestore } from "firebase/firestore";
 import MythicSpaceCharacters from "webapp/modules/MythicSpaceCharacters/MythicSpaceCharacters";
 import { theme } from "theme";
 import { useEffect } from "react";
+import SignIn from "webapp/modules/SignIn/SignIn";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCy_9N-vn08k2ZmYolMdgmF_xwDPd1dqkU",
@@ -21,9 +22,9 @@ const firebaseConfig = {
   appId: "1:67611856867:web:4f38e437075ea13f8f1ad6",
 };
 
-const app = initializeApp(firebaseConfig);
-export const auth = getAuth(app);
-export const firestore = getFirestore(app);
+export const firebaseApp = initializeApp(firebaseConfig);
+export const auth = getAuth(firebaseApp);
+export const firestore = getFirestore(firebaseApp);
 
 function App() {
   const [user] = useAuthState(auth);
@@ -32,8 +33,7 @@ function App() {
   return (
     <ChakraProvider data-theme="dark" theme={theme}>
       <ForceDarkMode>
-        {/* <section>{user ? <MythicSpaceCharacters /> : <SignIn />}</section> */}
-        <MythicSpaceCharacters />
+        <section>{user ? <MythicSpaceCharacters /> : <SignIn />}</section>
       </ForceDarkMode>
     </ChakraProvider>
   );

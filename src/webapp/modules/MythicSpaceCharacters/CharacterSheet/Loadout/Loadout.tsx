@@ -6,13 +6,15 @@ import {
   CardBody,
   CardHeader,
   IconButton,
+  Stack,
   Text,
   useDisclosure,
 } from "@chakra-ui/react";
+import TagList from "lib/components/forms/TagList/TagList";
 import WeaponFieldGroup from "lib/components/forms/WeaponFieldGroup/WeaponFieldGroup";
 import { LoadoutType } from "models/Loadout.model";
 import React from "react";
-import { useFieldArray } from "react-hook-form";
+import { useFieldArray, useFormContext } from "react-hook-form";
 import LoadoutEditor from "webapp/modules/MythicSpaceCharacters/CharacterSheet/Loadout/LoadoutEditor/LoadoutEditor";
 
 interface LoadoutProps {
@@ -24,6 +26,10 @@ const Loadout = ({ type, show }: LoadoutProps) => {
   const { fields: weapons } = useFieldArray({
     name: `loadouts.${type}.weapons`,
   });
+  const { getValues } = useFormContext();
+
+  const gearId = `loadouts.${type}.gear`;
+  const hasGear = getValues(gearId).length > 0;
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -49,9 +55,19 @@ const Loadout = ({ type, show }: LoadoutProps) => {
           </ButtonGroup>
         </CardHeader>
         <CardBody padding="0">
-          {weapons.map((field, index) => (
-            <WeaponFieldGroup key={field.id} index={index} loadoutType={type} />
-          ))}
+          <Stack width="100%" gap="0.875rem">
+            {weapons.map((field, index) => (
+              <WeaponFieldGroup
+                key={field.id}
+                index={index}
+                loadoutType={type}
+              />
+            ))}
+          </Stack>
+
+          {hasGear && (
+            <TagList isEditing={isOpen} listId={gearId} listName="Gear" />
+          )}
         </CardBody>
       </Card>
       <LoadoutEditor isOpen={isOpen} onClose={onClose} type={type} />

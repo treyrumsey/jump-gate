@@ -12,20 +12,20 @@ import {
   Text,
 } from "@chakra-ui/react";
 import MarkdownView from "lib/components/typography/MarkdownView/MarkdownView";
-import { WeaponMod } from "models/Weapon.model";
+import { Tag } from "models/Tag";
 import React from "react";
 import { useFormContext } from "react-hook-form";
 
-const ModButton = ({ name, type, description }: WeaponMod) => {
+const TagButton = ({ name, type, description }: Tag) => {
   return (
     <Popover>
       <PopoverTrigger>
-        <Button className="msc-WeaponFieldGroup__mod-button" size="xs">
+        <Button className="msc-TagList__tag-button" size="xs">
           {name}
         </Button>
       </PopoverTrigger>
       <PopoverContent
-        className="msc-WeaponFieldGroup__mod-popover-content"
+        className="msc-TagList__tag-button-popover-content"
         backdropFilter="blur(4px)"
         bg="rgba(30, 30, 30, 0.8)"
         boxShadow="dark-lg"
@@ -36,9 +36,12 @@ const ModButton = ({ name, type, description }: WeaponMod) => {
           {name}
         </PopoverHeader>
         <PopoverBody>
-          <Text fontWeight="bold" fontSize="sm">
-            {`[${type}]`}
-          </Text>
+          {type ? (
+            <Text fontWeight="bold" fontSize="sm">
+              {`[${type}]`}
+            </Text>
+          ) : null}
+
           <MarkdownView>{description}</MarkdownView>
         </PopoverBody>
       </PopoverContent>
@@ -46,18 +49,25 @@ const ModButton = ({ name, type, description }: WeaponMod) => {
   );
 };
 
-interface ModListProps {
-  modsId: string;
+interface TagListProps {
   isEditing?: boolean;
+  listId: string;
+  listName: string;
 }
 
-const ModList = ({ modsId, isEditing }: ModListProps) => {
+const TagList = <T extends Tag>({
+  isEditing,
+  listId,
+  listName,
+}: TagListProps) => {
   const { getValues } = useFormContext();
-  const mods: WeaponMod[] = getValues(modsId);
+  const tagValues: T[] | T = getValues(listId);
+
+  const tags = Array.isArray(tagValues) ? tagValues : [tagValues];
 
   return (
     <Stack
-      className="msc-WeaponFieldGroup__mods"
+      className="msc-TagList"
       width="100%"
       spacing={3}
       direction="row"
@@ -70,16 +80,16 @@ const ModList = ({ modsId, isEditing }: ModListProps) => {
           fontWeight="bold"
           paddingLeft="3"
         >
-          Mods:
+          {`${listName}:`}
         </Text>
         {isEditing ? (
           <Skeleton height="1rem" width="100%" />
         ) : (
-          mods.map((mod, index) => <ModButton key={index} {...mod} />)
+          tags.map((tag, index) => <TagButton key={index} {...tag} />)
         )}
       </>
     </Stack>
   );
 };
 
-export default ModList;
+export default TagList;

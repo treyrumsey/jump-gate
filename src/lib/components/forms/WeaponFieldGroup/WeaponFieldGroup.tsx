@@ -7,13 +7,13 @@ import {
   Stack,
 } from "@chakra-ui/react";
 import AmmoField from "lib/components/forms/AmmoField/AmmoField";
-import ModList from "lib/components/forms/WeaponFieldGroup/ModList/ModList";
+import TagList from "lib/components/forms/TagList/TagList";
 import ToHit from "lib/components/forms/WeaponFieldGroup/ToHit/ToHit";
-import Trait from "lib/components/forms/WeaponFieldGroup/Trait/Trait";
 import { getWeaponLabel } from "lib/utilities/WeaponUtilities";
 import { Dice } from "models/Dice.model";
 import { LoadoutType } from "models/Loadout.model";
-import { WeaponRange, WeaponTrait, WeaponType } from "models/Weapon.model";
+import { Tag } from "models/Tag";
+import { WeaponRange, WeaponType } from "models/Weapon.model";
 import React from "react";
 import { useFormContext } from "react-hook-form";
 
@@ -54,7 +54,7 @@ const WeaponFieldGroup = ({
     ));
 
   const hasMods = getValues(`${weaponId}.mods`).length > 0;
-  const weaponTrait: WeaponTrait = getValues(`${weaponId}.trait`);
+  const weaponTrait: Tag = getValues(`${weaponId}.trait`);
   const hasTrait = weaponTrait && weaponTrait.name && weaponTrait.description;
 
   return (
@@ -123,11 +123,19 @@ const WeaponFieldGroup = ({
       {(hasMods || hasTrait) && (
         <Stack spacing="2" direction="row" marginTop="1.5">
           {hasMods && (
-            <ModList isEditing={isEditingLoadout} modsId={`${weaponId}.mods`} />
+            <TagList
+              isEditing={isEditingLoadout}
+              listId={`${weaponId}.mods`}
+              listName="Mods"
+            />
           )}
 
           {hasTrait && (
-            <Trait isEditing={isEditingLoadout} traitId={`${weaponId}.trait`} />
+            <TagList
+              isEditing={isEditingLoadout}
+              listId={`${weaponId}.trait`}
+              listName="Trait"
+            />
           )}
         </Stack>
       )}
