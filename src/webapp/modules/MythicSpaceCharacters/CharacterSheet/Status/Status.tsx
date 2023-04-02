@@ -15,13 +15,11 @@ export const Status = () => {
   const maxShields = 8;
   const shields = useWatch({
     name: "status.shields.current",
-    defaultValue: 8,
   });
 
   const maxArmor = 4;
   const armor = useWatch({
     name: "status.armor.current",
-    defaultValue: maxArmor,
   });
 
   const stress = useWatch({
@@ -33,77 +31,79 @@ export const Status = () => {
   const maxMP = 4;
   const mp = useWatch({
     name: "status.mp.current",
-    defaultValue: maxMP,
   });
 
   const maxSupplies = useWatch({ name: "status.supplies.max" });
   const supplies = useWatch({
     name: "status.supplies.current",
-    defaultValue: maxSupplies,
   });
 
   return (
     <div className="msc-Status">
       <div className="msc-Status__shields">
         <IconNumberField
-          name="status.shields.current"
-          label="Shields"
+          defaultValue={shields}
           icon={CustomIconType.Shield}
           iconColor={
             shields === 0 ? CustomIconColor.BadNews : CustomIconColor.Default
           }
+          label="Shields"
           max={maxShields}
+          name="status.shields.current"
           size={IconNumberFieldSizes.Large}
         />
       </div>
       <div className="msc-Status__armor">
         <IconNumberField
-          name="status.armor.current"
-          label="Armor"
+          defaultValue={armor}
           icon={CustomIconType.Armor}
           iconColor={
             armor === 0 ? CustomIconColor.BadNews : CustomIconColor.Default
           }
+          label="Armor"
           max={maxArmor}
+          name="status.armor.current"
           size={IconNumberFieldSizes.Large}
         />
       </div>
       <div className="msc-Status__stress">
         <IconNumberField
-          name="status.stress.current"
-          label="Stress"
+          defaultValue={stress}
           icon={stress === 10 ? CustomIconType.Break : CustomIconType.Stress}
           iconColor={
             stress === 10 ? CustomIconColor.BadNews : CustomIconColor.Default
           }
-          defaultValue={0}
+          label="Stress"
           max={maxStress}
+          name="status.stress.current"
           size={IconNumberFieldSizes.Large}
         />
       </div>
       <div className="msc-Status__mp">
         <IconNumberField
-          name="status.mp.current"
-          label="MP"
+          defaultValue={mp}
           icon={
             mp === 0 ? CustomIconType.BatteryEmpty : CustomIconType.BatteryFull
           }
           iconColor={
             mp === 0 ? CustomIconColor.BadNews : CustomIconColor.Default
           }
+          label="MP"
           max={maxMP}
+          name="status.mp.current"
           size={IconNumberFieldSizes.Large}
         />
       </div>
       <div className="msc-Status__supplies">
         <IconNumberField
-          name="status.supplies.current"
-          label="Supplies"
+          defaultValue={supplies}
           icon={CustomIconType.CardboardBox}
           iconColor={
             supplies === 0 ? CustomIconColor.BadNews : CustomIconColor.Default
           }
+          label="Supplies"
           max={maxSupplies}
+          name="status.supplies.current"
           size={IconNumberFieldSizes.Large}
         />
       </div>

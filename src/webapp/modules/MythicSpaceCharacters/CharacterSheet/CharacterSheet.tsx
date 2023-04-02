@@ -11,11 +11,14 @@ import PlayModeProvider from "webapp/modules/MythicSpaceCharacters/CharacterShee
 import Loadout from "webapp/modules/MythicSpaceCharacters/CharacterSheet/Loadout/Loadout";
 import Experiences from "webapp/modules/MythicSpaceCharacters/CharacterSheet/Experiences/Experiences";
 import { LoadoutType } from "models/Loadout.model";
+import CharacterListener from "webapp/modules/MythicSpaceCharacters/CharacterSheet/CharacterListener";
 
-export const CharacterSheet = () => {
+interface CharacterSheetProps {
+  character: Character;
+}
+
+export const CharacterSheet = ({ character }: CharacterSheetProps) => {
   const [isCombatMode, setCombatMode] = useState(false);
-
-  const character = mockCharacter();
 
   const useFormMethods = useForm({
     defaultValues: character,
@@ -41,6 +44,7 @@ export const CharacterSheet = () => {
           id="character-sheet-form"
           autoComplete="off"
         >
+          <CharacterListener />
           <PersonalDetails />
           {/* <Flex direction="row"> */}
           <div className="msc-CharacterSheet__area2">

@@ -33,7 +33,8 @@ function App() {
   return (
     <ChakraProvider data-theme="dark" theme={theme}>
       <ForceDarkMode>
-        <section>{user ? <MythicSpaceCharacters /> : <SignIn />}</section>
+        {/* <section>{user ? <MythicSpaceCharacters /> : <SignIn />}</section> */}
+        <MythicSpaceCharacters />
       </ForceDarkMode>
     </ChakraProvider>
   );
