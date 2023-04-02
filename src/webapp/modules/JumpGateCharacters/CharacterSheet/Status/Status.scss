@@ -1,9 +1,11 @@
 .jg-Status {
   @include desktopOrGreater {
+    align-self: center;
     display: flex;
     flex-direction: row;
     height: min-content;
     justify-content: space-between;
+    width: min(100%, 760px);
   }
 
   align-items: center;
@@ -14,26 +16,26 @@
 
   position: relative;
 
-  .jg-Status__shields {
+  .jg-Status__Shields {
     grid-column: 1 / span 3;
     grid-row: 1;
   }
-  .jg-Status__armor {
+  .jg-Status__Armor {
     grid-column: 4 / span 3;
     grid-row: 1;
   }
 
-  .jg-Status__stress {
+  .jg-Status__Stress {
     grid-column: 1 / span 2;
     grid-row: 2;
   }
 
-  .jg-Status__mp {
+  .jg-Status__MP {
     grid-column: 3 / span 2;
     grid-row: 2;
   }
 
-  .jg-Status__supplies {
+  .jg-Status__Supplies {
     grid-column: 5 / span 2;
     grid-row: 2;
   }
@@ -48,11 +50,11 @@
     grid-row: 2;
   }
 
-  .jg-Status__shields,
-  .jg-Status__armor,
-  .jg-Status__stress,
-  .jg-Status__mp,
-  .jg-Status__supplies {
+  .jg-Status__Shields,
+  .jg-Status__Armor,
+  .jg-Status__Stress,
+  .jg-Status__MP,
+  .jg-Status__Supplies {
     input {
       text-align: center;
     }

@@ -10,8 +10,8 @@ import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import JumpGateCharacters from "webapp/modules/JumpGateCharacters/JumpGateCharacters";
 import { theme } from "theme";
-import { useEffect } from "react";
 import SignIn from "webapp/modules/SignIn/SignIn";
+import { initializeMetaTags } from "lib/utilities/MetaTagUtilites";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCy_9N-vn08k2ZmYolMdgmF_xwDPd1dqkU",
@@ -28,7 +28,10 @@ export const firestore = getFirestore(firebaseApp);
 
 function App() {
   const [user] = useAuthState(auth);
-  console.log(user?.uid ?? "no user found");
+
+  React.useEffect(() => {
+    initializeMetaTags();
+  }, []);
 
   return (
     <ChakraProvider data-theme="dark" theme={theme}>
@@ -43,7 +46,7 @@ function App() {
 function ForceDarkMode(props: { children: JSX.Element }) {
   const { colorMode, toggleColorMode } = useColorMode();
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (colorMode === "dark") return;
     toggleColorMode();
   }, [colorMode, toggleColorMode]);

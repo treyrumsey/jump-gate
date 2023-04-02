@@ -1,13 +1,13 @@
-import { Button, FormControl, FormLabel, Input } from "@chakra-ui/react";
+import { FormControl, FormLabel, Input } from "@chakra-ui/react";
 import React from "react";
 import { useFormContext } from "react-hook-form";
+import GeneralEditButton from "webapp/modules/JumpGateCharacters/CharacterSheet/GeneralEditor/GeneralEditButton";
 import ViewToggle from "webapp/modules/JumpGateCharacters/CharacterSheet/ViewToggle/ViewToggle";
 
 export const PersonalDetails = () => {
   const { register } = useFormContext();
 
   const size = "sm";
-  // const fontSize = "1.2rem";
   return (
     <div className="jg-PersonalDetails">
       <FormControl variant="floating" className="jg-PersonalDetails__name">
@@ -28,14 +28,15 @@ export const PersonalDetails = () => {
         <FormLabel htmlFor="ship">Ship</FormLabel>
       </FormControl>
       <ViewToggle />
-      <Button
+      <GeneralEditButton />
+      {/* <Button
         className="jg-CharacterSheet__save"
         type="submit"
         form="character-sheet-form"
         size="xs"
       >
         Save
-      </Button>
+      </Button> */}
       {/* <IconButton
         aria-label="refresh page"
         icon={<SpinnerIcon />}

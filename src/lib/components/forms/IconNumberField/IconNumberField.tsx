@@ -5,26 +5,26 @@ import CustomIcon, {
   CustomIconType,
 } from "lib/components/icons/CustomIcon";
 import React from "react";
-import { useController, useFormContext } from "react-hook-form";
+import { useController, useFormContext, useWatch } from "react-hook-form";
 
 export enum IconNumberFieldSizes {
   Small = "is-small",
   Large = "is-large",
 }
 interface IconNumberFieldProps {
-  name: string;
+  fieldId: string;
   label: string;
   icon: CustomIconType;
   iconColor?: CustomIconColor;
   size: IconNumberFieldSizes;
   max: number;
+  maxId: string;
   defaultValue?: number;
-  altIcon?: CustomIconType;
-  altIconDisplayValue?: number;
 }
 
 const IconNumberField = ({
-  name,
+  fieldId,
+  maxId,
   label,
   icon,
   iconColor = CustomIconColor.Default,
@@ -34,14 +34,19 @@ const IconNumberField = ({
 }: IconNumberFieldProps) => {
   const { control } = useFormContext();
   const { field } = useController({
-    name,
+    name: fieldId,
     control,
     defaultValue: defaultValue,
   });
+
+  const maxValue = useWatch({ name: maxId, defaultValue: max });
+  const getMax = () => parseInt(maxValue);
+
   const { getIncrementButtonProps, getDecrementButtonProps, getInputProps } =
     useNumberInput({
       step: 1,
       min: 0,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       max: max,
       precision: 0,
       defaultValue: defaultValue ?? 0,
@@ -61,11 +66,11 @@ const IconNumberField = ({
       <Box className="jg-IconNumberField__group" height={sizePx}>
         <CustomIcon icon={icon} size={sizeValue} fill={iconColor} />
         <IconButton
-          aria-label={`Subtract 1 from ${name}`}
+          aria-label={`Subtract 1 from ${fieldId}`}
           icon={<MinusIcon />}
-          size={size === IconNumberFieldSizes.Large ? "xs" : "xs"}
+          size="xs"
           {...dec}
-          tabIndex={field.value === 0 ? -1 : 0}
+          tabIndex={parseInt(field.value) === 0 ? -1 : 0}
         />
         <Input
           {...input}
@@ -77,7 +82,7 @@ const IconNumberField = ({
           onMouseDown={(event) => event.preventDefault()}
         />
         <IconButton
-          aria-label={`Add 1 to ${name}`}
+          aria-label={`Add 1 to ${fieldId}`}
           icon={<AddIcon />}
           size={size === IconNumberFieldSizes.Large ? "xs" : "xs"}
           {...inc}

@@ -8,7 +8,7 @@
     grid-template-rows: min-content auto;
     height: min(768px, 100svh);
     height: min(768px, 100dvh);
-    max-width: calc(100vw - 2rem);
+    max-width: min(calc(100vw - 2rem), 1280px);
     min-width: 1024px;
 
     .jg-CharacterSheet__area2 {

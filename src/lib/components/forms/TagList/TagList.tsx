@@ -79,12 +79,7 @@ const TagList = <T extends Tag>({
   return (
     <Stack className="jg-TagList" spacing={3} direction="row" align="center">
       <>
-        <Text
-          fontFamily="Oxanium"
-          fontSize="xs"
-          fontWeight="bold"
-          paddingLeft="3"
-        >
+        <Text fontSize="xs" fontWeight="bold" paddingLeft="3">
           {`${listName}:`}
         </Text>
         {isEditing ? (
