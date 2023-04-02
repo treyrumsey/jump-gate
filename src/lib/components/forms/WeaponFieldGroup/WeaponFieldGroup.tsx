@@ -12,7 +12,6 @@ import ToHit from "lib/components/forms/WeaponFieldGroup/ToHit/ToHit";
 import { getWeaponLabel } from "lib/utilities/WeaponUtilities";
 import { Dice } from "models/Dice.model";
 import { LoadoutType } from "models/Loadout.model";
-import { Tag } from "models/Tag";
 import { WeaponRange, WeaponType } from "models/Weapon.model";
 import React from "react";
 import { useFormContext } from "react-hook-form";
@@ -131,6 +130,7 @@ const WeaponFieldGroup = ({
 
           {hasTrait && (
             <TagList
+              colorScheme="facebook"
               isEditing={isEditingLoadout}
               listId={`${weaponId}.trait`}
               listName="Trait"

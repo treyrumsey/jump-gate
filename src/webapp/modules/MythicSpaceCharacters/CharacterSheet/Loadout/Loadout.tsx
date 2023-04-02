@@ -72,6 +72,7 @@ const Loadout = ({ type, show }: LoadoutProps) => {
             <Stack spacing="2" direction="row">
               {hasArmorMods && (
                 <TagList
+                  colorScheme="telegram"
                   isEditing={isOpen}
                   listId={armorModsId}
                   listName="Armor Mods"
@@ -79,7 +80,12 @@ const Loadout = ({ type, show }: LoadoutProps) => {
               )}
 
               {hasGear && (
-                <TagList isEditing={isOpen} listId={gearId} listName="Gear" />
+                <TagList
+                  colorScheme="green"
+                  isEditing={isOpen}
+                  listId={gearId}
+                  listName="Gear"
+                />
               )}
             </Stack>
           )}

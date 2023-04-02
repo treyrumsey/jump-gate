@@ -11,16 +11,26 @@ import {
   Stack,
   Text,
 } from "@chakra-ui/react";
+import classNames from "classnames";
 import MarkdownView from "lib/components/typography/MarkdownView/MarkdownView";
 import { Tag } from "models/Tag";
 import React from "react";
 import { useFormContext } from "react-hook-form";
 
-const TagButton = ({ name, type, description }: Tag) => {
+const TagButton = ({
+  name,
+  type,
+  description,
+  colorScheme,
+}: Tag & { colorScheme?: string }) => {
+  const buttonClasses = classNames("msc-TagList__tag-button", {
+    "is-default-color": !colorScheme,
+  });
+
   return (
     <Popover>
       <PopoverTrigger>
-        <Button className="msc-TagList__tag-button" size="xs">
+        <Button className={buttonClasses} size="xs" colorScheme={colorScheme}>
           {name}
         </Button>
       </PopoverTrigger>
@@ -41,7 +51,6 @@ const TagButton = ({ name, type, description }: Tag) => {
               {`[${type}]`}
             </Text>
           ) : null}
-
           <MarkdownView>{description}</MarkdownView>
         </PopoverBody>
       </PopoverContent>
@@ -50,12 +59,14 @@ const TagButton = ({ name, type, description }: Tag) => {
 };
 
 interface TagListProps {
+  colorScheme?: string;
   isEditing?: boolean;
   listId: string;
   listName: string;
 }
 
 const TagList = <T extends Tag>({
+  colorScheme,
   isEditing,
   listId,
   listName,
@@ -79,7 +90,9 @@ const TagList = <T extends Tag>({
         {isEditing ? (
           <Skeleton height="1rem" width="100%" />
         ) : (
-          tags.map((tag, index) => <TagButton key={index} {...tag} />)
+          tags.map((tag, index) => (
+            <TagButton key={index} {...tag} colorScheme={colorScheme} />
+          ))
         )}
       </>
     </Stack>
