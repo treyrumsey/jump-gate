@@ -56,9 +56,9 @@ const WeaponFieldGroup = ({
   const hasTrait = getValues(`${weaponId}.trait`).length > 0;
 
   return (
-    <Box className="msc-WeaponFieldGroup">
-      <div className="msc-WeaponFieldGroup__inputs">
-        <FormControl variant="floating" className="msc-WeaponFieldGroup__name">
+    <Box className="jg-WeaponFieldGroup">
+      <div className="jg-WeaponFieldGroup__inputs">
+        <FormControl variant="floating" className="jg-WeaponFieldGroup__name">
           <Input
             id={`${weaponId}.name`}
             placeholder={weaponLabel}
@@ -70,7 +70,7 @@ const WeaponFieldGroup = ({
           </FormLabel>
         </FormControl>
 
-        <FormControl variant="floating" className="msc-WeaponFieldGroup__type">
+        <FormControl variant="floating" className="jg-WeaponFieldGroup__type">
           <Select
             id={`${weaponId}.type`}
             placeholder=" "
@@ -84,7 +84,7 @@ const WeaponFieldGroup = ({
           </FormLabel>
         </FormControl>
 
-        <FormControl variant="floating" className="msc-WeaponFieldGroup__range">
+        <FormControl variant="floating" className="jg-WeaponFieldGroup__range">
           <Select
             id={`${weaponId}.range`}
             placeholder=" "
@@ -98,10 +98,7 @@ const WeaponFieldGroup = ({
           </FormLabel>
         </FormControl>
         <ToHit weaponId={weaponId} />
-        <FormControl
-          variant="floating"
-          className="msc-WeaponFieldGroup__damage"
-        >
+        <FormControl variant="floating" className="jg-WeaponFieldGroup__damage">
           <Select
             id={`${weaponId}.damage`}
             placeholder=" "

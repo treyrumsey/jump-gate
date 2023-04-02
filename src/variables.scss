@@ -1,14 +1,14 @@
-$msc-blue: #183e6f;
-$msc-red: #6e120b;
+$jg-blue: #183e6f;
+$jg-red: #6e120b;
 
-$msc-light-blue: lighten($msc-blue, 30%);
-$msc-light-red: lighten($msc-red, 15%);
+$jg-light-blue: lighten($jg-blue, 30%);
+$jg-light-red: lighten($jg-red, 15%);
 
 :root {
-  --msc-blue: #{$msc-blue};
-  --msc-red: #{$msc-red};
-  --msc-light-blue: #{$msc-light-blue};
-  --msc-light-red: #{$msc-light-red};
+  --jg-blue: #{$jg-blue};
+  --jg-red: #{$jg-red};
+  --jg-light-blue: #{$jg-light-blue};
+  --jg-light-red: #{$jg-light-red};
 }
 
 /* Media Queries */
@@ -47,30 +47,30 @@ $desktop: 1024px;
 
 @mixin is-positive-button {
   .is-positive {
-    background-color: $msc-blue;
+    background-color: $jg-blue;
 
     &:hover {
-      background-color: lighten($msc-blue, 10%);
+      background-color: lighten($jg-blue, 10%);
     }
   }
 }
 
 @mixin is-positive-button {
   .is-positive {
-    background-color: $msc-blue;
+    background-color: $jg-blue;
 
     &:hover {
-      background-color: lighten($msc-blue, 10%);
+      background-color: lighten($jg-blue, 10%);
     }
   }
 }
 
 @mixin is-negative-button {
   .is-negative {
-    background-color: $msc-red;
+    background-color: $jg-red;
 
     &:hover {
-      background-color: lighten($msc-red, 10%);
+      background-color: lighten($jg-red, 10%);
     }
   }
 }

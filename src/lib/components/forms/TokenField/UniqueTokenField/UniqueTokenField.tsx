@@ -66,12 +66,12 @@ const UniqueTokenField = ({
 
   return (
     <FormControl
-      className="msc-UniqueTokenField"
+      className="jg-UniqueTokenField"
       display={show ? "grid" : "none"}
     >
       <Button
         aria-label={`Gain ${name} token`}
-        className={`msc-UniqueTokenField__button ${buttonClass}`}
+        className={`jg-UniqueTokenField__button ${buttonClass}`}
         size="sm"
         title={`Gain ${name} token`}
         onClick={gainToken}
@@ -79,13 +79,13 @@ const UniqueTokenField = ({
         {name}
       </Button>
       <button
-        className="msc-UniqueTokenField__tokens"
+        className="jg-UniqueTokenField__tokens"
         disabled={tokenValue === 0}
         type="button"
         onClick={spendToken}
       >
         <AvatarGroup
-          className={`msc-UniqueTokenField__group ${buttonClass}`}
+          className={`jg-UniqueTokenField__group ${buttonClass}`}
           max={max}
           size="sm"
         >

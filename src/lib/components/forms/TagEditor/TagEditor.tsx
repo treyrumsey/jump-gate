@@ -39,11 +39,11 @@ const TagEditor = ({
   const hasType = tagTypeOptions !== undefined;
 
   return (
-    <Stack direction="column" spacing="3" className="msc-TagEditor__tag">
+    <Stack direction="column" spacing="3" className="jg-TagEditor__tag">
       <InputGroup size="sm">
         <FormControl
           variant="floating"
-          className="msc-TagEditor__name-form-control"
+          className="jg-TagEditor__name-form-control"
         >
           <Input
             id={nameId}
@@ -70,7 +70,7 @@ const TagEditor = ({
           </FormControl>
         )}
         <IconButton
-          className="msc-TagEditor__delete-button"
+          className="jg-TagEditor__delete-button"
           icon={<DeleteIcon />}
           title={`Delete ${tagName}`}
           aria-label={`Delete ${tagName}`}

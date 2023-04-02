@@ -1,26 +1,26 @@
-.msc-UniqueTokenField {
-  .msc-UniqueTokenField__button {
+.jg-UniqueTokenField {
+  .jg-UniqueTokenField__button {
     font-weight: bold;
     padding: 0 0.25rem;
     user-select: none;
 
     &.is-positive {
-      background-color: $msc-blue;
+      background-color: $jg-blue;
 
       &:hover {
-        background-color: lighten($msc-blue, 10%);
+        background-color: lighten($jg-blue, 10%);
       }
     }
     &.is-negative {
-      background-color: $msc-red;
+      background-color: $jg-red;
 
       &:hover {
-        background-color: lighten($msc-red, 10%);
+        background-color: lighten($jg-red, 10%);
       }
     }
   }
 
-  .msc-UniqueTokenField__group {
+  .jg-UniqueTokenField__group {
     grid-area: tokens;
     justify-content: center;
 

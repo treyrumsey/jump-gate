@@ -57,7 +57,7 @@ const AmmoField = ({ weaponId }: AmmoFieldProps) => {
   };
 
   return (
-    <div className="msc-AmmoField">
+    <div className="jg-AmmoField">
       <FormControl variant="floating">
         <InputGroup size="sm">
           <Input
@@ -75,7 +75,7 @@ const AmmoField = ({ weaponId }: AmmoFieldProps) => {
           <FormLabel htmlFor={fieldName}>Ammo</FormLabel>
           <InputRightElement width="65px">
             <IconButton
-              className="msc-AmmoField__shoot-button"
+              className="jg-AmmoField__shoot-button"
               aria-label="Shoot"
               icon={<MinusIcon />}
               onClick={spendAmmo}
@@ -83,7 +83,7 @@ const AmmoField = ({ weaponId }: AmmoFieldProps) => {
               size="sm"
             />
             <IconButton
-              className="msc-AmmoField__reload-button"
+              className="jg-AmmoField__reload-button"
               aria-label="Reload"
               icon={<RepeatIcon />}
               onClick={reload}

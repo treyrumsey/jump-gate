@@ -1,0 +1,28 @@
+.jg-PersonalDetails {
+  @include desktopOrGreater {
+    display: flex;
+
+    .chakra-form-control {
+      flex-grow: 1;
+      width: auto;
+
+      &.jg-PersonalDetails__name {
+        // flex-grow: 0;
+        min-width: 268px;
+      }
+    }
+  }
+
+  display: grid;
+  gap: 14px;
+  grid-area: details;
+
+  height: min-content;
+  width: 100%;
+
+  .jg-PersonalDetails__name,
+  .jg-PersonalDetails__species,
+  .jg-PersonalDetails__ship {
+    @include floating-labels-sm;
+  }
+}

@@ -1,0 +1,25 @@
+.jg-UpgradeField {
+  .jg-UpgradeField__add-upgrade {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+  }
+
+  .jg-UpgradeField__name-form-control {
+    position: relative;
+
+    .jg-UpgradeField__delete-button {
+      background-color: #6e120b;
+
+      border-radius: 0;
+      height: calc(100% - 2px);
+      position: absolute;
+      right: 1px;
+      top: 1px;
+
+      &:hover {
+        background-color: lighten(#6e120b, 10%);
+      }
+    }
+  }
+}

@@ -8,7 +8,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
-import MythicSpaceCharacters from "webapp/modules/MythicSpaceCharacters/MythicSpaceCharacters";
+import JumpGateCharacters from "webapp/modules/JumpGateCharacters/JumpGateCharacters";
 import { theme } from "theme";
 import { useEffect } from "react";
 import SignIn from "webapp/modules/SignIn/SignIn";
@@ -33,8 +33,8 @@ function App() {
   return (
     <ChakraProvider data-theme="dark" theme={theme}>
       <ForceDarkMode>
-        {/* <section>{user ? <MythicSpaceCharacters /> : <SignIn />}</section> */}
-        <MythicSpaceCharacters />
+        {/* <section>{user ? <JumpGateCharacters /> : <SignIn />}</section> */}
+        <JumpGateCharacters />
       </ForceDarkMode>
     </ChakraProvider>
   );

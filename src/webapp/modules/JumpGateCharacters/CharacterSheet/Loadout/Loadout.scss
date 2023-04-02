@@ -1,0 +1,36 @@
+.jg-Loadout {
+  @include is-positive-button;
+
+  .chakra-card {
+    border: 1px solid var(--chakra-colors-chakra-border-color);
+  }
+
+  .chakra-card__header {
+    padding: 0;
+
+    .jg-Loadout__edit-toggle-group {
+      border-bottom: 1px solid var(--chakra-colors-chakra-border-color);
+      display: flex;
+
+      .jg-Loadout__title {
+        align-items: center;
+        display: flex;
+        flex-grow: 1;
+        justify-content: center;
+      }
+
+      .jg-Loadout__edit-toggle {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        border-top-left-radius: 0;
+      }
+    }
+  }
+
+  .chakra-card__body {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem 1rem 0.675rem 1rem;
+  }
+}

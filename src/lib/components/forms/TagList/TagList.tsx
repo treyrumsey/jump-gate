@@ -23,7 +23,7 @@ const TagButton = ({
   description,
   colorScheme,
 }: Tag & { colorScheme?: string }) => {
-  const buttonClasses = classNames("msc-TagList__tag-button", {
+  const buttonClasses = classNames("jg-TagList__tag-button", {
     "is-default-color": !colorScheme,
   });
 
@@ -35,7 +35,7 @@ const TagButton = ({
         </Button>
       </PopoverTrigger>
       <PopoverContent
-        className="msc-TagList__tag-button-popover-content"
+        className="jg-TagList__tag-button-popover-content"
         backdropFilter="blur(4px)"
         bg="rgba(30, 30, 30, 0.8)"
         boxShadow="dark-lg"
@@ -77,7 +77,7 @@ const TagList = <T extends Tag>({
   const tags = Array.isArray(tagValues) ? tagValues : [tagValues];
 
   return (
-    <Stack className="msc-TagList" spacing={3} direction="row" align="center">
+    <Stack className="jg-TagList" spacing={3} direction="row" align="center">
       <>
         <Text
           fontFamily="Oxanium"

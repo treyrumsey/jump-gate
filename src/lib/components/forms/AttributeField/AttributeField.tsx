@@ -14,8 +14,8 @@ export const AttributeField = ({ name }: AttributeFieldProps) => {
   const fieldId = `attributes.${name}`;
 
   return (
-    <Box py={1} className={`msc-AttributeField msc-AttributeField-${name}`}>
-      <FormControl className="msc-AttributeField__value">
+    <Box py={1} className={`jg-AttributeField jg-AttributeField-${name}`}>
+      <FormControl className="jg-AttributeField__value">
         <FormLabel htmlFor={`${fieldId}.value`}>{name}</FormLabel>
         <NumberField
           id={`${fieldId}.value`}
@@ -26,7 +26,7 @@ export const AttributeField = ({ name }: AttributeFieldProps) => {
           size="md"
         />
       </FormControl>
-      <FormControl className="msc-AttributeField__xp">
+      <FormControl className="jg-AttributeField__xp">
         <FormLabel htmlFor={`${fieldId}.xp`}>XP</FormLabel>
         <NumberField
           id={`${fieldId}.xp`}

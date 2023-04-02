@@ -5,7 +5,7 @@ interface BlueProps {
 }
 
 export const Blue = ({ children }: BlueProps) => {
-  return <span className="msc-md-Blue">{children}</span>;
+  return <span className="jg-md-Blue">{children}</span>;
 };
 
 interface RedProps {
@@ -13,5 +13,5 @@ interface RedProps {
 }
 
 export const Red = ({ children }: RedProps) => {
-  return <span className="msc-md-Red">{children}</span>;
+  return <span className="jg-md-Red">{children}</span>;
 };

@@ -12,7 +12,7 @@ interface MarkdownViewProps {
 const MarkdownView = ({ children }: MarkdownViewProps) => {
   return (
     <Markdown
-      className="msc-MarkdownView"
+      className="jg-MarkdownView"
       options={{
         wrapper: "div",
         forceWrapper: true,

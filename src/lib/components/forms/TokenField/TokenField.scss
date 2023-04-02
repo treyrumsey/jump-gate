@@ -1,4 +1,4 @@
-.msc-TokenField {
+.jg-TokenField {
   align-content: space-between;
   display: grid;
   gap: var(--chakra-space-2);
@@ -6,29 +6,29 @@
   grid-template-columns: 90px 72px 90px;
   justify-content: center;
 
-  .msc-TokenField__button {
+  .jg-TokenField__button {
     font-weight: bold;
     padding: 0 0.25rem;
     user-select: none;
     &.is-positive {
-      background-color: $msc-blue;
+      background-color: $jg-blue;
       grid-area: positiveButton;
 
       &:hover {
-        background-color: lighten($msc-blue, 10%);
+        background-color: lighten($jg-blue, 10%);
       }
     }
     &.is-negative {
-      background-color: $msc-red;
+      background-color: $jg-red;
       grid-area: negativeButton;
 
       &:hover {
-        background-color: lighten($msc-red, 10%);
+        background-color: lighten($jg-red, 10%);
       }
     }
   }
 
-  .msc-TokenField__group {
+  .jg-TokenField__group {
     grid-area: tokens;
     justify-content: center;
 
@@ -50,7 +50,7 @@
     }
   }
 
-  .msc-TokenField__tokens {
+  .jg-TokenField__tokens {
     height: 32px;
     user-select: none;
     &:disabled {

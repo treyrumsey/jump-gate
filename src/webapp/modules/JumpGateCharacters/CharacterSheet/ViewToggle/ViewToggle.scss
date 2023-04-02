@@ -1,0 +1,17 @@
+.jg-ViewToggle {
+  @include desktopOrGreater {
+    margin: 0;
+  }
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+  margin-top: 0.5rem;
+
+  .chakra-switch__track {
+    background-color: lighten(#183e6f, 10%) !important;
+    &[data-checked] {
+      background-color: lighten(#6e120b, 10%) !important;
+    }
+  }
+}

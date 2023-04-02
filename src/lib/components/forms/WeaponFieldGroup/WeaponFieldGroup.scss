@@ -1,23 +1,23 @@
-.msc-WeaponFieldGroup {
+.jg-WeaponFieldGroup {
   @include floating-labels-sm;
 
   display: flex;
   flex-wrap: wrap;
 
-  .msc-WeaponFieldGroup__inputs {
+  .jg-WeaponFieldGroup__inputs {
     display: flex;
     width: 100%;
   }
 
-  .msc-WeaponFieldGroup__type {
+  .jg-WeaponFieldGroup__type {
     max-width: 120px;
   }
 
-  .msc-WeaponFieldGroup__range {
+  .jg-WeaponFieldGroup__range {
     max-width: 120px;
   }
 
-  .msc-WeaponFieldGroup__damage {
+  .jg-WeaponFieldGroup__damage {
     max-width: 90px;
   }
 }

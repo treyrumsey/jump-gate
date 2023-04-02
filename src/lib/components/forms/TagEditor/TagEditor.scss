@@ -1,4 +1,4 @@
-.msc-TagEditor__tag {
+.jg-TagEditor__tag {
   @include floating-labels-sm;
   display: flex;
   padding: 1rem 0;
@@ -8,7 +8,7 @@
     width: auto;
   }
 
-  .msc-TagEditor__delete-button {
+  .jg-TagEditor__delete-button {
     background-color: #6e120b;
     border: 1px solid var(--chakra-colors-chakra-border-color);
     border-radius: 0;

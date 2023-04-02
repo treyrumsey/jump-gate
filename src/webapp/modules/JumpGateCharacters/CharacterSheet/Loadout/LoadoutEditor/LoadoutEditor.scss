@@ -1,0 +1,13 @@
+.chakra-modal__content.jg-LoadoutEditor {
+  min-width: fit-content;
+}
+
+.jg-LoadoutEditor__body {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  .chakra-card {
+    gap: 1rem;
+    min-width: var(--chakra-sizes-md);
+  }
+}

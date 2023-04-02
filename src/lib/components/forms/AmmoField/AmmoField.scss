@@ -1,4 +1,4 @@
-.msc-AmmoField {
+.jg-AmmoField {
   .chakra-form-control {
     display: flex;
     width: 140px;
@@ -7,8 +7,8 @@
       text-align: center;
     }
 
-    .msc-AmmoField__shoot-button {
-      background-color: $msc-red;
+    .jg-AmmoField__shoot-button {
+      background-color: $jg-red;
 
       border-radius: 0;
       height: calc(100% - 2px);
@@ -17,16 +17,16 @@
       top: 1px;
 
       &:hover {
-        background-color: lighten($msc-red, 10%);
+        background-color: lighten($jg-red, 10%);
 
         &[aria-disabled="true"] {
-          background-color: $msc-red;
+          background-color: $jg-red;
         }
       }
     }
 
-    .msc-AmmoField__reload-button {
-      background-color: $msc-blue;
+    .jg-AmmoField__reload-button {
+      background-color: $jg-blue;
 
       border-radius: 0;
       height: calc(100% - 2px);
@@ -35,7 +35,7 @@
       top: 1px;
 
       &:hover {
-        background-color: lighten($msc-blue, 10%);
+        background-color: lighten($jg-blue, 10%);
       }
     }
   }

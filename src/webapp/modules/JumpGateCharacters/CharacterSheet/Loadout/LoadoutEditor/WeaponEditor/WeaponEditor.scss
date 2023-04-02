@@ -1,0 +1,11 @@
+.jg-WeaponEditor__trait {
+  @include floating-labels-sm;
+}
+
+.jg-WeaponEditor__max-ammo {
+  max-width: 8rem;
+
+  input {
+    text-align: center;
+  }
+}

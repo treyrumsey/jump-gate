@@ -1,14 +1,14 @@
-.msc-TagList {
+.jg-TagList {
   .chakra-button {
     border-radius: var(--chakra-radii-sm);
     height: var(--chakra-sizes-4);
   }
 
-  .msc-TagList__tag-button {
+  .jg-TagList__tag-button {
     &.is-default-color {
-      background-color: lighten($msc-blue, 10%);
+      background-color: lighten($jg-blue, 10%);
       &:hover {
-        background-color: lighten($msc-blue, 20%);
+        background-color: lighten($jg-blue, 20%);
       }
     }
   }

@@ -79,9 +79,9 @@ const TokenField = ({
   };
 
   return (
-    <FormControl className="msc-TokenField" display={show ? "grid" : "none"}>
+    <FormControl className="jg-TokenField" display={show ? "grid" : "none"}>
       <Button
-        className="msc-TokenField__button is-positive"
+        className="jg-TokenField__button is-positive"
         title={`Gain ${positiveName} token`}
         aria-label={`Gain ${positiveName} token`}
         size="sm"
@@ -90,20 +90,20 @@ const TokenField = ({
         {positiveName}
       </Button>
       <button
-        className="msc-TokenField__tokens"
+        className="jg-TokenField__tokens"
         disabled={tokenValue === 0}
         type="button"
         onClick={spendToken}
       >
         <AvatarGroup
-          className="msc-TokenField__group is-positive"
+          className="jg-TokenField__group is-positive"
           max={3}
           size="sm"
         >
           {renderPositiveTokens()}
         </AvatarGroup>
         <AvatarGroup
-          className="msc-TokenField__group is-negative"
+          className="jg-TokenField__group is-negative"
           max={3}
           size="sm"
         >
@@ -111,7 +111,7 @@ const TokenField = ({
         </AvatarGroup>
       </button>
       <Button
-        className="msc-TokenField__button is-negative"
+        className="jg-TokenField__button is-negative"
         title={`Gain ${negativeName} token`}
         aria-label={`Gain ${negativeName} token`}
         size="sm"

@@ -35,9 +35,9 @@ const ToHit = ({ weaponId }: ToHitProps) => {
   else if (attribute < 0) attributePrefix = "-";
 
   return (
-    <Box className="msc-WeaponFieldGroup__to-hit">
+    <Box className="jg-WeaponFieldGroup__to-hit">
       <FormLabel>To Hit</FormLabel>
-      <span className="msc-WeaponFieldGroup__to-hit-value">
+      <span className="jg-WeaponFieldGroup__to-hit-value">
         {attributePrefix + attribute}
       </span>
     </Box>

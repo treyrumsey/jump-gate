@@ -57,8 +57,8 @@ const IconNumberField = ({
   const sizePx = `${sizeValue}px`;
 
   return (
-    <div className={`msc-IconNumberField ${size}`}>
-      <Box className="msc-IconNumberField__group" height={sizePx}>
+    <div className={`jg-IconNumberField ${size}`}>
+      <Box className="jg-IconNumberField__group" height={sizePx}>
         <CustomIcon icon={icon} size={sizeValue} fill={iconColor} />
         <IconButton
           aria-label={`Subtract 1 from ${name}`}
