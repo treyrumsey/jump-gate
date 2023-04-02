@@ -3,11 +3,6 @@
     display: grid;
     grid-template-areas:
       "details details details details details details details details details"
-      // "area2 area3 area3 area3 area3 area3 area3 area3 area3"
-      // "area2 area3 area3 area3 area3 area3 area3 area3 area3"
-      // "area2 area3 area3 area3 area3 area3 area3 area3 area3"
-      // "area2 area3 area3 area3 area3 area3 area3 area3 area3"
-      // "area2 area3 area3 area3 area3 area3 area3 area3 area3"
       "area2 area3 area3 area3 area3 area3 area3 area3 area3";
     grid-template-columns: repeat(9, 1fr);
     grid-template-rows: min-content auto;
@@ -22,7 +17,6 @@
       gap: 1rem;
       grid-area: area2;
       width: 268px;
-      // justify-content: space-between;
     }
 
     .jg-CharacterSheet__area3 {
