@@ -128,7 +128,7 @@ export function mockCharacter(): Character {
             name: "Wand",
             type: WeaponType.Amp,
             range: WeaponRange.Medium,
-            ammo: 4,
+            ammo: { current: 2, max: 2 },
             damage: Dice.d6,
             mods: [],
             trait: [],
@@ -151,7 +151,7 @@ export function mockCharacter(): Character {
             name: "Assault Rifle",
             type: WeaponType.Rifle,
             range: WeaponRange.Long,
-            ammo: 10,
+            ammo: { current: 4, max: 4 },
             damage: Dice.d10,
             mods: [
               {
@@ -179,7 +179,7 @@ export function mockCharacter(): Character {
             name: "Handgun",
             type: WeaponType.Pistol,
             range: WeaponRange.Medium,
-            ammo: 4,
+            ammo: { current: 3, max: 3 },
             damage: Dice.d6,
             mods: [],
             trait: [],

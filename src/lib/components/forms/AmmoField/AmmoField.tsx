@@ -7,18 +7,27 @@ import {
   InputGroup,
   InputRightElement,
 } from "@chakra-ui/react";
-import React, { useState } from "react";
-import { useFormContext } from "react-hook-form";
+import React, { useEffect, useState } from "react";
+import { useFormContext, useWatch } from "react-hook-form";
 
 interface AmmoFieldProps {
   weaponId: string;
-  max: number;
 }
 
-const AmmoField = ({ weaponId, max }: AmmoFieldProps) => {
+const AmmoField = ({ weaponId }: AmmoFieldProps) => {
   const fieldName = `${weaponId}.ammo.current`;
-  const { register, setValue } = useFormContext();
-  const [ammoValue, setAmmoValue] = useState(max);
+  const { getValues, register, setValue } = useFormContext();
+  const max = useWatch({ name: `${weaponId}.ammo.max` });
+  const [ammoValue, setAmmoValue] = useState<number>(
+    getValues(fieldName) ?? max
+  );
+
+  useEffect(() => {
+    if (max < ammoValue) {
+      setAmmoValue(max);
+      setValue(fieldName, max);
+    }
+  }, [max]);
 
   const spendAmmo = () => {
     if (ammoValue === 0) return;

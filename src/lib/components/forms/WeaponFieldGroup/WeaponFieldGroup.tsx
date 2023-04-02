@@ -115,7 +115,7 @@ const WeaponFieldGroup = ({
           </FormLabel>
         </FormControl>
 
-        <AmmoField weaponId={weaponId} max={4} />
+        <AmmoField weaponId={weaponId} />
       </div>
 
       {(hasMods || hasTrait) && (
