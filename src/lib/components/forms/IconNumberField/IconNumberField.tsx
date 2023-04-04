@@ -4,19 +4,13 @@ import CustomIcon, {
   CustomIconColor,
   CustomIconType,
 } from "lib/components/icons/CustomIcon";
-import React from "react";
+import React, { useEffect } from "react";
 import { useController, useFormContext, useWatch } from "react-hook-form";
-
-export enum IconNumberFieldSizes {
-  Small = "is-small",
-  Large = "is-large",
-}
 interface IconNumberFieldProps {
   fieldId: string;
   label: string;
   icon: CustomIconType;
   iconColor?: CustomIconColor;
-  size: IconNumberFieldSizes;
   max: number;
   maxId: string;
   defaultValue?: number;
@@ -28,25 +22,29 @@ const IconNumberField = ({
   label,
   icon,
   iconColor = CustomIconColor.Default,
-  size,
   max,
   defaultValue = max,
 }: IconNumberFieldProps) => {
-  const { control } = useFormContext();
+  const { control, getValues, setValue } = useFormContext();
   const { field } = useController({
     name: fieldId,
     control,
     defaultValue: defaultValue,
   });
 
-  const maxValue = useWatch({ name: maxId, defaultValue: max });
-  const getMax = () => parseInt(maxValue);
+  const maxWatch = useWatch({ name: maxId, defaultValue: max });
+  const maxValue = parseInt(maxWatch);
+  const currentWatch = useWatch({ name: fieldId, defaultValue: defaultValue });
+  const currentValue = parseInt(currentWatch);
+
+  useEffect(() => {
+    if (currentValue > maxValue) setValue(fieldId, maxValue);
+  }, [maxValue, currentValue]);
 
   const { getIncrementButtonProps, getDecrementButtonProps, getInputProps } =
     useNumberInput({
       step: 1,
       min: 0,
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       max: max,
       precision: 0,
       defaultValue: defaultValue ?? 0,
@@ -58,23 +56,22 @@ const IconNumberField = ({
   const dec = getDecrementButtonProps();
   const input = getInputProps();
 
-  const sizeValue = size === IconNumberFieldSizes.Large ? 50 : 40;
-  const sizePx = `${sizeValue}px`;
+  const size = "50px";
 
   return (
-    <div className={`jg-IconNumberField ${size}`}>
-      <Box className="jg-IconNumberField__group" height={sizePx}>
-        <CustomIcon icon={icon} size={sizeValue} fill={iconColor} />
+    <div className="jg-IconNumberField">
+      <Box className="jg-IconNumberField__group" height={size}>
+        <CustomIcon icon={icon} size={size} fill={iconColor} />
         <IconButton
           aria-label={`Subtract 1 from ${fieldId}`}
           icon={<MinusIcon />}
           size="xs"
           {...dec}
-          tabIndex={parseInt(field.value) === 0 ? -1 : 0}
+          tabIndex={currentValue === 0 ? -1 : 0}
         />
         <Input
           {...input}
-          width={sizePx}
+          width={size}
           {...field}
           onKeyDown={(event) => event.preventDefault()}
           type="number"
@@ -84,9 +81,10 @@ const IconNumberField = ({
         <IconButton
           aria-label={`Add 1 to ${fieldId}`}
           icon={<AddIcon />}
-          size={size === IconNumberFieldSizes.Large ? "xs" : "xs"}
+          size="xs"
           {...inc}
-          tabIndex={field.value === max ? -1 : 0}
+          tabIndex={currentValue === maxValue ? -1 : 0}
+          isDisabled={currentValue === maxValue}
         />
       </Box>
       <Text>{label}</Text>

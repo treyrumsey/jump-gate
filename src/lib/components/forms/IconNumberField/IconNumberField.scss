@@ -1,42 +1,32 @@
 .jg-IconNumberField {
   .jg-IconNumberField__group {
-    position: relative;
+    align-items: center;
     display: flex;
     justify-content: center;
-    align-items: center;
+    position: relative;
 
     & > svg {
       position: absolute;
     }
 
     .chakra-input {
-      text-align: center;
       border: none;
+      box-shadow: none;
+      cursor: default;
       font-size: 24px;
       font-weight: bold;
-      box-shadow: none;
       padding: 0;
-      cursor: default;
+      text-align: center;
     }
   }
 
   .chakra-text {
-    width: 100%;
-    text-align: center;
     font-size: 18px;
+    text-align: center;
+    width: 100%;
 
     &::first-letter {
       text-transform: capitalize;
-    }
-  }
-
-  &.is-small {
-    .chakra-input {
-      font-size: 1rem;
-    }
-
-    .chakra-text {
-      font-size: 14px;
     }
   }
 }

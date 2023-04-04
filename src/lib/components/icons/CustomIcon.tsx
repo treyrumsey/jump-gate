@@ -87,7 +87,7 @@ const Icons: Icon = {
 };
 interface IconProps {
   icon: CustomIconType;
-  size: number;
+  size: string;
   fill?: CustomIconColor;
 }
 
@@ -113,8 +113,8 @@ const CustomIcon = ({
       viewBox: viewBox ?? "0 0 512 512",
       path: path,
       defaultProps: {
-        height: `${size}px`,
-        width: `${size}px`,
+        height: size,
+        width: size,
       },
     })
   );
