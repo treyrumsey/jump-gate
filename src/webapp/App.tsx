@@ -12,6 +12,7 @@ import JumpGateCharacters from "webapp/modules/JumpGateCharacters/JumpGateCharac
 import { theme } from "theme";
 import SignIn from "webapp/modules/SignIn/SignIn";
 import { initializeMetaTags } from "lib/utilities/MetaTagUtilites";
+import { useRegisterSW } from "virtual:pwa-register/react";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCy_9N-vn08k2ZmYolMdgmF_xwDPd1dqkU",
@@ -27,6 +28,8 @@ export const auth = getAuth(firebaseApp);
 export const firestore = getFirestore(firebaseApp);
 
 function App() {
+  useRegisterSW();
+
   const [user] = useAuthState(auth);
 
   React.useEffect(() => {
