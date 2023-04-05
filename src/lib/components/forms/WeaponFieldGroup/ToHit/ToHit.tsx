@@ -1,44 +1,22 @@
 import { Box, FormLabel } from "@chakra-ui/react";
-import { AttributeName } from "models/Attribute.model";
-import { WeaponType } from "models/Weapon.model";
+import useToHitModifier from "lib/components/forms/WeaponFieldGroup/ToHit/useToHitModifier";
 import React from "react";
-import { useWatch } from "react-hook-form";
-
-type ToHitMapType = {
-  [key in WeaponType]: AttributeName;
-};
-
-const ToHitMap: ToHitMapType = {
-  [WeaponType.Amp]: AttributeName.Discipline,
-  [WeaponType.Heavy]: AttributeName.Reflex,
-  [WeaponType.Longarm]: AttributeName.Reflex,
-  [WeaponType.Melee]: AttributeName.Physique,
-  [WeaponType.Pistol]: AttributeName.Reflex,
-  [WeaponType.Rifle]: AttributeName.Reflex,
-  [WeaponType.Shotgun]: AttributeName.Reflex,
-};
 
 interface ToHitProps {
   weaponId: string;
 }
 
 const ToHit = ({ weaponId }: ToHitProps) => {
-  const type: WeaponType = useWatch({ name: `${weaponId}.type` });
-  const attributeName = ToHitMap[type];
+  const modifier = useToHitModifier(weaponId);
 
-  const attribute = useWatch({
-    name: `attributes.${attributeName}.value`,
-  });
-
-  let attributePrefix = "";
-  if (attribute > 0) attributePrefix = "+";
-  else if (attribute < 0) attributePrefix = "-";
+  let modifierSign = "";
+  if (modifier > 0) modifierSign = "+";
 
   return (
     <Box className="jg-WeaponFieldGroup__to-hit">
       <FormLabel>To Hit</FormLabel>
       <span className="jg-WeaponFieldGroup__to-hit-value">
-        {attributePrefix + attribute}
+        {modifierSign + modifier}
       </span>
     </Box>
   );

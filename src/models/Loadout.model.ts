@@ -1,5 +1,5 @@
 import { ArmorMod } from "models/ArmorMod.model";
-import { Gear, initGear, initUtilityItem } from "models/Gear.model";
+import { Gear } from "models/Gear.model";
 import { initWeapon, Weapon } from "models/Weapon.model";
 
 export enum LoadoutType {
@@ -17,13 +17,13 @@ export interface Loadout {
 export const initCasualLoadout = (): Loadout => ({
   type: LoadoutType.Casual,
   weapons: [initWeapon()],
-  gear: [initUtilityItem()],
+  gear: [],
   armorMods: [],
 });
 
 export const initCombatLoadout = (): Loadout => ({
   type: LoadoutType.Combat,
   weapons: [initWeapon(), initWeapon()],
-  gear: [initGear(), initGear()],
+  gear: [],
   armorMods: [],
 });

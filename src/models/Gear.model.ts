@@ -8,14 +8,3 @@ export enum GearType {
 export interface Gear extends Tag {
   type?: GearType;
 }
-
-export const initUtilityItem = (): Gear => ({
-  type: GearType.UtilityItem,
-  name: "",
-  description: "",
-});
-
-export const initGear = (): Gear => ({
-  name: "",
-  description: "",
-});

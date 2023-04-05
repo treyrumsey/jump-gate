@@ -11,7 +11,7 @@ export enum WeaponRange {
 
 export enum WeaponType {
   Amp = "Amp",
-  Heavy = "Heavy Weapon",
+  Heavy = "Heavy",
   Longarm = "Longarm",
   Melee = "Melee",
   Pistol = "Pistol",
@@ -50,7 +50,7 @@ export const initWeapon = (): Weapon => ({
   name: "",
   type: undefined,
   range: undefined,
-  ammo: { current: 4, max: 4 },
+  ammo: { current: 0, max: 0 },
   damage: undefined,
   trait: [],
   mods: [],

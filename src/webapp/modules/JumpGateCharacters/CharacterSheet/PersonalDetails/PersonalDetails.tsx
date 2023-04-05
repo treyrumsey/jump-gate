@@ -29,20 +29,6 @@ export const PersonalDetails = () => {
       </FormControl>
       <ViewToggle />
       <GeneralEditButton />
-      {/* <Button
-        className="jg-CharacterSheet__save"
-        type="submit"
-        form="character-sheet-form"
-        size="xs"
-      >
-        Save
-      </Button> */}
-      {/* <IconButton
-        aria-label="refresh page"
-        icon={<SpinnerIcon />}
-        onClick={() => window.location.reload()}
-        size="xs"
-      /> */}
     </div>
   );
 };

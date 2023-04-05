@@ -47,13 +47,13 @@ const WeaponEditor = () => {
         alignItems="center"
       >
         <Heading size="md" fontFamily="Oxanium" marginRight="auto">
-          {weaponName}
+          {weaponName.length > 0 ? weaponName : "Weapon"}
         </Heading>
         <FormControl className="jg-WeaponEditor__max-ammo" variant="floating">
           <NumberField
             id={`${weaponId}.ammo.max`}
             name={`${weaponId}.ammo.max`}
-            rules={{ min: 1, max: 100 }}
+            rules={{ min: 0, max: 100 }}
             defaultValue={0}
             control={control}
             size="sm"

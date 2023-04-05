@@ -19,7 +19,7 @@ const AmmoField = ({ weaponId }: AmmoFieldProps) => {
   const { getValues, register, setValue } = useFormContext();
   const max = useWatch({ name: `${weaponId}.ammo.max` });
   const [ammoValue, setAmmoValue] = useState<number>(
-    getValues(fieldName) ?? max
+    parseInt(getValues(fieldName)) ?? max
   );
 
   useEffect(() => {
@@ -27,6 +27,7 @@ const AmmoField = ({ weaponId }: AmmoFieldProps) => {
       setAmmoValue(max);
       setValue(fieldName, max);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [max]);
 
   const spendAmmo = () => {

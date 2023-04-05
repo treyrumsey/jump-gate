@@ -48,7 +48,7 @@ export const useWeaponEditorContext = () => {
 
   if (!context) {
     throw new Error(
-      `useCharacterSheetViewContext must be used within a CharacterSheetViewProvider`
+      `useWeaponEditorContext must be used within a WeaponEditorProvider`
     );
   }
 

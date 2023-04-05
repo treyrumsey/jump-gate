@@ -13,6 +13,7 @@ $jg-light-red: lighten($jg-red, 15%);
 
 /* Media Queries */
 $desktop: 1024px;
+$tablet: 768px;
 
 @mixin narrowerThanDesktop {
   @media screen and (max-width: ($desktop - 1px)) {
@@ -20,8 +21,20 @@ $desktop: 1024px;
   }
 }
 
+@mixin narrowerThanTablet {
+  @media screen and (max-width: ($tablet - 1px)) {
+    @content;
+  }
+}
+
 @mixin desktopOrGreater {
   @media screen and (min-width: $desktop) {
+    @content;
+  }
+}
+
+@mixin tabletOrGreater {
+  @media screen and (min-width: $tablet) {
     @content;
   }
 }

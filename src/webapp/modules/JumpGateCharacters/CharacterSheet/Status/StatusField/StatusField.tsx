@@ -39,20 +39,6 @@ const StatusField = ({ getIcon, color, name, statusId }: StatusFieldProps) => {
   )
     iconColor = CustomIconColor.BadNews;
 
-  console.log(
-    `badnewsatzero and currently zero: ${
-      color === StatusFieldColors.BadNewsAtZero && currentValue === 0
-    }`
-  );
-
-  console.log(
-    `badnewsatzero and currently max: ${
-      color === StatusFieldColors.BadNewsAtZero && currentValue === 0
-    }`
-  );
-
-  console.table({ name, maxValue, currentValue });
-
   return (
     <div className={`jg-Status__${name}`}>
       <IconNumberField

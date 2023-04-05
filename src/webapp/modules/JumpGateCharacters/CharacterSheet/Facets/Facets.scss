@@ -2,6 +2,10 @@
   @include desktopOrGreater {
     flex-grow: 1;
     overflow: hidden;
+
+    .jg-Facets__facets {
+      grid-template-columns: 1fr 1fr;
+    }
   }
 
   @include is-positive-button;
@@ -30,7 +34,6 @@
     display: grid;
     flex-grow: 1;
     gap: 22px;
-    grid-template-columns: 1fr 1fr;
     overflow-y: auto;
     padding: 14px;
   }
