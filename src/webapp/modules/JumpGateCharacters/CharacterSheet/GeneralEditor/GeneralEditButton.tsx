@@ -1,15 +1,16 @@
 import { EditIcon } from "@chakra-ui/icons";
 import { IconButton } from "@chakra-ui/react";
-import { useDisclosureContext } from "lib/components/context/DisclosureProvider";
 import React from "react";
 
-const GeneralEditButton = () => {
-  const { onOpen } = useDisclosureContext();
+type GeneralEditButtonProps = {
+  onOpen: () => void;
+};
 
+const GeneralEditButton = ({ onOpen }: GeneralEditButtonProps) => {
   return (
     <IconButton
       aria-label={"Edit general character data"}
-      className="jg-GeneralEditButton"
+      className="jg-GeneralEditButton is-positive"
       icon={<EditIcon />}
       title={"Edit general character data"}
       onClick={onOpen}

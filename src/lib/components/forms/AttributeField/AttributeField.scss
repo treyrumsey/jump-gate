@@ -1,4 +1,13 @@
 .jg-AttributeField {
+  @include narrowerThan570px {
+    width: unset;
+
+    .jg-AttributeField__value,
+    .jg-AttributeField__xp {
+      justify-content: space-evenly !important;
+    }
+  }
+
   width: 268px;
 
   .jg-AttributeField__value {

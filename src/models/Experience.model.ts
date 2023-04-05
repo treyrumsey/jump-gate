@@ -1,7 +1,8 @@
 export interface Experience {
-  experience: string;
+  name: string;
+  description: string;
 }
 
 export const buildExperience = (experience: string) => {
-  return { experience };
+  return { name: "Experience", description: `Description of ${experience}` };
 };

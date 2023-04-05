@@ -130,7 +130,7 @@ const WeaponFieldGroup = ({
               colorScheme="facebook"
               isEditing={isEditingLoadout}
               listId={`${weaponId}.trait`}
-              listName="Trait"
+              listName="Traits"
             />
           )}
         </Stack>

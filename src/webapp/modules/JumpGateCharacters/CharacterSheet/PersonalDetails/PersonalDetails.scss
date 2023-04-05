@@ -1,7 +1,7 @@
 .jg-PersonalDetails {
-  @include desktopOrGreater {
-    display: flex;
+  @include is-positive-button;
 
+  @include desktopOrWider {
     .chakra-form-control {
       flex-grow: 1;
       width: auto;
@@ -12,7 +12,32 @@
     }
   }
 
-  display: grid;
+  @include tabletOrWider {
+    .chakra-form-control {
+      flex-grow: 1;
+      width: auto;
+    }
+  }
+
+  @include narrowerThanTablet {
+    @include widthOrWider(570px) {
+      .jg-PersonalDetails__name,
+      .jg-PersonalDetails__species,
+      .jg-PersonalDetails__ship {
+        margin-left: auto;
+        margin-right: auto;
+        width: 31%;
+      }
+    }
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  @include narrowerThan570px {
+    padding: 0;
+  }
+
+  display: flex;
   gap: 14px;
   grid-area: details;
 

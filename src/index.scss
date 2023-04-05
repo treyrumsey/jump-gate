@@ -24,6 +24,7 @@
 @import "webapp/modules/JumpGateCharacters/CharacterSheet/Experiences/Experiences.scss";
 @import "webapp/modules/JumpGateCharacters/CharacterSheet/Facets/Facets.scss";
 @import "webapp/modules/JumpGateCharacters/CharacterSheet/Facets/Upgrades/Upgrades.scss";
+@import "webapp/modules/JumpGateCharacters/CharacterSheet/GeneralEditor/GeneralEditor.scss";
 @import "webapp/modules/JumpGateCharacters/CharacterSheet/Loadout/Loadout.scss";
 @import "webapp/modules/JumpGateCharacters/CharacterSheet/Loadout/LoadoutEditor/LoadoutEditor.scss";
 @import "webapp/modules/JumpGateCharacters/CharacterSheet/Loadout/LoadoutEditor/WeaponEditor/WeaponEditor.scss";
@@ -65,7 +66,7 @@ code {
 }
 
 .chakra-modal__content {
-  @include desktopOrGreater {
+  @include desktopOrWider {
     margin: 2rem 0 !important;
     max-width: var(--chakra-sizes-4xl);
   }
@@ -73,6 +74,8 @@ code {
   @include is-positive-button;
 
   background-color: var(--chakra-colors-chakra-body-bg) !important;
+
+  margin: 1rem;
 
   min-width: fit-content;
 }

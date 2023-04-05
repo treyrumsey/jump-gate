@@ -74,9 +74,8 @@ export function buildCharacter(): Character {
       [AttributeName.Wits]: { value: 0, xp: 0 },
     },
     experiences: [
-      buildExperience(""),
-      buildExperience(""),
-      buildExperience(""),
+      buildExperience("Experience 1"),
+      buildExperience("Experience 2"),
     ],
     loadouts: { Casual: initCasualLoadout(), Combat: initCombatLoadout() },
     Aspects: [],
@@ -115,10 +114,15 @@ export function mockCharacter(): Character {
       [AttributeName.Wits]: { value: 0, xp: 8 },
     },
     experiences: [
-      { experience: "Street Kid" },
-      { experience: "Bartender" },
-      { experience: "Asteroid Miner" },
-      { experience: "Ex-Jump Gate 273 Patrol Officer" },
+      {
+        name: "Asteroid Miner",
+        description:
+          "Miner of all things lost in space and trapped within the debris fields of wonder.",
+      },
+      {
+        name: "Ex-Jump Gate 273 Patrol Officer",
+        description: "Doors and corners, kid. Doors and corners.",
+      },
     ],
     loadouts: {
       Casual: {

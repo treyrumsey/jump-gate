@@ -4,7 +4,13 @@ import { useFormContext } from "react-hook-form";
 import GeneralEditButton from "webapp/modules/JumpGateCharacters/CharacterSheet/GeneralEditor/GeneralEditButton";
 import ViewToggle from "webapp/modules/JumpGateCharacters/CharacterSheet/ViewToggle/ViewToggle";
 
-export const PersonalDetails = () => {
+type PersonalDetailsProps = {
+  onGeneralEditorOpen: () => void;
+};
+
+export const PersonalDetails = ({
+  onGeneralEditorOpen,
+}: PersonalDetailsProps) => {
   const { register } = useFormContext();
 
   const size = "sm";
@@ -28,7 +34,7 @@ export const PersonalDetails = () => {
         <FormLabel htmlFor="ship">Ship</FormLabel>
       </FormControl>
       <ViewToggle />
-      <GeneralEditButton />
+      <GeneralEditButton onOpen={onGeneralEditorOpen} />
     </div>
   );
 };

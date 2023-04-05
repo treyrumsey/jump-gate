@@ -1,23 +1,79 @@
 .jg-WeaponFieldGroup {
   @include floating-labels-sm;
 
+  @include tabletOrWider {
+    .jg-WeaponFieldGroup__type {
+      max-width: 120px;
+    }
+
+    .jg-WeaponFieldGroup__range {
+      max-width: 120px;
+    }
+
+    .jg-WeaponFieldGroup__damage {
+      max-width: 90px;
+    }
+  }
+
   display: flex;
   flex-wrap: wrap;
 
   .jg-WeaponFieldGroup__inputs {
+    @include narrowerThanTablet {
+      @include narrowerThan570px {
+        .jg-WeaponFieldGroup__name {
+          grid-column: span 6 !important;
+        }
+
+        .jg-WeaponFieldGroup__type {
+          grid-column: span 3 !important;
+        }
+
+        .jg-WeaponFieldGroup__range {
+          grid-column: span 3 !important;
+        }
+
+        .jg-WeaponFieldGroup__to-hit {
+          grid-column: span 1 !important;
+        }
+
+        .jg-WeaponFieldGroup__damage {
+          grid-column: span 2 !important;
+        }
+
+        .jg-AmmoField {
+          grid-column: span 3 !important;
+        }
+      }
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(6, 1fr);
+
+      .jg-WeaponFieldGroup__name {
+        grid-column: span 2;
+      }
+
+      .jg-WeaponFieldGroup__type {
+        grid-column: span 2;
+      }
+
+      .jg-WeaponFieldGroup__range {
+        grid-column: span 2;
+      }
+
+      .jg-WeaponFieldGroup__to-hit {
+        grid-column: span 1;
+      }
+
+      .jg-WeaponFieldGroup__damage {
+        grid-column: span 2;
+      }
+
+      .jg-AmmoField {
+        grid-column: span 3;
+      }
+    }
     display: flex;
     width: 100%;
-  }
-
-  .jg-WeaponFieldGroup__type {
-    max-width: 120px;
-  }
-
-  .jg-WeaponFieldGroup__range {
-    max-width: 120px;
-  }
-
-  .jg-WeaponFieldGroup__damage {
-    max-width: 90px;
   }
 }

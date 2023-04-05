@@ -1,7 +1,9 @@
 .jg-AmmoField {
   .chakra-form-control {
+    @include tabletOrWider {
+      width: 140px;
+    }
     display: flex;
-    width: 140px;
 
     .chakra-input {
       text-align: center;

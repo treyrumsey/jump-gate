@@ -1,7 +1,6 @@
 import {
   Card,
   CardBody,
-  Flex,
   FormControl,
   FormLabel,
   Modal,
@@ -11,13 +10,16 @@ import {
   ModalHeader,
   ModalOverlay,
 } from "@chakra-ui/react";
-import { useDisclosureContext } from "lib/components/context/DisclosureProvider";
 import { NumberField } from "lib/components/forms/NumberField/NumberField";
 import React from "react";
 import { useFormContext } from "react-hook-form";
 
-const GeneralEditor = () => {
-  const { isOpen, onClose } = useDisclosureContext();
+type GeneralEditorProps = {
+  isOpen: boolean;
+  onClose: () => void;
+};
+
+const GeneralEditor = ({ isOpen, onClose }: GeneralEditorProps) => {
   const { control, getValues } = useFormContext();
 
   const statuses = ["shields", "armor", "stress", "supplies", "mp"];
@@ -32,7 +34,12 @@ const GeneralEditor = () => {
         <ModalCloseButton />
         <ModalBody className="jg-GeneralEditor__modal-body">
           <Card>
-            <CardBody display="flex" gap="1rem" flexWrap="wrap">
+            <CardBody
+              display="flex"
+              gap="1rem"
+              flexWrap="wrap"
+              justifyContent="center"
+            >
               {statuses.map((status) => (
                 <FormControl
                   className="jg-GeneralEditor__max-status"

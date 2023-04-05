@@ -1,4 +1,8 @@
 .jg-TagList {
+  &.chakra-stack {
+    flex-wrap: wrap;
+  }
+
   .chakra-button {
     border-radius: var(--chakra-radii-sm);
     height: var(--chakra-sizes-4);

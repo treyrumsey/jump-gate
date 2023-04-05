@@ -1,9 +1,16 @@
 .jg-Tokens {
+  @include desktopOrWider {
+    width: 100%;
+  }
+
+  @include narrowerThanDesktop {
+    align-content: center;
+  }
+
   display: grid;
   gap: 8px;
   grid-auto-rows: min-content;
   user-select: none;
-  width: 100%;
 
   .jg-UniqueTokenField {
     align-content: space-between;

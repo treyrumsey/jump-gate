@@ -4,7 +4,6 @@ import { useWatch } from "react-hook-form";
 
 const CharacterListener = () => {
   const formWatch = useWatch();
-  console.log(formWatch);
 
   useEffect(() => {
     localStorage.setItem("character", JSON.stringify(formWatch));

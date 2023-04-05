@@ -27,17 +27,49 @@ $tablet: 768px;
   }
 }
 
-@mixin desktopOrGreater {
+@mixin narrowerThan570px {
+  @media screen and (max-width: 569px) {
+    @content;
+  }
+}
+
+@mixin desktopOrWider {
   @media screen and (min-width: $desktop) {
     @content;
   }
 }
 
-@mixin tabletOrGreater {
+@mixin tabletOrWider {
   @media screen and (min-width: $tablet) {
     @content;
   }
 }
+
+@mixin tallerOrEqualTo700px {
+  @media screen and (min-height: 700px) {
+    @content;
+  }
+}
+
+@mixin narrowerThan($width) {
+  @media screen and (max-width: ($width - 1px)) {
+    @content;
+  }
+}
+
+@mixin widthOrWider($width) {
+  @media screen and (min-width: ($width)) {
+    @content;
+  }
+}
+
+@mixin betweenWidths($min, $max) {
+  @media screen and (min-width: $min) and (max-width: $max) {
+    @content;
+  }
+}
+
+/* Utility Mixins */
 
 @mixin floating-labels-sm {
   input:not(:placeholder-shown) + label,

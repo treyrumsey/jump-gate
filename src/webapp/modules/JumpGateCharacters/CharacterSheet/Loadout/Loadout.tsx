@@ -52,7 +52,7 @@ const Loadout = ({ type, show }: LoadoutProps) => {
               icon={<EditIcon />}
               className="jg-Loadout__edit-toggle is-positive"
               onClick={onOpen}
-              aria-label={`Edit Combat Loadout`}
+              aria-label={`Edit ${type} Loadout`}
               size="sm"
             />
           </ButtonGroup>

@@ -14,6 +14,7 @@ import CharacterListener from "webapp/modules/JumpGateCharacters/CharacterSheet/
 import DisclosureProvider from "lib/components/context/DisclosureProvider";
 import GeneralEditor from "webapp/modules/JumpGateCharacters/CharacterSheet/GeneralEditor/GeneralEditor";
 import { Status } from "webapp/modules/JumpGateCharacters/CharacterSheet/Status/Status";
+import { useDisclosure } from "@chakra-ui/react";
 
 interface CharacterSheetProps {
   character: Character;
@@ -37,6 +38,12 @@ export const CharacterSheet = ({ character }: CharacterSheetProps) => {
     });
   }
 
+  const {
+    isOpen: isGeneralEditorOpen,
+    onOpen: onGeneralEditorOpen,
+    onClose: onGeneralEditorClose,
+  } = useDisclosure();
+
   return (
     <DisclosureProvider>
       <PlayModeProvider
@@ -51,7 +58,7 @@ export const CharacterSheet = ({ character }: CharacterSheetProps) => {
             autoComplete="off"
           >
             <CharacterListener />
-            <PersonalDetails />
+            <PersonalDetails onGeneralEditorOpen={onGeneralEditorOpen} />
             <div className="jg-CharacterSheet__area2">
               <Attributes />
               <Tokens />
@@ -64,7 +71,10 @@ export const CharacterSheet = ({ character }: CharacterSheetProps) => {
               <Facets type={FacetType.Aspect} show={!isCombatMode} />
               <Facets type={FacetType.Tactic} show={isCombatMode} />
             </div>
-            <GeneralEditor />
+            <GeneralEditor
+              isOpen={isGeneralEditorOpen}
+              onClose={onGeneralEditorClose}
+            />
           </form>
         </FormProvider>
       </PlayModeProvider>

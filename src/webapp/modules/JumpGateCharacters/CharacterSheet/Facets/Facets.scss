@@ -1,6 +1,6 @@
 .jg-Facets {
-  @include desktopOrGreater {
-    flex-grow: 1;
+  @include tabletOrWider {
+    // flex-grow: 1;
     overflow: hidden;
 
     .jg-Facets__facets {
@@ -32,7 +32,7 @@
 
   .jg-Facets__facets {
     display: grid;
-    flex-grow: 1;
+    // flex-grow: 1;
     gap: 22px;
     overflow-y: auto;
     padding: 14px;
@@ -62,7 +62,7 @@
   gap: 14px;
   grid-auto-rows: minmax(min-content, max-content);
   grid-template-columns: 1fr;
-  padding: 14px 14px;
+  padding: 14px;
 
   .jg-Facets__facet {
     flex-direction: column;
@@ -81,5 +81,7 @@
 
 .chakra-modal__content.jg-FacetEditor,
 .chakra-modal__body.jg-Facets {
+  @include tabletOrWider {
+  }
   max-width: var(--chakra-sizes-4xl);
 }

@@ -77,7 +77,13 @@ const TagList = <T extends Tag>({
   const tags = Array.isArray(tagValues) ? tagValues : [tagValues];
 
   return (
-    <Stack className="jg-TagList" spacing={3} direction="row" align="center">
+    <Stack
+      className="jg-TagList"
+      spacing={3}
+      rowGap=".5rem"
+      direction="row"
+      align="center"
+    >
       <>
         <Text fontSize="xs" fontWeight="bold" paddingLeft="3">
           {`${listName}:`}

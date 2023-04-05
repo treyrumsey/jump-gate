@@ -1,5 +1,5 @@
 .jg-Status {
-  @include desktopOrGreater {
+  @include desktopOrWider {
     align-self: center;
     display: flex;
     flex-direction: row;
@@ -8,47 +8,18 @@
     width: min(100%, 760px);
   }
 
+  @include narrowerThanTablet {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
   align-items: center;
   display: flex;
-  flex-direction: column;
-  gap: 0 14px;
-  grid-area: status;
+  flex-direction: row;
+  justify-content: space-between;
 
   position: relative;
-
-  .jg-Status__Shields {
-    grid-column: 1 / span 3;
-    grid-row: 1;
-  }
-  .jg-Status__Armor {
-    grid-column: 4 / span 3;
-    grid-row: 1;
-  }
-
-  .jg-Status__Stress {
-    grid-column: 1 / span 2;
-    grid-row: 2;
-  }
-
-  .jg-Status__MP {
-    grid-column: 3 / span 2;
-    grid-row: 2;
-  }
-
-  .jg-Status__Supplies {
-    grid-column: 5 / span 2;
-    grid-row: 2;
-  }
-
-  .jg-Status__shaken {
-    grid-column: 3;
-    grid-row: 1;
-  }
-
-  .jg-Status__wounded {
-    grid-column: 3;
-    grid-row: 2;
-  }
 
   .jg-Status__Shields,
   .jg-Status__Armor,
@@ -61,6 +32,10 @@
   }
 
   .jg-Status__checkboxes {
+    @include narrowerThanTablet {
+      margin-left: auto;
+      margin-right: auto;
+    }
     display: flex;
     flex-direction: column;
     height: 100%;

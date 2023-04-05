@@ -10,7 +10,6 @@ import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import JumpGateCharacters from "webapp/modules/JumpGateCharacters/JumpGateCharacters";
 import { theme } from "theme";
-import SignIn from "webapp/modules/SignIn/SignIn";
 import { initializeMetaTags } from "lib/utilities/MetaTagUtilites";
 import { useRegisterSW } from "virtual:pwa-register/react";
 

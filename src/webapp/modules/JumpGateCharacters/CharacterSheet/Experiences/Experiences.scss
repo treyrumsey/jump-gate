@@ -1,6 +1,60 @@
 .jg-Experiences {
+  @include is-positive-button;
+
+  @include narrowerThanDesktop {
+    align-items: center;
+    gap: 1rem;
+    max-width: 268px;
+  }
+
+  @include narrowerThanTablet {
+    max-width: unset;
+    width: 100%;
+  }
+
+  @include betweenWidths($tablet, $desktop) {
+    max-height: 288px;
+  }
+
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
   justify-content: space-between;
+  overflow: hidden;
+
+  .jg-Experiences__card.chakra-card {
+    border: 1px solid var(--chakra-colors-chakra-border-color);
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .chakra-card__header {
+    padding: 0;
+
+    .jg-Experiences__edit-toggle-group {
+      border-bottom: 1px solid var(--chakra-colors-chakra-border-color);
+      display: flex;
+
+      .jg-Experiences__title {
+        align-items: center;
+        display: flex;
+        flex-grow: 1;
+        justify-content: center;
+      }
+
+      .jg-Experiences__edit-toggle {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        border-top-left-radius: 0;
+      }
+    }
+  }
+
+  .chakra-card__body {
+    display: flex;
+    flex-direction: column;
+    // flex-grow: 1;
+    gap: 1rem;
+    overflow: auto;
+    padding: 14px;
+  }
 }
