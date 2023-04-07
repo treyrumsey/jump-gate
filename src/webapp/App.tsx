@@ -12,6 +12,8 @@ import JumpGateCharacters from "webapp/modules/JumpGateCharacters/JumpGateCharac
 import { theme } from "theme";
 import { initializeMetaTags } from "lib/utilities/MetaTagUtilites";
 import { useRegisterSW } from "virtual:pwa-register/react";
+import DisclosureProvider from "lib/components/context/DisclosureProvider";
+import CharactersProvider from "webapp/modules/context/CharactersProvider";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCy_9N-vn08k2ZmYolMdgmF_xwDPd1dqkU",
@@ -38,8 +40,14 @@ function App() {
   return (
     <ChakraProvider data-theme="dark" theme={theme}>
       <ForceDarkMode>
-        {/* <section>{user ? <JumpGateCharacters /> : <SignIn />}</section> */}
-        <JumpGateCharacters />
+        <>
+          {/* <section>{user ? <JumpGateCharacters /> : <SignIn />}</section> */}
+          <CharactersProvider>
+            <DisclosureProvider>
+              <JumpGateCharacters />
+            </DisclosureProvider>
+          </CharactersProvider>
+        </>
       </ForceDarkMode>
     </ChakraProvider>
   );

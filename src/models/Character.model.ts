@@ -50,6 +50,7 @@ interface Status {
   wounded: boolean;
 }
 export interface Character {
+  id: string;
   name: string;
   species: string;
   ship: string;
@@ -60,10 +61,12 @@ export interface Character {
   Tactics: Facet[];
   status: Status;
   tokens: Tokens;
+  notes: string;
 }
 
-export function buildCharacter(): Character {
+export function buildCharacter(id?: string): Character {
   return {
+    id: id ?? "",
     name: "",
     species: "",
     ship: "",
@@ -99,11 +102,13 @@ export function buildCharacter(): Character {
       [TokenPair.Regen_Burn]: 0,
       stunned: 0,
     },
+    notes: "",
   };
 }
 
 export function mockCharacter(): Character {
   return {
+    id: crypto.randomUUID(),
     name: "Drodger Cardbourde",
     species: "Human",
     ship: "Scrap on the Rocks",
@@ -273,8 +278,8 @@ export function mockCharacter(): Character {
       shields: { current: 8, max: 8 },
       armor: { current: 4, max: 4 },
       stress: { current: 0, max: 10 },
-      mp: { current: 4, max: 4 },
-      supplies: { current: 10, max: 10 },
+      mp: { current: 2, max: 2 },
+      supplies: { current: 5, max: 5 },
       shaken: false,
       wounded: false,
     },
@@ -288,5 +293,6 @@ export function mockCharacter(): Character {
       [TokenPair.Regen_Burn]: -1,
       stunned: 3,
     },
+    notes: "",
   };
 }

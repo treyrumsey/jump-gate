@@ -1,17 +1,30 @@
-import { FormControl, FormLabel, Input } from "@chakra-ui/react";
+import { HamburgerIcon } from "@chakra-ui/icons";
+import {
+  ButtonGroup,
+  FormControl,
+  FormLabel,
+  IconButton,
+  Input,
+  useMediaQuery,
+} from "@chakra-ui/react";
+import { useDisclosureContext } from "lib/components/context/DisclosureProvider";
 import React from "react";
 import { useFormContext } from "react-hook-form";
-import GeneralEditButton from "webapp/modules/JumpGateCharacters/CharacterSheet/GeneralEditor/GeneralEditButton";
+import CharacterModalButton from "webapp/modules/JumpGateCharacters/CharacterSheet/CharacterModal/CharacterModalButton";
 import ViewToggle from "webapp/modules/JumpGateCharacters/CharacterSheet/ViewToggle/ViewToggle";
 
 type PersonalDetailsProps = {
-  onGeneralEditorOpen: () => void;
+  onCharacterModalOpen: () => void;
 };
 
 export const PersonalDetails = ({
-  onGeneralEditorOpen,
+  onCharacterModalOpen,
 }: PersonalDetailsProps) => {
   const { register } = useFormContext();
+
+  const { onOpen } = useDisclosureContext();
+
+  const [isTabletOrWider] = useMediaQuery("(min-width: 768px)");
 
   const size = "sm";
   return (
@@ -34,7 +47,18 @@ export const PersonalDetails = ({
         <FormLabel htmlFor="ship">Ship</FormLabel>
       </FormControl>
       <ViewToggle />
-      <GeneralEditButton onOpen={onGeneralEditorOpen} />
+
+      <ButtonGroup isAttached>
+        <CharacterModalButton onOpen={onCharacterModalOpen} />
+        {isTabletOrWider && (
+          <IconButton
+            aria-label="Open Menu"
+            icon={<HamburgerIcon />}
+            onClick={onOpen}
+            size="sm"
+          />
+        )}
+      </ButtonGroup>
     </div>
   );
 };

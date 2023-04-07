@@ -1,5 +1,5 @@
 import { useDisclosure } from "@chakra-ui/react";
-import React, { createContext, useContext } from "react";
+import React, { createContext, useContext, useRef } from "react";
 
 type DisclosureContextType = {
   isOpen: boolean;

@@ -24,7 +24,7 @@
 @import "webapp/modules/JumpGateCharacters/CharacterSheet/Experiences/Experiences.scss";
 @import "webapp/modules/JumpGateCharacters/CharacterSheet/Facets/Facets.scss";
 @import "webapp/modules/JumpGateCharacters/CharacterSheet/Facets/Upgrades/Upgrades.scss";
-@import "webapp/modules/JumpGateCharacters/CharacterSheet/GeneralEditor/GeneralEditor.scss";
+@import "webapp/modules/JumpGateCharacters/CharacterSheet/CharacterModal/CharacterModal.scss";
 @import "webapp/modules/JumpGateCharacters/CharacterSheet/Loadout/Loadout.scss";
 @import "webapp/modules/JumpGateCharacters/CharacterSheet/Loadout/LoadoutEditor/LoadoutEditor.scss";
 @import "webapp/modules/JumpGateCharacters/CharacterSheet/Loadout/LoadoutEditor/WeaponEditor/WeaponEditor.scss";
@@ -33,6 +33,8 @@
 @import "webapp/modules/JumpGateCharacters/CharacterSheet/Status/Status.scss";
 @import "webapp/modules/JumpGateCharacters/CharacterSheet/Tokens/Tokens.scss";
 @import "webapp/modules/JumpGateCharacters/CharacterSheet/ViewToggle/ViewToggle.scss";
+
+@import "webapp/modules/Sidebar/Sidebar.scss";
 
 body {
   font-family: "Exo 2", sans-serif !important;
@@ -67,7 +69,7 @@ code {
 
 .chakra-modal__content {
   @include desktopOrWider {
-    margin: 2rem 0 !important;
+    margin: 2rem 0;
     max-width: var(--chakra-sizes-4xl);
   }
 

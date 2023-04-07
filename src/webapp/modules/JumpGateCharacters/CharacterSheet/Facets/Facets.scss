@@ -81,7 +81,5 @@
 
 .chakra-modal__content.jg-FacetEditor,
 .chakra-modal__body.jg-Facets {
-  @include tabletOrWider {
-  }
   max-width: var(--chakra-sizes-4xl);
 }

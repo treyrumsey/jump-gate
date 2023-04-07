@@ -5,9 +5,13 @@
   min-height: 100dvh;
 
   .container {
-    align-items: center;
-    display: flex;
-    justify-content: center;
+    @include desktopOrWider {
+      align-items: center;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
     width: 100%;
   }
   .jg-Email {

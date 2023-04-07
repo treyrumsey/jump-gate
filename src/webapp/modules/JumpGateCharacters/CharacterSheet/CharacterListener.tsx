@@ -6,7 +6,8 @@ const CharacterListener = () => {
   const formWatch = useWatch();
 
   useEffect(() => {
-    localStorage.setItem("character", JSON.stringify(formWatch));
+    if (formWatch)
+      localStorage.setItem(formWatch.id, JSON.stringify(formWatch));
   }, [formWatch]);
 
   return <Box display="none"></Box>;
