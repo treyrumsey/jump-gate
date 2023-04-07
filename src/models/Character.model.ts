@@ -140,7 +140,7 @@ export function mockCharacter(): Character {
             ammo: { current: 2, max: 2 },
             damage: Dice.d6,
             mods: [],
-            trait: [],
+            traits: [],
           },
         ],
         gear: [
@@ -176,7 +176,7 @@ export function mockCharacter(): Character {
                   "When you miss an attack with this weapon, you may have the attack hit another enemy in the same zone. If you do, the attack deals half damage.",
               },
             ],
-            trait: [
+            traits: [
               {
                 name: "High Crit",
                 description:
@@ -191,7 +191,7 @@ export function mockCharacter(): Character {
             ammo: { current: 3, max: 3 },
             damage: Dice.d6,
             mods: [],
-            trait: [],
+            traits: [],
           },
         ],
         gear: [

@@ -53,7 +53,7 @@ const WeaponFieldGroup = ({
     ));
 
   const hasMods = getValues(`${weaponId}.mods`).length > 0;
-  const hasTrait = getValues(`${weaponId}.trait`).length > 0;
+  const hasTraits = getValues(`${weaponId}.traits`).length > 0;
 
   return (
     <Box className="jg-WeaponFieldGroup">
@@ -115,7 +115,7 @@ const WeaponFieldGroup = ({
         <AmmoField weaponId={weaponId} />
       </div>
 
-      {(hasMods || hasTrait) && (
+      {(hasMods || hasTraits) && (
         <Stack spacing="2" direction="row" marginTop="1.5">
           {hasMods && (
             <TagList
@@ -125,11 +125,11 @@ const WeaponFieldGroup = ({
             />
           )}
 
-          {hasTrait && (
+          {hasTraits && (
             <TagList
               colorScheme="facebook"
               isEditing={isEditingLoadout}
-              listId={`${weaponId}.trait`}
+              listId={`${weaponId}.traits`}
               listName="Traits"
             />
           )}

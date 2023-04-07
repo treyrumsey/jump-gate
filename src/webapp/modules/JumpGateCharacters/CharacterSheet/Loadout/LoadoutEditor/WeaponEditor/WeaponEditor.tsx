@@ -27,13 +27,13 @@ const WeaponEditor = () => {
     name: modsFieldArrayId,
   });
 
-  const traitFieldArrayId = `${weaponId}.trait`;
+  const traitsFieldArrayId = `${weaponId}.traits`;
   const {
     fields: traitFields,
     append: appendTrait,
     remove: removeTrait,
   } = useFieldArray({
-    name: traitFieldArrayId,
+    name: traitsFieldArrayId,
   });
 
   const weaponName = getValues(`${weaponId}.name`);
@@ -92,14 +92,14 @@ const WeaponEditor = () => {
       <div className="jg-WeaponEditor__trait">
         {traitFields.length > 0 && (
           <Heading size="sm" fontFamily="Oxanium" marginRight="auto">
-            Trait
+            Traits
           </Heading>
         )}
 
         {traitFields.map((traitField, traitIndex) => (
           <TagEditor
             key={traitField.id}
-            tagId={`${traitFieldArrayId}[${traitIndex}]`}
+            tagId={`${traitsFieldArrayId}[${traitIndex}]`}
             tagName={"Trait"}
             onDelete={() => removeTrait(traitIndex)}
           />

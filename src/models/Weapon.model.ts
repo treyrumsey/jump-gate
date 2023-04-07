@@ -11,18 +11,15 @@ export enum WeaponRange {
 
 export enum WeaponType {
   Amp = "Amp",
-  Heavy = "Heavy",
-  Longarm = "Longarm",
   Melee = "Melee",
   Pistol = "Pistol",
   Rifle = "Rifle",
-  Shotgun = "Shotgun",
 }
 
 export enum WeaponModType {
   Ammo = "Ammo",
-  Frame = "Frame",
-  Grip = "Grip",
+  Attachment = "Attachment",
+  Material = "Material",
   Magazine = "Magazine",
   Scope = "Scope",
   Special = "Special",
@@ -42,7 +39,7 @@ export interface Weapon {
   range?: WeaponRange;
   ammo: { current: number; max: number };
   damage?: Dice;
-  trait: Tag[];
+  traits: Tag[];
   mods: WeaponMod[];
 }
 
@@ -52,6 +49,6 @@ export const initWeapon = (): Weapon => ({
   range: undefined,
   ammo: { current: 0, max: 0 },
   damage: undefined,
-  trait: [],
+  traits: [],
   mods: [],
 });
