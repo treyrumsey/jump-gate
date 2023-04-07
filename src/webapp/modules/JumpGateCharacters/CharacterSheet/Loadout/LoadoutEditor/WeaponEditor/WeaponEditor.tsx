@@ -63,9 +63,12 @@ const WeaponEditor = () => {
       </CardHeader>
       {isModdable && (
         <div className="jg-WeaponEditor__mods">
-          <Heading size="sm" fontFamily="Oxanium" marginRight="auto">
-            Mods
-          </Heading>
+          {modFields.length > 0 && (
+            <Heading size="sm" fontFamily="Oxanium" marginRight="auto">
+              Mods
+            </Heading>
+          )}
+
           {modFields.map((modField, modIndex) => (
             <TagEditor
               key={modField.id}

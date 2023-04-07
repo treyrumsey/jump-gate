@@ -2,6 +2,7 @@ import React from "react";
 
 import { LoadoutType } from "models/Loadout.model";
 import {
+  Box,
   Button,
   Heading,
   Modal,
@@ -99,7 +100,7 @@ const LoadoutEditor = ({ type, isOpen, onClose }: LoadoutEditorProps) => {
             </div>
           )}
 
-          <div className="jg-LoadoutEditor__gear">
+          <Box className="jg-LoadoutEditor__gear" paddingTop="4">
             {gearFields.length > 0 && (
               <Heading size="sm" fontFamily="Oxanium">
                 Gear
@@ -126,7 +127,7 @@ const LoadoutEditor = ({ type, isOpen, onClose }: LoadoutEditorProps) => {
             >
               Add Gear
             </Button>
-          </div>
+          </Box>
         </ModalBody>
       </ModalContent>
     </Modal>

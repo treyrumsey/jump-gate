@@ -87,7 +87,7 @@ const Facets = ({ show, type }: FacetsProps) => {
 
             return (
               <Card className="jg-Facets__facet-group" key={field.id}>
-                <FacetViewer buildId={buildId} />
+                <FacetViewer buildId={buildId} facetType={type} />
                 <Upgrades
                   facetIndex={index}
                   type={type}
@@ -146,7 +146,9 @@ const Facets = ({ show, type }: FacetsProps) => {
                       isEditing={isEditing}
                       type={type}
                     />
-                    {!isEditing && <FacetViewer buildId={buildId} />}
+                    {!isEditing && (
+                      <FacetViewer buildId={buildId} facetType={type} />
+                    )}
                     <Upgrades
                       facetIndex={index}
                       type={type}

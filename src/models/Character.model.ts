@@ -1,4 +1,4 @@
-import { Facet } from "models/Facet.model";
+import { Facet, FacetType, buildFacet } from "models/Facet.model";
 import { Attribute, AttributeName } from "models/Attribute.model";
 import { buildExperience, Experience } from "models/Experience.model";
 import {
@@ -81,8 +81,8 @@ export function buildCharacter(id?: string): Character {
       buildExperience("Experience 2"),
     ],
     loadouts: { Casual: initCasualLoadout(), Combat: initCombatLoadout() },
-    Aspects: [],
-    Tactics: [],
+    Aspects: [buildFacet(FacetType.Aspect), buildFacet(FacetType.Aspect)],
+    Tactics: [buildFacet(FacetType.Tactic), buildFacet(FacetType.Tactic)],
     status: {
       shields: { current: 8, max: 8 },
       armor: { current: 4, max: 4 },
