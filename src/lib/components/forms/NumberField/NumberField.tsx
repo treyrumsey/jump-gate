@@ -13,6 +13,7 @@ interface NumberFieldRules {
   max?: number;
 }
 interface NumberFieldProps {
+  augmented?: string;
   id: string;
   name: string;
   placeholder?: string;
@@ -24,6 +25,7 @@ interface NumberFieldProps {
 }
 
 export const NumberField = ({
+  augmented,
   id,
   name,
   placeholder,
@@ -44,12 +46,21 @@ export const NumberField = ({
   });
 
   return (
-    <NumberInput id={id} {...inputProps} {...rules} {...props} size={size}>
+    <NumberInput
+      id={id}
+      {...inputProps}
+      {...rules}
+      {...props}
+      size={size}
+      data-augmented-ui={augmented ? "tl-clip border" : undefined}
+      className={augmented ? "augmented" : undefined}
+    >
       <NumberInputField
         ref={ref}
         placeholder={placeholder}
         inputMode="numeric"
         type="number"
+        border={augmented ? "0" : undefined}
       />
       <NumberInputStepper>
         <NumberIncrementStepper />

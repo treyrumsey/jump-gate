@@ -37,7 +37,11 @@ const Loadout = ({ type, show }: LoadoutProps) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
-    <Box className={"jg-Loadout"} display={show ? undefined : "none"}>
+    <Box
+      data-augmented-ui="tl-clip tr-round br-clip bl-round border"
+      className="jg-Loadout augmented"
+      display={show ? undefined : "none"}
+    >
       <Card className="jg-Loadout__card">
         <CardHeader>
           <ButtonGroup

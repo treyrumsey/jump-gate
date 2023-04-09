@@ -82,7 +82,6 @@ const WeaponEditor = () => {
           <Button
             className="is-positive"
             leftIcon={<AddIcon />}
-            size="xs"
             width="100%"
             onClick={() =>
               appendMod({ name: "", type: undefined, description: "" })
@@ -111,7 +110,6 @@ const WeaponEditor = () => {
         <Button
           className="is-positive"
           leftIcon={<AddIcon />}
-          size="xs"
           width="100%"
           onClick={() => appendTrait({ name: "", description: "" })}
         >

@@ -50,7 +50,11 @@ const Facets = ({ show, type }: FacetsProps) => {
     `${type}s[${index}].${field}`;
 
   return (
-    <Box className="jg-Facets" display={show ? undefined : "none"}>
+    <Box
+      className="jg-Facets augmented"
+      data-augmented-ui="tl-clip tr-round br-clip bl-round border"
+      display={show ? undefined : "none"}
+    >
       <ButtonGroup
         className="jg-Facets__edit-toggle-group"
         isAttached
@@ -86,7 +90,11 @@ const Facets = ({ show, type }: FacetsProps) => {
             const buildId = (field: string) => buildFieldId(index, field);
 
             return (
-              <Card className="jg-Facets__facet-group" key={field.id}>
+              <Card
+                className="jg-Facets__facet-group augmented"
+                data-augmented-ui="tl-clip br-clip"
+                key={field.id}
+              >
                 <FacetViewer buildId={buildId} facetType={type} />
                 <Upgrades
                   facetIndex={index}
