@@ -1,0 +1,26 @@
+/* oxanium-regular */
+@font-face {
+  font-display: block;
+  font-family: "Oxanium";
+  font-style: normal;
+  font-weight: 400;
+  src: url("oxanium/oxanium-regular.woff2") format("woff2");
+}
+
+/* oxanium-600 */
+@font-face {
+  font-display: block;
+  font-family: "Oxanium";
+  font-style: normal;
+  font-weight: 600;
+  src: url("oxanium/oxanium-600.woff2") format("woff2");
+}
+
+/* oxanium-700 */
+@font-face {
+  font-display: block;
+  font-family: "Oxanium";
+  font-style: normal;
+  font-weight: 700;
+  src: url("oxanium/oxanium-700.woff2") format("woff2");
+}
