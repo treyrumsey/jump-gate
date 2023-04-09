@@ -2,10 +2,8 @@ import {
   AlertDialog,
   AlertDialogBody,
   AlertDialogContent,
-  AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogOverlay,
-  Button,
 } from "@chakra-ui/react";
 import React, { useRef } from "react";
 
@@ -29,20 +27,10 @@ const SafariUnsupportedAlert = () => {
           </AlertDialogHeader>
           <AlertDialogBody>
             Jump Gate is deployed as a Progressive Web App and is currently
-            experiencing issues in browser mode on iOS. To use Jump Gate on iOS,
-            please share it to the home screen and access the app from there.
+            experiencing issues in the browser on iOS. To use Jump Gate on iOS,
+            please open this page in Safari, press the share button, and select
+            'Add to Home Screen'.
           </AlertDialogBody>
-
-          <AlertDialogFooter>
-            <Button
-              ref={shareRef}
-              onClick={() => {
-                if (navigator.canShare()) navigator.share();
-              }}
-            >
-              Share to Home Screen
-            </Button>
-          </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialogOverlay>
     </AlertDialog>
