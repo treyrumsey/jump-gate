@@ -5,24 +5,26 @@ import {
   FormLabel,
   IconButton,
   Input,
+  useDisclosure,
   useMediaQuery,
 } from "@chakra-ui/react";
 import { useDisclosureContext } from "lib/components/context/DisclosureProvider";
 import React from "react";
 import { useFormContext } from "react-hook-form";
+import CharacterModal from "webapp/modules/JumpGateCharacters/CharacterSheet/CharacterModal/CharacterModal";
 import CharacterModalButton from "webapp/modules/JumpGateCharacters/CharacterSheet/CharacterModal/CharacterModalButton";
 import ViewToggle from "webapp/modules/JumpGateCharacters/CharacterSheet/ViewToggle/ViewToggle";
 
-type PersonalDetailsProps = {
-  onCharacterModalOpen: () => void;
-};
-
-export const PersonalDetails = ({
-  onCharacterModalOpen,
-}: PersonalDetailsProps) => {
+export const PersonalDetails = () => {
   const { register } = useFormContext();
 
   const { onOpen } = useDisclosureContext();
+
+  const {
+    isOpen: isCharacterModalOpen,
+    onOpen: onCharacterModalOpen,
+    onClose: onCharacterModalClose,
+  } = useDisclosure();
 
   const [isTabletOrWider] = useMediaQuery("(min-width: 768px)");
 
@@ -59,6 +61,10 @@ export const PersonalDetails = ({
           />
         )}
       </ButtonGroup>
+      <CharacterModal
+        isCharacterModalOpen={isCharacterModalOpen}
+        onCharacterModalClose={onCharacterModalClose}
+      />
     </div>
   );
 };

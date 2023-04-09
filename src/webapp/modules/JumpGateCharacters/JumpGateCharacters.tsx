@@ -4,17 +4,13 @@ import { useCharactersContext } from "webapp/modules/context/CharactersProvider"
 import Sidebar from "webapp/modules/Sidebar/Sidebar";
 
 const JumpGateCharacters = () => {
-  const { currentCharacterId, getCharacter } = useCharactersContext();
-
-  const character = getCharacter(currentCharacterId);
+  const { currentCharacterId } = useCharactersContext();
 
   return (
     <div className="jg-JumpGateCharacters">
       <div className="container">
         <Sidebar />
-        {/* {!isOpen && ( */}
-        <CharacterSheet key={character.id} character={character} />
-        {/* )} */}
+        <CharacterSheet key={currentCharacterId} />
       </div>
     </div>
   );
