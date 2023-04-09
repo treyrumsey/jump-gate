@@ -31,13 +31,13 @@ const CharactersProvider = ({ children }: CharactersProviderProps) => {
   const initialId =
     localStorage.getItem("currentCharacterId") ?? crypto.randomUUID();
 
-  if (!localStorage.getItem("currentCharacterId"))
+  if (localStorage.getItem("currentCharacterId") === null)
     localStorage.setItem("currentCharacterId", initialId);
 
-  if (!localStorage.getItem("characterIds"))
+  if (!localStorage.getItem("characterIds") === null)
     localStorage.setItem("characterIds", JSON.stringify([initialId]));
 
-  if (!localStorage.getItem(initialId))
+  if (localStorage.getItem(initialId) === null)
     localStorage.setItem(initialId, JSON.stringify(buildCharacter(initialId)));
 
   const [characterIds, setCharacterIds] = useState<string[]>(
