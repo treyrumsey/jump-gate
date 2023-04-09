@@ -1,0 +1,53 @@
+/* exo-2-regular */
+@font-face {
+  font-display: block;
+  font-family: "Exo 2";
+  font-style: normal;
+  font-weight: 400;
+  src: url("exo2/exo-2-regular.woff2") format("woff2");
+}
+
+/* exo-2-italic */
+@font-face {
+  font-display: block;
+  font-family: "Exo 2";
+  font-style: italic;
+  font-weight: 400;
+  src: url("exo2/exo-2-italic.woff2") format("woff2");
+}
+
+/* exo-2-600 */
+@font-face {
+  font-display: block;
+  font-family: "Exo 2";
+  font-style: normal;
+  font-weight: 600;
+  src: url("exo2/exo-2-600.woff2") format("woff2");
+}
+
+/* exo-2-600italic */
+@font-face {
+  font-display: block;
+  font-family: "Exo 2";
+  font-style: italic;
+  font-weight: 600;
+  src: url("exo2/exo-2-600italic.woff2") format("woff2");
+}
+
+/* exo-2-700 */
+@font-face {
+  font-display: block;
+  font-family: "Exo 2";
+  font-style: normal;
+  font-weight: 700;
+  src: url("exo2/exo-2-700.woff2") format("woff2");
+}
+
+/* exo-2-700italic */
+@font-face {
+  font-display: block;
+  font-family: "Exo 2";
+  font-style: italic;
+  font-weight: 700;
+  src: url("exo2/exo-2-700italic.woff2") format("woff2");
+}
