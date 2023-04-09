@@ -11,27 +11,18 @@ import Loadout from "webapp/modules/JumpGateCharacters/CharacterSheet/Loadout/Lo
 import Experiences from "webapp/modules/JumpGateCharacters/CharacterSheet/Experiences/Experiences";
 import { LoadoutType } from "models/Loadout.model";
 import CharacterListener from "webapp/modules/JumpGateCharacters/CharacterSheet/CharacterListener";
-import CharacterModal from "webapp/modules/JumpGateCharacters/CharacterSheet/CharacterModal/CharacterModal";
 import { Status } from "webapp/modules/JumpGateCharacters/CharacterSheet/Status/Status";
-import {
-  Box,
-  ButtonGroup,
-  IconButton,
-  useDisclosure,
-  useMediaQuery,
-} from "@chakra-ui/react";
+import { Box, ButtonGroup, IconButton, useMediaQuery } from "@chakra-ui/react";
 import { useDisclosureContext } from "lib/components/context/DisclosureProvider";
 import { HamburgerIcon } from "@chakra-ui/icons";
+import { useCharactersContext } from "webapp/modules/context/CharactersProvider";
 
-interface CharacterSheetProps {
-  character: Character;
-}
-
-export const CharacterSheet = ({ character }: CharacterSheetProps) => {
+export const CharacterSheet = () => {
   const [isCombatMode, setCombatMode] = useState(false);
+  const { getCurrentCharacter } = useCharactersContext();
 
   const useFormMethods = useForm({
-    defaultValues: character,
+    defaultValues: getCurrentCharacter(),
   });
   const { handleSubmit } = useFormMethods;
 
@@ -43,12 +34,6 @@ export const CharacterSheet = ({ character }: CharacterSheetProps) => {
       }, 300);
     });
   }
-
-  const {
-    isOpen: isCharacterModalOpen,
-    onOpen: onCharacterModalOpen,
-    onClose: onCharacterModalClose,
-  } = useDisclosure();
 
   const [isNarrowerThanTablet] = useMediaQuery("(max-width: 767px)");
 
@@ -64,7 +49,7 @@ export const CharacterSheet = ({ character }: CharacterSheetProps) => {
         >
           <CharacterListener />
 
-          <PersonalDetails onCharacterModalOpen={onCharacterModalOpen} />
+          <PersonalDetails />
           <div className="jg-CharacterSheet__area2">
             <Attributes />
             <Tokens />
@@ -77,10 +62,6 @@ export const CharacterSheet = ({ character }: CharacterSheetProps) => {
             <Facets type={FacetType.Aspect} show={!isCombatMode} />
             <Facets type={FacetType.Tactic} show={isCombatMode} />
           </div>
-          <CharacterModal
-            isCharacterModalOpen={isCharacterModalOpen}
-            onCharacterModalClose={onCharacterModalClose}
-          />
         </form>
       </FormProvider>
     </PlayModeProvider>

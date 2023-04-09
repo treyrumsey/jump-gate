@@ -2,8 +2,6 @@ import { EditIcon, ViewIcon } from "@chakra-ui/icons";
 import {
   Box,
   Button,
-  Card,
-  CardBody,
   FormControl,
   FormLabel,
   Modal,
@@ -19,7 +17,6 @@ import {
   TabPanels,
   Tabs,
   Textarea,
-  useTabPanels,
 } from "@chakra-ui/react";
 import { NumberField } from "lib/components/forms/NumberField/NumberField";
 import MarkdownView from "lib/components/typography/MarkdownView/MarkdownView";
