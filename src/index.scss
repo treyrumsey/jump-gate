@@ -84,18 +84,6 @@ code {
   min-width: fit-content;
 }
 
-// [data-augmented-ui~="br-clip"] {
-//   --aug-br: 10px !important;
-// }
-
-// [data-augmented-ui~="tl-clip"] {
-//   --aug-tl: 10px !important;
-// }
-
-// [data-augmented-ui~="bl-round"] {
-//   --aug-bl: var(--chakra-radii-md) !important;
-// }
-
 .augmented {
   border: 0;
   &[data-augmented-ui] {
@@ -108,9 +96,5 @@ code {
     --aug-border: initial;
     --aug-border-all: 1px;
     --aug-border-bg: var(--chakra-colors-chakra-border-color);
-    // --aug-tl: 12px;
-    // --aug-br: 12px;
-    // --aug-bl: var(--chakra-radii-md);
-    // --aug-tr: var(--chakra-radii-md);
   }
 }

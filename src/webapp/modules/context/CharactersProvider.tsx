@@ -34,7 +34,7 @@ const CharactersProvider = ({ children }: CharactersProviderProps) => {
   if (localStorage.getItem("currentCharacterId") === null)
     localStorage.setItem("currentCharacterId", initialId);
 
-  if (!localStorage.getItem("characterIds") === null)
+  if (localStorage.getItem("characterIds") === null)
     localStorage.setItem("characterIds", JSON.stringify([initialId]));
 
   if (localStorage.getItem(initialId) === null)

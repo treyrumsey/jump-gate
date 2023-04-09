@@ -48,7 +48,11 @@ const CharacterModal = ({
   return (
     <Modal isOpen={isCharacterModalOpen} onClose={handleModalClose}>
       <ModalOverlay />
-      <ModalContent className="jg-CharacterModal" maxWidth="4xl">
+      <ModalContent
+        className="jg-CharacterModal augmented"
+        data-augmented-ui="tl-clip tr-round br-clip bl-round border"
+        maxWidth="4xl"
+      >
         <ModalHeader textAlign="center" position="relative" paddingBottom="0">
           Character Details
         </ModalHeader>

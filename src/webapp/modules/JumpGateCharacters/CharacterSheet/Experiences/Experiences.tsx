@@ -27,7 +27,10 @@ const Experiences = () => {
 
   return (
     <Box className="jg-Experiences" display={isCombatMode ? "none" : undefined}>
-      <Card className="jg-Experiences__card">
+      <Card
+        className="jg-Experiences__card augmented"
+        data-augmented-ui="tl-clip tr-round br-clip bl-round border"
+      >
         <CardHeader>
           <ButtonGroup className="jg-Experiences__edit-toggle-group">
             <Text className="jg-Experiences__title" fontSize="lg">
