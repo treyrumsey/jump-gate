@@ -46,7 +46,9 @@ const Sidebar = () => {
                   }}
                 >
                   <Box textAlign="start" marginX="6">
-                    {character.name ? character.name : "Unnamed Character"}
+                    {character.name?.trim().length > 0
+                      ? character.name
+                      : "Unnamed Character"}
                   </Box>
                 </Button>
               )

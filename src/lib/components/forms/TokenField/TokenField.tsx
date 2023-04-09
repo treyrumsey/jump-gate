@@ -5,8 +5,8 @@ import {
   FormControl,
   Input,
 } from "@chakra-ui/react";
-import React, { useState } from "react";
-import { useFormContext } from "react-hook-form";
+import React, { useEffect, useState } from "react";
+import { useFormContext, useWatch } from "react-hook-form";
 
 interface TokenFieldProps {
   positiveName: string;
@@ -24,6 +24,12 @@ const TokenField = ({
   const [tokenValue, setTokenValue] = useState<number>(
     getValues(tokenName) ?? 0
   );
+
+  const tokenWatch = useWatch({ name: tokenName });
+
+  useEffect(() => {
+    setTokenValue(tokenWatch);
+  }, [tokenWatch]);
 
   const gainPositiveToken = () => {
     if (tokenValue === 3) return;
