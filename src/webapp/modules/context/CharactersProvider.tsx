@@ -7,8 +7,9 @@ type CharactersContextType = {
   addCharacter: () => void;
   deleteCharacter: (id: string) => void;
   getCharacterIdsAndNames: () => { id: string; name: string }[];
-  getCharacter: (id: string) => Character;
+  getCurrentCharacter: () => Character;
   switchCharacter: (id: string) => void;
+  updateStateOnWindowFocus: () => void;
 };
 
 export const CharactersContext = createContext<CharactersContextType>({
@@ -17,8 +18,9 @@ export const CharactersContext = createContext<CharactersContextType>({
   addCharacter: () => null,
   deleteCharacter: () => null,
   getCharacterIdsAndNames: () => [],
-  getCharacter: () => buildCharacter(""),
+  getCurrentCharacter: () => buildCharacter(""),
   switchCharacter: () => null,
+  updateStateOnWindowFocus: () => null,
 });
 
 type CharactersProviderProps = {
@@ -26,21 +28,22 @@ type CharactersProviderProps = {
 };
 
 const CharactersProvider = ({ children }: CharactersProviderProps) => {
-  const id = localStorage.getItem("currentCharacterId") ?? crypto.randomUUID();
+  const initialId =
+    localStorage.getItem("currentCharacterId") ?? crypto.randomUUID();
 
-  if (!localStorage.getItem("currentCharacterId"))
-    localStorage.setItem("currentCharacterId", id);
+  if (localStorage.getItem("currentCharacterId") === null)
+    localStorage.setItem("currentCharacterId", initialId);
 
-  if (!localStorage.getItem("characterIds"))
-    localStorage.setItem("characterIds", JSON.stringify([id]));
+  if (!localStorage.getItem("characterIds") === null)
+    localStorage.setItem("characterIds", JSON.stringify([initialId]));
 
-  if (!localStorage.getItem(id))
-    localStorage.setItem(id, JSON.stringify(buildCharacter(id)));
+  if (localStorage.getItem(initialId) === null)
+    localStorage.setItem(initialId, JSON.stringify(buildCharacter(initialId)));
 
   const [characterIds, setCharacterIds] = useState<string[]>(
     JSON.parse(localStorage.getItem("characterIds") ?? "[]")
   );
-  const [currentCharacterId, setCurrentCharacterId] = useState(id);
+  const [currentCharacterId, setCurrentCharacterId] = useState(initialId);
 
   const addCharacter = () => {
     const newCharacter = buildCharacter(crypto.randomUUID());
@@ -49,7 +52,6 @@ const CharactersProvider = ({ children }: CharactersProviderProps) => {
     localStorage.setItem(newCharacter.id, JSON.stringify(newCharacter));
     localStorage.setItem("currentCharacterId", newCharacter.id);
     localStorage.setItem("characterIds", JSON.stringify(newCharacterIds));
-    console.log("addCharacter", newCharacterIds);
     setCharacterIds(newCharacterIds);
     setCurrentCharacterId(newCharacter.id);
   };
@@ -66,8 +68,8 @@ const CharactersProvider = ({ children }: CharactersProviderProps) => {
     });
   };
 
-  const getCharacter = (id: string): Character => {
-    return JSON.parse(localStorage.getItem(id) ?? "{}");
+  const getCurrentCharacter = (): Character => {
+    return JSON.parse(localStorage.getItem(currentCharacterId) ?? "{}");
   };
 
   const deleteCharacter = (id: string) => {
@@ -88,6 +90,11 @@ const CharactersProvider = ({ children }: CharactersProviderProps) => {
     setCharacterIds(newIds);
   };
 
+  const updateStateOnWindowFocus = () => {
+    setCurrentCharacterId(localStorage.getItem("currentCharacterId") ?? "");
+    setCharacterIds(JSON.parse(localStorage.getItem("characterIds") ?? "[]"));
+  };
+
   return (
     <CharactersContext.Provider
       value={{
@@ -97,7 +104,8 @@ const CharactersProvider = ({ children }: CharactersProviderProps) => {
         deleteCharacter,
         switchCharacter,
         getCharacterIdsAndNames,
-        getCharacter,
+        getCurrentCharacter,
+        updateStateOnWindowFocus,
       }}
     >
       {children}

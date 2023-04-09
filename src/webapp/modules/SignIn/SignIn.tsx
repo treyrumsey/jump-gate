@@ -1,13 +1,13 @@
 import React from "react";
 import { useSignInWithGoogle } from "react-firebase-hooks/auth";
-import { auth } from "webapp/App";
+// import { auth } from "webapp/App";
 
 const SignIn = () => {
-  const [signInWithGoogle] = useSignInWithGoogle(auth);
+  // const [signInWithGoogle] = useSignInWithGoogle(auth);
 
   return (
     <>
-      <button onClick={() => signInWithGoogle()}>Sign in with Google</button>
+      {/* <button onClick={() => signInWithGoogle()}>Sign in with Google</button> */}
     </>
   );
 };

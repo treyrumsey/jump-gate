@@ -45,8 +45,10 @@ const Sidebar = () => {
                     onClose();
                   }}
                 >
-                  <Box textAlign="start" marginX="6" data->
-                    {character.name ? character.name : "Unnamed Character"}
+                  <Box textAlign="start" marginX="6">
+                    {character.name?.trim().length > 0
+                      ? character.name
+                      : "Unnamed Character"}
                   </Box>
                 </Button>
               )
