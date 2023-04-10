@@ -52,7 +52,10 @@ const LoadoutEditor = ({ type, isOpen, onClose }: LoadoutEditorProps) => {
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
-      <ModalContent className="jg-LoadoutEditor">
+      <ModalContent
+        className="jg-LoadoutEditor augmented"
+        data-augmented-ui="tl-clip tr-round br-clip bl-round border"
+      >
         <ModalHeader textAlign="center" position="relative" paddingBottom="0">
           Loadout
         </ModalHeader>
@@ -89,8 +92,8 @@ const LoadoutEditor = ({ type, isOpen, onClose }: LoadoutEditorProps) => {
               <Button
                 className="is-positive"
                 leftIcon={<AddIcon />}
-                size="xs"
-                width="100%"
+                size="sm"
+                marginX="auto"
                 onClick={() =>
                   appendArmorMod({ name: "", type: undefined, description: "" })
                 }
@@ -119,8 +122,7 @@ const LoadoutEditor = ({ type, isOpen, onClose }: LoadoutEditorProps) => {
             <Button
               className="is-positive"
               leftIcon={<AddIcon />}
-              size="xs"
-              width="100%"
+              size="sm"
               onClick={() =>
                 appendGear({ name: "", type: undefined, description: "" })
               }

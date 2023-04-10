@@ -22,7 +22,10 @@ const ExperiencesEditor = ({ isOpen, onClose }: ExperiencesEditorProps) => {
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
-      <ModalContent className="jg-Experiences__modal-content">
+      <ModalContent
+        className="jg-Experiences__modal-content augmented"
+        data-augmented-ui="tl-clip tr-round br-clip bl-round border"
+      >
         <ModalHeader textAlign="center" position="relative" paddingBottom="0">
           Experiences
         </ModalHeader>
@@ -38,8 +41,7 @@ const ExperiencesEditor = ({ isOpen, onClose }: ExperiencesEditorProps) => {
           <Button
             className="is-positive"
             leftIcon={<AddIcon />}
-            size="xs"
-            width="100%"
+            size="sm"
             onClick={() => append({ name: "", description: "" })}
           >
             Add Experience

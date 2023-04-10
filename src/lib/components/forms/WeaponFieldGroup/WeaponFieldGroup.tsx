@@ -52,8 +52,8 @@ const WeaponFieldGroup = ({
       </option>
     ));
 
-  const hasMods = getValues(`${weaponId}.mods`).length > 0;
-  const hasTraits = getValues(`${weaponId}.traits`).length > 0;
+  const hasMods = getValues(`${weaponId}.mods`)?.length > 0;
+  const hasTraits = getValues(`${weaponId}.traits`)?.length > 0;
 
   return (
     <Box className="jg-WeaponFieldGroup">

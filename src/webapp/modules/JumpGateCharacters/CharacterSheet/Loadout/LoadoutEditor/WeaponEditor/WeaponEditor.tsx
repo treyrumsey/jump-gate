@@ -39,7 +39,11 @@ const WeaponEditor = () => {
   const weaponName = getValues(`${weaponId}.name`);
 
   return (
-    <Card padding="4">
+    <Card
+      padding="4"
+      className="augmented"
+      data-augmented-ui="tl-clip tr-round br-clip bl-round border"
+    >
       <CardHeader
         padding="0"
         display="flex"
@@ -82,8 +86,7 @@ const WeaponEditor = () => {
           <Button
             className="is-positive"
             leftIcon={<AddIcon />}
-            size="xs"
-            width="100%"
+            size="sm"
             onClick={() =>
               appendMod({ name: "", type: undefined, description: "" })
             }
@@ -111,8 +114,7 @@ const WeaponEditor = () => {
         <Button
           className="is-positive"
           leftIcon={<AddIcon />}
-          size="xs"
-          width="100%"
+          size="sm"
           onClick={() => appendTrait({ name: "", description: "" })}
         >
           Add Trait
