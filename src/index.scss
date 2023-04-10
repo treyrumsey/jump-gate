@@ -7,7 +7,6 @@
 
 @import "lib/components/forms/AmmoField/AmmoField.scss";
 @import "lib/components/forms/AttributeField/AttributeField.scss";
-@import "lib/components/forms/IconNumberField/IconNumberField.scss";
 @import "lib/components/forms/TokenField/TokenField.scss";
 @import "lib/components/forms/TokenField/UniqueTokenField/UniqueTokenField.scss";
 @import "lib/components/forms/TagEditor/TagEditor.scss";
@@ -33,6 +32,8 @@
 
 @import "webapp/modules/JumpGateCharacters/CharacterSheet/PersonalDetails/PersonalDetails.scss";
 @import "webapp/modules/JumpGateCharacters/CharacterSheet/Status/Status.scss";
+@import "webapp/modules/JumpGateCharacters/CharacterSheet/Status/StatusField/NumberInputWithIcon/NumberInputWithIcon.scss";
+
 @import "webapp/modules/JumpGateCharacters/CharacterSheet/Tokens/Tokens.scss";
 @import "webapp/modules/JumpGateCharacters/CharacterSheet/ViewToggle/ViewToggle.scss";
 

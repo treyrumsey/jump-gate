@@ -1,10 +1,10 @@
-import IconNumberField from "lib/components/forms/IconNumberField/IconNumberField";
 import {
   CustomIconColor,
   CustomIconType,
 } from "lib/components/icons/CustomIcon";
 import React from "react";
 import { useWatch } from "react-hook-form";
+import NumberIcon from "webapp/modules/JumpGateCharacters/CharacterSheet/Status/StatusField/NumberInputWithIcon/NumberInputWithIcon";
 
 export interface IconFunctionParams {
   current?: number;
@@ -41,17 +41,14 @@ const StatusField = ({ getIcon, color, name, statusId }: StatusFieldProps) => {
 
   return (
     <div className={`jg-Status__${name}`}>
-      <IconNumberField
-        defaultValue={currentValue}
-        fieldId={currentId}
+      <NumberIcon
+        id={statusId}
+        label={name}
         icon={getIcon({
           current: currentValue,
           max: maxValue,
         })}
         iconColor={iconColor}
-        label={name}
-        max={maxValue}
-        maxId={maxId}
       />
     </div>
   );
