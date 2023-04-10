@@ -1,17 +1,6 @@
 /* eslint-disable no-extra-boolean-cast */
 import { AddIcon, MinusIcon } from "@chakra-ui/icons";
-import {
-  Box,
-  Button,
-  IconButton,
-  Input,
-  NumberDecrementStepper,
-  NumberIncrementStepper,
-  NumberInput,
-  NumberInputField,
-  NumberInputStepper,
-  Text,
-} from "@chakra-ui/react";
+import { Box, IconButton, Input, Text } from "@chakra-ui/react";
 import CustomIcon, {
   CustomIconColor,
   CustomIconType,
@@ -35,9 +24,8 @@ const NumberIcon = ({
   label,
   icon,
   iconColor = CustomIconColor.Default,
-  defaultValue,
 }: NumberIconProps) => {
-  const { register, getValues, setValue } = useFormContext();
+  const { register, setValue } = useFormContext();
 
   const currentId = `${id}.current`;
   const maxId = `${id}.max`;
@@ -73,7 +61,6 @@ const NumberIcon = ({
           break;
       }
 
-      console.log("tick");
       if (next < 0) return 0;
       else if (next > maxValue) return maxValue;
       else return next;
@@ -84,8 +71,8 @@ const NumberIcon = ({
   console.log();
 
   return (
-    <div className="jg-IconNumberField">
-      <Box className="jg-IconNumberField__group" height={size}>
+    <div className="jg-NumberInputWithIcon">
+      <Box className="jg-NumberInputWithIcon__group" height={size}>
         <CustomIcon icon={icon} size={size} fill={iconColor} />
         <IconButton
           aria-label={`Decrease ${label}`}

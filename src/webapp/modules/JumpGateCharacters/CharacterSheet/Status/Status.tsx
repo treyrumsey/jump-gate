@@ -2,7 +2,6 @@ import { Checkbox } from "@chakra-ui/react";
 import { CustomIconType } from "lib/components/icons/CustomIcon";
 import React from "react";
 import { useFormContext } from "react-hook-form";
-import NumberIcon from "webapp/modules/JumpGateCharacters/CharacterSheet/Status/NumberIcon";
 import StatusField, {
   StatusFieldColors,
 } from "webapp/modules/JumpGateCharacters/CharacterSheet/Status/StatusField/StatusField";
@@ -12,17 +11,17 @@ export const Status = () => {
 
   return (
     <div className="jg-Status">
-      {/* <StatusField
+      <StatusField
         color={StatusFieldColors.BadNewsAtZero}
         getIcon={() => CustomIconType.Shield}
         name="Shields"
         statusId="status.shields"
-      /> */}
-      <NumberIcon
+      />
+      {/* <NumberIcon
         icon={CustomIconType.Shield}
         label="Shields"
         id="status.shields"
-      />
+      /> */}
       <StatusField
         color={StatusFieldColors.BadNewsAtZero}
         getIcon={() => CustomIconType.Armor}
