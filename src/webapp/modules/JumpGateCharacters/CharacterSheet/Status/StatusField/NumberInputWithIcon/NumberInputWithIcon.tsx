@@ -68,8 +68,6 @@ const NumberIcon = ({
     setValue(currentId, calculateValue());
   };
 
-  console.log();
-
   return (
     <div className="jg-NumberInputWithIcon">
       <Box className="jg-NumberInputWithIcon__group" height={size}>
