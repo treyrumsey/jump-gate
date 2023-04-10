@@ -17,11 +17,6 @@ export const Status = () => {
         name="Shields"
         statusId="status.shields"
       />
-      {/* <NumberIcon
-        icon={CustomIconType.Shield}
-        label="Shields"
-        id="status.shields"
-      /> */}
       <StatusField
         color={StatusFieldColors.BadNewsAtZero}
         getIcon={() => CustomIconType.Armor}
