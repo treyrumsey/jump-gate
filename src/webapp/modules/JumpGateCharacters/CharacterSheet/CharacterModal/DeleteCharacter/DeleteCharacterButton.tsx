@@ -20,6 +20,7 @@ const DeleteCharacterButton = ({
   onCharacterModalClose,
 }: DeleteCharacterButtonProps) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const cancelRef = useRef<any>();
 
   const { getValues } = useFormContext();

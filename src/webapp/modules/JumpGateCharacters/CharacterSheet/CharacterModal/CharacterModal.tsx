@@ -1,9 +1,6 @@
 import { EditIcon, ViewIcon } from "@chakra-ui/icons";
 import {
-  Box,
   Button,
-  FormControl,
-  FormLabel,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -18,11 +15,11 @@ import {
   Tabs,
   Textarea,
 } from "@chakra-ui/react";
-import { NumberField } from "lib/components/forms/NumberField/NumberField";
 import MarkdownView from "lib/components/typography/MarkdownView/MarkdownView";
 import React, { useState } from "react";
 import { useFormContext } from "react-hook-form";
 import DeleteCharacterButton from "webapp/modules/JumpGateCharacters/CharacterSheet/CharacterModal/DeleteCharacter/DeleteCharacterButton";
+import Options from "webapp/modules/JumpGateCharacters/CharacterSheet/CharacterModal/Options/Options";
 
 type CharacterModalProps = {
   isCharacterModalOpen: boolean;
@@ -33,8 +30,7 @@ const CharacterModal = ({
   isCharacterModalOpen,
   onCharacterModalClose,
 }: CharacterModalProps) => {
-  const { control, getValues, register } = useFormContext();
-  const statuses = ["shields", "armor", "stress", "supplies", "mp"];
+  const { getValues, register } = useFormContext();
 
   const [isEditingNotes, setIsEditingNotes] = useState(false);
 
@@ -79,34 +75,7 @@ const CharacterModal = ({
                 )}
               </TabPanel>
               <TabPanel>
-                <Box
-                  display="flex"
-                  gap="1rem"
-                  flexWrap="wrap"
-                  justifyContent="center"
-                >
-                  {statuses.map((status) => (
-                    <FormControl
-                      className="jg-CharacterModal__max-status"
-                      key={status}
-                      variant="floating"
-                      width="9rem"
-                    >
-                      <NumberField
-                        id={`status.${status}.max`}
-                        name={`status.${status}.max`}
-                        rules={{ min: 0 }}
-                        defaultValue={getValues(`status.${status}.max`)}
-                        control={control}
-                        size="lg"
-                      />
-                      <FormLabel
-                        htmlFor={`status.${status}.max`}
-                        textTransform="capitalize"
-                      >{`Max ${status}`}</FormLabel>
-                    </FormControl>
-                  ))}
-                </Box>
+                <Options />
               </TabPanel>
               <TabPanel>
                 <DeleteCharacterButton

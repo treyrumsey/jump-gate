@@ -9,7 +9,7 @@ import { useSpinner } from "lib/hooks/useSpinner";
 import React, { useEffect } from "react";
 import { useFormContext, useWatch } from "react-hook-form";
 
-type NumberIconProps = {
+type NumberInputWithIconProps = {
   id: string;
   label: string;
   icon: CustomIconType;
@@ -19,20 +19,23 @@ type NumberIconProps = {
 
 const size = "50px";
 
-const NumberIcon = ({
+const NumberInputWithIcon = ({
   id,
   label,
   icon,
   iconColor = CustomIconColor.Default,
-}: NumberIconProps) => {
-  const { register, setValue } = useFormContext();
+}: NumberInputWithIconProps) => {
+  const { register, setValue, getValues } = useFormContext();
 
   const currentId = `${id}.current`;
   const maxId = `${id}.max`;
 
-  const maxWatch = useWatch({ name: maxId });
+  const maxWatch = useWatch({ name: maxId, defaultValue: getValues(maxId) });
   const maxValue = parseInt(maxWatch);
-  const currentWatch = useWatch({ name: currentId });
+  const currentWatch = useWatch({
+    name: currentId,
+    defaultValue: getValues(currentId),
+  });
   const currentValue = parseInt(currentWatch);
 
   useEffect(() => {
@@ -108,4 +111,4 @@ const NumberIcon = ({
   );
 };
 
-export default NumberIcon;
+export default NumberInputWithIcon;

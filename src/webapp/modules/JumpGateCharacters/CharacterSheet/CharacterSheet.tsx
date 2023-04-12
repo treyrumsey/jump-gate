@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { Character } from "models/Character.model";

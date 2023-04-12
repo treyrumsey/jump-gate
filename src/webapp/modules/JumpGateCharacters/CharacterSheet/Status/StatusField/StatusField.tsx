@@ -1,10 +1,11 @@
+import { Box } from "@chakra-ui/react";
 import {
   CustomIconColor,
   CustomIconType,
 } from "lib/components/icons/CustomIcon";
 import React from "react";
 import { useWatch } from "react-hook-form";
-import NumberIcon from "webapp/modules/JumpGateCharacters/CharacterSheet/Status/StatusField/NumberInputWithIcon/NumberInputWithIcon";
+import NumberInputWithIcon from "webapp/modules/JumpGateCharacters/CharacterSheet/Status/StatusField/NumberInputWithIcon/NumberInputWithIcon";
 
 export interface IconFunctionParams {
   current?: number;
@@ -21,9 +22,16 @@ type StatusFieldProps = {
   color: StatusFieldColors;
   name: string;
   statusId: string;
+  display?: string;
 };
 
-const StatusField = ({ getIcon, color, name, statusId }: StatusFieldProps) => {
+const StatusField = ({
+  getIcon,
+  color,
+  name,
+  statusId,
+  display,
+}: StatusFieldProps) => {
   const currentId = `${statusId}.current`;
   const maxId = `${statusId}.max`;
 
@@ -40,8 +48,8 @@ const StatusField = ({ getIcon, color, name, statusId }: StatusFieldProps) => {
     iconColor = CustomIconColor.BadNews;
 
   return (
-    <div className={`jg-Status__${name}`}>
-      <NumberIcon
+    <Box className={`jg-Status__${name}`} display={display}>
+      <NumberInputWithIcon
         id={statusId}
         label={name}
         icon={getIcon({
@@ -50,7 +58,7 @@ const StatusField = ({ getIcon, color, name, statusId }: StatusFieldProps) => {
         })}
         iconColor={iconColor}
       />
-    </div>
+    </Box>
   );
 };
 

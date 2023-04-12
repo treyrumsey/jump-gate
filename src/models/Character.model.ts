@@ -41,14 +41,18 @@ interface StatusValue {
   max: number;
 }
 interface Status {
-  shields: StatusValue;
-  armor: StatusValue;
+  casual: { shields: StatusValue; armor: StatusValue; mp: StatusValue };
+  combat: { shields: StatusValue; armor: StatusValue; mp: StatusValue };
   stress: StatusValue;
-  mp: StatusValue;
   supplies: StatusValue;
   shaken: boolean;
   wounded: boolean;
 }
+
+type Tiers = {
+  armory: number;
+  arsenal: number;
+};
 export interface Character {
   id: string;
   name: string;
@@ -62,6 +66,8 @@ export interface Character {
   status: Status;
   tokens: Tokens;
   notes: string;
+  tiers: Tiers;
+  schemaVersion: number;
 }
 
 export function buildCharacter(id?: string): Character {
@@ -84,10 +90,17 @@ export function buildCharacter(id?: string): Character {
     Aspects: [buildFacet(FacetType.Aspect), buildFacet(FacetType.Aspect)],
     Tactics: [buildFacet(FacetType.Tactic), buildFacet(FacetType.Tactic)],
     status: {
-      shields: { current: 8, max: 8 },
-      armor: { current: 4, max: 4 },
+      casual: {
+        shields: { current: 4, max: 4 },
+        armor: { current: 2, max: 2 },
+        mp: { current: 0, max: 0 },
+      },
+      combat: {
+        shields: { current: 8, max: 8 },
+        armor: { current: 4, max: 4 },
+        mp: { current: 0, max: 0 },
+      },
       stress: { current: 0, max: 10 },
-      mp: { current: 0, max: 0 },
       supplies: { current: 5, max: 5 },
       shaken: false,
       wounded: false,
@@ -103,6 +116,11 @@ export function buildCharacter(id?: string): Character {
       stunned: 0,
     },
     notes: "",
+    tiers: {
+      armory: 1,
+      arsenal: 1,
+    },
+    schemaVersion: 1,
   };
 }
 
@@ -275,10 +293,17 @@ export function mockCharacter(): Character {
       },
     ],
     status: {
-      shields: { current: 8, max: 8 },
-      armor: { current: 4, max: 4 },
+      casual: {
+        shields: { current: 4, max: 4 },
+        armor: { current: 2, max: 2 },
+        mp: { current: 0, max: 0 },
+      },
+      combat: {
+        shields: { current: 8, max: 8 },
+        armor: { current: 4, max: 4 },
+        mp: { current: 0, max: 0 },
+      },
       stress: { current: 0, max: 10 },
-      mp: { current: 2, max: 2 },
       supplies: { current: 5, max: 5 },
       shaken: false,
       wounded: false,
@@ -294,5 +319,10 @@ export function mockCharacter(): Character {
       stunned: 3,
     },
     notes: "",
+    tiers: {
+      armory: 1,
+      arsenal: 1,
+    },
+    schemaVersion: 1,
   };
 }
