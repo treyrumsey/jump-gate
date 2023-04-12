@@ -1,10 +1,5 @@
 import { Heading } from "@chakra-ui/react";
-import {
-  Blue,
-  Red,
-} from "lib/components/typography/MarkdownColorOverrides/MarkdownColorOverrides";
 import MarkdownView from "lib/components/typography/MarkdownView/MarkdownView";
-import Markdown from "markdown-to-jsx";
 import React from "react";
 import { useFormContext } from "react-hook-form";
 

@@ -1,6 +1,11 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/ban-types */
 import { useInterval } from "@chakra-ui/react-use-interval";
 import { useCallback, useEffect, useRef, useState } from "react";
+
+/**
+ * This file is a part of the Chakra UI project, and is licensed under the MIT license.
+ */
 
 /**
  * When click and hold on a button - the speed of auto changing the value.
