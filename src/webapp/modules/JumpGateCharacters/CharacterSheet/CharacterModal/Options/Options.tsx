@@ -1,4 +1,4 @@
-import { Box, FormControl, FormLabel } from "@chakra-ui/react";
+import { Box, FormControl, FormLabel, HStack } from "@chakra-ui/react";
 import { NumberField } from "lib/components/forms/NumberField/NumberField";
 import React, { useEffect } from "react";
 import { useFormContext, useWatch } from "react-hook-form";
@@ -82,7 +82,7 @@ const Options = () => {
         className="jg-CharacterModal__max-status"
         key={status}
         variant="floating"
-        width="12rem"
+        width="9.5rem"
       >
         <NumberField
           id={`status.${status}.max`}
@@ -102,29 +102,41 @@ const Options = () => {
 
   return (
     <Box>
-      <FormControl variant="floating">
-        <NumberField
-          id="tiers.armory"
-          name="tiers.armory"
-          defaultValue={1}
-          rules={{ min: 1, max: 3 }}
-          control={control}
-        />
-        <FormLabel htmlFor="tiers.armory">Armory Tier</FormLabel>
-      </FormControl>
-      <FormControl variant="floating">
-        <NumberField
-          id="tiers.arsenal"
-          name="tiers.arsenal"
-          defaultValue={1}
-          rules={{ min: 1, max: 3 }}
-          control={control}
-        />
-        <FormLabel htmlFor="tiers.arsenal">Armory Tier</FormLabel>
-      </FormControl>
-      <Box display="flex" gap="1rem" flexWrap="wrap" justifyContent="center">
+      <HStack marginBottom="2rem" gap="1rem" justifyContent="center">
+        <FormControl
+          variant="floating"
+          width="8rem"
+          className="jg-CharacterModal__max-status"
+        >
+          <NumberField
+            id="tiers.armory"
+            name="tiers.armory"
+            defaultValue={1}
+            rules={{ min: 1, max: 3 }}
+            control={control}
+            size="lg"
+          />
+          <FormLabel htmlFor="tiers.armory">Armory Tier</FormLabel>
+        </FormControl>
+        <FormControl
+          variant="floating"
+          width="8rem"
+          className="jg-CharacterModal__max-status"
+        >
+          <NumberField
+            id="tiers.arsenal"
+            name="tiers.arsenal"
+            defaultValue={1}
+            rules={{ min: 1, max: 3 }}
+            control={control}
+            size="lg"
+          />
+          <FormLabel htmlFor="tiers.arsenal">Arsenal Tier</FormLabel>
+        </FormControl>
+      </HStack>
+      <HStack gap="1rem" flexWrap="wrap" justifyContent="center">
         {statuses.map((status) => renderMaxField(status))}
-      </Box>
+      </HStack>
     </Box>
   );
 };
