@@ -78,7 +78,7 @@ const NavBar = () => {
       width="100%"
       background="blackAlpha.600"
       backdropFilter="blur(25px)"
-      position="fixed"
+      position="sticky"
       top="0"
       zIndex="1000"
     >
@@ -87,7 +87,7 @@ const NavBar = () => {
           aria-label="Open Menu"
           icon={<HamburgerIcon />}
           onClick={onOpen}
-          size="sm"
+          size="md"
           variant="ghost"
           marginLeft="auto"
         />

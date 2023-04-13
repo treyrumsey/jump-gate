@@ -1,6 +1,23 @@
 import { Character, buildCharacter } from "models/Character.model";
 import React, { createContext, useContext, useState } from "react";
 
+/** Used for testing in non-secure contexts, specifically when debugging and testing on local network, which cannot use a secure context */
+const uuidv4 = () => {
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, (c) =>
+    // tslint:disable-next-line:no-bitwise
+    (
+      c ^
+      (crypto.getRandomValues(new Uint8Array(1))[0] & (15 >> (c / 4)))
+    ).toString(16)
+  ) as string;
+};
+
+export const generateUUID = () => {
+  return window.isSecureContext ? crypto.randomUUID() : uuidv4();
+};
+
 type CharactersContextType = {
   characterIds: string[];
   currentCharacterId: string;
@@ -29,7 +46,7 @@ type CharactersProviderProps = {
 
 const CharactersProvider = ({ children }: CharactersProviderProps) => {
   const initialId =
-    localStorage.getItem("currentCharacterId") ?? crypto.randomUUID();
+    localStorage.getItem("currentCharacterId") ?? generateUUID();
 
   if (localStorage.getItem("currentCharacterId") === null)
     localStorage.setItem("currentCharacterId", initialId);
@@ -46,7 +63,7 @@ const CharactersProvider = ({ children }: CharactersProviderProps) => {
   const [currentCharacterId, setCurrentCharacterId] = useState(initialId);
 
   const addCharacter = () => {
-    const newCharacter = buildCharacter(crypto.randomUUID());
+    const newCharacter = buildCharacter(generateUUID());
     const newCharacterIds = [newCharacter.id, ...characterIds];
 
     localStorage.setItem(newCharacter.id, JSON.stringify(newCharacter));
@@ -76,7 +93,7 @@ const CharactersProvider = ({ children }: CharactersProviderProps) => {
     const newIds = characterIds.filter((characterId) => characterId !== id);
 
     if (newIds.length === 0) {
-      const newCharacter = buildCharacter(crypto.randomUUID());
+      const newCharacter = buildCharacter(generateUUID());
       newIds.push(newCharacter.id);
       localStorage.setItem(newCharacter.id, JSON.stringify(newCharacter));
     }

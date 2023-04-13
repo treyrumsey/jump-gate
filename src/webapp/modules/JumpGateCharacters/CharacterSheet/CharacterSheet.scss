@@ -49,10 +49,6 @@
     }
   }
 
-  @include narrowerThanTablet {
-    margin-top: 44px;
-  }
-
   border-radius: 0.375rem;
 
   display: flex;
