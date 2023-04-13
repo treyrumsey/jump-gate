@@ -10,8 +10,6 @@ import React, { useRef } from "react";
 const SafariUnsupportedAlert = () => {
   const shareRef = useRef<HTMLButtonElement | null>(null);
 
-  navigator.canShare();
-
   return (
     <AlertDialog
       isOpen={true}
