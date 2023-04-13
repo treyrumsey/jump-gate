@@ -11,7 +11,7 @@ import { GearType } from "models/Gear.model";
 import { WeaponModType, WeaponRange, WeaponType } from "models/Weapon.model";
 import { Dice } from "models/Dice.model";
 import { ArmorModType } from "models/ArmorMod.model";
-
+import { generateUUID } from "lib/utilities/GenerateUUID";
 interface CharacterLoadouts {
   Casual: Loadout;
   Combat: Loadout;
@@ -126,7 +126,7 @@ export function buildCharacter(id?: string): Character {
 
 export function mockCharacter(): Character {
   return {
-    id: crypto.randomUUID(),
+    id: generateUUID(),
     name: "Drodger Cardbourde",
     species: "Human",
     ship: "Scrap on the Rocks",
