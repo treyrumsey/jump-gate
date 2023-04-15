@@ -6,7 +6,7 @@ import CustomIcon, {
   CustomIconType,
 } from "lib/components/icons/CustomIcon";
 import { useSpinner } from "lib/hooks/useSpinner";
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { useFormContext, useWatch } from "react-hook-form";
 
 type NumberInputWithIconProps = {
@@ -37,6 +37,8 @@ const NumberInputWithIcon = ({
     defaultValue: getValues(currentId),
   });
   const currentValue = parseInt(currentWatch);
+
+  const isTouching = useRef(false);
 
   useEffect(() => {
     if (currentValue > maxValue) setValue(currentId, maxValue);
@@ -83,8 +85,14 @@ const NumberInputWithIcon = ({
           size="xs"
           tabIndex={!spinner.isSpinning && currentValue === 0 ? -1 : 0}
           isDisabled={!spinner.isSpinning && currentValue === 0}
-          onMouseDown={() => spinner.down()}
-          onTouchStart={() => spinner.down()}
+          onMouseDown={() => {
+            if (!isTouching.current) spinner.down();
+            isTouching.current = false;
+          }}
+          onTouchStart={() => {
+            isTouching.current = true;
+            spinner.down();
+          }}
           onMouseOut={() => spinner.stop()}
           onMouseUp={() => spinner.stop()}
           onTouchEnd={() => spinner.stop()}
@@ -107,8 +115,14 @@ const NumberInputWithIcon = ({
           size="xs"
           tabIndex={!spinner.isSpinning && currentValue === maxValue ? -1 : 0}
           isDisabled={!spinner.isSpinning && currentValue === maxValue}
-          onMouseDown={() => spinner.up()}
-          onTouchStart={() => spinner.up()}
+          onMouseDown={() => {
+            if (!isTouching.current) spinner.up();
+            isTouching.current = false;
+          }}
+          onTouchStart={() => {
+            isTouching.current = true;
+            spinner.up();
+          }}
           onMouseOut={() => spinner.stop()}
           onMouseUp={() => spinner.stop()}
           onTouchEnd={() => spinner.stop()}
