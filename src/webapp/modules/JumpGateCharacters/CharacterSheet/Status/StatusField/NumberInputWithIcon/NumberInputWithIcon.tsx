@@ -78,12 +78,16 @@ const NumberInputWithIcon = ({
         <IconButton
           aria-label={`Decrease ${label}`}
           icon={<MinusIcon />}
+          height="1.75rem"
+          minWidth="1.75rem"
           size="xs"
           tabIndex={!spinner.isSpinning && currentValue === 0 ? -1 : 0}
           isDisabled={!spinner.isSpinning && currentValue === 0}
           onMouseDown={() => spinner.down()}
+          onTouchStart={() => spinner.down()}
           onMouseOut={() => spinner.stop()}
           onMouseUp={() => spinner.stop()}
+          onTouchEnd={() => spinner.stop()}
         />
         <Input
           id={currentId}
@@ -98,12 +102,16 @@ const NumberInputWithIcon = ({
         <IconButton
           aria-label={`Increase ${label}`}
           icon={<AddIcon />}
+          height="1.75rem"
+          minWidth="1.75rem"
           size="xs"
           tabIndex={!spinner.isSpinning && currentValue === maxValue ? -1 : 0}
           isDisabled={!spinner.isSpinning && currentValue === maxValue}
           onMouseDown={() => spinner.up()}
+          onTouchStart={() => spinner.up()}
           onMouseOut={() => spinner.stop()}
           onMouseUp={() => spinner.stop()}
+          onTouchEnd={() => spinner.stop()}
         />
       </Box>
       <Text>{label}</Text>

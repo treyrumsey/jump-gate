@@ -32,6 +32,7 @@
     .jg-Experiences__edit-toggle-group {
       border-bottom: 1px solid var(--chakra-colors-chakra-border-color);
       display: flex;
+      padding-left: 2rem;
 
       .jg-Experiences__title {
         align-items: center;
@@ -44,6 +45,7 @@
         border-bottom-left-radius: 0;
         border-bottom-right-radius: 0;
         border-top-left-radius: 0;
+        margin: 0;
       }
     }
   }

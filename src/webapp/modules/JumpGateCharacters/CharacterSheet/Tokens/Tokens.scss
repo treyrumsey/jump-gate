@@ -10,13 +10,12 @@
   display: grid;
   gap: 8px;
   grid-auto-rows: min-content;
+  -webkit-touch-callout: none;
   user-select: none;
 
   .jg-UniqueTokenField {
-    align-content: space-between;
     gap: var(--chakra-space-2);
-    grid-template-areas: "button tokens nothing";
-    grid-template-columns: 90px 72px 90px;
-    justify-content: center;
+    grid-template-areas: "tokens button";
+    grid-template-columns: 72px 90px;
   }
 }

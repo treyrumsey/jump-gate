@@ -26,7 +26,11 @@ type Action = "increment" | "decrement";
  * @param increment the function to increment
  * @param decrement the function to decrement
  */
-export function useSpinner(increment: Function, decrement: Function) {
+export function useSpinner(
+  increment: Function,
+  decrement: Function,
+  delay?: number
+) {
   /**
    * To keep incrementing/decrementing on press, we call that `spinning`
    */
@@ -72,8 +76,8 @@ export function useSpinner(increment: Function, decrement: Function) {
       setRunOnce(false);
       setIsSpinning(true);
       setAction("increment");
-    }, CONTINUOUS_CHANGE_DELAY);
-  }, [increment, runOnce]);
+    }, delay ?? CONTINUOUS_CHANGE_DELAY);
+  }, [increment, runOnce, delay]);
 
   // Function to activate the spinning and increment the value
   const down = useCallback(() => {
@@ -87,8 +91,8 @@ export function useSpinner(increment: Function, decrement: Function) {
       setRunOnce(false);
       setIsSpinning(true);
       setAction("decrement");
-    }, CONTINUOUS_CHANGE_DELAY);
-  }, [decrement, runOnce]);
+    }, delay ?? CONTINUOUS_CHANGE_DELAY);
+  }, [decrement, runOnce, delay]);
 
   // Function to stop spinning (useful for mouseup, keyup handlers)
   const stop = useCallback(() => {

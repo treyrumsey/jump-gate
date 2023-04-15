@@ -36,6 +36,10 @@
       color: white !important;
     }
 
+    .chakra-avatar__excess {
+      display: none;
+    }
+
     &:hover {
       &.is-positive {
         .chakra-avatar {

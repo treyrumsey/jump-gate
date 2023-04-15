@@ -1,14 +1,6 @@
 .jg-Loadout {
   @include is-positive-button;
 
-  // &[data-augmented-ui~="border"] {
-  //   --aug-border: initial;
-  //   --aug-border-all: 1px;
-  //   --aug-border-bg: var(--chakra-colors-chakra-border-color);
-  //   --aug-bl: var(--chakra-radii-md);
-  //   --aug-tr: var(--chakra-raii-md);
-  // }
-
   .chakra-card__header {
     padding: 0;
 

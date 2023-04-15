@@ -7,6 +7,7 @@ import {
   PopoverContent,
   PopoverHeader,
   PopoverTrigger,
+  Portal,
   Skeleton,
   Stack,
   Text,
@@ -34,26 +35,28 @@ const TagButton = ({
           {name}
         </Button>
       </PopoverTrigger>
-      <PopoverContent
-        className="jg-TagList__tag-button-popover-content"
-        backdropFilter="blur(4px)"
-        bg="rgba(30, 30, 30, 0.8)"
-        boxShadow="dark-lg"
-      >
-        <PopoverArrow backdropFilter="blur(4px)" bg="rgba(30, 30, 30, 0.8)" />
-        <PopoverCloseButton />
-        <PopoverHeader fontWeight="bold" fontSize="md" fontFamily="Oxanium">
-          {name}
-        </PopoverHeader>
-        <PopoverBody>
-          {type ? (
-            <Text fontWeight="bold" fontSize="sm">
-              {`[${type}]`}
-            </Text>
-          ) : null}
-          <MarkdownView>{description}</MarkdownView>
-        </PopoverBody>
-      </PopoverContent>
+      <Portal>
+        <PopoverContent
+          className="jg-TagList__tag-button-popover-content"
+          backdropFilter="blur(4px)"
+          bg="rgba(30, 30, 30, 0.8)"
+          boxShadow="dark-lg"
+        >
+          <PopoverArrow backdropFilter="blur(4px)" bg="rgba(30, 30, 30, 0.8)" />
+          <PopoverCloseButton />
+          <PopoverHeader fontWeight="bold" fontSize="md" fontFamily="Oxanium">
+            {name}
+          </PopoverHeader>
+          <PopoverBody>
+            {type ? (
+              <Text fontWeight="bold" fontSize="sm">
+                {`[${type}]`}
+              </Text>
+            ) : null}
+            <MarkdownView>{description}</MarkdownView>
+          </PopoverBody>
+        </PopoverContent>
+      </Portal>
     </Popover>
   );
 };

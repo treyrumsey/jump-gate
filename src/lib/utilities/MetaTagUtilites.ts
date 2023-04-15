@@ -1,4 +1,4 @@
-const isMobileAppleDevice = () => {
+export const isMobileAppleDevice = () => {
   const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
   const isAppleDevice = navigator.userAgent.includes("Macintosh");
   const isTouchScreen = navigator.maxTouchPoints >= 1;
