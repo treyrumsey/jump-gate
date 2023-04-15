@@ -1,8 +1,5 @@
 .jg-CharacterSheet {
   @include desktopOrWider {
-    // height: min(768px, 100svh);
-    // height: min(768px, 100dvh);
-
     @include tallerOrEqualTo700px {
       height: 100dvh;
     }

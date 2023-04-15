@@ -66,7 +66,6 @@ const AmmoField = ({ weaponId }: AmmoFieldProps) => {
             {...register(fieldName)}
             defaultValue={max}
             type="number"
-            // pattern="[0-9]*(.[0-9]+)?"
             max={max}
             min={0}
             onBlur={handleAmmoBlur}

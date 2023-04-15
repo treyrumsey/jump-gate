@@ -1,22 +1,23 @@
-import {
-  Avatar,
-  AvatarGroup,
-  Button,
-  FormControl,
-  Input,
-} from "@chakra-ui/react";
+import { Avatar, AvatarGroup, FormControl, Input } from "@chakra-ui/react";
+import TokenFieldButton from "lib/components/forms/TokenField/TokenFieldButton/TokenFieldButton";
 import React, { useEffect, useState } from "react";
 import { useFormContext, useWatch } from "react-hook-form";
 
 interface TokenFieldProps {
+  isUncapped?: boolean;
   positiveName: string;
+  positiveDescription: React.ReactNode;
   negativeName: string;
+  negativeDescription: React.ReactNode;
   show?: boolean;
 }
 
 const TokenField = ({
+  isUncapped,
   positiveName,
+  positiveDescription,
   negativeName,
+  negativeDescription,
   show = true,
 }: TokenFieldProps) => {
   const tokenName = `tokens.${positiveName + negativeName}`;
@@ -25,6 +26,9 @@ const TokenField = ({
     getValues(tokenName) ?? 0
   );
 
+  const max = isUncapped ? 30 : 3;
+  const min = isUncapped ? -30 : -3;
+
   const tokenWatch = useWatch({ name: tokenName });
 
   useEffect(() => {
@@ -32,7 +36,7 @@ const TokenField = ({
   }, [tokenWatch]);
 
   const gainPositiveToken = () => {
-    if (tokenValue === 3) return;
+    if (tokenValue === max) return;
 
     const value = tokenValue + 1;
 
@@ -41,7 +45,7 @@ const TokenField = ({
   };
 
   const gainNegativeToken = () => {
-    if (tokenValue === -3) return;
+    if (tokenValue === min) return;
 
     const value = tokenValue - 1;
     setTokenValue(value);
@@ -67,8 +71,14 @@ const TokenField = ({
   const renderPositiveTokens = () => {
     const tokenList = [];
     for (let i = tokenValue; i > 0; i--) {
+      const name = isUncapped ? tokenValue.toString() : positiveName;
       tokenList.push(
-        <Avatar name={positiveName} key={`${positiveName}.${i}`} bg="#183E6F" />
+        <Avatar
+          key={`${positiveName}.${i}`}
+          bg="#183E6F"
+          getInitials={isUncapped ? (name) => name : undefined}
+          name={name}
+        />
       );
     }
     return tokenList;
@@ -77,8 +87,14 @@ const TokenField = ({
   const renderNegativeTokens = () => {
     const tokenList = [];
     for (let i = tokenValue; i < 0; i++) {
+      const name = isUncapped ? Math.abs(tokenValue).toString() : negativeName;
       tokenList.push(
-        <Avatar name={negativeName} key={`${negativeName}.${i}`} bg="#6E120B" />
+        <Avatar
+          key={`${negativeName}.${i}`}
+          bg="#6E120B"
+          getInitials={isUncapped ? (name) => name : undefined}
+          name={name}
+        />
       );
     }
     return tokenList;
@@ -86,15 +102,12 @@ const TokenField = ({
 
   return (
     <FormControl className="jg-TokenField" display={show ? "grid" : "none"}>
-      <Button
+      <TokenFieldButton
         className="jg-TokenField__button is-positive"
-        title={`Gain ${positiveName} token`}
-        aria-label={`Gain ${positiveName} token`}
-        size="sm"
-        onClick={gainPositiveToken}
-      >
-        {positiveName}
-      </Button>
+        name={positiveName}
+        description={positiveDescription}
+        gainToken={gainPositiveToken}
+      />
       <button
         className="jg-TokenField__tokens"
         disabled={tokenValue === 0}
@@ -105,6 +118,7 @@ const TokenField = ({
           className="jg-TokenField__group is-positive"
           max={3}
           size="sm"
+          spacing="-1.5rem"
         >
           {renderPositiveTokens()}
         </AvatarGroup>
@@ -112,19 +126,17 @@ const TokenField = ({
           className="jg-TokenField__group is-negative"
           max={3}
           size="sm"
+          spacing="-1.5rem"
         >
           {renderNegativeTokens()}
         </AvatarGroup>
       </button>
-      <Button
+      <TokenFieldButton
         className="jg-TokenField__button is-negative"
-        title={`Gain ${negativeName} token`}
-        aria-label={`Gain ${negativeName} token`}
-        size="sm"
-        onClick={gainNegativeToken}
-      >
-        {negativeName}
-      </Button>
+        name={negativeName}
+        description={negativeDescription}
+        gainToken={gainNegativeToken}
+      />
       <Input id={tokenName} display="none" {...register(tokenName)} />
     </FormControl>
   );

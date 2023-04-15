@@ -1,12 +1,7 @@
-import {
-  Avatar,
-  AvatarGroup,
-  Button,
-  FormControl,
-  Input,
-} from "@chakra-ui/react";
-import React, { useState } from "react";
-import { useFormContext } from "react-hook-form";
+import { Avatar, AvatarGroup, FormControl, Input } from "@chakra-ui/react";
+import TokenFieldButton from "lib/components/forms/TokenField/TokenFieldButton/TokenFieldButton";
+import React, { useEffect, useState } from "react";
+import { useFormContext, useWatch } from "react-hook-form";
 
 export enum TokenType {
   Positive = "Positive",
@@ -14,6 +9,7 @@ export enum TokenType {
 }
 
 interface UniqueTokenFieldProps {
+  description: React.ReactNode;
   max: number;
   name: string;
   show?: boolean;
@@ -22,6 +18,7 @@ interface UniqueTokenFieldProps {
 }
 
 const UniqueTokenField = ({
+  description,
   max,
   name,
   show,
@@ -29,7 +26,15 @@ const UniqueTokenField = ({
   type,
 }: UniqueTokenFieldProps) => {
   const { register, setValue, getValues } = useFormContext();
-  const [tokenValue, setTokenValue] = useState<number>(getValues(tokenId) ?? 0);
+  const [tokenValue, setTokenValue] = useState<number>(
+    parseInt(getValues(tokenId)) ?? 0
+  );
+
+  const tokenWatch = useWatch({ name: tokenId });
+
+  useEffect(() => {
+    setTokenValue(tokenWatch);
+  }, [tokenWatch]);
 
   const gainToken = () => {
     if (tokenValue === max) return;
@@ -68,16 +73,8 @@ const UniqueTokenField = ({
     <FormControl
       className="jg-UniqueTokenField"
       display={show ? "grid" : "none"}
+      width="auto"
     >
-      <Button
-        aria-label={`Gain ${name} token`}
-        className={`jg-UniqueTokenField__button ${buttonClass}`}
-        size="sm"
-        title={`Gain ${name} token`}
-        onClick={gainToken}
-      >
-        {name}
-      </Button>
       <button
         className="jg-UniqueTokenField__tokens"
         disabled={tokenValue === 0}
@@ -88,10 +85,17 @@ const UniqueTokenField = ({
           className={`jg-UniqueTokenField__group ${buttonClass}`}
           max={max}
           size="sm"
+          spacing="-1.5rem"
         >
           {renderTokens()}
         </AvatarGroup>
       </button>
+      <TokenFieldButton
+        name={name}
+        description={description}
+        gainToken={gainToken}
+        className={`jg-UniqueTokenField__button ${buttonClass}`}
+      />
       <Input id={tokenId} display="none" {...register(tokenId)} />
     </FormControl>
   );
