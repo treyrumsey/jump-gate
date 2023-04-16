@@ -18,7 +18,7 @@ import {
 import MarkdownView from "lib/components/typography/MarkdownView/MarkdownView";
 import React, { useState } from "react";
 import { useFormContext } from "react-hook-form";
-import DeleteCharacterButton from "webapp/modules/JumpGateCharacters/CharacterSheet/CharacterModal/DeleteCharacter/DeleteCharacterButton";
+import ManageCharacterData from "webapp/modules/JumpGateCharacters/CharacterSheet/CharacterModal/CharacterModalDataTab/ManageCharacterData";
 import Options from "webapp/modules/JumpGateCharacters/CharacterSheet/CharacterModal/Options/Options";
 
 type CharacterModalProps = {
@@ -78,9 +78,7 @@ const CharacterModal = ({
                 <Options />
               </TabPanel>
               <TabPanel>
-                <DeleteCharacterButton
-                  onCharacterModalClose={handleModalClose}
-                />
+                <ManageCharacterData onCharacterModalClose={handleModalClose} />
               </TabPanel>
             </TabPanels>
           </Tabs>

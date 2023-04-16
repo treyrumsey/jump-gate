@@ -5,7 +5,7 @@ import React, { createContext, useContext, useState } from "react";
 type CharactersContextType = {
   characterIds: string[];
   currentCharacterId: string;
-  addCharacter: () => void;
+  addCharacter: (character?: Character) => void;
   deleteCharacter: (id: string) => void;
   getCharacterIdsAndNames: () => { id: string; name: string }[];
   getCurrentCharacter: () => Character;
@@ -46,8 +46,17 @@ const CharactersProvider = ({ children }: CharactersProviderProps) => {
   );
   const [currentCharacterId, setCurrentCharacterId] = useState(initialId);
 
-  const addCharacter = () => {
+  const addCharacter = (character?: Character) => {
     const newCharacter = buildCharacter(generateUUID());
+    if (character) {
+      Object.keys(character)
+        .filter((key) => key !== "id")
+        .forEach((key) => {
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
+          newCharacter[key] = character[key];
+        });
+    }
     const newCharacterIds = [newCharacter.id, ...characterIds];
 
     localStorage.setItem(newCharacter.id, JSON.stringify(newCharacter));

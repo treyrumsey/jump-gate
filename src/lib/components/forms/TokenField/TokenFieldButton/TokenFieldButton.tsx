@@ -32,18 +32,15 @@ const TokenFieldButton = ({
 
   const [delayHandler, setDelayHandler] = useState<any>(null);
   const handleMouseEnter = () => {
-    console.log("mouseenter");
     if (!usingTouch.current) {
       setDelayHandler(
         setTimeout(() => {
-          console.log("mouseopen");
           onOpen();
         }, 500)
       );
     }
   };
   const handleMouseLeave = () => {
-    console.log("mouseleave");
     clearTimeout(delayHandler);
     onClose();
   };
@@ -51,17 +48,14 @@ const TokenFieldButton = ({
   const [longPressHandler, setLongPressHandler] = useState<any>(null);
   const handleTouchStart = () => {
     usingTouch.current = true;
-    console.log("touchstart");
     setLongPressHandler(
       setTimeout(() => {
-        console.log("touchopen");
         onOpen();
         timeoutComplete.current = true;
       }, 500)
     );
   };
   const handleTouchEnd = () => {
-    console.log("touchend");
     clearTimeout(longPressHandler);
     if (!timeoutComplete.current) gainToken();
     timeoutComplete.current = false;
@@ -85,7 +79,6 @@ const TokenFieldButton = ({
           width="100%"
           onClick={() => {
             if (!usingTouch.current) {
-              console.log("onClick - gainPositiveToken");
               gainToken();
             }
           }}
@@ -95,7 +88,6 @@ const TokenFieldButton = ({
           onTouchEnd={handleTouchEnd}
           onBlur={() => {
             if (!isMobileAppleDevice()) {
-              console.log("blur");
               handleMouseLeave();
               usingTouch.current = false;
             }

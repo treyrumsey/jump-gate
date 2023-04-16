@@ -10,9 +10,11 @@ import {
   DrawerFooter,
   DrawerHeader,
   DrawerOverlay,
+  HStack,
 } from "@chakra-ui/react";
 import { useDisclosureContext } from "lib/components/context/DisclosureProvider";
 import React from "react";
+import ImportCharacterInput from "webapp/modules/Sidebar/ImportCharacterInput";
 import { useCharactersContext } from "webapp/modules/context/CharactersProvider";
 
 const Sidebar = () => {
@@ -56,20 +58,19 @@ const Sidebar = () => {
           </DrawerBody>
 
           <DrawerFooter>
-            <Button
-              className="is-positive"
-              leftIcon={<AddIcon />}
-              onClick={() => {
-                addCharacter();
-                onClose();
-              }}
-            >
-              Add
-            </Button>
-            {/* 
-            <Button variant="outline" mr={3} onClick={onClose}>
-              Cancel
-            </Button> */}
+            <HStack spacing="4">
+              <Button
+                className="is-positive"
+                leftIcon={<AddIcon />}
+                onClick={() => {
+                  addCharacter();
+                  onClose();
+                }}
+              >
+                Add
+              </Button>
+              <ImportCharacterInput onSidebarClose={onClose} />
+            </HStack>
           </DrawerFooter>
         </DrawerContent>
       </Drawer>
