@@ -14,6 +14,7 @@ export enum WeaponType {
   Melee = "Melee",
   Pistol = "Pistol",
   Rifle = "Rifle",
+  Terminal = "Terminal",
 }
 
 export enum WeaponModType {

@@ -11,6 +11,7 @@ const ToHitMap: ToHitMapType = {
   [WeaponType.Melee]: AttributeName.Physique,
   [WeaponType.Pistol]: AttributeName.Reflex,
   [WeaponType.Rifle]: AttributeName.Reflex,
+  [WeaponType.Terminal]: AttributeName.Wits,
 };
 
 const useToHitModifier = (weaponId: string): number => {

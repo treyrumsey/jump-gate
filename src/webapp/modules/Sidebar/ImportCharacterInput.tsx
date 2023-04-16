@@ -39,7 +39,7 @@ const ImportCharacterInput = ({
       onSidebarClose();
       setData(null);
     }
-  }, [data]);
+  }, [data]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <Box>
