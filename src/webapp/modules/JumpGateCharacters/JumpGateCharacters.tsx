@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { CharacterSheet } from "webapp/modules/JumpGateCharacters/CharacterSheet/CharacterSheet";
 import { useCharactersContext } from "webapp/modules/context/CharactersProvider";
-import Sidebar from "webapp/modules/Sidebar/Sidebar";
+import CharactersSidebar from "webapp/modules/JumpGateCharacters/CharactersSidebar/CharactersSidebar";
 import { updateCharacterSchema } from "lib/utilities/UpdateSchema";
 
 const JumpGateCharacters = () => {
@@ -18,7 +18,7 @@ const JumpGateCharacters = () => {
   return (
     <div className="jg-JumpGateCharacters">
       <div className="container">
-        <Sidebar />
+        <CharactersSidebar />
         {charactersInitialized && <CharacterSheet key={currentCharacterId} />}
       </div>
     </div>

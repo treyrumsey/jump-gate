@@ -13,15 +13,19 @@ import {
   HStack,
 } from "@chakra-ui/react";
 import { useDisclosureContext } from "lib/components/context/DisclosureProvider";
+import CustomIcon, { CustomIconType } from "lib/components/icons/CustomIcon";
 import React from "react";
-import ImportCharacterInput from "webapp/modules/Sidebar/ImportCharacterInput";
+import { useNavigate } from "react-router-dom";
+import ImportCharacterInput from "webapp/modules/JumpGateCharacters/CharactersSidebar/ImportCharacterInput";
 import { useCharactersContext } from "webapp/modules/context/CharactersProvider";
 
-const Sidebar = () => {
+const CharactersSidebar = () => {
   const { isOpen, onClose } = useDisclosureContext();
 
   const { getCharacterIdsAndNames, addCharacter, switchCharacter } =
     useCharactersContext();
+
+  const navigate = useNavigate();
 
   return (
     <>
@@ -56,7 +60,6 @@ const Sidebar = () => {
               )
             )}
           </DrawerBody>
-
           <DrawerFooter>
             <HStack spacing="4">
               <Button
@@ -72,10 +75,26 @@ const Sidebar = () => {
               <ImportCharacterInput onSidebarClose={onClose} />
             </HStack>
           </DrawerFooter>
+          <Divider />
+          <DrawerFooter>
+            <Button
+              leftIcon={
+                <CustomIcon
+                  icon={CustomIconType.Home}
+                  size="1rem"
+                  fill="#ffffff"
+                />
+              }
+              width="100%"
+              onClick={() => navigate("/")}
+            >
+              Home
+            </Button>
+          </DrawerFooter>
         </DrawerContent>
       </Drawer>
     </>
   );
 };
 
-export default Sidebar;
+export default CharactersSidebar;

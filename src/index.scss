@@ -17,6 +17,8 @@
 @import "lib/components/typography/MarkdownView/MarkdownView.scss";
 @import "lib/components/typography/MarkdownColorOverrides/MarkdownColorOverrides.scss";
 
+@import "webapp/modules/Home/Home.scss";
+
 @import "webapp/modules/JumpGateCharacters/JumpGateCharacters.scss";
 
 @import "webapp/modules/JumpGateCharacters/CharacterSheet/CharacterSheet.scss";
@@ -37,7 +39,7 @@
 @import "webapp/modules/JumpGateCharacters/CharacterSheet/Tokens/Tokens.scss";
 @import "webapp/modules/JumpGateCharacters/CharacterSheet/ViewToggle/ViewToggle.scss";
 
-@import "webapp/modules/Sidebar/Sidebar.scss";
+@import "webapp/modules/JumpGateCharacters/CharactersSidebar/CharactersSidebar.scss";
 
 body {
   font-family: "Exo 2", sans-serif !important;

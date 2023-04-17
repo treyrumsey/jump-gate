@@ -2,13 +2,11 @@ import * as React from "react";
 
 import { ChakraProvider, useColorMode } from "@chakra-ui/react";
 
-import JumpGateCharacters from "webapp/modules/JumpGateCharacters/JumpGateCharacters";
 import { theme } from "theme";
 import { initializeMetaTags } from "lib/utilities/MetaTagUtilites";
 import { useRegisterSW } from "virtual:pwa-register/react";
-import DisclosureProvider from "lib/components/context/DisclosureProvider";
-import CharactersProvider from "webapp/modules/context/CharactersProvider";
 import SafariUnsupportedAlert from "webapp/SafariUnsupportedAlert";
+import AppRouter from "webapp/AppRouter";
 
 // const firebaseConfig = {
 //   apiKey: "AIzaSyCy_9N-vn08k2ZmYolMdgmF_xwDPd1dqkU",
@@ -38,17 +36,7 @@ function App() {
   return (
     <ChakraProvider data-theme="dark" theme={theme}>
       <ForceDarkMode>
-        <>
-          {iOSCanInstall ? (
-            <SafariUnsupportedAlert />
-          ) : (
-            <CharactersProvider>
-              <DisclosureProvider>
-                <JumpGateCharacters />
-              </DisclosureProvider>
-            </CharactersProvider>
-          )}
-        </>
+        <>{iOSCanInstall ? <SafariUnsupportedAlert /> : <AppRouter />}</>
       </ForceDarkMode>
     </ChakraProvider>
   );
