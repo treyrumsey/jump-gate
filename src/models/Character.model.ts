@@ -67,6 +67,7 @@ export interface Character {
   tokens: Tokens;
   notes: string;
   tiers: Tiers;
+  isJoined?: boolean;
   schemaVersion: number;
 }
 

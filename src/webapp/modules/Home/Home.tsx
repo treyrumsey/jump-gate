@@ -1,62 +1,74 @@
-import { Box, Card, CardBody, Link, Text } from "@chakra-ui/react";
-import CustomIcon, { CustomIconType } from "lib/components/icons/CustomIcon";
+import { Box, Button, Text } from "@chakra-ui/react";
+import CustomIcon, { CustomIcons } from "lib/components/icons/CustomIcon";
 import React from "react";
-import { Link as RouterLink } from "react-router-dom";
+import {
+  useAuthState,
+  useSignInWithGoogle,
+  useSignOut,
+} from "react-firebase-hooks/auth";
+import { useNavigate } from "react-router-dom";
+import { auth } from "webapp/App";
 
 const Home = () => {
+  const [user] = useAuthState(auth);
+  const [signOut] = useSignOut(auth);
+  const [signInWithGoogle] = useSignInWithGoogle(auth);
+  const navigate = useNavigate();
+
+  const navigateToAuthenticatedRoute = async (route: string) => {
+    if (!user) {
+      const credentials = await signInWithGoogle();
+      if (!credentials) return;
+    }
+    navigate(route);
+  };
+
+  const buttonTextStyles = {
+    fontSize: "xl",
+    fontFamily: "Oxanium",
+    marginTop: "0.5rem",
+  };
+
+  const buttonStyles = {
+    className: "jg-Home__button augmented",
+    "data-augmented-ui": "tl-clip tr-round br-clip bl-round",
+    height: "100%",
+    display: "block",
+  };
+
   return (
     <Box className="jg-Home">
-      <Card className="jg-Home__tile">
-        <Link as={RouterLink} to="/characters">
-          <CardBody display="flex" flexWrap="wrap" justifyContent="center">
-            <Box>
-              <CustomIcon
-                icon={CustomIconType.Characters}
-                fill="rgba(255, 255, 255, 0.9)"
-                size="96px"
-              />
-            </Box>
-            <Text fontSize="xl" textAlign="center">
-              Characters
-            </Text>
-          </CardBody>
-        </Link>
-      </Card>
-      <Card className="jg-Home__tile">
-        <Link as={RouterLink} to="/characters">
-          <CardBody>
-            <Box
-              width="100%"
-              display="flex"
-              flexWrap="wrap"
-              justifyContent="center"
-            >
-              <CustomIcon
-                icon={CustomIconType.DoubleRingedOrb}
-                fill="rgba(255, 255, 255, 0.9)"
-                size="96px"
-              />
-            </Box>
-            <Text fontSize="xl" textAlign="center">
-              GM
-            </Text>
-          </CardBody>
-        </Link>
-      </Card>
-      <Card className="jg-Home__tile">
-        <Link as={RouterLink} to="/characters">
-          <CardBody display="flex" flexWrap="wrap" justifyContent="center">
-            <CustomIcon
-              icon={CustomIconType.Profile}
-              fill="rgba(255, 255, 255, 0.9)"
-              size="96px"
-            />
-            <Text fontSize="xl" textAlign="center">
-              Account
-            </Text>
-          </CardBody>
-        </Link>
-      </Card>
+      <Button {...buttonStyles} onClick={() => navigate("/characters")}>
+        <CustomIcon
+          icon={CustomIcons.Characters}
+          fill="rgba(255, 255, 255, 0.9)"
+          size="96px"
+        />
+        <Text {...buttonTextStyles}>Characters</Text>
+      </Button>
+      <Button
+        {...buttonStyles}
+        onClick={() => navigateToAuthenticatedRoute("/characters")}
+      >
+        <CustomIcon
+          icon={CustomIcons.World}
+          fill="rgba(255, 255, 255, 0.9)"
+          size="96px"
+        />
+        <Text {...buttonTextStyles}>GM</Text>
+      </Button>
+      <Button
+        {...buttonStyles}
+        onClick={() => navigateToAuthenticatedRoute("/profile")}
+      >
+        <CustomIcon
+          icon={CustomIcons.Profile}
+          fill="rgba(255, 255, 255, 0.9)"
+          size="96px"
+        />
+        <Text {...buttonTextStyles}>Profile</Text>
+      </Button>
+      {user && <Button onClick={() => signOut()}>Sign Out</Button>}
     </Box>
   );
 };

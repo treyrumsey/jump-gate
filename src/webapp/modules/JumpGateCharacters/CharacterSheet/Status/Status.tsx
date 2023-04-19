@@ -1,5 +1,5 @@
 import { Checkbox } from "@chakra-ui/react";
-import { CustomIconType } from "lib/components/icons/CustomIcon";
+import { CustomIcons } from "lib/components/icons/CustomIcon";
 import React from "react";
 import { useFormContext } from "react-hook-form";
 import { usePlayModeContext } from "webapp/modules/JumpGateCharacters/CharacterSheet/PlayModeProvider";
@@ -16,28 +16,28 @@ export const Status = () => {
     <div className="jg-Status">
       <StatusField
         color={StatusFieldColors.BadNewsAtZero}
-        getIcon={() => CustomIconType.Shield}
+        getIcon={() => CustomIcons.Shield}
         name="Shields"
         statusId="status.casual.shields"
         display={isCombatMode ? "none" : undefined}
       />
       <StatusField
         color={StatusFieldColors.BadNewsAtZero}
-        getIcon={() => CustomIconType.Shield}
+        getIcon={() => CustomIcons.Shield}
         name="Shields"
         statusId="status.combat.shields"
         display={isCombatMode ? undefined : "none"}
       />
       <StatusField
         color={StatusFieldColors.BadNewsAtZero}
-        getIcon={() => CustomIconType.Armor}
+        getIcon={() => CustomIcons.Armor}
         name="Armor"
         statusId="status.casual.armor"
         display={isCombatMode ? "none" : undefined}
       />
       <StatusField
         color={StatusFieldColors.BadNewsAtZero}
-        getIcon={() => CustomIconType.Armor}
+        getIcon={() => CustomIcons.Armor}
         name="Armor"
         statusId="status.combat.armor"
         display={isCombatMode ? undefined : "none"}
@@ -46,14 +46,14 @@ export const Status = () => {
         color={StatusFieldColors.BadNewsAtMax}
         getIcon={(params) =>
           params?.current === params?.max
-            ? CustomIconType.Break
-            : CustomIconType.Stress
+            ? CustomIcons.Break
+            : CustomIcons.Stress
         }
         name="Stress"
         statusId="status.stress"
       />
       <StatusField
-        getIcon={() => CustomIconType.CardboardBox}
+        getIcon={() => CustomIcons.CardboardBox}
         color={StatusFieldColors.BadNewsAtZero}
         name="Supplies"
         statusId="status.supplies"
@@ -61,8 +61,8 @@ export const Status = () => {
       <StatusField
         getIcon={(params) =>
           params?.current === 0
-            ? CustomIconType.BatteryEmpty
-            : CustomIconType.BatteryFull
+            ? CustomIcons.BatteryEmpty
+            : CustomIcons.BatteryFull
         }
         color={StatusFieldColors.BadNewsAtZero}
         name="MP"
@@ -72,8 +72,8 @@ export const Status = () => {
       <StatusField
         getIcon={(params) =>
           params?.current === 0
-            ? CustomIconType.BatteryEmpty
-            : CustomIconType.BatteryFull
+            ? CustomIcons.BatteryEmpty
+            : CustomIcons.BatteryFull
         }
         color={StatusFieldColors.BadNewsAtZero}
         name="MP"

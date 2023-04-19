@@ -1,8 +1,5 @@
 import { Box } from "@chakra-ui/react";
-import {
-  CustomIconColor,
-  CustomIconType,
-} from "lib/components/icons/CustomIcon";
+import { CustomIconColor, CustomIcons } from "lib/components/icons/CustomIcon";
 import React from "react";
 import { useWatch } from "react-hook-form";
 import NumberInputWithIcon from "webapp/modules/JumpGateCharacters/CharacterSheet/Status/StatusField/NumberInputWithIcon/NumberInputWithIcon";
@@ -18,7 +15,7 @@ export enum StatusFieldColors {
 }
 
 type StatusFieldProps = {
-  getIcon: (params?: IconFunctionParams) => CustomIconType;
+  getIcon: (params?: IconFunctionParams) => CustomIcons;
   color: StatusFieldColors;
   name: string;
   statusId: string;

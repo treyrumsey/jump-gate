@@ -1,12 +1,9 @@
-import { StarIcon } from "@chakra-ui/icons";
-import { Button } from "@chakra-ui/react";
 import { User } from "firebase/auth";
 import { get, ref, set } from "firebase/database";
-import React, { useEffect } from "react";
-import { useAuthState, useSignInWithGoogle } from "react-firebase-hooks/auth";
+import React, { createContext, useContext, useEffect, useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import ShortUniqueId from "short-unique-id";
 import { auth, db } from "webapp/App";
-import { useAuthContext } from "webapp/modules/context/AuthProvider";
 
 const GAME_ROOM_ID_GENERATOR = new ShortUniqueId({
   dictionary: "alphanum_upper",
@@ -47,10 +44,31 @@ const tryJoinRoom = async (user: User) => {
   }
 };
 
-const SignIn = () => {
-  const [signInWithGoogle] = useSignInWithGoogle(auth);
+type AuthContextType = {
+  currentlyJoinedRoomId?: string;
+  userRoomId?: string;
+  setCurrentlyJoinedRoomId: (currentlyJoinedRoomId?: string) => void;
+  setUserRoomId: (userRoomId?: string) => void;
+};
+
+const AuthContext = createContext<AuthContextType>({
+  currentlyJoinedRoomId: undefined,
+  userRoomId: undefined,
+  setCurrentlyJoinedRoomId: () => null,
+  setUserRoomId: () => null,
+});
+
+type AuthProviderProps = {
+  children: React.ReactNode;
+};
+
+const AuthProvider = ({ children }: AuthProviderProps) => {
+  const [currentlyJoinedRoomId, setCurrentlyJoinedRoomId] = useState<
+    string | undefined
+  >();
+  const [userRoomId, setUserRoomId] = useState<string | undefined>();
+
   const [user] = useAuthState(auth);
-  const { setCurrentlyJoinedRoomId, setUserRoomId } = useAuthContext();
 
   useEffect(() => {
     if (user) {
@@ -64,14 +82,25 @@ const SignIn = () => {
   }, [user, setUserRoomId, setCurrentlyJoinedRoomId]);
 
   return (
-    <Button
-      leftIcon={<StarIcon />}
-      onClick={() => (user ? undefined : signInWithGoogle())}
-      size="sm"
+    <AuthContext.Provider
+      value={{
+        currentlyJoinedRoomId,
+        setCurrentlyJoinedRoomId,
+        userRoomId,
+        setUserRoomId,
+      }}
     >
-      Sign in with Google
-    </Button>
+      {children}
+    </AuthContext.Provider>
   );
 };
 
-export default SignIn;
+export const useAuthContext = () => {
+  const context = useContext(AuthContext);
+  if (!context) {
+    throw new Error("useAuthContext must be used within a AuthProvider");
+  }
+  return context;
+};
+
+export default AuthProvider;

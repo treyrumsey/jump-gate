@@ -13,17 +13,43 @@ import {
   HStack,
 } from "@chakra-ui/react";
 import { useDisclosureContext } from "lib/components/context/DisclosureProvider";
-import CustomIcon, { CustomIconType } from "lib/components/icons/CustomIcon";
+import CustomIcon, { CustomIcons } from "lib/components/icons/CustomIcon";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import ImportCharacterInput from "webapp/modules/JumpGateCharacters/CharactersSidebar/ImportCharacterInput";
 import { useCharactersContext } from "webapp/modules/context/CharactersProvider";
+import { ref, set } from "firebase/database";
+import { auth, db } from "webapp/App";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { Character } from "models/Character.model";
 
 const CharactersSidebar = () => {
   const { isOpen, onClose } = useDisclosureContext();
 
-  const { getCharacterIdsAndNames, addCharacter, switchCharacter } =
-    useCharactersContext();
+  const {
+    getCharacterIdsAndNames,
+    getCharacters,
+    addCharacter,
+    switchCharacter,
+  } = useCharactersContext();
+
+  const [user] = useAuthState(auth);
+
+  const handleUploadCharacters = async () => {
+    if (user) {
+      const path = "users/" + user.uid + "/characters/";
+      const reducedCharacters: Record<string, Character> =
+        getCharacters().reduce(
+          (acc: Record<string, Character>, character: Character) => {
+            acc[character.id] = character;
+            return acc;
+          },
+          {}
+        );
+
+      await set(ref(db, path), reducedCharacters);
+    }
+  };
 
   const navigate = useNavigate();
 
@@ -36,6 +62,12 @@ const CharactersSidebar = () => {
           <DrawerHeader>Characters</DrawerHeader>
           <Divider />
           <DrawerBody padding="0">
+            {/* {user && (
+              <Button width="100%" onClick={handleUploadCharacters}>
+                Save to Cloud
+              </Button>
+            )}
+            <Divider /> */}
             {getCharacterIdsAndNames().map(
               (character: { id: string; name: string }) => (
                 <Button
@@ -80,7 +112,7 @@ const CharactersSidebar = () => {
             <Button
               leftIcon={
                 <CustomIcon
-                  icon={CustomIconType.Home}
+                  icon={CustomIcons.Home}
                   size="1rem"
                   fill="#ffffff"
                 />

@@ -20,9 +20,7 @@
 @import "webapp/modules/Home/Home.scss";
 
 @import "webapp/modules/JumpGateCharacters/JumpGateCharacters.scss";
-
 @import "webapp/modules/JumpGateCharacters/CharacterSheet/CharacterSheet.scss";
-
 @import "webapp/modules/JumpGateCharacters/CharacterSheet/Attributes/Attributes.scss";
 @import "webapp/modules/JumpGateCharacters/CharacterSheet/Experiences/Experiences.scss";
 @import "webapp/modules/JumpGateCharacters/CharacterSheet/Facets/Facets.scss";
@@ -31,15 +29,14 @@
 @import "webapp/modules/JumpGateCharacters/CharacterSheet/Loadout/Loadout.scss";
 @import "webapp/modules/JumpGateCharacters/CharacterSheet/Loadout/LoadoutEditor/LoadoutEditor.scss";
 @import "webapp/modules/JumpGateCharacters/CharacterSheet/Loadout/LoadoutEditor/WeaponEditor/WeaponEditor.scss";
-
 @import "webapp/modules/JumpGateCharacters/CharacterSheet/PersonalDetails/PersonalDetails.scss";
 @import "webapp/modules/JumpGateCharacters/CharacterSheet/Status/Status.scss";
 @import "webapp/modules/JumpGateCharacters/CharacterSheet/Status/StatusField/NumberInputWithIcon/NumberInputWithIcon.scss";
-
 @import "webapp/modules/JumpGateCharacters/CharacterSheet/Tokens/Tokens.scss";
 @import "webapp/modules/JumpGateCharacters/CharacterSheet/ViewToggle/ViewToggle.scss";
-
 @import "webapp/modules/JumpGateCharacters/CharactersSidebar/CharactersSidebar.scss";
+
+@import "webapp/modules/Profile/Profile.scss";
 
 body {
   font-family: "Exo 2", sans-serif !important;

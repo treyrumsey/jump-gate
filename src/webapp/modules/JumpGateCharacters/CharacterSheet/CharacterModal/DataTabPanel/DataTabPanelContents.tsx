@@ -1,15 +1,15 @@
 import { Button, VStack } from "@chakra-ui/react";
 import React from "react";
-import DeleteCharacterButton from "webapp/modules/JumpGateCharacters/CharacterSheet/CharacterModal/CharacterModalDataTab/DeleteCharacterButton";
+import DeleteCharacterButton from "webapp/modules/JumpGateCharacters/CharacterSheet/CharacterModal/DataTabPanel/DeleteCharacterButton";
 import { useCharactersContext } from "webapp/modules/context/CharactersProvider";
 
-type ManageCharacterDataProps = {
+type DataTabPanelContentsProps = {
   onCharacterModalClose: () => void;
 };
 
-const ManageCharacterData = ({
+const DataTabPanelContents = ({
   onCharacterModalClose,
-}: ManageCharacterDataProps) => {
+}: DataTabPanelContentsProps) => {
   const { getCurrentCharacter } = useCharactersContext();
 
   const handleExportCharacter = () => {
@@ -48,4 +48,4 @@ const scrubFilename = (filename: string): string => {
     : scrubbedFilename;
 };
 
-export default ManageCharacterData;
+export default DataTabPanelContents;

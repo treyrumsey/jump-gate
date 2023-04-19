@@ -45,7 +45,7 @@ const defaultMaximums = new Map([
   ],
 ]);
 
-const Options = () => {
+const OptionsTabPanelContents = () => {
   const { control, getValues, setValue } = useFormContext();
 
   const armoryTier = useWatch({
@@ -141,4 +141,4 @@ const Options = () => {
   );
 };
 
-export default Options;
+export default OptionsTabPanelContents;

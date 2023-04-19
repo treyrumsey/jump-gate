@@ -1,5 +1,4 @@
-import { QuestionOutlineIcon } from "@chakra-ui/icons";
-import { Box, Button, Divider, IconButton } from "@chakra-ui/react";
+import { Box, Button } from "@chakra-ui/react";
 import TokenField from "lib/components/forms/TokenField/TokenField";
 import UniqueTokenField, {
   TokenType,

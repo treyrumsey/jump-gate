@@ -3,7 +3,7 @@ import { AddIcon, MinusIcon } from "@chakra-ui/icons";
 import { Box, IconButton, Input, Text } from "@chakra-ui/react";
 import CustomIcon, {
   CustomIconColor,
-  CustomIconType,
+  CustomIcons,
 } from "lib/components/icons/CustomIcon";
 import { useSpinner } from "lib/hooks/useSpinner";
 import React, { useEffect, useRef } from "react";
@@ -12,7 +12,7 @@ import { useFormContext, useWatch } from "react-hook-form";
 type NumberInputWithIconProps = {
   id: string;
   label: string;
-  icon: CustomIconType;
+  icon: CustomIcons;
   iconColor?: CustomIconColor;
   defaultValue?: number;
 };

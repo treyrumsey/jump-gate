@@ -18,8 +18,9 @@ import {
 import MarkdownView from "lib/components/typography/MarkdownView/MarkdownView";
 import React, { useState } from "react";
 import { useFormContext } from "react-hook-form";
-import ManageCharacterData from "webapp/modules/JumpGateCharacters/CharacterSheet/CharacterModal/CharacterModalDataTab/ManageCharacterData";
-import Options from "webapp/modules/JumpGateCharacters/CharacterSheet/CharacterModal/Options/Options";
+import DataTabPanelContents from "webapp/modules/JumpGateCharacters/CharacterSheet/CharacterModal/DataTabPanel/DataTabPanelContents";
+import OptionsTabPanelContents from "webapp/modules/JumpGateCharacters/CharacterSheet/CharacterModal/OptionsTabPanel/OptionsTabPanelContents";
+import RoomTabPanelContents from "webapp/modules/JumpGateCharacters/CharacterSheet/CharacterModal/RoomTabPanel/RoomTabPanelContents";
 
 type CharacterModalProps = {
   isCharacterModalOpen: boolean;
@@ -59,6 +60,7 @@ const CharacterModal = ({
               <Tab>Notes</Tab>
               <Tab>Options</Tab>
               <Tab>Data</Tab>
+              <Tab>Room</Tab>
             </TabList>
 
             <TabPanels>
@@ -75,10 +77,15 @@ const CharacterModal = ({
                 )}
               </TabPanel>
               <TabPanel>
-                <Options />
+                <OptionsTabPanelContents />
               </TabPanel>
               <TabPanel>
-                <ManageCharacterData onCharacterModalClose={handleModalClose} />
+                <DataTabPanelContents
+                  onCharacterModalClose={handleModalClose}
+                />
+              </TabPanel>
+              <TabPanel>
+                <RoomTabPanelContents />
               </TabPanel>
             </TabPanels>
           </Tabs>

@@ -8,6 +8,7 @@ type CharactersContextType = {
   addCharacter: (character?: Character) => void;
   deleteCharacter: (id: string) => void;
   getCharacterIdsAndNames: () => { id: string; name: string }[];
+  getCharacters: () => Character[];
   getCurrentCharacter: () => Character;
   switchCharacter: (id: string) => void;
   updateStateOnWindowFocus: () => void;
@@ -19,6 +20,7 @@ export const CharactersContext = createContext<CharactersContextType>({
   addCharacter: () => null,
   deleteCharacter: () => null,
   getCharacterIdsAndNames: () => [],
+  getCharacters: () => [],
   getCurrentCharacter: () => buildCharacter(""),
   switchCharacter: () => null,
   updateStateOnWindowFocus: () => null,
@@ -78,6 +80,12 @@ const CharactersProvider = ({ children }: CharactersProviderProps) => {
     });
   };
 
+  const getCharacters = () => {
+    return characterIds.map((id) => {
+      return JSON.parse(localStorage.getItem(id) ?? "{}");
+    });
+  };
+
   const getCurrentCharacter = (): Character => {
     return JSON.parse(localStorage.getItem(currentCharacterId) ?? "{}");
   };
@@ -114,6 +122,7 @@ const CharactersProvider = ({ children }: CharactersProviderProps) => {
         deleteCharacter,
         switchCharacter,
         getCharacterIdsAndNames,
+        getCharacters,
         getCurrentCharacter,
         updateStateOnWindowFocus,
       }}

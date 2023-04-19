@@ -12,16 +12,16 @@
   justify-content: center;
 }
 
-.jg-Home__tile {
-  width: 176px;
-  .chakra-link {
-    &:hover,
-    &:focus {
-      outline: none;
-      text-decoration: none;
-      .chakra-card__body {
-        background-color: lighten(#2d3748, 10%);
-      }
+.jg-Home__button {
+  &.chakra-button {
+    display: block;
+    height: 100%;
+    height: 11rem;
+    padding: 1.25rem;
+    width: 11rem;
+    &:focus-visible {
+      border: var(--chakra-ring-color);
+      box-shadow: none;
     }
   }
 }
