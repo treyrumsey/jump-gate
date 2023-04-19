@@ -49,8 +49,14 @@ const Experiences = () => {
           {experiences.map((experience, index) => {
             return (
               <Box className="jg-Experiences__experience" key={index}>
-                <Heading size="sm">{experience.name}</Heading>
-                <MarkdownView>{experience.description}</MarkdownView>
+                <Heading size="sm">
+                  {experience.name.length
+                    ? experience.name
+                    : `Experience ${index + 1}`}
+                </Heading>
+                {experience.description.length ? (
+                  <MarkdownView>{experience.description}</MarkdownView>
+                ) : null}
               </Box>
             );
           })}

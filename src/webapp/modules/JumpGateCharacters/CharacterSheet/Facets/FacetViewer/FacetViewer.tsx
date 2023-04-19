@@ -33,7 +33,8 @@ const FacetViewer = ({ buildId, facetType }: FacetViewerProps) => {
       <MarkdownView>
         {description.length
           ? description
-          : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."}
+          : "*Amidst a supernova*, lorem psionics species colonized ipsum space-time distortion planet sit advanced terraforming aliqua techniques.  \n  \n  \n  The <Blue>Jump Gate</Blue> dolor connected turpis quantum entanglement system, home to the ringworld labore species.  \n  \n  \n" +
+            "In **extraterrestrial**, the exo-skeleton species species used vitae exotic particle accelerator technology mi harness to power the starship."}
       </MarkdownView>
     </div>
   );

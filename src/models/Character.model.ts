@@ -84,8 +84,8 @@ export function buildCharacter(id?: string): Character {
       [AttributeName.Wits]: { value: 0, xp: 0 },
     },
     experiences: [
-      buildExperience("Experience 1"),
-      buildExperience("Experience 2"),
+      { name: "", description: "" },
+      { name: "", description: "" },
     ],
     loadouts: { Casual: initCasualLoadout(), Combat: initCombatLoadout() },
     Aspects: [buildFacet(FacetType.Aspect), buildFacet(FacetType.Aspect)],
