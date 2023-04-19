@@ -4,6 +4,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import { useFormContext, useWatch } from "react-hook-form";
 import { useCharactersContext } from "webapp/modules/context/CharactersProvider";
 import isEqual from "react-fast-compare";
+import useDebounce from "lib/hooks/useDebounce";
 
 const CharacterListener = () => {
   const { updateStateOnWindowFocus, getCurrentCharacter } =
@@ -21,11 +22,13 @@ const CharacterListener = () => {
   }, []);
 
   const formWatch = useWatch();
+  const debouncedFormWatch = useDebounce(formWatch, 500);
 
   useEffect(() => {
-    if (formWatch)
-      localStorage.setItem(formWatch.id, JSON.stringify(formWatch));
-  }, [formWatch]);
+    if (debouncedFormWatch) {
+      localStorage.setItem(formWatch.id, JSON.stringify(debouncedFormWatch));
+    }
+  }, [debouncedFormWatch]);
 
   useEffect(() => {
     window.addEventListener("focus", onWindowFocus);
