@@ -4,5 +4,79 @@
     "plugin:@typescript-eslint/recommended",
     "react-app",
     "prettier"
-  ]
+  ],
+  "plugins": ["import"],
+  "rules": {
+    "import/order": [
+      "warn",
+      {
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          "parent",
+          "sibling",
+          "index"
+        ],
+        "newlines-between": "always",
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        },
+        "pathGroups": [
+          {
+            "pattern": "react**",
+            "group": "external",
+            "position": "before"
+          },
+          {
+            "pattern": "~/**",
+            "group": "internal",
+            "position": "after"
+          }
+          // {
+          //   "pattern": "components/**",
+          //   "group": "internal",
+          //   "position": "after"
+          // },
+          // {
+          //   "pattern": "context/**",
+          //   "group": "internal",
+          //   "position": "after"
+          // },
+          // {
+          //   "pattern": "features/**",
+          //   "group": "internal",
+          //   "position": "after"
+          // },
+          // {
+          //   "pattern": "hooks/**",
+          //   "group": "internal",
+          //   "position": "after"
+          // },
+          // {
+          //   "pattern": "lib/**",
+          //   "group": "internal",
+          //   "position": "after"
+          // },
+          // {
+          //   "pattern": "models/**",
+          //   "group": "internal",
+          //   "position": "after"
+          // },
+          // {
+          //   "pattern": "pages/**",
+          //   "group": "internal",
+          //   "position": "after"
+          // },
+          // {
+          //   "pattern": "webapp/**",
+          //   "group": "internal",
+          //   "position": "after"
+          // }
+        ],
+        "pathGroupsExcludedImportTypes": ["react"]
+      }
+    ]
+  }
 }

@@ -1,4 +1,4 @@
-import { CharacterSummaryModel } from "models/CharacterSummary.model";
+import { CharacterSummaryModel } from "~/models/CharacterSummary.model";
 
 interface CharacterSummaries {
   [key: string]: CharacterSummaryModel;

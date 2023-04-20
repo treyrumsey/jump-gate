@@ -5,40 +5,40 @@
 
 @import "variables.scss";
 
-@import "lib/components/forms/AmmoField/AmmoField.scss";
-@import "lib/components/forms/AttributeField/AttributeField.scss";
-@import "lib/components/forms/TokenField/TokenField.scss";
-@import "lib/components/forms/TokenField/UniqueTokenField/UniqueTokenField.scss";
-@import "lib/components/forms/TagEditor/TagEditor.scss";
-@import "lib/components/forms/TagList/TagList.scss";
-@import "lib/components/forms/WeaponFieldGroup/ToHit/ToHit.scss";
-@import "lib/components/forms/WeaponFieldGroup/WeaponFieldGroup.scss";
+@import "components/forms/AmmoField/AmmoField.scss";
+@import "components/forms/AttributeField/AttributeField.scss";
+@import "components/forms/TagEditor/TagEditor.scss";
+@import "components/forms/TagList/TagList.scss";
+@import "components/forms/TokenField/TokenField.scss";
+@import "components/forms/TokenField/UniqueTokenField/UniqueTokenField.scss";
+@import "components/forms/WeaponFieldGroup/ToHit/ToHit.scss";
+@import "components/forms/WeaponFieldGroup/WeaponFieldGroup.scss";
 
-@import "lib/components/typography/MarkdownView/MarkdownView.scss";
-@import "lib/components/typography/MarkdownColorOverrides/MarkdownColorOverrides.scss";
+@import "components/typography/MarkdownView/MarkdownView.scss";
+@import "components/typography/MarkdownColorOverrides/MarkdownColorOverrides.scss";
 
-@import "webapp/modules/Home/Home.scss";
+@import "components/ui/ViewToggle/ViewToggle.scss";
 
-@import "webapp/modules/JumpGateCharacters/JumpGateCharacters.scss";
-@import "webapp/modules/JumpGateCharacters/CharacterSheet/CharacterSheet.scss";
-@import "webapp/modules/JumpGateCharacters/CharacterSheet/Attributes/Attributes.scss";
-@import "webapp/modules/JumpGateCharacters/CharacterSheet/Experiences/Experiences.scss";
-@import "webapp/modules/JumpGateCharacters/CharacterSheet/Facets/Facets.scss";
-@import "webapp/modules/JumpGateCharacters/CharacterSheet/Facets/Upgrades/Upgrades.scss";
-@import "webapp/modules/JumpGateCharacters/CharacterSheet/CharacterModal/CharacterModal.scss";
-@import "webapp/modules/JumpGateCharacters/CharacterSheet/Loadout/Loadout.scss";
-@import "webapp/modules/JumpGateCharacters/CharacterSheet/Loadout/LoadoutEditor/LoadoutEditor.scss";
-@import "webapp/modules/JumpGateCharacters/CharacterSheet/Loadout/LoadoutEditor/WeaponEditor/WeaponEditor.scss";
-@import "webapp/modules/JumpGateCharacters/CharacterSheet/PersonalDetails/PersonalDetails.scss";
-@import "webapp/modules/JumpGateCharacters/CharacterSheet/Status/Status.scss";
-@import "webapp/modules/JumpGateCharacters/CharacterSheet/Status/StatusField/NumberInputWithIcon/NumberInputWithIcon.scss";
-@import "webapp/modules/JumpGateCharacters/CharacterSheet/Tokens/Tokens.scss";
-@import "webapp/modules/JumpGateCharacters/CharacterSheet/ViewToggle/ViewToggle.scss";
-@import "webapp/modules/JumpGateCharacters/CharactersSidebar/CharactersSidebar.scss";
+@import "features/Characters/CharacterSheet/CharacterSheet.scss";
+@import "features/Characters/CharacterSheet/Attributes/Attributes.scss";
+@import "features/Characters/CharacterSheet/CharacterModal/CharacterModal.scss";
+@import "features/Characters/CharacterSheet/Experiences/Experiences.scss";
+@import "features/Characters/CharacterSheet/Facets/Facets.scss";
+@import "features/Characters/CharacterSheet/Facets/Upgrades/Upgrades.scss";
+@import "features/Characters/CharacterSheet/Loadout/Loadout.scss";
+@import "features/Characters/CharacterSheet/Loadout/LoadoutEditor/LoadoutEditor.scss";
+@import "features/Characters/CharacterSheet/Loadout/LoadoutEditor/WeaponEditor/WeaponEditor.scss";
+@import "features/Characters/CharacterSheet/PersonalDetails/PersonalDetails.scss";
+@import "features/Characters/CharacterSheet/Status/Status.scss";
+@import "features/Characters/CharacterSheet/Status/StatusField/NumberInputWithIcon/NumberInputWithIcon.scss";
+@import "features/Characters/CharacterSheet/Tokens/Tokens.scss";
+@import "features/Characters/CharactersSidebar/CharactersSidebar.scss";
+@import "features/Mission/CharacterSummary/CharacterSummary.scss";
 
-@import "webapp/modules/Profile/Profile.scss";
-
-@import "webapp/modules/Room/Room.scss";
+@import "pages/Characters/Characters.scss";
+@import "pages/Home/Home.scss";
+@import "pages/Mission/Mission.scss";
+@import "pages/Profile/Profile.scss";
 
 body {
   font-family: "Exo 2", sans-serif !important;

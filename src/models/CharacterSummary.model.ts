@@ -1,11 +1,11 @@
-import { generateUUID } from "lib/utilities/GenerateUUID";
-import { AttributeName } from "models/Attribute.model";
+import { generateUUID } from "~/lib/utilities/GenerateUUID";
+import { AttributeName } from "~/models/Attribute.model";
 import {
   Attributes,
   Status,
   TokenPair,
   TokensModel,
-} from "models/Character.model";
+} from "~/models/Character.model";
 
 export type CharacterSummaryModel = {
   id: string;

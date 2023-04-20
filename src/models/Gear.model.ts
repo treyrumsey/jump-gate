@@ -1,4 +1,4 @@
-import { Tag } from "models/Tag";
+import { Tag } from "~/models/Tag.model";
 
 export enum GearType {
   Grenade = "Grenade",

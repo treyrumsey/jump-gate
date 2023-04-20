@@ -1,17 +1,18 @@
-import { Facet, FacetType, buildFacet } from "models/Facet.model";
-import { Attribute, AttributeName } from "models/Attribute.model";
-import { Experience } from "models/Experience.model";
+import { generateUUID } from "~/lib/utilities/GenerateUUID";
+import { ArmorModType } from "~/models/ArmorMod.model";
+import { Attribute, AttributeName } from "~/models/Attribute.model";
+import { Dice } from "~/models/Dice.model";
+import { Experience } from "~/models/Experience.model";
+import { Facet, FacetType, buildFacet } from "~/models/Facet.model";
+import { GearType } from "~/models/Gear.model";
 import {
   initCasualLoadout,
   initCombatLoadout,
   Loadout,
   LoadoutType,
-} from "models/Loadout.model";
-import { GearType } from "models/Gear.model";
-import { WeaponModType, WeaponRange, WeaponType } from "models/Weapon.model";
-import { Dice } from "models/Dice.model";
-import { ArmorModType } from "models/ArmorMod.model";
-import { generateUUID } from "lib/utilities/GenerateUUID";
+} from "~/models/Loadout.model";
+import { WeaponModType, WeaponRange, WeaponType } from "~/models/Weapon.model";
+
 interface CharacterLoadouts {
   Casual: Loadout;
   Combat: Loadout;

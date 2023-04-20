@@ -1,5 +1,5 @@
-import { Dice } from "models/Dice.model";
-import { Tag } from "models/Tag";
+import { Dice } from "~/models/Dice.model";
+import { Tag } from "~/models/Tag.model";
 
 export enum WeaponRange {
   Engaged = "Engaged",

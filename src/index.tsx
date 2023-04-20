@@ -1,10 +1,13 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
-import "index.scss";
-import App from "webapp/App";
-import reportWebVitals from "./reportWebVitals";
+
 import { ColorModeScript, createLocalStorageManager } from "@chakra-ui/react";
+import ReactDOM from "react-dom/client";
 import { theme } from "theme";
+
+import App from "~/App";
+import "index.scss";
+
+import reportWebVitals from "./reportWebVitals";
 
 createLocalStorageManager("my-key");
 

@@ -1,4 +1,4 @@
-import { Character } from "models/Character.model";
+import { Character } from "~/models/Character.model";
 
 export const updateCharacterSchema = (id: string) => {
   if (!localStorage[id]) return;
