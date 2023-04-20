@@ -1,6 +1,11 @@
 import { generateUUID } from "lib/utilities/GenerateUUID";
 import { AttributeName } from "models/Attribute.model";
-import { Attributes, Status, TokenPair, Tokens } from "models/Character.model";
+import {
+  Attributes,
+  Status,
+  TokenPair,
+  TokensModel,
+} from "models/Character.model";
 
 export type CharacterSummaryModel = {
   id: string;
@@ -8,7 +13,7 @@ export type CharacterSummaryModel = {
   species: string;
   attributes: Attributes;
   status: Status;
-  tokens: Tokens;
+  tokens: TokensModel;
   schemaVersion: number;
 };
 

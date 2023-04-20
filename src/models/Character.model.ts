@@ -35,7 +35,7 @@ type TokenPairs = {
   [value in TokenPair]: number;
 };
 
-export type Tokens = TokenPairs & { stunned: number };
+export type TokensModel = TokenPairs & { stunned: number };
 interface StatusValue {
   current: number;
   max: number;
@@ -64,7 +64,7 @@ export interface Character {
   Aspects: Facet[];
   Tactics: Facet[];
   status: Status;
-  tokens: Tokens;
+  tokens: TokensModel;
   notes: string;
   tiers: Tiers;
   isJoined?: boolean;

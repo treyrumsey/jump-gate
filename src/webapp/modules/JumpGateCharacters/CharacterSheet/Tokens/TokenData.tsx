@@ -192,3 +192,12 @@ export const TOKEN_DATA: TokenPair[] = [
     ),
   },
 ];
+
+export const STUNNED_TOKEN_DESCRIPTION = (
+  <>
+    You cannot act at all while you have any <Red>stunned tokens</Red>. At the
+    end of your turn, reduce your <Red>stunned tokens</Red> by 1. You can{" "}
+    <strong>push yourself</strong> to take an action while you are stunned as
+    normal. <Red>Stunned tokens</Red> do not have an opposite.
+  </>
+);

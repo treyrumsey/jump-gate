@@ -1,18 +1,15 @@
 import { HamburgerIcon } from "@chakra-ui/icons";
 import { Box, ButtonGroup, Grid, IconButton } from "@chakra-ui/react";
 import { ref, onValue } from "firebase/database";
-import { useDisclosureContext } from "lib/components/context/DisclosureProvider";
 import { RoomModel } from "models/Room.model";
 import React, { useEffect, useState } from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
-import { auth, db } from "webapp/App";
+import { db } from "webapp/App";
 import PlayModeProvider from "webapp/modules/JumpGateCharacters/CharacterSheet/PlayModeProvider";
 import ViewToggle from "webapp/modules/JumpGateCharacters/CharacterSheet/ViewToggle/ViewToggle";
 import CharacterSummary from "webapp/modules/Room/CharacterSummary/CharacterSummary";
 import { useAuthContext } from "webapp/modules/context/AuthProvider";
 
 const Room = () => {
-  const [user] = useAuthState(auth);
   const { userRoomId } = useAuthContext();
   const [room, setRoom] = useState<RoomModel>();
 

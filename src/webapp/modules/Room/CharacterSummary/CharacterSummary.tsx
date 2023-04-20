@@ -9,6 +9,7 @@ import {
 import { AttributeName } from "models/Attribute.model";
 import { CharacterSummaryModel } from "models/CharacterSummary.model";
 import React from "react";
+import CharacterSummaryTokens from "webapp/modules/Room/CharacterSummary/SummaryTokens/SummaryTokens";
 
 type CharacterSummaryProps = {
   index: number;
@@ -42,12 +43,7 @@ const CharacterSummary = ({
         <Input id={`species-${index}`} readOnly value={summary.species} />
         <FormLabel htmlFor={`species-${index}`}>Species</FormLabel>
       </FormControl>
-      <Box
-        display="grid"
-        gap="1rem"
-        gridTemplateColumns="1fr 1fr"
-        gridTemplateRows="1fr 1fr"
-      >
+      <Box display="grid" gap=".5rem" gridAutoFlow="column">
         {attributes.map(({ name, value }) => (
           <Box
             key={`${name}-${index}`}
@@ -57,14 +53,14 @@ const CharacterSummary = ({
             justifyContent="center"
             display="flex"
             flexDirection="column"
-            width="78px"
-            height="78px"
+            width="68px"
+            height="68px"
           >
             <Text
               size="lg"
               fontFamily="Oxanium"
-              fontSize="2.2rem"
-              lineHeight="2.3rem"
+              fontSize="1.8rem"
+              lineHeight="2.1rem"
               marginLeft="auto"
               marginRight="auto"
               textAlign="center"
@@ -73,7 +69,7 @@ const CharacterSummary = ({
             </Text>
             <Text
               fontFamily="Oxanium"
-              fontSize="14px"
+              fontSize="13px"
               fontWeight="semibold"
               margin="0"
               textAlign="center"
@@ -83,6 +79,7 @@ const CharacterSummary = ({
           </Box>
         ))}
       </Box>
+      <CharacterSummaryTokens tokens={summary.tokens} />
     </VStack>
   );
 };
