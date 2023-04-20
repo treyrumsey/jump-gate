@@ -48,7 +48,7 @@ const Home = () => {
       </Button>
       <Button
         {...buttonStyles}
-        onClick={() => navigateToAuthenticatedRoute("/characters")}
+        onClick={() => navigateToAuthenticatedRoute("/room")}
       >
         <CustomIcon
           icon={CustomIcons.World}

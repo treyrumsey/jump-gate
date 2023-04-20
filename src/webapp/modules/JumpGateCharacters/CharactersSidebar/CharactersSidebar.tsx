@@ -21,33 +21,37 @@ import { useCharactersContext } from "webapp/modules/context/CharactersProvider"
 import { ref, set } from "firebase/database";
 import { auth, db } from "webapp/App";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { Character } from "models/Character.model";
+import { mockCharacterSummary } from "models/CharacterSummary.model";
+import { generateUUID } from "lib/utilities/GenerateUUID";
 
 const CharactersSidebar = () => {
   const { isOpen, onClose } = useDisclosureContext();
 
-  const {
-    getCharacterIdsAndNames,
-    getCharacters,
-    addCharacter,
-    switchCharacter,
-  } = useCharactersContext();
+  const { getCharacterIdsAndNames, addCharacter, switchCharacter } =
+    useCharactersContext();
 
   const [user] = useAuthState(auth);
 
-  const handleUploadCharacters = async () => {
+  const handleAddCharacterToRoom = async () => {
     if (user) {
-      const path = "users/" + user.uid + "/characters/";
-      const reducedCharacters: Record<string, Character> =
-        getCharacters().reduce(
-          (acc: Record<string, Character>, character: Character) => {
-            acc[character.id] = character;
-            return acc;
-          },
-          {}
-        );
+      const characterSummary = mockCharacterSummary();
+      const path =
+        "rooms/" +
+        "U0W7S4/" +
+        "players/" +
+        generateUUID() +
+        "/characters/" +
+        characterSummary.id;
+      // const reducedCharacters: Record<string, Character> =
+      //   getCharacters().reduce(
+      //     (acc: Record<string, Character>, character: Character) => {
+      //       acc[character.id] = character;
+      //       return acc;
+      //     },
+      //     {}
+      //   );
 
-      await set(ref(db, path), reducedCharacters);
+      await set(ref(db, path), characterSummary);
     }
   };
 
@@ -63,7 +67,7 @@ const CharactersSidebar = () => {
           <Divider />
           <DrawerBody padding="0">
             {/* {user && (
-              <Button width="100%" onClick={handleUploadCharacters}>
+              <Button width="100%" onClick={handleAddCharacterToRoom}>
                 Save to Cloud
               </Button>
             )}

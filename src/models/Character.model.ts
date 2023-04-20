@@ -1,6 +1,6 @@
 import { Facet, FacetType, buildFacet } from "models/Facet.model";
 import { Attribute, AttributeName } from "models/Attribute.model";
-import { buildExperience, Experience } from "models/Experience.model";
+import { Experience } from "models/Experience.model";
 import {
   initCasualLoadout,
   initCombatLoadout,
@@ -17,11 +17,11 @@ interface CharacterLoadouts {
   Combat: Loadout;
 }
 
-type Attributes = {
+export type Attributes = {
   [key in AttributeName]: Attribute;
 };
 
-enum TokenPair {
+export enum TokenPair {
   Accurate_Misfire = "AccurateMisfire",
   Dodge_OffGuard = "DodgeOff-Guard",
   Empowered_Weakened = "EmpoweredWeakened",
@@ -35,12 +35,12 @@ type TokenPairs = {
   [value in TokenPair]: number;
 };
 
-type Tokens = TokenPairs & { stunned: number };
+export type Tokens = TokenPairs & { stunned: number };
 interface StatusValue {
   current: number;
   max: number;
 }
-interface Status {
+export interface Status {
   casual: { shields: StatusValue; armor: StatusValue; mp: StatusValue };
   combat: { shields: StatusValue; armor: StatusValue; mp: StatusValue };
   stress: StatusValue;

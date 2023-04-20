@@ -1,10 +1,7 @@
 import DisclosureProvider from "lib/components/context/DisclosureProvider";
 import React from "react";
 import {
-  BrowserRouter,
-  MemoryRouter,
   Route,
-  Routes,
   createBrowserRouter,
   createMemoryRouter,
   createRoutesFromElements,
@@ -13,6 +10,7 @@ import ErrorPage from "webapp/ErrorPage";
 import Home from "webapp/modules/Home/Home";
 import JumpGateCharacters from "webapp/modules/JumpGateCharacters/JumpGateCharacters";
 import Profile from "webapp/modules/Profile/Profile";
+import Room from "webapp/modules/Room/Room";
 import CharactersProvider from "webapp/modules/context/CharactersProvider";
 
 export const isStandalone =
@@ -40,6 +38,7 @@ const createAppRoutes = () => {
       }
     />,
     <Route path="/profile" element={<Profile />} />,
+    <Route path="/room" element={<Room />} />,
     <Route path="*" element={<ErrorPage />} />,
   ];
 };
