@@ -14,7 +14,7 @@ interface Players {
   [key: string]: PlayerModel;
 }
 
-export type RoomModel = {
+export type GameModel = {
   id: string;
   ownerId: string;
   players: Players;

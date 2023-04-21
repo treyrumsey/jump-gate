@@ -10,8 +10,8 @@ import DisclosureProvider from "~/components/context/DisclosureProvider";
 import CharactersProvider from "~/context/CharactersProvider";
 import Characters from "~/pages/Characters/Characters";
 import ErrorPage from "~/pages/ErrorPage/ErrorPage";
+import Mission from "~/pages/Games/Mission";
 import Home from "~/pages/Home/Home";
-import Room from "~/pages/Mission/Mission";
 import Profile from "~/pages/Profile/Profile";
 
 export const isStandalone =
@@ -39,7 +39,7 @@ const createAppRoutes = () => {
       }
     />,
     <Route path="/profile" element={<Profile />} />,
-    <Route path="/room" element={<Room />} />,
+    <Route path="/games" element={<Mission />} />,
     <Route path="*" element={<ErrorPage />} />,
   ];
 };

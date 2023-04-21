@@ -1,0 +1,14 @@
+.jg-CharacterSummary {
+  &.chakra-card.augmented {
+    --card-bg: transparent !important;
+  }
+
+  .jg-CharacterSummary__status-icon-value {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    & > svg {
+      position: absolute;
+    }
+  }
+}

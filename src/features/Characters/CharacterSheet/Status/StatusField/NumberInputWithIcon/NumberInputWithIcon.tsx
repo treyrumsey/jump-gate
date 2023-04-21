@@ -101,7 +101,7 @@ const NumberInputWithIcon = ({
         />
         <Input
           id={currentId}
-          {...register(currentId)}
+          {...register(currentId, { valueAsNumber: true })}
           step={1}
           type="number"
           value={currentValue}

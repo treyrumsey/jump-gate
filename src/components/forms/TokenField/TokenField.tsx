@@ -139,7 +139,11 @@ const TokenField = ({
         description={negativeDescription}
         gainToken={gainNegativeToken}
       />
-      <Input id={tokenName} display="none" {...register(tokenName)} />
+      <Input
+        id={tokenName}
+        display="none"
+        {...register(tokenName, { valueAsNumber: true })}
+      />
     </FormControl>
   );
 };

@@ -61,22 +61,14 @@ export const Status = () => {
         statusId="status.supplies"
       />
       <StatusField
-        getIcon={(params) =>
-          params?.current === 0
-            ? CustomIcons.BatteryEmpty
-            : CustomIcons.BatteryFull
-        }
+        getIcon={() => CustomIcons.ConcentricCrescents}
         color={StatusFieldColors.BadNewsAtZero}
         name="MP"
         statusId="status.casual.mp"
         display={isCombatMode ? "none" : undefined}
       />
       <StatusField
-        getIcon={(params) =>
-          params?.current === 0
-            ? CustomIcons.BatteryEmpty
-            : CustomIcons.BatteryFull
-        }
+        getIcon={() => CustomIcons.ConcentricCrescents}
         color={StatusFieldColors.BadNewsAtZero}
         name="MP"
         statusId="status.combat.mp"

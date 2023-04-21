@@ -50,14 +50,14 @@ const Home = () => {
       </Button>
       <Button
         {...buttonStyles}
-        onClick={() => navigateToAuthenticatedRoute("/room")}
+        onClick={() => navigateToAuthenticatedRoute("/games")}
       >
         <CustomIcon
           icon={CustomIcons.World}
           fill="rgba(255, 255, 255, 0.9)"
           size="96px"
         />
-        <Text {...buttonTextStyles}>GM</Text>
+        <Text {...buttonTextStyles}>Host Game</Text>
       </Button>
       <Button
         {...buttonStyles}
@@ -68,7 +68,7 @@ const Home = () => {
           fill="rgba(255, 255, 255, 0.9)"
           size="96px"
         />
-        <Text {...buttonTextStyles}>Profile</Text>
+        <Text {...buttonTextStyles}>Join Game</Text>
       </Button>
       {user && <Button onClick={() => signOut()}>Sign Out</Button>}
     </Box>
