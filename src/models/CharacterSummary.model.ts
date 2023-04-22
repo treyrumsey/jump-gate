@@ -17,10 +17,13 @@ export type CharacterSummaryModel = {
   schemaVersion: number;
 };
 
-export function mockCharacterSummary(): CharacterSummaryModel {
+export function mockCharacterSummary(
+  id?: string,
+  name?: string
+): CharacterSummaryModel {
   return {
-    id: generateUUID(),
-    name: "Drodger Cardbourde",
+    id: id ?? generateUUID(),
+    name: name ?? "Drodger Cardbourde",
     species: "Human",
     attributes: {
       [AttributeName.Physique]: { value: 2, xp: 4 },

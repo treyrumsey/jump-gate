@@ -34,14 +34,18 @@ export const CharactersSidebar = () => {
 
   const [user] = useAuthState(auth);
 
-  const handleAddCharacterToRoom = async () => {
+  const handleAddCharacterToGame = async () => {
     if (user) {
-      const characterSummary = mockCharacterSummary();
+      const characterSummary = mockCharacterSummary(
+        // generateUUID(),
+        "includedCharacter",
+        "Included Character"
+      );
       const path =
-        "rooms/" +
-        "U0W7S4/" +
+        "games/" +
+        "77711/" +
         "players/" +
-        generateUUID() +
+        "player1" +
         "/characters/" +
         characterSummary.id;
       // const reducedCharacters: Record<string, Character> =
@@ -53,7 +57,12 @@ export const CharactersSidebar = () => {
       //     {}
       //   );
 
-      await set(ref(db, path), characterSummary);
+      // await set(ref(db, path), true);
+      await set(
+        ref(db, "users/player2/characters/" + characterSummary.id),
+        characterSummary
+      );
+      await set(ref(db, "games/77711/characters/includedCharacter"), "player2");
     }
   };
 
@@ -68,12 +77,12 @@ export const CharactersSidebar = () => {
           <DrawerHeader>Characters</DrawerHeader>
           <Divider />
           <DrawerBody padding="0">
-            {/* {user && (
-              <Button width="100%" onClick={handleAddCharacterToRoom}>
+            {user && (
+              <Button width="100%" onClick={handleAddCharacterToGame}>
                 Save to Cloud
               </Button>
             )}
-            <Divider /> */}
+            <Divider />
             {getCharacterIdsAndNames().map(
               (character: { id: string; name: string }) => (
                 <Button

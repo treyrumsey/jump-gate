@@ -22,7 +22,6 @@ import {
 import MarkdownView from "~/components/typography/MarkdownView/MarkdownView";
 import DataTabPanelContents from "~/features/Characters/CharacterSheet/CharacterModal/DataTabPanel/DataTabPanelContents";
 import OptionsTabPanelContents from "~/features/Characters/CharacterSheet/CharacterModal/OptionsTabPanel/OptionsTabPanelContents";
-import RoomTabPanelContents from "~/features/Characters/CharacterSheet/CharacterModal/RoomTabPanel/RoomTabPanelContents";
 
 type CharacterModalProps = {
   isCharacterModalOpen: boolean;
@@ -62,7 +61,6 @@ const CharacterModal = ({
               <Tab>Notes</Tab>
               <Tab>Options</Tab>
               <Tab>Data</Tab>
-              <Tab>Room</Tab>
             </TabList>
 
             <TabPanels>
@@ -85,9 +83,6 @@ const CharacterModal = ({
                 <DataTabPanelContents
                   onCharacterModalClose={handleModalClose}
                 />
-              </TabPanel>
-              <TabPanel>
-                <RoomTabPanelContents />
               </TabPanel>
             </TabPanels>
           </Tabs>

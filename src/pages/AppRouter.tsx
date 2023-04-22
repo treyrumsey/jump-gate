@@ -8,9 +8,11 @@ import {
 
 import DisclosureProvider from "~/components/context/DisclosureProvider";
 import CharactersProvider from "~/context/CharactersProvider";
+import GamesProvider from "~/context/GamesProvider";
+import Game from "~/features/Games/Game/Game";
 import Characters from "~/pages/Characters/Characters";
 import ErrorPage from "~/pages/ErrorPage/ErrorPage";
-import Mission from "~/pages/Games/Mission";
+import Games from "~/pages/Games/Games";
 import Home from "~/pages/Home/Home";
 import Profile from "~/pages/Profile/Profile";
 
@@ -39,7 +41,15 @@ const createAppRoutes = () => {
       }
     />,
     <Route path="/profile" element={<Profile />} />,
-    <Route path="/games" element={<Mission />} />,
+    <Route
+      path="/games"
+      element={
+        <GamesProvider>
+          <Games />
+        </GamesProvider>
+      }
+    />,
+    <Route path="/games/:id" element={<Game />} />,
     <Route path="*" element={<ErrorPage />} />,
   ];
 };

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
 import { HamburgerIcon } from "@chakra-ui/icons";
 import { Box, ButtonGroup, Grid, IconButton, Stack } from "@chakra-ui/react";
@@ -6,28 +7,44 @@ import { ref, onValue } from "firebase/database";
 
 import { db } from "~/App";
 import ViewToggle from "~/components/ui/ViewToggle/ViewToggle";
-import { useAuthContext } from "~/context/AuthProvider";
 import PlayModeProvider from "~/context/PlayModeProvider";
-import CharacterSummary from "~/features/Mission/CharacterSummary/CharacterSummary";
+import CharacterSummary from "~/features/Games/Game/CharacterSummary/CharacterSummary";
 import { GameModel } from "~/models/Game.model";
 
-const Mission = () => {
-  const { userRoomId } = useAuthContext();
-  const [room, setRoom] = useState<GameModel>();
+const Game = () => {
+  const { id: gameId } = useParams();
+  const navigate = useNavigate();
+
+  const [game, setGame] = useState<GameModel>({
+    characters: {},
+    name: "",
+    owner: "",
+    players: {},
+  });
 
   useEffect(() => {
-    const roomPath = `rooms/${userRoomId}`;
-    const roomRef = ref(db, roomPath);
-
-    const unsubscribe = onValue(roomRef, (snapshot) => {
-      const data: GameModel = snapshot.val();
-      setRoom(data);
+    const ownerRef = ref(db, `games/${gameId}/owner`);
+    const unsubscribeOwner = onValue(ownerRef, (snapshot) => {
+      if (!snapshot.exists()) {
+        navigate("/error");
+      }
     });
 
     return () => {
-      unsubscribe();
+      unsubscribeOwner();
     };
-  }, [userRoomId]);
+  }, [gameId, navigate]);
+
+  useEffect(() => {
+    const unsubscribeGame = onValue(ref(db, `games/${gameId}`), (snapshot) => {
+      const snapshotGame = snapshot.val();
+      setGame(snapshotGame satisfies GameModel);
+    });
+
+    return () => {
+      unsubscribeGame();
+    };
+  }, [gameId]);
 
   const [isCombatMode, setCombatMode] = useState(false);
 
@@ -43,21 +60,18 @@ const Mission = () => {
           padding="1rem"
           alignSelf="center"
         >
-          {room &&
-            Object.values(room.players)
-              .flatMap((player) =>
-                Object.values(player.characters).map((summary, index) => ({
-                  index,
-                  playerName: player.displayName,
-                  summary: summary,
-                }))
-              )
-              .map((summaryProps) => (
-                <CharacterSummary
-                  key={summaryProps.summary.id}
-                  {...summaryProps}
-                />
-              ))}
+          {Object.entries(game.characters)
+            .map(([characterId, playerId]) => ({
+              characterId,
+              playerId,
+              playerName: game.players[playerId],
+            }))
+            .map((summaryProps) => (
+              <CharacterSummary
+                key={summaryProps.characterId}
+                {...summaryProps}
+              />
+            ))}
         </Stack>
       </Grid>
     </PlayModeProvider>
@@ -97,4 +111,4 @@ const NavBar = () => {
   );
 };
 
-export default Mission;
+export default Game;

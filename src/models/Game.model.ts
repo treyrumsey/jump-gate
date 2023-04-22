@@ -1,21 +1,6 @@
-import { CharacterSummaryModel } from "~/models/CharacterSummary.model";
-
-interface CharacterSummaries {
-  [key: string]: CharacterSummaryModel;
-}
-
-export type PlayerModel = {
-  uid: string;
-  displayName: string;
-  characters: CharacterSummaries;
-};
-
-interface Players {
-  [key: string]: PlayerModel;
-}
-
 export type GameModel = {
-  id: string;
-  ownerId: string;
-  players: Players;
+  characters: { [key: string]: string };
+  name: string;
+  owner: string;
+  players: { [key: string]: string };
 };

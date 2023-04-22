@@ -8,7 +8,6 @@ import { getDatabase } from "firebase/database";
 import { useRegisterSW } from "virtual:pwa-register/react";
 
 import SafariUnsupportedAlert from "~/components/ui/SafariUnsupportedAlert/SafariUnsupportedAlert";
-import AuthProvider from "~/context/AuthProvider";
 import { initializeMetaTags } from "~/lib/utilities/MetaTagUtilites";
 import getAppRouter from "~/pages/AppRouter";
 import { theme } from "~/theme";
@@ -43,9 +42,7 @@ function App() {
           {iOSCanInstall ? (
             <SafariUnsupportedAlert />
           ) : (
-            <AuthProvider>
-              <RouterProvider router={getAppRouter()} />
-            </AuthProvider>
+            <RouterProvider router={getAppRouter()} />
           )}
         </>
       </ForceDarkMode>
