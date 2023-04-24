@@ -1,12 +1,12 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import { DeleteIcon } from "@chakra-ui/icons";
 import {
   Box,
-  Button,
   Card,
   CardBody,
+  Divider,
   Grid,
   Heading,
   IconButton,
@@ -15,7 +15,10 @@ import {
   Spinner,
 } from "@chakra-ui/react";
 
+import { Navbar } from "~/components/ui/Navbar/Navbar";
+import { Sidebar } from "~/components/ui/Sidebar/Sidebar";
 import { useGamesContext } from "~/context/GamesProvider";
+import { GameTile } from "~/pages/Games/GameTile";
 
 const Games = () => {
   const {
@@ -25,44 +28,29 @@ const Games = () => {
     loadingJoined,
     createGame,
     joinGame,
-    deleteGame,
   } = useGamesContext();
-
-  const navigate = useNavigate();
 
   return (
     <Box>
-      <Box>
-        <Heading size="md">My Games</Heading>
-        <Grid
-          justifyContent="center"
-          templateColumns="repeat(auto-fit,minmax(325px,400px))"
-        >
-          {loadingOwned && <Spinner />}
-          {ownedGames &&
-            Object.entries(ownedGames).map(([id, name]) => {
-              return (
-                <LinkBox as="div" key={id}>
-                  <Card>
-                    <CardBody>
-                      <LinkOverlay as={Link} to={id}>
-                        {name}
-                      </LinkOverlay>
-                      <IconButton
-                        aria-label={`Delete ${name}`}
-                        colorScheme="red"
-                        icon={<DeleteIcon />}
-                        onClick={() => deleteGame(id)}
-                      />
-                    </CardBody>
-                  </Card>
-                </LinkBox>
-              );
-            })}
-        </Grid>
-      </Box>
-      <Box>
-        <Heading size="md">Joined Games</Heading>
+      <Navbar />
+      <Sidebar />
+      <Box padding="1rem 3rem">
+        <Box>
+          <Heading>My Games</Heading>
+          <Divider marginY="1rem" />
+          <Grid
+            justifyContent="center"
+            templateColumns="repeat(auto-fit,minmax(325px,400px))"
+            gap="1rem"
+          >
+            {(loadingOwned || loadingJoined) && <Spinner />}
+            {ownedGames &&
+              joinedGames &&
+              Object.entries({ ...ownedGames, ...joinedGames }).map(
+                ([id, name]) => <GameTile key={id} id={id} name={name} />
+              )}
+          </Grid>
+        </Box>
       </Box>
     </Box>
   );

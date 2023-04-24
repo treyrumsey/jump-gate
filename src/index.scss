@@ -17,6 +17,7 @@
 @import "components/typography/MarkdownView/MarkdownView.scss";
 @import "components/typography/MarkdownColorOverrides/MarkdownColorOverrides.scss";
 
+@import "components/ui/Sidebar/Sidebar.scss";
 @import "components/ui/ViewToggle/ViewToggle.scss";
 
 @import "features/Characters/CharacterSheet/CharacterSheet.scss";
@@ -32,7 +33,6 @@
 @import "features/Characters/CharacterSheet/Status/Status.scss";
 @import "features/Characters/CharacterSheet/Status/StatusField/NumberInputWithIcon/NumberInputWithIcon.scss";
 @import "features/Characters/CharacterSheet/Tokens/Tokens.scss";
-@import "features/Characters/CharactersSidebar/CharactersSidebar.scss";
 @import "features/Games/Game/CharacterSummary/CharacterSummary.scss";
 @import "features/Games/Game/CharacterSummary/SummaryContents/SummaryTokens/SummaryTokens.scss";
 

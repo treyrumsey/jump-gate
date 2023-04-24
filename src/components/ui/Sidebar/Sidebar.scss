@@ -1,0 +1,11 @@
+.jg-Sidebar {
+  &.chakra-modal__content {
+    margin: 0px !important;
+    max-width: 320px;
+    min-width: 0;
+  }
+}
+
+.jg-Sidebar__accordion-button-icon {
+  margin-inline-end: 0.5rem;
+}

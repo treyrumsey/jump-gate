@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
-import { HamburgerIcon } from "@chakra-ui/icons";
-import { Box, ButtonGroup, Grid, IconButton, Stack } from "@chakra-ui/react";
+import { Grid, Stack } from "@chakra-ui/react";
 import { ref, onValue } from "firebase/database";
 
 import { db } from "~/App";
-import ViewToggle from "~/components/ui/ViewToggle/ViewToggle";
+import { Navbar } from "~/components/ui/Navbar/Navbar";
+import { Sidebar } from "~/components/ui/Sidebar/Sidebar";
 import PlayModeProvider from "~/context/PlayModeProvider";
 import CharacterSummary from "~/features/Games/Game/CharacterSummary/CharacterSummary";
 import { GameModel } from "~/models/Game.model";
@@ -51,7 +51,8 @@ const Game = () => {
   return (
     <PlayModeProvider isCombatMode={isCombatMode} setCombatMode={setCombatMode}>
       <Grid templateRows="min-content auto" height="100dvh">
-        <NavBar />
+        <Navbar showModeToggle />
+        <Sidebar />
         <Stack
           direction="row"
           gap="1.5rem"
@@ -75,39 +76,6 @@ const Game = () => {
         </Stack>
       </Grid>
     </PlayModeProvider>
-  );
-};
-
-const NavBar = () => {
-  return (
-    <Box
-      className="jg-NavBar"
-      backdropFilter="blur(25px)"
-      background="blackAlpha.600"
-      display="flex"
-      paddingLeft="48px"
-      position="sticky"
-      top="0"
-      width="100%"
-      zIndex="1000"
-    >
-      <Box
-        display="flex"
-        justifyContent="center"
-        marginLeft="auto"
-        marginRight="auto"
-      >
-        <ViewToggle />
-      </Box>
-      <ButtonGroup padding="1">
-        <IconButton
-          aria-label="Open Menu"
-          icon={<HamburgerIcon />}
-          size="md"
-          variant="ghost"
-        />
-      </ButtonGroup>
-    </Box>
   );
 };
 

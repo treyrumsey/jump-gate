@@ -2,10 +2,9 @@
 import React, { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 
-import { HamburgerIcon } from "@chakra-ui/icons";
-import { Box, ButtonGroup, IconButton, useMediaQuery } from "@chakra-ui/react";
+import { useMediaQuery } from "@chakra-ui/react";
 
-import { useDisclosureContext } from "~/components/context/DisclosureProvider";
+import { Navbar } from "~/components/ui/Navbar/Navbar";
 import { useCharactersContext } from "~/context/CharactersProvider";
 import PlayModeProvider from "~/context/PlayModeProvider";
 import { Attributes } from "~/features/Characters/CharacterSheet/Attributes/Attributes";
@@ -43,7 +42,7 @@ export const CharacterSheet = () => {
   return (
     <PlayModeProvider isCombatMode={isCombatMode} setCombatMode={setCombatMode}>
       <FormProvider {...useFormMethods}>
-        {isNarrowerThanTablet && <NavBar />}
+        {isNarrowerThanTablet && <Navbar />}
         <form
           className="jg-CharacterSheet"
           onSubmit={handleSubmit(onSubmit)}
@@ -68,32 +67,5 @@ export const CharacterSheet = () => {
         </form>
       </FormProvider>
     </PlayModeProvider>
-  );
-};
-
-const NavBar = () => {
-  const { onOpen } = useDisclosureContext();
-
-  return (
-    <Box
-      className="jg-NavBar"
-      width="100%"
-      background="blackAlpha.600"
-      backdropFilter="blur(25px)"
-      position="sticky"
-      top="0"
-      zIndex="1000"
-    >
-      <ButtonGroup width="100%" padding="1">
-        <IconButton
-          aria-label="Open Menu"
-          icon={<HamburgerIcon />}
-          onClick={onOpen}
-          size="md"
-          variant="ghost"
-          marginLeft="auto"
-        />
-      </ButtonGroup>
-    </Box>
   );
 };

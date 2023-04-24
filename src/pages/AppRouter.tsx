@@ -6,7 +6,6 @@ import {
   createRoutesFromElements,
 } from "react-router-dom";
 
-import DisclosureProvider from "~/components/context/DisclosureProvider";
 import CharactersProvider from "~/context/CharactersProvider";
 import GamesProvider from "~/context/GamesProvider";
 import Game from "~/features/Games/Game/Game";
@@ -34,9 +33,7 @@ const createAppRoutes = () => {
       path="/characters"
       element={
         <CharactersProvider>
-          <DisclosureProvider>
-            <Characters />
-          </DisclosureProvider>
+          <Characters />
         </CharactersProvider>
       }
     />,

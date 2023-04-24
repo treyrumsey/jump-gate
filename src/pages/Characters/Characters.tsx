@@ -1,9 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 
+import { Sidebar } from "~/components/ui/Sidebar/Sidebar";
 import { useCharactersContext } from "~/context/CharactersProvider";
 import { CharacterSheet } from "~/features/Characters/CharacterSheet/CharacterSheet";
-import { CharactersSidebar } from "~/features/Characters/CharactersSidebar/CharactersSidebar";
 import { updateCharacterSchema } from "~/lib/utilities/UpdateSchema";
 
 const Characters = () => {
@@ -19,7 +19,7 @@ const Characters = () => {
   return (
     <div className="jg-Characters">
       <div className="container">
-        <CharactersSidebar />
+        <Sidebar showCharacterList />
         {charactersInitialized && <CharacterSheet key={currentCharacterId} />}
       </div>
     </div>
