@@ -32,7 +32,7 @@ interface FacetsProps {
 
 const Facets = ({ show, type }: FacetsProps) => {
   const { control } = useFormContext();
-  const { fields, append } = useFieldArray({
+  const { fields, append, remove } = useFieldArray({
     control,
     name: `${type}s`,
   });
@@ -163,6 +163,7 @@ const Facets = ({ show, type }: FacetsProps) => {
                       buildId={buildId}
                       isEditing={isEditing}
                       type={type}
+                      onDelete={() => remove(index)}
                     />
                     {!isEditing && (
                       <FacetViewer buildId={buildId} facetType={type} />

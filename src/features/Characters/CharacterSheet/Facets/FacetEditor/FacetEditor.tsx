@@ -1,7 +1,17 @@
 import React from "react";
 import { useFormContext } from "react-hook-form";
 
-import { Box, FormControl, FormLabel, Input, Textarea } from "@chakra-ui/react";
+import { DeleteIcon } from "@chakra-ui/icons";
+import {
+  Box,
+  FormControl,
+  FormLabel,
+  IconButton,
+  Input,
+  InputGroup,
+  InputRightElement,
+  Textarea,
+} from "@chakra-ui/react";
 
 import { FacetType } from "~/models/Facet.model";
 
@@ -9,9 +19,15 @@ interface FacetEditorProps {
   buildId: (fieldName: string) => string;
   isEditing: boolean;
   type: FacetType;
+  onDelete: () => void;
 }
 
-const FacetEditor = ({ buildId, isEditing, type }: FacetEditorProps) => {
+const FacetEditor = ({
+  buildId,
+  isEditing,
+  onDelete,
+  type,
+}: FacetEditorProps) => {
   const { register } = useFormContext();
 
   const facetNameId = buildId("name");
@@ -23,9 +39,29 @@ const FacetEditor = ({ buildId, isEditing, type }: FacetEditorProps) => {
       className="jg-Facets__facet is-editing"
       display={isEditing ? "flex" : "none"}
     >
-      <FormControl variant="floating">
-        <Input id={facetNameId} placeholder={type} {...register(facetNameId)} />
-        <FormLabel htmlFor={facetNameId}>{type}</FormLabel>
+      <FormControl
+        className="jg-FacetEditor__name-form-control"
+        variant="floating"
+      >
+        <InputGroup>
+          <Input
+            id={facetNameId}
+            placeholder={type}
+            {...register(facetNameId)}
+          />
+          <FormLabel htmlFor={facetNameId}>{type}</FormLabel>
+          {isEditing && (
+            <InputRightElement>
+              <IconButton
+                className="jg-FacetEditor__delete-button"
+                icon={<DeleteIcon />}
+                title={`Delete ${type}`}
+                aria-label={`Delete ${type}`}
+                onClick={onDelete}
+              />
+            </InputRightElement>
+          )}
+        </InputGroup>
       </FormControl>
       <FormControl variant="floating">
         <Input id={abilityId} placeholder="Ability" {...register(abilityId)} />
