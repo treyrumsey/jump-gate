@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-import { Box, Button, Text } from "@chakra-ui/react";
+import { Box, Button, Text, UseToastOptions, useToast } from "@chakra-ui/react";
 import {
   useAuthState,
   useSignInWithGoogle,
@@ -11,18 +11,75 @@ import {
 import { auth } from "~/App";
 import CustomIcon, { CustomIcons } from "~/components/icons/CustomIcon";
 
+const authenticationErrorToastOptions: UseToastOptions = {
+  title: "Authentication Error",
+  description:
+    "Something went wrong while authenticating with Google. Please try again.",
+  status: "error",
+  duration: 5000,
+  isClosable: true,
+};
+
+const authenticationSuccessToastOptions: UseToastOptions = {
+  title: "Signed in",
+  description: "You have been successfully signed in to Jump Gate.",
+  status: "success",
+  duration: 5000,
+  isClosable: true,
+};
+
 const Home = () => {
   const [user] = useAuthState(auth);
   const [signOut] = useSignOut(auth);
   const [signInWithGoogle] = useSignInWithGoogle(auth);
   const navigate = useNavigate();
+  const toast = useToast();
 
   const navigateToAuthenticatedRoute = async (route: string) => {
     if (!user) {
       const credentials = await signInWithGoogle();
-      if (!credentials) return;
+      if (!credentials) {
+        toast(authenticationErrorToastOptions);
+        return;
+      } else toast(authenticationSuccessToastOptions);
     }
     navigate(route);
+  };
+
+  const handleSignIn = () => {
+    if (user) return;
+    signInWithGoogle().then((credentials) =>
+      toast(
+        credentials
+          ? authenticationSuccessToastOptions
+          : authenticationErrorToastOptions
+      )
+    );
+  };
+
+  const handleSignOut = () => {
+    if (!user) return;
+    signOut().then((success) =>
+      toast(
+        success
+          ? {
+              title: "Signed out",
+              description:
+                "You have been successfully signed out from Jump Gate.",
+              status: "success",
+              duration: 5000,
+              isClosable: true,
+            }
+          : {
+              title: "Error",
+              description:
+                "Something went wrong while signing out from Jump Gate. Please try again.",
+              status: "error",
+              duration: 5000,
+              isClosable: true,
+            }
+      )
+    );
   };
 
   const buttonTextStyles = {
@@ -33,7 +90,7 @@ const Home = () => {
 
   const buttonStyles = {
     className: "jg-Home__button augmented",
-    "data-augmented-ui": "tl-clip tr-round br-clip bl-round",
+    "data-augmented-ui": "tl-clip tr-round br-clip bl-round border",
     height: "100%",
     display: "block",
   };
@@ -57,20 +114,19 @@ const Home = () => {
           fill="rgba(255, 255, 255, 0.9)"
           size="96px"
         />
-        <Text {...buttonTextStyles}>Host Game</Text>
+        <Text {...buttonTextStyles}>Games</Text>
       </Button>
       <Button
         {...buttonStyles}
-        onClick={() => navigateToAuthenticatedRoute("/profile")}
+        onClick={() => (user ? handleSignOut() : handleSignIn())}
       >
         <CustomIcon
           icon={CustomIcons.Profile}
           fill="rgba(255, 255, 255, 0.9)"
           size="96px"
         />
-        <Text {...buttonTextStyles}>Join Game</Text>
+        <Text {...buttonTextStyles}>{user ? "Sign Out" : "Sign In"}</Text>
       </Button>
-      {user && <Button onClick={() => signOut()}>Sign Out</Button>}
     </Box>
   );
 };

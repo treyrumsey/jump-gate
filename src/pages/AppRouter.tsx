@@ -8,12 +8,11 @@ import {
 
 import CharactersProvider from "~/context/CharactersProvider";
 import GamesProvider from "~/context/GamesProvider";
-import Game from "~/features/Games/Game/Game";
+import Game from "~/features/Game/Game";
 import Characters from "~/pages/Characters/Characters";
 import ErrorPage from "~/pages/ErrorPage/ErrorPage";
 import Games from "~/pages/Games/Games";
 import Home from "~/pages/Home/Home";
-import Profile from "~/pages/Profile/Profile";
 
 export const isStandalone =
   "standalone" in window.navigator && window.navigator.standalone === true;
@@ -37,7 +36,6 @@ const createAppRoutes = () => {
         </CharactersProvider>
       }
     />,
-    <Route path="/profile" element={<Profile />} />,
     <Route
       path="/games"
       element={

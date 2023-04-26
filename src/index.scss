@@ -33,12 +33,12 @@
 @import "features/Characters/CharacterSheet/Status/Status.scss";
 @import "features/Characters/CharacterSheet/Status/StatusField/NumberInputWithIcon/NumberInputWithIcon.scss";
 @import "features/Characters/CharacterSheet/Tokens/Tokens.scss";
-@import "features/Games/Game/CharacterSummary/CharacterSummary.scss";
-@import "features/Games/Game/CharacterSummary/SummaryContents/SummaryTokens/SummaryTokens.scss";
+@import "features/Game/CharacterSummary/CharacterSummary.scss";
+@import "features/Game/CharacterSummary/SummaryContents/SummaryTokens/SummaryTokens.scss";
 
 @import "pages/Characters/Characters.scss";
 @import "pages/Home/Home.scss";
-// @import "pages/Games/Games.scss";
+@import "pages/Games/Games.scss";
 @import "pages/Profile/Profile.scss";
 
 body {

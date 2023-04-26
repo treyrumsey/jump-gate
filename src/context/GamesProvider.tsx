@@ -18,8 +18,9 @@ type GamesContextType = {
   loadingOwned: boolean;
   joinedGames?: GameIds;
   loadingJoined: boolean;
-  createGame: (name: string) => Promise<void>;
+  createGame: (name: string, ownerName: string) => Promise<void>;
   joinGame: (gameId: string, displayName: string) => Promise<void>;
+  leaveGame: (gameId: string) => Promise<void>;
   deleteGame: (gameId: string) => Promise<void>;
 };
 
@@ -30,6 +31,9 @@ const GamesContext = createContext<GamesContextType>({
     return;
   },
   joinGame: async () => {
+    return;
+  },
+  leaveGame: async () => {
     return;
   },
   deleteGame: async () => {
@@ -74,7 +78,7 @@ const GamesProvider = ({ children }: GamesProviderProps) => {
     };
   }, [user, setOwnedGames, setJoinedGames]);
 
-  const createGame = async (name: string) => {
+  const createGame = async (name: string, ownerName: string) => {
     if (!user) return;
 
     const newGameId = GAME_ROOM_ID_GENERATOR.randomUUID();
@@ -89,6 +93,7 @@ const GamesProvider = ({ children }: GamesProviderProps) => {
     await set(gamesRef, {
       name: name,
       owner: user.uid,
+      ownerName: ownerName,
       players: {},
       characters: {},
     } satisfies GameModel);
@@ -104,7 +109,7 @@ const GamesProvider = ({ children }: GamesProviderProps) => {
 
     const userJoinedGamesPath = "users/" + user.uid + "/games/joined/" + gameId;
     const userJoinedGamesRef = ref(db, userJoinedGamesPath);
-    await set(userJoinedGamesRef, gameName);
+    await set(userJoinedGamesRef, gameName.val());
 
     const gamesPath = "games/" + gameId + "/players/" + user.uid;
     const gamesRef = ref(db, gamesPath);
@@ -116,8 +121,46 @@ const GamesProvider = ({ children }: GamesProviderProps) => {
     }));
   };
 
+  const leaveGame = async (gameId: string) => {
+    if (!user) return;
+
+    const userJoinedGamesPath = "users/" + user.uid + "/games/joined/" + gameId;
+    const userJoinedGamesRef = ref(db, userJoinedGamesPath);
+    await remove(userJoinedGamesRef);
+
+    const gamesPath = "games/" + gameId + "/players/" + user.uid;
+    const gamesRef = ref(db, gamesPath);
+    await remove(gamesRef);
+
+    setJoinedGames((current) => {
+      const newJoinedGames = { ...current };
+      if (newJoinedGames[gameId]) delete newJoinedGames[gameId];
+      return newJoinedGames;
+    });
+  };
+
+  const getPlayerJoinedGameEndpoints = async (gameId: string) => {
+    const gamePlayersPath = "games/" + gameId + "/players";
+    const gamePlayersRef = ref(db, gamePlayersPath);
+    const gamePlayersSnapshot = await get(gamePlayersRef);
+
+    if (!gamePlayersSnapshot.exists()) return [];
+
+    const gamePlayers = gamePlayersSnapshot.val();
+    return Object.keys(gamePlayers).map(
+      (key) => `users/${key}/games/joined/${gameId}`
+    );
+  };
+
   const deleteGame = async (gameId: string) => {
     if (!user) return;
+
+    const playerJoinedGameEndpoints = await getPlayerJoinedGameEndpoints(
+      gameId
+    );
+    for (const endpoint of playerJoinedGameEndpoints) {
+      await remove(ref(db, endpoint));
+    }
 
     const userOwnedGamesPath = "users/" + user.uid + "/games/owned/" + gameId;
     const userOwnedGamesRef = ref(db, userOwnedGamesPath);
@@ -143,6 +186,7 @@ const GamesProvider = ({ children }: GamesProviderProps) => {
         loadingJoined,
         createGame,
         joinGame,
+        leaveGame,
         deleteGame,
       }}
     >

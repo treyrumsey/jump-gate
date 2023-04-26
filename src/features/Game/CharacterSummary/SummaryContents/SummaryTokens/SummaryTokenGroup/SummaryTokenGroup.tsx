@@ -2,8 +2,8 @@ import React from "react";
 
 import { Box } from "@chakra-ui/react";
 
-import SummaryTokenButton from "~/features/Games/Game/CharacterSummary/SummaryContents/SummaryTokens/SummaryTokenGroup/SummaryTokenButton";
-import { SummaryTokenChips } from "~/features/Games/Game/CharacterSummary/SummaryContents/SummaryTokens/SummaryTokenGroup/SummaryTokenChips";
+import SummaryTokenButton from "~/features/Game/CharacterSummary/SummaryContents/SummaryTokens/SummaryTokenGroup/SummaryTokenButton";
+import { SummaryTokenChips } from "~/features/Game/CharacterSummary/SummaryContents/SummaryTokens/SummaryTokenGroup/SummaryTokenChips";
 
 type SummaryTokenGroupProps = {
   isUncapped?: boolean;

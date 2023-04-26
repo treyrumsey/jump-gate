@@ -7,9 +7,9 @@ import {
   TOKEN_DATA,
 } from "~/components/ui/TokenData/TokenData";
 import { usePlayModeContext } from "~/context/PlayModeProvider";
-import SummaryTokenButton from "~/features/Games/Game/CharacterSummary/SummaryContents/SummaryTokens/SummaryTokenGroup/SummaryTokenButton";
-import { SummaryTokenChips } from "~/features/Games/Game/CharacterSummary/SummaryContents/SummaryTokens/SummaryTokenGroup/SummaryTokenChips";
-import { SummaryTokenGroup } from "~/features/Games/Game/CharacterSummary/SummaryContents/SummaryTokens/SummaryTokenGroup/SummaryTokenGroup";
+import SummaryTokenButton from "~/features/Game/CharacterSummary/SummaryContents/SummaryTokens/SummaryTokenGroup/SummaryTokenButton";
+import { SummaryTokenChips } from "~/features/Game/CharacterSummary/SummaryContents/SummaryTokens/SummaryTokenGroup/SummaryTokenChips";
+import { SummaryTokenGroup } from "~/features/Game/CharacterSummary/SummaryContents/SummaryTokens/SummaryTokenGroup/SummaryTokenGroup";
 import { TokensModel } from "~/models/Character.model";
 
 type CharacterSummaryTokensProps = {

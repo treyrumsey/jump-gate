@@ -4,12 +4,6 @@ import { ref, onValue } from "firebase/database";
 
 import { db } from "~/App";
 import { CharacterSummaryModel } from "~/models/CharacterSummary.model";
-// import { PlayerModel } from "~/models/Game.model";
-
-type Player = {
-  displayName: string;
-  characters: Record<string, CharacterSummaryModel>;
-};
 
 const useGameSubscription = (gameId: string) => {
   const [characters, setCharacters] = useState<
@@ -21,19 +15,6 @@ const useGameSubscription = (gameId: string) => {
     const playersRef = ref(db, `games/${gameId}/players`);
     const unsubscribePlayers = onValue(playersRef, (snapshot) => {
       const players: Record<string, any> = snapshot.val();
-
-      // const characterIdPlayerMap: Map<
-      //   string,
-      //   { playerId: string; displayName: string }
-      // > = Object.keys(players).reduce((map, playerId) => {
-      //   const player = players[playerId];
-      //   Object.keys(player.characters).forEach((character) => {
-      //     if (!map.has(character)) {
-      //       map.set(character, { playerId, displayName: player.displayName });
-      //     }
-      //   });
-      //   return map;
-      // }, new Map());
 
       const characterIdPlayerMap = Object.entries(players).flatMap(
         ([playerId, player]) => {

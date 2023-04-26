@@ -4,8 +4,8 @@ import { Box, CardBody, Flex, Text } from "@chakra-ui/react";
 
 import { CustomIcons } from "~/components/icons/CustomIcon";
 import { usePlayModeContext } from "~/context/PlayModeProvider";
-import { StatusItem } from "~/features/Games/Game/CharacterSummary/SummaryContents/StatusItem/StatusItem";
-import CharacterSummaryTokens from "~/features/Games/Game/CharacterSummary/SummaryContents/SummaryTokens/SummaryTokens";
+import { StatusItem } from "~/features/Game/CharacterSummary/SummaryContents/StatusItem/StatusItem";
+import CharacterSummaryTokens from "~/features/Game/CharacterSummary/SummaryContents/SummaryTokens/SummaryTokens";
 import { AttributeName } from "~/models/Attribute.model";
 import { CharacterSummaryModel } from "~/models/CharacterSummary.model";
 

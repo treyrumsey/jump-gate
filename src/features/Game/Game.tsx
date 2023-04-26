@@ -3,26 +3,30 @@ import { useNavigate, useParams } from "react-router-dom";
 
 import { Grid, Stack } from "@chakra-ui/react";
 import { ref, onValue } from "firebase/database";
+import { useAuthState } from "react-firebase-hooks/auth";
 
-import { db } from "~/App";
+import { auth, db } from "~/App";
 import { Navbar } from "~/components/ui/Navbar/Navbar";
 import { Sidebar } from "~/components/ui/Sidebar/Sidebar";
 import PlayModeProvider from "~/context/PlayModeProvider";
-import CharacterSummary from "~/features/Games/Game/CharacterSummary/CharacterSummary";
+import CharacterSummary from "~/features/Game/CharacterSummary/CharacterSummary";
 import { GameModel } from "~/models/Game.model";
 
 const Game = () => {
   const { id: gameId } = useParams();
   const navigate = useNavigate();
+  const [user] = useAuthState(auth);
 
   const [game, setGame] = useState<GameModel>({
     characters: {},
     name: "",
     owner: "",
+    ownerName: "",
     players: {},
   });
 
   useEffect(() => {
+    if (!user) return;
     const ownerRef = ref(db, `games/${gameId}/owner`);
     const unsubscribeOwner = onValue(ownerRef, (snapshot) => {
       if (!snapshot.exists()) {
@@ -33,20 +37,26 @@ const Game = () => {
     return () => {
       unsubscribeOwner();
     };
-  }, [gameId, navigate]);
+  }, [gameId, navigate, user]);
 
   useEffect(() => {
+    if (!user) return;
     const unsubscribeGame = onValue(ref(db, `games/${gameId}`), (snapshot) => {
-      const snapshotGame = snapshot.val();
-      setGame(snapshotGame satisfies GameModel);
+      const snapshotGame: GameModel = snapshot.val();
+      setGame((prev) => ({ ...prev, ...snapshotGame }));
     });
 
     return () => {
       unsubscribeGame();
     };
-  }, [gameId]);
+  }, [gameId, user]);
 
   const [isCombatMode, setCombatMode] = useState(false);
+
+  if (!user) {
+    navigate("/");
+    return null;
+  }
 
   return (
     <PlayModeProvider isCombatMode={isCombatMode} setCombatMode={setCombatMode}>

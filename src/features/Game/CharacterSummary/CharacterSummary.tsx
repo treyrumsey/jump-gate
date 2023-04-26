@@ -4,7 +4,7 @@ import { Card, Skeleton } from "@chakra-ui/react";
 import { onValue, ref } from "firebase/database";
 
 import { db } from "~/App";
-import { SummaryContents } from "~/features/Games/Game/CharacterSummary/SummaryContents/SummaryContents";
+import { SummaryContents } from "~/features/Game/CharacterSummary/SummaryContents/SummaryContents";
 import { CharacterSummaryModel } from "~/models/CharacterSummary.model";
 
 type CharacterSummaryProps = {
