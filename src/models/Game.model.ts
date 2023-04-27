@@ -5,3 +5,13 @@ export type GameModel = {
   ownerName: string;
   players: { [key: string]: string };
 };
+
+export const buildGame = (): GameModel => {
+  return {
+    characters: {},
+    name: "",
+    owner: "",
+    ownerName: "",
+    players: {},
+  };
+};

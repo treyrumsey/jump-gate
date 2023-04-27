@@ -81,6 +81,7 @@ const CharacterModal = ({
               </TabPanel>
               <TabPanel>
                 <DataTabPanelContents
+                  isCharacterModalOpen={isCharacterModalOpen}
                   onCharacterModalClose={handleModalClose}
                 />
               </TabPanel>

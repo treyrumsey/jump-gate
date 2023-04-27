@@ -1,6 +1,6 @@
 import React from "react";
 
-import { EditIcon } from "@chakra-ui/icons";
+import { SettingsIcon } from "@chakra-ui/icons";
 import { IconButton } from "@chakra-ui/react";
 
 type CharacterModalButtonProps = {
@@ -12,7 +12,7 @@ const CharacterModalButton = ({ onOpen }: CharacterModalButtonProps) => {
     <IconButton
       aria-label={"Character details"}
       className="jg-CharacterModalButton is-positive"
-      icon={<EditIcon />}
+      icon={<SettingsIcon />}
       title={"Character details"}
       onClick={onOpen}
       size="sm"

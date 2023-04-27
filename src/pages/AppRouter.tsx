@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 
 import CharactersProvider from "~/context/CharactersProvider";
+import GameProvider from "~/context/GameProvider";
 import GamesProvider from "~/context/GamesProvider";
 import Game from "~/features/Game/Game";
 import Characters from "~/pages/Characters/Characters";
@@ -44,7 +45,14 @@ const createAppRoutes = () => {
         </GamesProvider>
       }
     />,
-    <Route path="/games/:id" element={<Game />} />,
+    <Route
+      path="/games/:id"
+      element={
+        <GameProvider>
+          <Game />
+        </GameProvider>
+      }
+    />,
     <Route path="*" element={<ErrorPage />} />,
   ];
 };

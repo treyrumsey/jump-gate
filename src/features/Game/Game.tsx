@@ -1,55 +1,23 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { Grid, Stack } from "@chakra-ui/react";
-import { ref, onValue } from "firebase/database";
 import { useAuthState } from "react-firebase-hooks/auth";
 
-import { auth, db } from "~/App";
+import { auth } from "~/App";
 import { Navbar } from "~/components/ui/Navbar/Navbar";
 import { Sidebar } from "~/components/ui/Sidebar/Sidebar";
+import CharactersProvider from "~/context/CharactersProvider";
+import { useGameContext } from "~/context/GameProvider";
 import PlayModeProvider from "~/context/PlayModeProvider";
+import { AddCharacterButton } from "~/features/Game/AddCharacter/AddCharacterButton";
 import CharacterSummary from "~/features/Game/CharacterSummary/CharacterSummary";
-import { GameModel } from "~/models/Game.model";
 
 const Game = () => {
-  const { id: gameId } = useParams();
+  const { game } = useGameContext();
+
   const navigate = useNavigate();
   const [user] = useAuthState(auth);
-
-  const [game, setGame] = useState<GameModel>({
-    characters: {},
-    name: "",
-    owner: "",
-    ownerName: "",
-    players: {},
-  });
-
-  useEffect(() => {
-    if (!user) return;
-    const ownerRef = ref(db, `games/${gameId}/owner`);
-    const unsubscribeOwner = onValue(ownerRef, (snapshot) => {
-      if (!snapshot.exists()) {
-        navigate("/error");
-      }
-    });
-
-    return () => {
-      unsubscribeOwner();
-    };
-  }, [gameId, navigate, user]);
-
-  useEffect(() => {
-    if (!user) return;
-    const unsubscribeGame = onValue(ref(db, `games/${gameId}`), (snapshot) => {
-      const snapshotGame: GameModel = snapshot.val();
-      setGame((prev) => ({ ...prev, ...snapshotGame }));
-    });
-
-    return () => {
-      unsubscribeGame();
-    };
-  }, [gameId, user]);
 
   const [isCombatMode, setCombatMode] = useState(false);
 
@@ -61,7 +29,14 @@ const Game = () => {
   return (
     <PlayModeProvider isCombatMode={isCombatMode} setCombatMode={setCombatMode}>
       <Grid templateRows="min-content auto" height="100dvh">
-        <Navbar showModeToggle />
+        <Navbar
+          leftButton={
+            <CharactersProvider>
+              <AddCharacterButton />
+            </CharactersProvider>
+          }
+          showModeToggle
+        />
         <Sidebar />
         <Stack
           direction="row"
@@ -75,7 +50,10 @@ const Game = () => {
             .map(([characterId, playerId]) => ({
               characterId,
               playerId,
-              playerName: game.players[playerId],
+              playerName:
+                playerId === game.owner
+                  ? game.ownerName
+                  : game.players[playerId],
             }))
             .map((summaryProps) => (
               <CharacterSummary

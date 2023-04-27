@@ -18,6 +18,7 @@ type GamesContextType = {
   loadingOwned: boolean;
   joinedGames?: GameIds;
   loadingJoined: boolean;
+  getMergedAndSortedGames: () => [string, string][];
   createGame: (name: string, ownerName: string) => Promise<void>;
   joinGame: (gameId: string, displayName: string) => Promise<void>;
   leaveGame: (gameId: string) => Promise<void>;
@@ -27,6 +28,7 @@ type GamesContextType = {
 const GamesContext = createContext<GamesContextType>({
   loadingOwned: true,
   loadingJoined: true,
+  getMergedAndSortedGames: () => [],
   createGame: async () => {
     return;
   },
@@ -177,6 +179,12 @@ const GamesProvider = ({ children }: GamesProviderProps) => {
     });
   };
 
+  const getMergedAndSortedGames = () => {
+    return Object.entries({ ...ownedGames, ...joinedGames }).sort((a, b) =>
+      a[1].localeCompare(b[1])
+    );
+  };
+
   return (
     <GamesContext.Provider
       value={{
@@ -184,6 +192,7 @@ const GamesProvider = ({ children }: GamesProviderProps) => {
         loadingOwned,
         joinedGames,
         loadingJoined,
+        getMergedAndSortedGames,
         createGame,
         joinGame,
         leaveGame,

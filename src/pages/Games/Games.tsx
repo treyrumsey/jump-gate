@@ -21,8 +21,13 @@ import { GameTile } from "~/features/Games/GameTile";
 import { JoinGame } from "~/features/Games/JoinGameModal/JoinGame";
 
 const Games = () => {
-  const { ownedGames, loadingOwned, joinedGames, loadingJoined } =
-    useGamesContext();
+  const {
+    ownedGames,
+    loadingOwned,
+    joinedGames, //eslint-disable-line @typescript-eslint/no-unused-vars
+    loadingJoined,
+    getMergedAndSortedGames,
+  } = useGamesContext();
 
   const navigate = useNavigate();
   const [user] = useAuthState(auth);
@@ -52,16 +57,14 @@ const Games = () => {
             gap="1rem"
           >
             {(loadingOwned || loadingJoined) && <Spinner />}
-            {Object.entries({ ...ownedGames, ...joinedGames })
-              .sort((a, b) => a[1].localeCompare(b[1]))
-              .map(([id, name]) => (
-                <GameTile
-                  key={id}
-                  id={id}
-                  name={name}
-                  isOwned={ownedGames?.[id] !== undefined}
-                />
-              ))}
+            {getMergedAndSortedGames().map(([id, name]) => (
+              <GameTile
+                key={id}
+                id={id}
+                name={name}
+                isOwned={ownedGames?.[id] !== undefined}
+              />
+            ))}
           </Grid>
         </Box>
       </Box>

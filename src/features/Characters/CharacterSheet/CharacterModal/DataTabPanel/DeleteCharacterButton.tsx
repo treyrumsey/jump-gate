@@ -42,7 +42,7 @@ const DeleteCharacterButton = ({
 
   return (
     <>
-      <Button className="is-negative" onClick={confirmDelete}>
+      <Button width="14rem" className="is-negative" onClick={confirmDelete}>
         Delete Character
       </Button>
 

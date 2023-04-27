@@ -68,7 +68,8 @@ export interface Character {
   tokens: TokensModel;
   notes: string;
   tiers: Tiers;
-  isJoined?: boolean;
+  isSynced?: boolean;
+  lastModified?: number;
   schemaVersion: number;
 }
 
@@ -122,6 +123,7 @@ export function buildCharacter(id?: string): Character {
       armory: 1,
       arsenal: 1,
     },
+    lastModified: Date.now(),
     schemaVersion: 1,
   };
 }

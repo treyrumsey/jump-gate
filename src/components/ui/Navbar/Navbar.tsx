@@ -7,10 +7,11 @@ import { useDisclosureContext } from "~/components/context/DisclosureProvider";
 import ViewToggle from "~/components/ui/ViewToggle/ViewToggle";
 
 type NavbarProps = {
+  leftButton?: React.ReactElement;
   showModeToggle?: boolean;
 };
 
-export const Navbar = ({ showModeToggle }: NavbarProps) => {
+export const Navbar = ({ leftButton, showModeToggle }: NavbarProps) => {
   const { onOpen } = useDisclosureContext();
 
   return (
@@ -19,12 +20,18 @@ export const Navbar = ({ showModeToggle }: NavbarProps) => {
       backdropFilter="blur(25px)"
       background="blackAlpha.600"
       display="flex"
-      paddingLeft="48px"
+      height="48px"
+      paddingLeft={leftButton ? undefined : "48px"}
       position="sticky"
       top="0"
       width="100%"
       zIndex="1000"
     >
+      {leftButton !== undefined && (
+        <ButtonGroup padding="1" position="absolute" left="0">
+          {leftButton}
+        </ButtonGroup>
+      )}
       <Box
         display="flex"
         justifyContent="center"
@@ -33,7 +40,7 @@ export const Navbar = ({ showModeToggle }: NavbarProps) => {
       >
         {showModeToggle && <ViewToggle />}
       </Box>
-      <ButtonGroup padding="1">
+      <ButtonGroup padding="1" position="absolute" right="0">
         <IconButton
           aria-label="Open Menu"
           icon={<HamburgerIcon />}
