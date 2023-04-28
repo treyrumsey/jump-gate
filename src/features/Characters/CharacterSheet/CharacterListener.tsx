@@ -61,7 +61,7 @@ const CharacterListener = () => {
           isClosable: true,
         });
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.error(err));
   };
 
   useEffect(() => {
@@ -87,7 +87,7 @@ const CharacterListener = () => {
               isClosable: true,
             });
         })
-        .catch((err) => console.log(err));
+        .catch((err) => console.error(err));
     }
     if (user && prevSynced.current && !debouncedFormWatch.isSynced) {
       unsyncCharacter(debouncedFormWatch.id);

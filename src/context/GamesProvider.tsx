@@ -5,7 +5,6 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import ShortUniqueId from "short-unique-id";
 
 import { auth, db } from "~/App";
-import { GameModel } from "~/models/Game.model";
 import { GameIds } from "~/models/User.model";
 
 const GAME_ROOM_ID_GENERATOR = new ShortUniqueId({
@@ -60,19 +59,33 @@ const GamesProvider = ({ children }: GamesProviderProps) => {
 
     const ownedGamesPath = "users/" + user.uid + "/games/owned";
     const ownedGamesRef = ref(db, ownedGamesPath);
-    const unsubscribeOwnedGames = onValue(ownedGamesRef, (snapshot) => {
-      const data: GameIds = snapshot.val();
-      setOwnedGames(data);
-      setLoadingOwned(false);
-    });
+    const unsubscribeOwnedGames = onValue(
+      ownedGamesRef,
+      (snapshot) => {
+        const data: GameIds = snapshot.val();
+        setOwnedGames(data);
+        setLoadingOwned(false);
+      },
+      (error) => {
+        setLoadingOwned(false);
+        console.error(error);
+      }
+    );
 
     const joinedGamesPath = "users/" + user.uid + "/games/joined";
     const joinedGamesRef = ref(db, joinedGamesPath);
-    const unsubscribeJoinedGames = onValue(joinedGamesRef, (snapshot) => {
-      const data: GameIds = snapshot.val();
-      setJoinedGames(data);
-      setLoadingJoined(false);
-    });
+    const unsubscribeJoinedGames = onValue(
+      joinedGamesRef,
+      (snapshot) => {
+        const data: GameIds = snapshot.val();
+        setJoinedGames(data);
+        setLoadingJoined(false);
+      },
+      (error) => {
+        console.error(error);
+        setLoadingJoined(false);
+      }
+    );
 
     return () => {
       unsubscribeOwnedGames();
@@ -96,9 +109,7 @@ const GamesProvider = ({ children }: GamesProviderProps) => {
       name: name,
       owner: user.uid,
       ownerName: ownerName,
-      players: {},
-      characters: {},
-    } satisfies GameModel);
+    });
 
     setOwnedGames((current) => ({ ...current, [newGameId]: name }));
   };
