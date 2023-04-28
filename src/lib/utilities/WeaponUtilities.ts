@@ -1,4 +1,4 @@
-import { LoadoutType } from "models/Loadout.model";
+import { LoadoutType } from "~/models/Loadout.model";
 
 export enum WeaponLabel {
   Primary = "Primary Weapon",

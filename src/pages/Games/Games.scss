@@ -1,0 +1,8 @@
+.jg-Games {
+  @include is-positive-button;
+  @include is-negative-button;
+}
+
+.jg-Games__alert-dialog-content {
+  @include is-negative-button;
+}

@@ -1,4 +1,4 @@
-import { Upgrade } from "models/Upgrade.model";
+import { Upgrade } from "~/models/Upgrade.model";
 
 export enum FacetType {
   Aspect = "Aspect",

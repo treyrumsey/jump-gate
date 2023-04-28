@@ -1,27 +1,28 @@
-import { Facet, FacetType, buildFacet } from "models/Facet.model";
-import { Attribute, AttributeName } from "models/Attribute.model";
-import { buildExperience, Experience } from "models/Experience.model";
+import { generateUUID } from "~/lib/utilities/GenerateUUID";
+import { ArmorModType } from "~/models/ArmorMod.model";
+import { Attribute, AttributeName } from "~/models/Attribute.model";
+import { Dice } from "~/models/Dice.model";
+import { Experience } from "~/models/Experience.model";
+import { Facet, FacetType, buildFacet } from "~/models/Facet.model";
+import { GearType } from "~/models/Gear.model";
 import {
   initCasualLoadout,
   initCombatLoadout,
   Loadout,
   LoadoutType,
-} from "models/Loadout.model";
-import { GearType } from "models/Gear.model";
-import { WeaponModType, WeaponRange, WeaponType } from "models/Weapon.model";
-import { Dice } from "models/Dice.model";
-import { ArmorModType } from "models/ArmorMod.model";
-import { generateUUID } from "lib/utilities/GenerateUUID";
+} from "~/models/Loadout.model";
+import { WeaponModType, WeaponRange, WeaponType } from "~/models/Weapon.model";
+
 interface CharacterLoadouts {
   Casual: Loadout;
   Combat: Loadout;
 }
 
-type Attributes = {
+export type Attributes = {
   [key in AttributeName]: Attribute;
 };
 
-enum TokenPair {
+export enum TokenPair {
   Accurate_Misfire = "AccurateMisfire",
   Dodge_OffGuard = "DodgeOff-Guard",
   Empowered_Weakened = "EmpoweredWeakened",
@@ -35,12 +36,12 @@ type TokenPairs = {
   [value in TokenPair]: number;
 };
 
-type Tokens = TokenPairs & { stunned: number };
+export type TokensModel = TokenPairs & { stunned: number };
 interface StatusValue {
   current: number;
   max: number;
 }
-interface Status {
+export interface Status {
   casual: { shields: StatusValue; armor: StatusValue; mp: StatusValue };
   combat: { shields: StatusValue; armor: StatusValue; mp: StatusValue };
   stress: StatusValue;
@@ -64,9 +65,11 @@ export interface Character {
   Aspects: Facet[];
   Tactics: Facet[];
   status: Status;
-  tokens: Tokens;
+  tokens: TokensModel;
   notes: string;
   tiers: Tiers;
+  isSynced?: boolean;
+  lastModified?: number;
   schemaVersion: number;
 }
 
@@ -83,8 +86,8 @@ export function buildCharacter(id?: string): Character {
       [AttributeName.Wits]: { value: 0, xp: 0 },
     },
     experiences: [
-      buildExperience("Experience 1"),
-      buildExperience("Experience 2"),
+      { name: "", description: "" },
+      { name: "", description: "" },
     ],
     loadouts: { Casual: initCasualLoadout(), Combat: initCombatLoadout() },
     Aspects: [buildFacet(FacetType.Aspect), buildFacet(FacetType.Aspect)],
@@ -120,6 +123,7 @@ export function buildCharacter(id?: string): Character {
       armory: 1,
       arsenal: 1,
     },
+    lastModified: Date.now(),
     schemaVersion: 1,
   };
 }

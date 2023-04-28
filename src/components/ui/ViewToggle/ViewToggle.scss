@@ -1,0 +1,35 @@
+.jg-ViewToggle {
+  @include tabletOrWider {
+    margin: 0;
+  }
+
+  @include narrowerThanTablet {
+    &.chakra-form-control {
+      margin-left: auto;
+      margin-right: auto;
+      width: min-content;
+    }
+  }
+
+  align-items: center;
+  display: flex;
+  justify-content: center;
+
+  .chakra-switch__track {
+    background-color: lighten(#183e6f, 10%) !important;
+    &[data-checked] {
+      background-color: lighten(#6e120b, 10%) !important;
+    }
+  }
+}
+
+.jg-PersonalDetails {
+  .jg-ViewToggle {
+    @include narrowerThanTablet {
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 3rem;
+      width: min-content;
+    }
+  }
+}

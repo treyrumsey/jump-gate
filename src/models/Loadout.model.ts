@@ -1,6 +1,6 @@
-import { ArmorMod } from "models/ArmorMod.model";
-import { Gear } from "models/Gear.model";
-import { initWeapon, Weapon } from "models/Weapon.model";
+import { ArmorMod } from "~/models/ArmorMod.model";
+import { Gear } from "~/models/Gear.model";
+import { initWeapon, Weapon } from "~/models/Weapon.model";
 
 export enum LoadoutType {
   Casual = "Casual",
