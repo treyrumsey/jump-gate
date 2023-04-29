@@ -1,7 +1,15 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-import { Box, Button, Text, UseToastOptions, useToast } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Grid,
+  Heading,
+  Text,
+  UseToastOptions,
+  useToast,
+} from "@chakra-ui/react";
 import {
   useAuthState,
   useSignInWithGoogle,
@@ -96,8 +104,22 @@ const Home = () => {
   };
 
   return (
-    <Box className="jg-Home">
-      <Button {...buttonStyles} onClick={() => navigate("/characters")}>
+    <Grid className="jg-Home scanlines" padding="1rem 0" position="relative">
+      <Box justifySelf="center" textAlign="center" gridArea="header">
+        <Heading
+          fontFamily="Oxanium"
+          fontSize="3rem"
+          paddingBottom="1rem"
+          lineHeight="1.2"
+        >
+          Jump Gate
+        </Heading>
+      </Box>
+      <Button
+        gridArea="characters"
+        {...buttonStyles}
+        onClick={() => navigate("/characters")}
+      >
         <CustomIcon
           icon={CustomIcons.Characters}
           fill="rgba(255, 255, 255, 0.9)"
@@ -106,6 +128,7 @@ const Home = () => {
         <Text {...buttonTextStyles}>Characters</Text>
       </Button>
       <Button
+        gridArea="games"
         {...buttonStyles}
         onClick={() => navigateToAuthenticatedRoute("/games")}
       >
@@ -117,6 +140,7 @@ const Home = () => {
         <Text {...buttonTextStyles}>Games</Text>
       </Button>
       <Button
+        gridArea="auth"
         {...buttonStyles}
         onClick={() => (user ? handleSignOut() : handleSignIn())}
       >
@@ -127,7 +151,15 @@ const Home = () => {
         />
         <Text {...buttonTextStyles}>{user ? "Sign Out" : "Sign In"}</Text>
       </Button>
-    </Box>
+      <Box justifySelf="center" textAlign="center" gridArea="footer">
+        <Text paddingTop="1rem">
+          A companion app for the Mythic Space
+          <br /> tabletop role-playing game
+        </Text>
+        <br />
+        <Text fontSize="xs">© 2023 Trey Rumsey</Text>
+      </Box>
+    </Grid>
   );
 };
 
