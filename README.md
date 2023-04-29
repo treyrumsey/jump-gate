@@ -84,11 +84,3 @@ If you have a suggestion that would make this better, please fork the repo and c
 
 Copyright © 2023 [Trey Rumsey](https://github.com/treyrumsey).<br />
 This project is [MIT](https://github.com/treyrumsey/jump-gate/blob/main/LICENSE) licensed.
-
-<!-- CONTACT -->
-
-## Contact
-
-Trey Rumsey - treyrumz@gmail.com
-
-Project Link: [https://github.com/treyrumsey/jump-gate](https://github.com/treyrumsey/jump-gate)
