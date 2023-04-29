@@ -1,5 +1,3 @@
-<a name="readme-top"></a>
-
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
@@ -7,7 +5,7 @@
     <img src="public/logo.svg" alt="Logo" width="192" height="192">
   </a>
 
-<a href="https://jump-gate.net"><h3 align="center">Jump Gate</h3></a>
+<a href="https://jump-gate.net"><h1 align="center">Jump Gate</h1></a>
 
   <p align="center">
     A companion app for the Mythic Space tabletop RPG
