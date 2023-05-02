@@ -52,7 +52,7 @@ export const NumberField = ({
           data-augmented-ui={augmented ? "tl-clip border" : undefined}
           className={augmented ? "augmented" : undefined}
           value={value}
-          onChange={(_, valueAsNumber) => onChange(valueAsNumber)}
+          onChange={(_, valueAsNumber) => onChange(valueAsNumber || 0)}
         >
           <NumberInputField
             ref={ref}
