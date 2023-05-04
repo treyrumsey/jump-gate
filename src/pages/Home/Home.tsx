@@ -104,7 +104,7 @@ const Home = () => {
   };
 
   return (
-    <Grid className="jg-Home" padding="1rem 0" position="relative">
+    <Grid className="jg-Home scanlines" padding="1rem 0" position="relative">
       <Box justifySelf="center" textAlign="center" gridArea="header">
         <Heading
           fontFamily="Oxanium"
