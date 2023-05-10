@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import { AddIcon } from "@chakra-ui/icons";
 import {
@@ -14,20 +14,21 @@ import {
   useDisclosure,
   useToast,
 } from "@chakra-ui/react";
-import { ref, set } from "firebase/database";
+import { onValue, ref, set } from "firebase/database";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 import { auth, db } from "~/App";
-import { useCharactersContext } from "~/context/CharactersProvider";
 import { useGameContext } from "~/context/GameProvider";
+import { Character } from "~/models/Character.model";
 
 export const AddCharacterButton = () => {
-  const [user] = useAuthState(auth);
+  const [user, userLoading] = useAuthState(auth);
 
   const { gameId, game } = useGameContext();
 
-  const { getCharacters } = useCharactersContext();
   const toast = useToast();
+
+  const [addableCharacters, setAddabaleCharacters] = useState<Character[]>([]);
 
   const {
     isOpen: isOpenAddCharacter,
@@ -53,11 +54,24 @@ export const AddCharacterButton = () => {
     );
   };
 
-  const addableCharacters = getCharacters()
-    .filter((character) => character.isSynced)
-    .filter(
-      (character) => !Object.keys(game.characters).includes(character.id)
+  useEffect(() => {
+    if (!user || userLoading) return;
+    const unsubscribeCharacters = onValue(
+      ref(db, `users/${user.uid}/characters`),
+      (snapshot) => {
+        if (!snapshot.exists()) return;
+        const characters: { [id: string]: Character } = snapshot.val();
+
+        setAddabaleCharacters(
+          Object.values(characters).filter(
+            (character) => !game.characters[character.id]
+          ) ?? []
+        );
+      }
     );
+
+    return () => unsubscribeCharacters();
+  }, [user, userLoading, game.characters]);
 
   return (
     <>
@@ -88,21 +102,16 @@ export const AddCharacterButton = () => {
                 {character.name}
               </Button>
             ))}
-            <Text
-              marginBottom="3"
-              maxWidth="var(--chakra-sizes-md)"
-              whiteSpace="pre-line"
-              fontSize="14px"
-            >
-              {`${
-                addableCharacters.length === 0
-                  ? "No characters available in roster.\n\n"
-                  : ""
-              }`}{" "}
-              To add a character to the roster, go to the Data tab in the
-              character's Details menu on the and select{" "}
-              <strong>Add to Game Roster</strong>.
-            </Text>
+            {addableCharacters.length === 0 && (
+              <Text
+                marginBottom="3"
+                maxWidth="var(--chakra-sizes-md)"
+                whiteSpace="pre-line"
+                fontSize="14px"
+              >
+                No characters eligible to be added to this game.
+              </Text>
+            )}
           </ModalBody>
         </ModalContent>
       </Modal>

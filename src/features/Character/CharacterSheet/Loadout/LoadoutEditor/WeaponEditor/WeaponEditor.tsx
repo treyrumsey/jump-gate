@@ -13,9 +13,8 @@ import {
 
 import { NumberField } from "~/components/forms/NumberField/NumberField";
 import TagEditor from "~/components/forms/TagEditor/TagEditor";
-import { useWeaponEditorContext } from "~/features/Characters/CharacterSheet/Loadout/LoadoutEditor/WeaponEditor/WeaponEditorProvider";
+import { useWeaponEditorContext } from "~/features/Character/CharacterSheet/Loadout/LoadoutEditor/WeaponEditor/WeaponEditorProvider";
 import { WeaponModType } from "~/models/Weapon.model";
-
 
 const WeaponEditor = () => {
   const { isModdable, weaponId } = useWeaponEditorContext();

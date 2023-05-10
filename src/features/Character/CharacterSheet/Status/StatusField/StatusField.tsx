@@ -4,7 +4,7 @@ import { useWatch } from "react-hook-form";
 import { Box } from "@chakra-ui/react";
 
 import { CustomIconColor, CustomIcons } from "~/components/icons/CustomIcon";
-import NumberInputWithIcon from "~/features/Characters/CharacterSheet/Status/StatusField/NumberInputWithIcon/NumberInputWithIcon";
+import NumberInputWithIcon from "~/features/Character/CharacterSheet/Status/StatusField/NumberInputWithIcon/NumberInputWithIcon";
 
 export interface IconFunctionParams {
   current?: number;

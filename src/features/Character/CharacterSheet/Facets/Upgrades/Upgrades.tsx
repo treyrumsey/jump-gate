@@ -4,9 +4,8 @@ import { useFieldArray, useFormContext, useWatch } from "react-hook-form";
 import { AddIcon } from "@chakra-ui/icons";
 import { Button } from "@chakra-ui/react";
 
-
-import UpgradeEditor from "~/features/Characters/CharacterSheet/Facets/Upgrades/UpgradeEditor/UpgradeEditor";
-import UpgradeViewer from "~/features/Characters/CharacterSheet/Facets/Upgrades/UpgradeViewer/UpgradeViewer";
+import UpgradeEditor from "~/features/Character/CharacterSheet/Facets/Upgrades/UpgradeEditor/UpgradeEditor";
+import UpgradeViewer from "~/features/Character/CharacterSheet/Facets/Upgrades/UpgradeViewer/UpgradeViewer";
 import { FacetType } from "~/models/Facet.model";
 
 interface UpgradesProps {

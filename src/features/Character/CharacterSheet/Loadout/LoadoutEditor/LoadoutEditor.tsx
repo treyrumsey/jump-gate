@@ -15,12 +15,11 @@ import {
 } from "@chakra-ui/react";
 
 import TagEditor from "~/components/forms/TagEditor/TagEditor";
-import WeaponEditor from "~/features/Characters/CharacterSheet/Loadout/LoadoutEditor/WeaponEditor/WeaponEditor";
-import WeaponEditorProvider from "~/features/Characters/CharacterSheet/Loadout/LoadoutEditor/WeaponEditor/WeaponEditorProvider";
+import WeaponEditor from "~/features/Character/CharacterSheet/Loadout/LoadoutEditor/WeaponEditor/WeaponEditor";
+import WeaponEditorProvider from "~/features/Character/CharacterSheet/Loadout/LoadoutEditor/WeaponEditor/WeaponEditorProvider";
 import { ArmorModType } from "~/models/ArmorMod.model";
 import { GearType } from "~/models/Gear.model";
 import { LoadoutType } from "~/models/Loadout.model";
-
 
 interface LoadoutEditorProps {
   type: LoadoutType;

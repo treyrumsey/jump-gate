@@ -19,10 +19,9 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 
-
-import FacetEditor from "~/features/Characters/CharacterSheet/Facets/FacetEditor/FacetEditor";
-import FacetViewer from "~/features/Characters/CharacterSheet/Facets/FacetViewer/FacetViewer";
-import { Upgrades } from "~/features/Characters/CharacterSheet/Facets/Upgrades/Upgrades";
+import FacetEditor from "~/features/Character/CharacterSheet/Facets/FacetEditor/FacetEditor";
+import FacetViewer from "~/features/Character/CharacterSheet/Facets/FacetViewer/FacetViewer";
+import { Upgrades } from "~/features/Character/CharacterSheet/Facets/Upgrades/Upgrades";
 import { FacetType } from "~/models/Facet.model";
 
 interface FacetsProps {

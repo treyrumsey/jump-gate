@@ -7,7 +7,7 @@ import { CustomIcons } from "~/components/icons/CustomIcon";
 import { usePlayModeContext } from "~/context/PlayModeProvider";
 import StatusField, {
   StatusFieldColors,
-} from "~/features/Characters/CharacterSheet/Status/StatusField/StatusField";
+} from "~/features/Character/CharacterSheet/Status/StatusField/StatusField";
 
 export const Status = () => {
   const { register } = useFormContext();

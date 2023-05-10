@@ -20,8 +20,7 @@ import {
 } from "@chakra-ui/react";
 
 import MarkdownView from "~/components/typography/MarkdownView/MarkdownView";
-import DataTabPanelContents from "~/features/Characters/CharacterSheet/CharacterModal/DataTabPanel/DataTabPanelContents";
-import OptionsTabPanelContents from "~/features/Characters/CharacterSheet/CharacterModal/OptionsTabPanel/OptionsTabPanelContents";
+import OptionsTabPanelContents from "~/features/Character/CharacterSheet/CharacterModal/OptionsTabPanel/OptionsTabPanelContents";
 
 type CharacterModalProps = {
   isCharacterModalOpen: boolean;
@@ -60,7 +59,6 @@ const CharacterModal = ({
             <TabList>
               <Tab>Notes</Tab>
               <Tab>Options</Tab>
-              <Tab>Data</Tab>
             </TabList>
 
             <TabPanels>
@@ -78,12 +76,6 @@ const CharacterModal = ({
               </TabPanel>
               <TabPanel>
                 <OptionsTabPanelContents />
-              </TabPanel>
-              <TabPanel>
-                <DataTabPanelContents
-                  isCharacterModalOpen={isCharacterModalOpen}
-                  onCharacterModalClose={handleModalClose}
-                />
               </TabPanel>
             </TabPanels>
           </Tabs>

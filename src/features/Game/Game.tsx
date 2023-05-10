@@ -7,7 +7,6 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "~/App";
 import { Navbar } from "~/components/ui/Navbar/Navbar";
 import { Sidebar } from "~/components/ui/Sidebar/Sidebar";
-import CharactersProvider from "~/context/CharactersProvider";
 import { useGameContext } from "~/context/GameProvider";
 import PlayModeProvider from "~/context/PlayModeProvider";
 import { AddCharacterButton } from "~/features/Game/AddCharacter/AddCharacterButton";
@@ -29,14 +28,7 @@ const Game = () => {
   return (
     <PlayModeProvider isCombatMode={isCombatMode} setCombatMode={setCombatMode}>
       <Grid templateRows="min-content auto" height="100dvh">
-        <Navbar
-          leftButton={
-            <CharactersProvider>
-              <AddCharacterButton />
-            </CharactersProvider>
-          }
-          showModeToggle
-        />
+        <Navbar leftButton={<AddCharacterButton />} showModeToggle />
         <Sidebar />
         <Stack
           direction="row"

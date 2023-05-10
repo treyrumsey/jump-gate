@@ -14,10 +14,9 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 
-
 import TagList from "~/components/forms/TagList/TagList";
 import WeaponFieldGroup from "~/components/forms/WeaponFieldGroup/WeaponFieldGroup";
-import LoadoutEditor from "~/features/Characters/CharacterSheet/Loadout/LoadoutEditor/LoadoutEditor";
+import LoadoutEditor from "~/features/Character/CharacterSheet/Loadout/LoadoutEditor/LoadoutEditor";
 import { LoadoutType } from "~/models/Loadout.model";
 
 interface LoadoutProps {

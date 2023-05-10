@@ -12,6 +12,7 @@ type CharactersContextType = {
   getCharacters: () => Character[];
   getCurrentCharacter: () => Character;
   switchCharacter: (id: string) => void;
+  updateLocalCharacter: (character: Character) => void;
   updateStateOnWindowFocus: () => void;
 };
 
@@ -22,8 +23,9 @@ const CharactersContext = createContext<CharactersContextType>({
   deleteCharacter: () => null,
   getCharacterIdsAndNames: () => [],
   getCharacters: () => [],
-  getCurrentCharacter: () => buildCharacter(""),
+  getCurrentCharacter: () => buildCharacter(),
   switchCharacter: () => null,
+  updateLocalCharacter: () => null,
   updateStateOnWindowFocus: () => null,
 });
 
@@ -50,7 +52,7 @@ const CharactersProvider = ({ children }: CharactersProviderProps) => {
   const [currentCharacterId, setCurrentCharacterId] = useState(initialId);
 
   const addCharacter = (character?: Character) => {
-    const newCharacter = buildCharacter(generateUUID());
+    const newCharacter = buildCharacter();
     if (character) {
       Object.keys(character)
         .filter((key) => key !== "id")
@@ -67,6 +69,15 @@ const CharactersProvider = ({ children }: CharactersProviderProps) => {
     localStorage.setItem("characterIds", JSON.stringify(newCharacterIds));
     setCharacterIds(newCharacterIds);
     setCurrentCharacterId(newCharacter.id);
+  };
+
+  const updateLocalCharacter = (character: Character) => {
+    if (!characterIds.includes(character.id)) {
+      const newCharacterIds = [character.id, ...characterIds];
+      localStorage.setItem("characterIds", JSON.stringify(newCharacterIds));
+      setCharacterIds(newCharacterIds);
+    }
+    localStorage.setItem(character.id, JSON.stringify(character));
   };
 
   const switchCharacter = (id: string) => {
@@ -95,7 +106,7 @@ const CharactersProvider = ({ children }: CharactersProviderProps) => {
     const newIds = characterIds.filter((characterId) => characterId !== id);
 
     if (newIds.length === 0) {
-      const newCharacter = buildCharacter(generateUUID());
+      const newCharacter = buildCharacter();
       newIds.push(newCharacter.id);
       localStorage.setItem(newCharacter.id, JSON.stringify(newCharacter));
     }
@@ -125,6 +136,7 @@ const CharactersProvider = ({ children }: CharactersProviderProps) => {
         getCharacterIdsAndNames,
         getCharacters,
         getCurrentCharacter,
+        updateLocalCharacter,
         updateStateOnWindowFocus,
       }}
     >

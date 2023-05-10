@@ -16,7 +16,7 @@ import {
 
 import MarkdownView from "~/components/typography/MarkdownView/MarkdownView";
 import { usePlayModeContext } from "~/context/PlayModeProvider";
-import ExperiencesEditor from "~/features/Characters/CharacterSheet/Experiences/ExperiencesEditor";
+import ExperiencesEditor from "~/features/Character/CharacterSheet/Experiences/ExperiencesEditor";
 import { Experience } from "~/models/Experience.model";
 
 const Experiences = () => {

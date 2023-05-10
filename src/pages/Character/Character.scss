@@ -1,0 +1,17 @@
+.jg-Character {
+  display: flex;
+  justify-content: center;
+  min-height: 100svh;
+  min-height: 100dvh;
+
+  .container {
+    @include desktopOrWider {
+      align-items: center;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    width: 100%;
+  }
+}

@@ -14,8 +14,8 @@ import {
 
 import { useDisclosureContext } from "~/components/context/DisclosureProvider";
 import ViewToggle from "~/components/ui/ViewToggle/ViewToggle";
-import CharacterModal from "~/features/Characters/CharacterSheet/CharacterModal/CharacterModal";
-import CharacterModalButton from "~/features/Characters/CharacterSheet/CharacterModal/CharacterModalButton";
+import CharacterModal from "~/features/Character/CharacterSheet/CharacterModal/CharacterModal";
+import CharacterModalButton from "~/features/Character/CharacterSheet/CharacterModal/CharacterModalButton";
 
 export const PersonalDetails = () => {
   const { register } = useFormContext();

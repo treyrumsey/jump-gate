@@ -75,7 +75,7 @@ export interface Character {
 
 export function buildCharacter(id?: string): Character {
   return {
-    id: id ?? "",
+    id: id ?? generateUUID(),
     name: "",
     species: "",
     ship: "",

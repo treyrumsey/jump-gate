@@ -2,7 +2,8 @@ import React, { ChangeEvent, useEffect, useState } from "react";
 
 import { Box, Button } from "@chakra-ui/react";
 
-import { useCharactersContext } from "~/context/CharactersProvider";
+import { useCharactersContext } from "~/context/CharactersProviderOld";
+import { generateUUID } from "~/lib/utilities/GenerateUUID";
 import { Character } from "~/models/Character.model";
 
 type ImportCharacterInputProps = {
@@ -25,7 +26,7 @@ const ImportCharacterInput = ({
         if (contents) {
           try {
             const parsedData = JSON.parse(contents);
-            setData(parsedData);
+            setData({ ...parsedData, id: generateUUID() });
           } catch (error) {
             console.error("Error parsing JSON file:", error);
           }
