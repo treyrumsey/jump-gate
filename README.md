@@ -25,7 +25,7 @@
   - [x] Token management
   - [x] Character import and export via JSON
   - [x] Offline compatible
-  - [ ] Character sync between devices
+  - [x] Character sync between devices
 
 - [x] Cloud game session management
   - [x] Cloud character roster
@@ -60,7 +60,7 @@ yarn run start
 
 ## Roadmap
 
-- [ ] Character sync between devices
+- [x] Character sync between devices
 - [ ] Ship sheet
 - [ ] [Owlbear Rodeo 2.0](https://www.owlbear.app/) virtual tabletop integration
 
