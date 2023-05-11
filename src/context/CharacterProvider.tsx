@@ -1,11 +1,12 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-import { Spinner } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 import { get, ref } from "firebase/database";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 import { auth, db } from "~/App";
+import { LoadingSpinner } from "~/components/ui/LoadingSpinner/LoadingSpinner";
 import { Character, buildCharacter } from "~/models/Character.model";
 
 type CharacterContextType = {
@@ -49,7 +50,18 @@ export const CharacterProvider = ({ children }: CharacterProviderProps) => {
     }
   }, [user, userLoading, characterId]);
 
-  if (userLoading || !defaultCharacterValues) return <Spinner />;
+  if (userLoading || !defaultCharacterValues)
+    return (
+      <Box
+        display="flex"
+        height="100dvh"
+        width="100%"
+        alignItems="center"
+        justifyContent="center"
+      >
+        <LoadingSpinner />
+      </Box>
+    );
 
   return (
     <CharacterContext.Provider

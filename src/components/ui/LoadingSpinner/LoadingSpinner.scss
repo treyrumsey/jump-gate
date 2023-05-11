@@ -1,0 +1,118 @@
+.jg-LoadingSpinner {
+  .loader {
+    left: 0;
+    margin: -100px auto;
+    position: absolute;
+    right: 0;
+    top: 50%;
+  }
+
+  .circleFW,
+  .circleSW {
+    bottom: 0;
+    height: 100%;
+    left: 0;
+    margin: auto;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform-origin: center center;
+    width: 100%;
+  }
+  .circleFW {
+    animation: rotate 2s linear infinite;
+  }
+  .circleSW {
+    animation: rotate-reverse 4s linear infinite;
+  }
+  .path,
+  .path2,
+  .path3,
+  .path4,
+  .path5,
+  .path6,
+  .path7,
+  .path8,
+  .path9 {
+    opacity: 0.8;
+    stroke-linecap: square;
+    stroke-width: 33;
+  }
+
+  .path {
+    animation: dash 3.7s ease-in-out infinite;
+    opacity: 0.3;
+    stroke-dasharray: 1400, 2600;
+    stroke-dashoffset: 0;
+  }
+  .path2 {
+    stroke-dasharray: 40, 2600;
+    stroke-dashoffset: -500px;
+  }
+  .path3 {
+    stroke-dasharray: 200, 2600;
+    stroke-dashoffset: -700px;
+  }
+  .path4 {
+    stroke-dasharray: 40, 2600;
+    stroke-dashoffset: -2000px;
+  }
+  .path5 {
+    stroke-dasharray: 100, 1600;
+    stroke-dashoffset: 0;
+  }
+  .path6 {
+    stroke-dasharray: 300, 2600;
+    stroke-dashoffset: -1000px;
+  }
+  .path7 {
+    stroke-dasharray: 40, 2600;
+    stroke-dashoffset: -1200px;
+  }
+  .path8 {
+    stroke-dasharray: 100, 2600;
+    stroke-dashoffset: -300px;
+  }
+  .path9 {
+    opacity: 0.8;
+    stroke-dashoffset: -300px;
+  }
+  @keyframes rotate {
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes rotate-reverse {
+    100% {
+      transform: rotate(-360deg);
+    }
+  }
+  @keyframes dash {
+    0% {
+      stroke-dasharray: 2000, 2600;
+      stroke-dashoffset: 0;
+    }
+    50% {
+      stroke-dasharray: 2400, 2600;
+      stroke-dashoffset: -500px;
+    }
+    100% {
+      stroke-dasharray: 2000, 2600;
+      stroke-dashoffset: 0;
+    }
+  }
+  @keyframes dash2 {
+    0% {
+      stroke-dasharray: 100, 2600;
+      stroke-dashoffset: -2000px;
+    }
+    50% {
+      stroke-dasharray: 500, 2600;
+      stroke-dashoffset: -1000px;
+    }
+    100% {
+      stroke-dasharray: 100, 2600;
+      stroke-dashoffset: -1960px;
+    }
+  }
+}

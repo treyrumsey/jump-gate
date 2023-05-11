@@ -10,12 +10,12 @@ import {
   Grid,
   HStack,
   Heading,
-  Spinner,
 } from "@chakra-ui/react";
 import { onValue, ref, set } from "firebase/database";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 import { auth, db } from "~/App";
+import { LoadingSpinner } from "~/components/ui/LoadingSpinner/LoadingSpinner";
 import { Navbar } from "~/components/ui/Navbar/Navbar";
 import { Sidebar } from "~/components/ui/Sidebar/Sidebar";
 import { CharacterTile } from "~/features/Characters/CharacterTile/CharacterTile";
@@ -122,8 +122,6 @@ const Characters = () => {
     }
   }, [importedCharacterData]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  if (userLoading) return <Spinner />;
-
   return (
     <Box className="jg-CharactersNew">
       <Navbar />
@@ -157,7 +155,16 @@ const Characters = () => {
             templateColumns="repeat(auto-fit,minmax(325px,375px))"
             gap="1rem"
           >
-            {userLoading && <Spinner />}
+            {userLoading && (
+              <Box
+                display="flex"
+                width="100%"
+                alignItems="center"
+                justifyContent="center"
+              >
+                <LoadingSpinner />
+              </Box>
+            )}
             {characters &&
               Object.values(characters).map((character) => (
                 <CharacterTile
