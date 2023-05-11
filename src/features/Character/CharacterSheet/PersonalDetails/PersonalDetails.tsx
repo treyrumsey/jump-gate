@@ -57,6 +57,7 @@ export const PersonalDetails = () => {
         {isTabletOrWider && (
           <IconButton
             aria-label="Open Menu"
+            background="blackAlpha.600"
             icon={<HamburgerIcon />}
             onClick={onOpen}
             size="sm"
