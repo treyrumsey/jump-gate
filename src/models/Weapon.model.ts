@@ -36,20 +36,20 @@ export interface Ammo {
 
 export interface Weapon {
   name: string;
-  type?: WeaponType;
-  range?: WeaponRange;
+  type: WeaponType | "";
+  range: WeaponRange | "";
   ammo: { current: number; max: number };
-  damage?: Dice;
+  damage: Dice | "";
   traits: Tag[];
   mods: WeaponMod[];
 }
 
 export const initWeapon = (): Weapon => ({
   name: "",
-  type: undefined,
-  range: undefined,
+  type: "",
+  range: "",
   ammo: { current: 0, max: 0 },
-  damage: undefined,
+  damage: "",
   traits: [],
   mods: [],
 });

@@ -6,10 +6,11 @@ import {
   createRoutesFromElements,
 } from "react-router-dom";
 
-import CharactersProvider from "~/context/CharactersProvider";
+import { CharacterProvider } from "~/context/CharacterProvider";
 import GameProvider from "~/context/GameProvider";
 import GamesProvider from "~/context/GamesProvider";
 import Game from "~/features/Game/Game";
+import Character from "~/pages/Character/Character";
 import Characters from "~/pages/Characters/Characters";
 import ErrorPage from "~/pages/ErrorPage/ErrorPage";
 import Games from "~/pages/Games/Games";
@@ -29,12 +30,13 @@ const getAppRouter = () => {
 const createAppRoutes = () => {
   return [
     <Route path="/" element={<Home />} />,
+    <Route path="/characters" element={<Characters />} />,
     <Route
-      path="/characters"
+      path="/characters/:id"
       element={
-        <CharactersProvider>
-          <Characters />
-        </CharactersProvider>
+        <CharacterProvider>
+          <Character />
+        </CharacterProvider>
       }
     />,
     <Route

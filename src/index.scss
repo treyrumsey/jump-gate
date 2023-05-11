@@ -17,26 +17,28 @@
 @import "components/typography/MarkdownView/MarkdownView.scss";
 @import "components/typography/MarkdownColorOverrides/MarkdownColorOverrides.scss";
 
+@import "components/ui/LoadingSpinner/LoadingSpinner.scss";
 @import "components/ui/Navbar/Navbar.scss";
 @import "components/ui/Sidebar/Sidebar.scss";
 @import "components/ui/ViewToggle/ViewToggle.scss";
 
-@import "features/Characters/CharacterSheet/CharacterSheet.scss";
-@import "features/Characters/CharacterSheet/Attributes/Attributes.scss";
-@import "features/Characters/CharacterSheet/CharacterModal/CharacterModal.scss";
-@import "features/Characters/CharacterSheet/Experiences/Experiences.scss";
-@import "features/Characters/CharacterSheet/Facets/Facets.scss";
-@import "features/Characters/CharacterSheet/Facets/Upgrades/Upgrades.scss";
-@import "features/Characters/CharacterSheet/Loadout/Loadout.scss";
-@import "features/Characters/CharacterSheet/Loadout/LoadoutEditor/LoadoutEditor.scss";
-@import "features/Characters/CharacterSheet/Loadout/LoadoutEditor/WeaponEditor/WeaponEditor.scss";
-@import "features/Characters/CharacterSheet/PersonalDetails/PersonalDetails.scss";
-@import "features/Characters/CharacterSheet/Status/Status.scss";
-@import "features/Characters/CharacterSheet/Status/StatusField/NumberInputWithIcon/NumberInputWithIcon.scss";
-@import "features/Characters/CharacterSheet/Tokens/Tokens.scss";
+@import "features/Character/CharacterSheet/CharacterSheet.scss";
+@import "features/Character/CharacterSheet/Attributes/Attributes.scss";
+@import "features/Character/CharacterSheet/CharacterModal/CharacterModal.scss";
+@import "features/Character/CharacterSheet/Experiences/Experiences.scss";
+@import "features/Character/CharacterSheet/Facets/Facets.scss";
+@import "features/Character/CharacterSheet/Facets/Upgrades/Upgrades.scss";
+@import "features/Character/CharacterSheet/Loadout/Loadout.scss";
+@import "features/Character/CharacterSheet/Loadout/LoadoutEditor/LoadoutEditor.scss";
+@import "features/Character/CharacterSheet/Loadout/LoadoutEditor/WeaponEditor/WeaponEditor.scss";
+@import "features/Character/CharacterSheet/PersonalDetails/PersonalDetails.scss";
+@import "features/Character/CharacterSheet/Status/Status.scss";
+@import "features/Character/CharacterSheet/Status/StatusField/NumberInputWithIcon/NumberInputWithIcon.scss";
+@import "features/Character/CharacterSheet/Tokens/Tokens.scss";
 @import "features/Game/CharacterSummary/CharacterSummary.scss";
 @import "features/Game/CharacterSummary/SummaryContents/SummaryTokens/SummaryTokens.scss";
 
+@import "pages/Character/Character.scss";
 @import "pages/Characters/Characters.scss";
 @import "pages/Home/Home.scss";
 @import "pages/Games/Games.scss";

@@ -25,7 +25,7 @@ export const Navbar = ({ leftButton, showModeToggle }: NavbarProps) => {
       position="sticky"
       top="0"
       width="100%"
-      zIndex="1000"
+      zIndex="9"
     >
       {leftButton !== undefined && (
         <ButtonGroup padding="1" position="absolute" left="0">

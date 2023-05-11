@@ -1,0 +1,14 @@
+.jg-CharacterModal__max-status {
+  input {
+    text-align: center;
+  }
+}
+
+.jg-CharacterModal {
+  @include is-positive-button;
+  @include is-negative-button;
+
+  .jg-MarkdownView {
+    min-height: 12rem;
+  }
+}

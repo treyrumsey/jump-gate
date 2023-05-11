@@ -8,11 +8,12 @@ import {
   Grid,
   HStack,
   Heading,
-  Spinner,
+  Flex,
 } from "@chakra-ui/react";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 import { auth } from "~/App";
+import { LoadingSpinner } from "~/components/ui/LoadingSpinner/LoadingSpinner";
 import { Navbar } from "~/components/ui/Navbar/Navbar";
 import { Sidebar } from "~/components/ui/Sidebar/Sidebar";
 import { useGamesContext } from "~/context/GamesProvider";
@@ -56,7 +57,11 @@ const Games = () => {
             templateColumns="repeat(auto-fit,minmax(325px,375px))"
             gap="1rem"
           >
-            {(loadingOwned || loadingJoined) && <Spinner />}
+            {(loadingOwned || loadingJoined) && (
+              <Flex width="100%" justifyContent="center">
+                <LoadingSpinner />
+              </Flex>
+            )}
             {getMergedAndSortedGames().map(([id, name]) => (
               <GameTile
                 key={id}

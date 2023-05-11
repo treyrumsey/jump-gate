@@ -37,7 +37,7 @@ export const Sidebar = ({ showCharacterList }: SidebarProps) => {
               to="/games"
               text="Games"
             />
-            {showCharacterList ? (
+            {showCharacterList && isOpen ? (
               <SidebarCharactersSection />
             ) : (
               <SidebarNavigateButton

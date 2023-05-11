@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import { AddIcon } from "@chakra-ui/icons";
 import {
@@ -10,18 +10,56 @@ import {
   Button,
   HStack,
   Box,
+  Skeleton,
 } from "@chakra-ui/react";
+import { DatabaseReference, ref } from "firebase/database";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { useObject } from "react-firebase-hooks/database";
 
+import { auth, db } from "~/App";
 import { useDisclosureContext } from "~/components/context/DisclosureProvider";
 import CustomIcon, { CustomIcons } from "~/components/icons/CustomIcon";
-import { useCharactersContext } from "~/context/CharactersProvider";
+import { useCharactersContext } from "~/context/CharactersProviderOld";
 import ImportCharacterInput from "~/features/Characters/SidebarCharacters/ImportCharacterInput";
+import { Character } from "~/models/Character.model";
 
 export const SidebarCharactersSection = () => {
   const { onClose } = useDisclosureContext();
 
-  const { getCharacterIdsAndNames, addCharacter, switchCharacter } =
-    useCharactersContext();
+  const {
+    getCharacterIdsAndNames,
+    addCharacter,
+    switchCharacter,
+    currentCharacterId,
+    updateLocalCharacter,
+  } = useCharactersContext();
+
+  const [user, userLoading] = useAuthState(auth);
+  const [cloudCharactersRef, setCloudCharactersRef] =
+    useState<DatabaseReference>();
+  useEffect(() => {
+    if (user) {
+      setCloudCharactersRef(ref(db, "users/" + user.uid + "/characters"));
+    }
+  }, [user]);
+  const [cloudCharactersSnapshot, cloudCharactersLoading] =
+    useObject(cloudCharactersRef);
+
+  useEffect(() => {
+    if (
+      !userLoading &&
+      !cloudCharactersLoading &&
+      cloudCharactersSnapshot?.exists()
+    ) {
+      const cloudCharacters: { [key: string]: Character } =
+        cloudCharactersSnapshot.val();
+      Object.values(cloudCharacters)
+        .filter((character) => character.id !== currentCharacterId)
+        .forEach((character) => {
+          updateLocalCharacter(character);
+        });
+    }
+  }, [cloudCharactersLoading, userLoading]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <Accordion allowToggle defaultIndex={0}>
@@ -42,27 +80,31 @@ export const SidebarCharactersSection = () => {
           </AccordionButton>
         </h2>
         <AccordionPanel>
-          {getCharacterIdsAndNames().map(
-            (character: { id: string; name: string }) => (
-              <Button
-                display="block"
-                width="100%"
-                padding="0"
-                borderRadius="0"
-                variant="ghost"
-                alignItems="start"
-                key={character.id}
-                onClick={() => {
-                  switchCharacter(character.id);
-                  onClose();
-                }}
-              >
-                <Box textAlign="start" marginX="6">
-                  {character.name?.trim().length > 0
-                    ? character.name
-                    : "Unnamed Character"}
-                </Box>
-              </Button>
+          {cloudCharactersLoading || userLoading ? (
+            <Skeleton />
+          ) : (
+            getCharacterIdsAndNames().map(
+              (character: { id: string; name: string }) => (
+                <Button
+                  display="block"
+                  width="100%"
+                  padding="0"
+                  borderRadius="0"
+                  variant="ghost"
+                  alignItems="start"
+                  key={character.id}
+                  onClick={() => {
+                    switchCharacter(character.id);
+                    onClose();
+                  }}
+                >
+                  <Box textAlign="start" marginX="6">
+                    {character.name?.trim().length > 0
+                      ? character.name
+                      : "Unnamed Character"}
+                  </Box>
+                </Button>
+              )
             )
           )}
           <HStack paddingTop="1rem" paddingInlineStart="6">

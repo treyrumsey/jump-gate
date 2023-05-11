@@ -1,20 +1,8 @@
-.jg-Characters {
-  display: flex;
-  justify-content: center;
-  min-height: 100svh;
-  min-height: 100dvh;
+.jg-CharactersNew {
+  @include is-positive-button;
+  @include is-negative-button;
+}
 
-  .container {
-    @include desktopOrWider {
-      align-items: center;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    width: 100%;
-  }
-  .jg-Email {
-    padding-bottom: 14px;
-  }
+.jg-CharactersNew__alert-dialog-content {
+  @include is-negative-button;
 }
