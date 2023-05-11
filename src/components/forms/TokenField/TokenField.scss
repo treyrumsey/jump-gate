@@ -62,3 +62,12 @@
     }
   }
 }
+
+.webkit-backdrop-blur {
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+}
+
+.popover-backdrop-blur {
+  backdrop-filter: blur(4px);
+}

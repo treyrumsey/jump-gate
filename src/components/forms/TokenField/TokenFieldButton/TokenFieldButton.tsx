@@ -28,6 +28,22 @@ const TokenFieldButton = ({
   gainToken,
 }: TokenFieldButtonProps) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  /** Safari has an issue with its -webkit-backdrop-filters on lazily-loaded
+   *  content. Adding it after the content is rendered fixes the issue.
+   */
+  const popoverContentRef = useRef<HTMLElement>(null);
+  const lazilyApplyWebkitBackdropBlur = () => {
+    popoverContentRef.current?.classList.add("webkit-backdrop-blur");
+    popoverContentRef.current
+      ?.getElementsByClassName("popover-backdrop-blur")[0]
+      ?.classList.add("webkit-backdrop-blur");
+  };
+  const removeWebkitBackdropBlur = () => {
+    popoverContentRef.current?.classList.remove("webkit-backdrop-blur");
+    popoverContentRef.current
+      ?.getElementsByClassName("popover-backdrop-blur")[0]
+      ?.classList.remove("webkit-backdrop-blur");
+  };
 
   const usingTouch = useRef(false);
   const timeoutComplete = useRef(false);
@@ -38,6 +54,7 @@ const TokenFieldButton = ({
       setDelayHandler(
         setTimeout(() => {
           onOpen();
+          setTimeout(() => lazilyApplyWebkitBackdropBlur(), 100);
         }, 500)
       );
     }
@@ -45,6 +62,7 @@ const TokenFieldButton = ({
   const handleMouseLeave = () => {
     clearTimeout(delayHandler);
     onClose();
+    removeWebkitBackdropBlur();
   };
 
   const [longPressHandler, setLongPressHandler] = useState<any>(null);
@@ -53,6 +71,7 @@ const TokenFieldButton = ({
     setLongPressHandler(
       setTimeout(() => {
         onOpen();
+        setTimeout(() => lazilyApplyWebkitBackdropBlur(), 50);
         timeoutComplete.current = true;
       }, 500)
     );
@@ -67,6 +86,7 @@ const TokenFieldButton = ({
     <Popover
       placement="top"
       isOpen={isOpen}
+      isLazy
       onOpen={() => null}
       onClose={() => null}
       returnFocusOnClose={false}
@@ -93,6 +113,7 @@ const TokenFieldButton = ({
               handleMouseLeave();
               usingTouch.current = false;
             }
+            removeWebkitBackdropBlur();
           }}
         >
           {name}
@@ -100,11 +121,15 @@ const TokenFieldButton = ({
       </PopoverTrigger>
       <Portal>
         <PopoverContent
-          backdropFilter="blur(4px)"
+          className="popover-backdrop-blur"
           bg="rgba(30, 30, 30, 0.8)"
           boxShadow="dark-lg"
+          ref={popoverContentRef}
         >
-          <PopoverArrow backdropFilter="blur(4px)" bg="rgba(30, 30, 30, 0.8)" />
+          <PopoverArrow
+            className="popover-backdrop-blur"
+            bg="rgba(30, 30, 30, 0.8)"
+          />
 
           <PopoverBody>
             <p>{description}</p>

@@ -1,11 +1,8 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 
 import { useMediaQuery } from "@chakra-ui/react";
-import { useAuthState } from "react-firebase-hooks/auth";
 
-import { auth } from "~/App";
 import { Navbar } from "~/components/ui/Navbar/Navbar";
 import { useCharacterContext } from "~/context/CharacterProvider";
 import PlayModeProvider from "~/context/PlayModeProvider";
@@ -17,13 +14,8 @@ import Loadout from "~/features/Character/CharacterSheet/Loadout/Loadout";
 import { PersonalDetails } from "~/features/Character/CharacterSheet/PersonalDetails/PersonalDetails";
 import { Status } from "~/features/Character/CharacterSheet/Status/Status";
 import { Tokens } from "~/features/Character/CharacterSheet/Tokens/Tokens";
-import { Character } from "~/models/Character.model";
 import { FacetType } from "~/models/Facet.model";
 import { LoadoutType } from "~/models/Loadout.model";
-
-type CharacterSheetProps = {
-  defaultValues: Character;
-};
 
 export const CharacterSheet = () => {
   const [isCombatMode, setCombatMode] = useState(false);

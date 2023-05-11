@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useFormContext } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
 
