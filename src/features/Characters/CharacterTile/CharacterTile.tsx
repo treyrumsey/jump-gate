@@ -88,7 +88,7 @@ export const CharacterTile = ({
           <CardBody>
             <LinkOverlay as={Link} to={id}>
               <Heading size="lg" width="100%">
-                {name.length > 0 ? name : "New Character"}
+                {name?.length > 0 ? name : "New Character"}
               </Heading>
             </LinkOverlay>
             <Text
@@ -97,7 +97,7 @@ export const CharacterTile = ({
               paddingBottom="3"
               whiteSpace="pre"
             >
-              {species.length > 0 ? species : "Species Unknown"}
+              {species?.length > 0 ? species : "Species Unknown"}
             </Text>
             <HStack justifyContent="space-between" paddingTop="2">
               <Button
