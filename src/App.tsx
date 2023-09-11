@@ -40,13 +40,13 @@ function App() {
     <ChakraProvider data-theme="dark" theme={theme}>
       <ForceDarkMode>
         <>
-          {iOSCanInstall ? (
+          {/* {iOSCanInstall ? (
             <SafariUnsupportedAlert />
-          ) : (
-            <DisclosureProvider>
-              <RouterProvider router={getAppRouter()} />
-            </DisclosureProvider>
-          )}
+          ) : ( */}
+          <DisclosureProvider>
+            <RouterProvider router={getAppRouter()} />
+          </DisclosureProvider>
+          {/* )} */}
         </>
       </ForceDarkMode>
     </ChakraProvider>
