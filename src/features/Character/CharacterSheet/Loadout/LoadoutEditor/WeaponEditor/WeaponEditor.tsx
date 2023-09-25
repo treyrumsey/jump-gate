@@ -1,7 +1,7 @@
 import React from "react";
 import { useFieldArray, useFormContext } from "react-hook-form";
 
-import { AddIcon } from "@chakra-ui/icons";
+import { AddIcon, DeleteIcon } from "@chakra-ui/icons";
 import {
   Button,
   Card,
@@ -14,10 +14,12 @@ import {
 import { NumberField } from "~/components/forms/NumberField/NumberField";
 import TagEditor from "~/components/forms/TagEditor/TagEditor";
 import { useWeaponEditorContext } from "~/features/Character/CharacterSheet/Loadout/LoadoutEditor/WeaponEditor/WeaponEditorProvider";
+import { getWeaponLabel } from "~/lib/utilities/WeaponUtilities";
 import { WeaponModType } from "~/models/Weapon.model";
 
 const WeaponEditor = () => {
-  const { isModdable, weaponId } = useWeaponEditorContext();
+  const { index, loadoutType, isModdable, weaponId, onDelete } =
+    useWeaponEditorContext();
   const { control, getValues } = useFormContext();
 
   const modsFieldArrayId = `${weaponId}.mods`;
@@ -53,7 +55,9 @@ const WeaponEditor = () => {
         alignItems="center"
       >
         <Heading size="md" fontFamily="Oxanium" marginRight="auto">
-          {weaponName.length > 0 ? weaponName : "Weapon"}
+          {weaponName.length > 0
+            ? weaponName
+            : getWeaponLabel(index, loadoutType)}
         </Heading>
         <FormControl className="jg-WeaponEditor__max-ammo" variant="floating">
           <NumberField
@@ -122,6 +126,18 @@ const WeaponEditor = () => {
           Add Trait
         </Button>
       </div>
+
+      {onDelete && (
+        <Button
+          className="is-negative"
+          leftIcon={<DeleteIcon />}
+          size="sm"
+          width="fit-content"
+          onClick={() => onDelete()}
+        >
+          {`Delete ${weaponName.length > 0 ? weaponName : "Weapon"}`}
+        </Button>
+      )}
     </Card>
   );
 };

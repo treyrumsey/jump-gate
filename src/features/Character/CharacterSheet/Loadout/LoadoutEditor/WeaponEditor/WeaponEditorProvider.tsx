@@ -1,6 +1,6 @@
 import React, { createContext, useContext } from "react";
 
-import { hasModSlots } from "~/lib/utilities/WeaponUtilities";
+import { hasModSlots, canBeDeleted } from "~/lib/utilities/WeaponUtilities";
 import { LoadoutType } from "~/models/Loadout.model";
 
 type WeaponEditorContextType = {
@@ -9,6 +9,7 @@ type WeaponEditorContextType = {
   loadoutType: LoadoutType;
   weaponId: string;
   isModdable: boolean;
+  onDelete?: () => void;
 };
 
 const WeaponEditorContext = createContext<WeaponEditorContextType>({
@@ -31,13 +32,22 @@ const WeaponEditorProvider = ({
   index,
   isEditing,
   loadoutType,
+  onDelete,
 }: WeaponEditorProviderProps) => {
   const weaponId = `loadouts.${loadoutType}.weapons[${index}]`;
   const isModdable = hasModSlots(index, loadoutType);
+  const isDeletable = canBeDeleted(index, loadoutType);
 
   return (
     <WeaponEditorContext.Provider
-      value={{ index, isEditing, loadoutType, weaponId, isModdable }}
+      value={{
+        index,
+        isEditing,
+        loadoutType,
+        weaponId,
+        isModdable,
+        onDelete: isDeletable ? onDelete : undefined,
+      }}
     >
       {children}
     </WeaponEditorContext.Provider>

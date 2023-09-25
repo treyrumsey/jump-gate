@@ -10,3 +10,7 @@
     gap: 1rem;
   }
 }
+
+.jg-LoadoutEditor {
+  @include is-negative-button;
+}

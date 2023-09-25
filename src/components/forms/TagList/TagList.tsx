@@ -94,7 +94,7 @@ const TagList = <T extends Tag>({
           {`${listName}:`}
         </Text>
         {isEditing ? (
-          <Skeleton height="1rem" width="100%" />
+          <Skeleton height="1rem" width="2rem" />
         ) : (
           tags.map((tag, index) => (
             <TagButton key={index} {...tag} colorScheme={colorScheme} />

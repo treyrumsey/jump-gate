@@ -1,5 +1,5 @@
 import React from "react";
-import { useFieldArray, useFormContext } from "react-hook-form";
+import { useFormContext } from "react-hook-form";
 
 import { EditIcon } from "@chakra-ui/icons";
 import {
@@ -9,14 +9,15 @@ import {
   CardBody,
   CardHeader,
   IconButton,
+  Skeleton,
   Stack,
   Text,
   useDisclosure,
 } from "@chakra-ui/react";
 
 import TagList from "~/components/forms/TagList/TagList";
-import WeaponFieldGroup from "~/components/forms/WeaponFieldGroup/WeaponFieldGroup";
 import LoadoutEditor from "~/features/Character/CharacterSheet/Loadout/LoadoutEditor/LoadoutEditor";
+import Weapons from "~/features/Character/CharacterSheet/Loadout/Weapons/Weapons";
 import { LoadoutType } from "~/models/Loadout.model";
 
 interface LoadoutProps {
@@ -25,9 +26,6 @@ interface LoadoutProps {
 }
 
 const Loadout = ({ type, show }: LoadoutProps) => {
-  const { fields: weapons } = useFieldArray({
-    name: `loadouts.${type}.weapons`,
-  });
   const { getValues } = useFormContext();
 
   const gearId = `loadouts.${type}.gear`;
@@ -64,15 +62,7 @@ const Loadout = ({ type, show }: LoadoutProps) => {
           </ButtonGroup>
         </CardHeader>
         <CardBody padding="0">
-          <Stack width="100%" gap="0.875rem">
-            {weapons.map((field, index) => (
-              <WeaponFieldGroup
-                key={field.id}
-                index={index}
-                loadoutType={type}
-              />
-            ))}
-          </Stack>
+          {isOpen ? <Skeleton height="6rem" /> : <Weapons type={type} />}
 
           {(hasGear || hasArmorMods) && (
             <Stack spacing="2" direction="row">
