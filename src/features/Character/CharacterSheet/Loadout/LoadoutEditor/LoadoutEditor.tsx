@@ -20,6 +20,7 @@ import WeaponEditorProvider from "~/features/Character/CharacterSheet/Loadout/Lo
 import { ArmorModType } from "~/models/ArmorMod.model";
 import { GearType } from "~/models/Gear.model";
 import { LoadoutType } from "~/models/Loadout.model";
+import { initWeapon } from "~/models/Weapon.model";
 
 interface LoadoutEditorProps {
   type: LoadoutType;
@@ -28,7 +29,11 @@ interface LoadoutEditorProps {
 }
 
 const LoadoutEditor = ({ type, isOpen, onClose }: LoadoutEditorProps) => {
-  const { fields: weaponFields } = useFieldArray({
+  const {
+    fields: weaponFields,
+    append: appendWeapon,
+    remove: removeWeapon,
+  } = useFieldArray({
     name: `loadouts.${type}.weapons`,
   });
 
@@ -68,10 +73,22 @@ const LoadoutEditor = ({ type, isOpen, onClose }: LoadoutEditorProps) => {
               index={weaponIndex}
               isEditing={isOpen}
               loadoutType={type}
+              onDelete={() => removeWeapon(weaponIndex)}
             >
               <WeaponEditor />
             </WeaponEditorProvider>
           ))}
+          <Box>
+            <Button
+              className="is-positive"
+              leftIcon={<AddIcon />}
+              size="sm"
+              marginX="auto"
+              onClick={() => appendWeapon(initWeapon())}
+            >
+              Add Weapon
+            </Button>
+          </Box>
 
           {type === LoadoutType.Combat && (
             <div className="jg-LoadoutEditor__armorMods">
